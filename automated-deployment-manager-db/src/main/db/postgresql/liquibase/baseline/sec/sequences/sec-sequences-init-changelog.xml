@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="privileges_seq" context="scratch">
+		<createSequence schemaName="sec" sequenceName="privileges_seq"
+			startValue="31" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="roles_seq" context="scratch">
+		<createSequence schemaName="sec" sequenceName="roles_seq"
+			startValue="4" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="scopes_seq" context="scratch">
+		<createSequence schemaName="sec" sequenceName="scopes_seq"
+			startValue="2" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="user_groups_seq" context="scratch">
+		<createSequence schemaName="sec" sequenceName="user_groups_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="user_roles_seq" context="scratch">
+		<createSequence schemaName="sec" sequenceName="user_roles_seq"
+			startValue="2" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="users_seq" context="scratch">
+		<createSequence schemaName="sec" sequenceName="users_seq"
+			startValue="2" />
+	</changeSet>
+</databaseChangeLog>

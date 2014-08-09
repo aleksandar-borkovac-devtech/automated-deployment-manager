@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="destination_hosts" context="scratch">
+		<createTable schemaName="adm" tableName="destination_hosts">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="destination_hosts_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="host_name" type="VARCHAR(250)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="VARCHAR(256)" />
+			<column name="port" type="int4">
+				<constraints nullable="false" />
+			</column>
+			<column name="private_key" type="VARCHAR(3350)" />
+			<column name="protocol" type="VARCHAR(4)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_name" type="VARCHAR(256)" />
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="destination_locations" context="scratch">
+		<createTable schemaName="adm" tableName="destination_locations">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="destination_locations_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="path" type="VARCHAR(256)">
+				<constraints nullable="false" />
+			</column>
+			<column name="location_type" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="destination_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="destinations" context="scratch">
+		<createTable schemaName="adm" tableName="destinations">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="destinations_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="deployer_id" type="VARCHAR(256)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(256)">
+				<constraints nullable="false" />
+			</column>
+			<column name="destination_host_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="environment_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="environment_prefix" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="environments" context="scratch">
+		<createTable schemaName="adm" tableName="environments">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="environments_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="environment_deployers" context="scratch">
+		<createTable schemaName="ADM" tableName="environment_deployers">
+			<column name="environment_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_artifact_snapshots" context="scratch">
+		<createTable schemaName="adm" tableName="maven_artifact_snapshots">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="maven_artifact_snapshots_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="maven_artifact_id" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="maven_group" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="rank" type="int4">
+				<constraints nullable="false" />
+			</column>
+			<column name="artifact_type" type="VARCHAR(10)">
+				<constraints nullable="false" />
+			</column>
+			<column name="maven_version" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="execution_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_artifacts" context="scratch">
+		<createTable schemaName="adm" tableName="maven_artifacts">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="maven_artifacts_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="rank" type="int4">
+				<constraints nullable="false" />
+			</column>
+			<column name="target_shutdown" type="bool">
+				<constraints nullable="false" />
+			</column>
+			<column name="target_startup" type="bool">
+				<constraints nullable="false" />
+			</column>
+			<column name="maven_version" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="maven_module_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="release_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_module_destinations" context="scratch">
+		<createTable schemaName="adm" tableName="maven_module_destinations">
+			<column name="maven_modules_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="destinations_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_modules" context="scratch">
+		<createTable schemaName="adm" tableName="maven_modules">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="maven_modules_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="maven_artifact_id" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="maven_group" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="suffix" type="VARCHAR(100)" />
+			<column name="name" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="target_shutdown" type="bool">
+				<constraints nullable="false" />
+			</column>
+			<column name="target_startup" type="bool">
+				<constraints nullable="false" />
+			</column>
+			<column name="artifact_type" type="VARCHAR(10)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_execution_logs" context="scratch">
+		<createTable schemaName="adm" tableName="release_execution_logs">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="release_execution_logs_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="logs" type="TEXT">
+				<constraints nullable="false" />
+			</column>
+			<column name="maven_artifact_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="release_execution_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_executions" context="scratch">
+		<createTable schemaName="adm" tableName="release_executions">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="release_executions_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="release_date" type="TIMESTAMP WITH TIME ZONE">
+				<constraints nullable="false" />
+			</column>
+			<column name="deploy_status" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="release_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="environment_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_step_executions" context="scratch">
+		<createTable schemaName="adm" tableName="release_step_executions">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="release_step_executions_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="error_message" type="VARCHAR(256)" />
+			<column name="exeuction_date" type="TIMESTAMP WITH TIME ZONE">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="deploy_status" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="release_execution_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="releases" context="scratch">
+		<createTable schemaName="adm" tableName="releases">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="releases_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="last_released_date" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="name" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="release_count" type="int4" />
+			<column name="release_date" type="TIMESTAMP WITH TIME ZONE">
+				<constraints nullable="false" />
+			</column>
+			<column name="release_failure_count" type="int4" />
+			<column name="status" type="VARCHAR(10)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="repositories" context="scratch">
+		<createTable schemaName="adm" tableName="repositories">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="repositories_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="enabled" type="bool">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="repository_url" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="user_group_users" context="scratch">
+		<createTable schemaName="ADM" tableName="user_group_users">
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="user_groups" context="scratch">
+		<createTable schemaName="ADM" tableName="user_groups">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="user_groups_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

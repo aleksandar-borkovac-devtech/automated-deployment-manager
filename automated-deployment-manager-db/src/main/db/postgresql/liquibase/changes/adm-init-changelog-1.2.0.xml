@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet id="add_power_shell_deloyer" author="Salomo Petrus">
+		<insert tableName="deployers" schemaName="adm">
+			<column name="id" valueNumeric="4" />
+			<column name="name" value="REMOTE_POWER_SHELL" />
+			<column name="created" valueDate="2013-02-20T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+		</insert>
+	</changeSet>
+	<changeSet id="add_private_key_privilege" author="Salomo Petrus">
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="35" />
+			<column name="created" valueDate="2013-03-01T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_PRIVATE_KEY" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_roles">
+			<column name="id" valueNumeric="4" />
+			<column name="created" valueDate="2013-03-01T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="frozen" value="Y" />
+			<column name="name" value="HOST_MANAGER" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="4" />
+			<column name="prv_id" valueNumeric="35" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="4" />
+			<column name="prv_id" valueNumeric="10" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="4" />
+			<column name="prv_id" valueNumeric="11" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="4" />
+			<column name="prv_id" valueNumeric="22" />
+		</insert>
+	</changeSet>
+	<changeSet id="change_protocol_column_size" author="Salomo Petrus">
+		<modifyDataType schemaName="ADM" tableName="destination_hosts"
+			columnName="protocol" newDataType="VARCHAR(5)" />
+	</changeSet>
+	<changeSet id="add_prefix_column" author="Salomo Petrus">
+		<comment>This is needed to uniquely identify a Maven Artifact Snapshot which is needed to log release logs per artifact.</comment>
+		<addColumn schemaName="ADM" tableName="maven_artifact_snapshots">
+			<column name="suffix" type="VARCHAR(100)" />
+		</addColumn>
+	</changeSet>
+</databaseChangeLog>

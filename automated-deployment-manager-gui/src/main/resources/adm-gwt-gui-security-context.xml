@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<import resource="classpath:adm-security-context.xml" />
+
+	<security:http access-decision-manager-ref="accessDescisionManager"
+		auto-config='true' access-denied-page="/access-denied.html">
+		<security:intercept-url pattern="/login.html"
+			filters="none" />
+		<security:intercept-url pattern="/form.js"
+			filters="none" />
+		<security:intercept-url pattern="/fail.js"
+			filters="none" />
+		<security:intercept-url pattern="/fail.html"
+			filters="none" />
+		<security:intercept-url pattern="/access-denied.html"
+			filters="none" />
+		<security:intercept-url pattern="/access-denied.js"
+			filters="none" />
+		<security:intercept-url pattern="/ext-3.0.3/**"
+			filters="none" />
+		<security:intercept-url pattern="/**" access="LOGIN" />
+		<security:form-login login-page="/login.html"
+			default-target-url="/index.html" always-use-default-target="true"
+			authentication-failure-url="/fail.html" />
+		<security:logout logout-success-url="/login.html" />
+	</security:http>
+
+	<!-- Security configuration that makes sure that the manager layer is secured 
+		on method level so it's not possible to access or manipulate data without 
+		the proper authentication and authorization. -->
+		<security:global-method-security
+		access-decision-manager-ref="accessDescisionManager">
+		<security:protect-pointcut
+			access="DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.ArtifactManagerImpl.retrieveArtifact(..))" />
+		<security:protect-pointcut
+			access="DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DeploymentManagerImpl.deployRelease(..))" />
+		<security:protect-pointcut
+			access="DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DeploymentManagerImpl.deployArtifact(..))" />	
+		<security:protect-pointcut
+			access="DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DeploymentManagerImpl.deployArtifacts(..))" />
+		<security:protect-pointcut
+			access="SEARCH_DESTINATION,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.findDestinations(..))" />
+		<security:protect-pointcut
+			access="SEARCH_DESTINATION,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.findNumberOfDestinations(..))" />			
+		<security:protect-pointcut
+			access="SEARCH_HOST,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.findDestinationHosts(..))" />
+		<security:protect-pointcut
+			access="SEARCH_HOST,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.findNumberOfDestinationHosts(..))" />
+		<security:protect-pointcut
+			access="SEARCH_HOST,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.findAvailableDestinationHosts(..))" />									
+		<security:protect-pointcut
+			access="ADD_DESTINATION"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.storeDestination(..))" />
+		<security:protect-pointcut
+			access="ADD_HOST"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.storeDestinationHost(..))" />
+		<security:protect-pointcut
+			access="ADD_DESTINATION"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.removeDestinationLocation(..))" />
+		<security:protect-pointcut
+			access="ADD_ENVIRONMENT"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl.storeEnvironment(..))" />
+		<security:protect-pointcut
+			access="ADD_ARTIFACT"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.storeMavenArtifact(..))" />
+		<security:protect-pointcut
+			access="SEARCH_ARTIFACT,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.findArtifact*(..))" />			
+		<security:protect-pointcut
+			access="SEARCH_ARTIFACT,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.findNumberOfArtifacts(..))" />
+		<security:protect-pointcut
+			access="DELETE_ARTIFACT"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.removeMavenArtifact(..))" />
+		<security:protect-pointcut
+			access="SEARCH_MAVEN_MODULE,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.findAllMavenModules(..))" />
+		<security:protect-pointcut
+			access="SEARCH_MAVEN_MODULE,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.findMavenModule*(..))" />
+		<security:protect-pointcut
+			access="SEARCH_MAVEN_MODULE,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.findNumberOfMavenModules(..))" />
+		<security:protect-pointcut
+			access="ADD_MAVEN_MODULE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl.storeMavenModule(..))" />
+		<security:protect-pointcut
+			access="ADD_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseManagerImpl.storeRelease(..))" />
+		<security:protect-pointcut
+			access="DELETE_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseManagerImpl.removeRelease(..))" />
+		<security:protect-pointcut
+			access="SEARCH_RELEASE,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseManagerImpl.findRelease*(..))" />
+		<security:protect-pointcut
+			access="SEARCH_RELEASE,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseManagerImpl.findNumberOfReleases(..))" />
+		<security:protect-pointcut
+			access="ADD_REPOSITORY"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.RepositoryManagerImpl.storeRepository(..))" />
+		<security:protect-pointcut
+			access="SEARCH_REPOSITORY,DEPLOY_RELEASE"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.RepositoryManagerImpl.find*(..))" />			
+	</security:global-method-security>
+
+</beans>

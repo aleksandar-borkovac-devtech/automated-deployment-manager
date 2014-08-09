@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="destinationDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDestinationDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="deployerParameterDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDeployerParameterDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="mavenArtifactDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateMavenArtifactDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="mavenModuleDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateMavenModuleDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="releaseDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="releaseExecutionDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseExecutionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="releaseStepExecutionDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseStepExecutionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="repositoryDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateRepositoryDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="environmentDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateEnvironmentDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="destinationHostDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDestinationHostDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="releaseExecutionLogDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseExecutionLogDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="environmentNotificationSettingDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateEnvironmentNotificationSettingDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="deployerDao"
+		class="nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDeployerDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

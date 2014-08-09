@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="apiHibernateClasses" class="org.springframework.beans.factory.config.ListFactoryBean">
+		<property name="sourceList">
+			<list>
+				<value>nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.HibernateUser</value>
+				<value>nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.HibernatePrivilege</value>
+				<value>nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.HibernateRole</value>
+				<value>nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.HibernateUserRole</value>
+				<value>nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.HibernateScope</value>
+				<value>nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.HibernateUserGroup</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

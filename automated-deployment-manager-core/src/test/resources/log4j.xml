@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %C{1} - Method: %M - %m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- own code -->
+	<logger name="nl.tranquilizedquality">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="com.sshtools.j2ssh">
+		<appender-ref ref="CONSOLE" />
+		<level value="INFO" />
+	</logger>
+	
+	<!-- Spring code-->
+	<logger name="org.springframework">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!-- Hibernate code -->
+	<logger name="net.sf.hibernate">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root>
+		<level value="DEBUG" />
+	</root>
+
+</log4j:configuration>

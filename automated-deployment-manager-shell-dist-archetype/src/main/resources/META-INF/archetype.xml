@@ -1,0 +1,13 @@
+<archetype
+	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype/1.0.0 http://maven.apache.org/xsd/archetype-1.0.0.xsd">
+	<id>adm-shell-script-dist-archetype</id>
+	<resources>
+		<resource>src/main/assembly/descriptor.xml</resource>
+		<resource>src/main/resources/deploy_dev.sh</resource>
+		<resource>src/main/resources/deploy_int.sh</resource>
+		<resource>src/main/resources/deploy_uat.sh</resource>
+		<resource>src/main/resources/deploy_prod.sh</resource>
+	</resources>
+</archetype>

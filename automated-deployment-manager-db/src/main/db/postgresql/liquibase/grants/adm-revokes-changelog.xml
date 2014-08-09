@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet id="adm-revoke-function" author="Salomo Petrus" runAlways="true" runOnChange="true">
+		<sqlFile path="adm_gui_revoke_function.sql" relativeToChangelogFile="true" splitStatements="false" />
+	</changeSet>
+	
+	<changeSet id="adm-revokes-demo" author="Salomo Petrus" runAlways="true" runOnChange="true" context="demo">
+		<sqlFile path="demo/adm_gui_revokes.sql" relativeToChangelogFile="true" />
+	</changeSet>
+	
+	<changeSet id="adm-revokes-prod" author="Salomo Petrus" runAlways="true" runOnChange="true" context="prod">
+		<sqlFile path="prod/adm_gui_revokes.sql" relativeToChangelogFile="true" />
+	</changeSet>
+
+	<changeSet id="adm-revokes-itest" author="Salomo Petrus" runAlways="true" runOnChange="true" context="itest">
+		<sqlFile path="itest/adm_gui_revokes.sql" relativeToChangelogFile="true" />
+	</changeSet>	
+
+</databaseChangeLog>

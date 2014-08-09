@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/adm-gui">
+	<Resource
+      name="jdbc/admdb"
+      type="javax.sql.DataSource"
+      maxActive="4"
+      maxIdle="2"
+      maxWait="10000"
+      validationQuery="SELECT 1"
+      driverClassName="org.postgresql.Driver"
+      username="adm_gui"
+      password="Z0lM!aT"	  
+      url="jdbc:postgresql://localhost:5432/adm-db"/>
+      
+	<Resource
+      name="jdbc/securitydb"
+      type="javax.sql.DataSource"
+      maxActive="4"
+      maxIdle="2"
+      maxWait="10000"
+      validationQuery="SELECT 1"
+      driverClassName="org.postgresql.Driver"
+      username="dam_api"
+      password="Z0lM!aT"	  
+      url="jdbc:postgresql://localhost:5432/securitydb"/>      
+</Context>

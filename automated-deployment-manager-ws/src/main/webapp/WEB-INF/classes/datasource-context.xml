@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- The data source that is used by the API. -->
+	<bean id="apiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/securitydb" />
+		<property name="resourceRef" value="true" />
+	</bean>
+
+	<!--
+		The data source used by the ADM application. In this case it's the
+		same since this is the ADM application itself. In other applications
+		this will be a different one.
+	-->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/admdb" />
+		<property name="resourceRef" value="true" />
+	</bean>
+
+</beans>

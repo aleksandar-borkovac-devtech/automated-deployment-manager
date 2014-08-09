@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="deploymentManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.DeploymentManagerImpl">
+		<property name="artifactManager" ref="artifactManager" />
+		<property name="releaseDao" ref="releaseDao" />
+		<property name="environmentDao" ref="environmentDao" />
+		<property name="deployers" ref="artifactDeployers" />
+		<property name="releaseHistoryManager" ref="releaseHistoryManager" />
+		<property name="mavenArtifactManager" ref="mavenArtifactManager" />
+		<property name="deployProgress" ref="deployProgress" />
+		<property name="notificationManager" ref="notificationManager" />
+	</bean>
+
+	<bean id="deployerManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.DeployerManagerImpl">
+		<property name="deployerDao" ref="deployerDao" />
+	</bean>
+
+	<bean id="releaseSnapshotFactory"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseSnapshotFactoryImpl">
+	</bean>
+
+	<bean id="artifactManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.ArtifactManagerImpl">
+		<property name="httpUtil" ref="httpUtil" />
+		<property name="repositoryDao" ref="repositoryDao" />
+		<property name="workDirectory" value="${adm-work-directory}" />
+	</bean>
+
+	<bean id="releaseManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseManagerImpl"
+		parent="userGroupFilteringManager">
+		<property name="releaseDao" ref="releaseDao" />
+		<property name="releaseValidator" ref="releaseValidator" />
+	</bean>
+
+	<bean id="logTailManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.LogTailManagerImpl"
+		scope="session">
+		<aop:scoped-proxy />
+		<property name="logTailerListener" ref="logTailerListener" />
+	</bean>
+
+	<bean id="releaseHistoryManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseHistoryManagerImpl">
+		<property name="releaseExecutionDao" ref="releaseExecutionDao" />
+		<property name="releaseStepExecutionDao" ref="releaseStepExecutionDao" />
+		<property name="snapshotFactory" ref="releaseSnapshotFactory" />
+		<property name="releaseExecutionLogDao" ref="releaseExecutionLogDao" />
+	</bean>
+
+	<bean id="repositoryManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.RepositoryManagerImpl">
+		<property name="repositoryDao" ref="repositoryDao" />
+		<property name="repositoryValidator" ref="repositoryValidator" />
+	</bean>
+
+	<bean id="destinationManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.DestinationManagerImpl"
+		parent="userGroupFilteringManager">
+		<property name="destinationDao" ref="destinationDao" />
+		<property name="destinationValidator" ref="destinationValidator" />
+		<property name="deployerParameterDao" ref="deployerParameterDao" />
+		<property name="environmentDao" ref="environmentDao" />
+		<property name="environmentValidator" ref="environmentValidator" />
+		<property name="destinationHostDao" ref="destinationHostDao" />
+		<property name="destinationHostValidator" ref="destinationHostValidator" />
+	</bean>
+
+	<bean id="mavenArtifactManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.MavenArtifactManagerImpl"
+		parent="userGroupFilteringManager">
+		<property name="mavenArtifactDao" ref="mavenArtifactDao" />
+		<property name="mavenArtifactValidator" ref="mavenArtifactValidator" />
+		<property name="mavenModuleDao" ref="mavenModuleDao" />
+		<property name="mavenModuleValidator" ref="mavenModuleValidator" />
+		<property name="releaseDao" ref="releaseDao" />
+	</bean>
+
+	<bean id="notificationManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.NotificationManagerImpl">
+		<property name="renderer" ref="templateRenderer" />
+		<property name="securityContextManager" ref="securityManager" />
+		<property name="emailManager" ref="emailManager" />
+		<property name="userSettingsManager" ref="userSettingsManager" />
+	</bean>
+
+	<bean id="userSettingsManager"
+		class="nl.tranquilizedquality.adm.core.business.manager.impl.UserSettingsManagerImpl">
+		<property name="environmentDao" ref="environmentDao" />
+		<property name="environmentNotificationSettingDao" ref="environmentNotificationSettingDao" />
+	</bean>
+
+<!-- 	<bean id="remoteJettyPluginManager" -->
+<!-- 		class="nl.tranquilizedquality.adm.core.business.plugin.RemoteJettyPluginManager" init-method="installPlugins"> -->
+<!-- 		<property name="pluginDirectory" value="${adm-plugin-directory}" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="pluginManager" class="nl.tranquilizedquality.adm.core.business.plugin.PluginManagerImpl"> -->
+<!-- 		<property name="pluginDirectory" value="${adm-plugin-directory}" /> -->
+
+<!-- 	</bean> -->
+
+<!-- 	<bean id="pluginLocation" class="java.lang.String"> -->
+<!-- 		<constructor-arg> -->
+<!-- 			<value>${adm-plugin-directory}</value> -->
+<!-- 		</constructor-arg> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="postReleaseCheckManag" class="nl.tranquilizedquality.adm.core.business.plugin.postrelease.PostReleaseCheckManagerImpl"> -->
+<!-- 		<property name="pluginManager" ref="pluginManager" /> -->
+<!-- 		<property name="pluginWorkDirectory" value="${adm-plugin-work-directory}" /> -->
+<!-- 	</bean> -->
+
+</beans>

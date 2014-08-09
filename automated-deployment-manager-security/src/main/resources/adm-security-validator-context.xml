@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="userValidator"
+		class="nl.tranquilizedquality.adm.security.business.domain.validation.UserValidator" />
+	<bean id="userGroupValidator"
+		class="nl.tranquilizedquality.adm.security.business.domain.validation.UserGroupValidator" />
+	<bean id="scopeValidator"
+		class="nl.tranquilizedquality.adm.security.business.domain.validation.ScopeValidator" />
+	<bean id="userRoleValidator"
+		class="nl.tranquilizedquality.adm.security.business.domain.validation.UserRoleValidator" />
+	<bean id="roleValidator"
+		class="nl.tranquilizedquality.adm.security.business.domain.validation.RoleValidator" />
+	<bean id="privilegeValidator"
+		class="nl.tranquilizedquality.adm.security.business.domain.validation.PrivilegeValidator" />
+
+</beans>

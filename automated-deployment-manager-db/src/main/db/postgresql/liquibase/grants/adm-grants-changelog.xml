@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet id="adm-grants-demo" author="Salomo Petrus" runAlways="true" runOnChange="true" context="demo">
+		<sqlFile path="demo/adm_gui_grants.sql" relativeToChangelogFile="true" />
+	</changeSet>
+	
+	<changeSet id="adm-grants-prod" author="Salomo Petrus" runAlways="true" runOnChange="true" context="prod">
+		<sqlFile path="prod/adm_gui_grants.sql" relativeToChangelogFile="true" />
+	</changeSet>
+	
+	<changeSet id="adm-grants-itest" author="Salomo Petrus" runAlways="true" runOnChange="true" context="itest">
+		<sqlFile path="itest/adm_gui_grants.sql" relativeToChangelogFile="true" />
+	</changeSet>	
+
+</databaseChangeLog>

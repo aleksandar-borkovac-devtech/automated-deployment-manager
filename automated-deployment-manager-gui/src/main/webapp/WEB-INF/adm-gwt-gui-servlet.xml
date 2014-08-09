@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- The application context definition for the DispatcherServlet -->
+
+	<!-- Maps the request through to a concrete controller instance -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<map>
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/AuthorizationService.rpc" value-ref="authorizationController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/ApplicationService.rpc" value-ref="applicationController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/RepositoryService.rpc" value-ref="repositoryController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/EnvironmentService.rpc" value-ref="environmentController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/ArtifactService.rpc" value-ref="artifactController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/ReleaseService.rpc" value-ref="releaseController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/DeploymentService.rpc" value-ref="deploymentController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/UserGroupService.rpc" value-ref="userGroupController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/UserService.rpc" value-ref="userController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/ScopeService.rpc" value-ref="scopeController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/UserService.rpc" value-ref="userController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/RoleService.rpc" value-ref="roleController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/PrivilegeService.rpc" value-ref="privilegeController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/SessionService.rpc" value-ref="sessionController" />
+				<entry key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/LogTailService.rpc" value-ref="logTailController" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- The RPC GWT controller for a specific remote service. For every remote service you need to configure a controller. -->
+	<bean id="authorizationController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="authorizationService" />
+	</bean>
+
+	<bean id="applicationController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="applicationService" />
+	</bean>
+
+	<bean id="repositoryController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="repositoryService" />
+	</bean>
+
+	<bean id="environmentController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="environmentService" />
+	</bean>
+
+	<bean id="artifactController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="artifactService" />
+	</bean>
+
+	<bean id="releaseController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="releaseService" />
+	</bean>
+
+	<bean id="deploymentController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="deploymentService" />
+	</bean>
+	
+	<bean id="userGroupController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="userGroupService" />
+	</bean>	
+	
+	<bean id="userController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="userService" />
+	</bean>		
+
+	<bean id="scopeController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="scopeService" />
+	</bean>
+
+	<bean id="roleController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="roleService" />
+	</bean>
+	
+	<bean id="privilegeController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="privilegeService" />
+	</bean>		
+
+	<bean id="sessionController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="sessionService" />
+	</bean>
+
+	<bean id="logTailController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.GwtRpcController">
+		<property name="remoteService" ref="logtailService" />
+	</bean>
+
+</beans>
+

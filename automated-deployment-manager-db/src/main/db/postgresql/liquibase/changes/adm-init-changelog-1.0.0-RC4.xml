@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet id="drop_fk_between_release_execution_logs_and_artifacts" author="Salomo Petrus">
+		<dropForeignKeyConstraint baseTableName="release_execution_logs"
+			baseTableSchemaName="adm" constraintName="fk_release_execution_logs_artifacts" />
+	</changeSet>
+	<changeSet id="update_release_history_to_snapshot_ids" author="Salomo Petrus">
+		<createProcedure>
+			CREATE OR REPLACE FUNCTION f_update_log_relations()
+				RETURNS void AS
+			$BODY$
+			DECLARE
+				artifact_ids RECORD;
+				maven_info RECORD;
+				snapshots RECORD;
+			BEGIN
+			
+				FOR artifact_ids IN SELECT DISTINCT(MAVEN_ARTIFACT_ID) FROM ADM.RELEASE_EXECUTION_LOGS LOOP
+					
+					FOR maven_info IN select maven_artifact_id, maven_group 
+					from adm.maven_modules 
+					where id = (select maven_module_id from adm.maven_artifacts where id = artifact_ids.maven_artifact_id) LOOP
+					
+						FOR snapshots IN select id, execution_id from adm.maven_artifact_snapshots where maven_artifact_id = maven_info.maven_artifact_id and maven_group = maven_info.maven_group LOOP
+			
+							UPDATE adm.release_execution_logs SET maven_artifact_id = snapshots.id WHERE release_execution_id = snapshots.execution_id AND maven_artifact_id = artifact_ids.maven_artifact_id;
+						
+						END LOOP;
+					
+					END LOOP;
+				
+				END LOOP;
+			
+			END;
+			$BODY$
+			LANGUAGE plpgsql;
+		</createProcedure>
+		<sql>select f_update_log_relations();</sql>
+		<sql>DROP FUNCTION IF EXISTS f_update_log_relations();</sql>
+	</changeSet>
+	<changeSet id="add_new_foreign_key_for_logs" author="Salomo Petrus">
+		<addForeignKeyConstraint baseColumnNames="maven_artifact_id"
+			baseTableName="release_execution_logs" baseTableSchemaName="adm"
+			constraintName="fk_release_execution_logs_artifacts" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="maven_artifact_snapshots"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+</databaseChangeLog>

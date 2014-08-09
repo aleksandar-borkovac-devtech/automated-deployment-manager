@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6.4//EN" "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
+<module>
+
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.extjs.gxt.ui.GXT' />
+	<inherits name='nl.tranquilizedquality.adm.commons.business.Commons' />
+	<inherits name='nl.tranquilizedquality.adm.commons.Commons' />
+	<inherits name='nl.tranquilizedquality.adm.commons.gwt.ext.Commons' />
+	<inherits name='nl.tranquilizedquality.adm.security.business.Security' />
+
+	<!-- Specify the app entry point class. -->
+	<entry-point class='nl.tranquilizedquality.adm.gwt.gui.client.AdmModule' />
+	
+	<!--
+		Configure the blacklisted classes as workaround for removing the
+		warnings the compiler gives. It's a bug that needs to be fixed by
+		Google. 
+		
+		The bug:
+		http://code.google.com/p/google-web-toolkit/issues/detail?id=4438
+
+		Forum thread:
+		http://groups.google.com/group/google-web-toolkit/browse_thread/thread/cbf566637f03496a
+	-->
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.ChangeListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.ClickListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.FocusListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.FormHandlerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.KeyboardListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.LoadListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.MouseListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.MouseWheelListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.PopupListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.ScrollListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.TabListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.TableListenerCollection" />
+	<extend-configuration-property name="rpc.blacklist"
+		value="com.google.gwt.user.client.ui.TreeListenerCollection" />
+		
+</module>

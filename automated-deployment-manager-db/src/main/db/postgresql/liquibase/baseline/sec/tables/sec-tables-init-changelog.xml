@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="adm_grantable_roles" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_grantable_roles">
+			<column name="usr_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="rol_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_privileges" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_privileges">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="adm_privileges_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="valid" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="scp_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_role_privileges" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="prv_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_roles" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_roles">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="adm_roles_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+			<column name="frozen" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="valid" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="scp_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_scope_managers" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_scope_managers">
+			<column name="usr_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="scp_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_scopes" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_scopes">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="adm_scopes_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_user_group_users" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_user_group_users">
+			<column name="user_group_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_user_groups" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_user_groups">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="adm_user_groups_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_user_roles" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_user_roles">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="adm_user_roles_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="active" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="active_from" type="TIMESTAMP WITH TIME ZONE">
+				<constraints nullable="false" />
+			</column>
+			<column name="active_until" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="rol_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="usr_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_users" context="scratch">
+		<createTable schemaName="SEC" tableName="adm_users">
+			<column name="id" type="int8">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="adm_users_pkey" />
+			</column>
+			<column name="created" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="created_by" type="VARCHAR(255)" />
+			<column name="altered" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="altered_by" type="VARCHAR(255)" />
+			<column name="active" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="active_from" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="active_until" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="blocked" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="comments" type="VARCHAR(255)" />
+			<column name="email_address" type="VARCHAR(255)" />
+			<column name="mobile_phone_number" type="VARCHAR(255)" />
+			<column name="last_login_date" type="TIMESTAMP WITH TIME ZONE" />
+			<column name="name" type="VARCHAR(255)" />
+			<column name="password" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password_sent" type="char(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="username" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

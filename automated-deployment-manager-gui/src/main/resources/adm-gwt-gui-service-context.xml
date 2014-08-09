@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="authorizationService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.security.AuthorizationServiceImpl">
+		<property name="authorizationManager" ref="authorizationManager" />
+	</bean>
+
+	<bean id="applicationService"
+		class="nl.tranquilizedquality.adm.commons.gwt.ext.server.service.ApplicationServiceImpl">
+		<property name="properties">
+			<map>
+				<entry key="version" value="${version}" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="sessionService"
+		class="nl.tranquilizedquality.adm.commons.gwt.ext.server.service.SessionServiceImpl" />
+
+	<bean id="repositoryService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.repository.RepositoryServiceImpl">
+		<property name="repositoryManager" ref="repositoryManager" />
+	</bean>
+
+	<bean id="environmentService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.environment.EnvironmentServiceImpl">
+		<property name="destinationManager" ref="destinationManager" />
+		<property name="authorizationManager" ref="authorizationManager" />
+	</bean>
+
+	<bean id="logtailService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.logtail.LogTailServiceImpl">
+		<property name="logTailManager" ref="logTailManager" />
+		<property name="systemLogFile" value="${adm.log.system_log_file}" />
+	</bean>
+
+	<bean id="artifactService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.artifact.ArtifactServiceImpl">
+		<property name="artifactManager" ref="mavenArtifactManager" />
+	</bean>
+
+	<bean id="releaseService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.release.ReleaseServiceImpl">
+		<property name="releaseManager" ref="releaseManager" />
+		<property name="releaseHistoryManager" ref="releaseHistoryManager" />
+	</bean>
+
+	<bean id="deploymentService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.deployment.DeploymentServiceImpl">
+		<property name="deploymentManager" ref="deploymentManager" />
+		<property name="deployProgress" ref="deployProgress" />
+		<property name="deployerManager" ref="deployerManager" />
+	</bean>
+
+	<bean id="userGroupService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.security.UserGroupServiceImpl">
+		<property name="userManager" ref="userManager" />
+		<property name="userGroupManager" ref="userGroupManager" />
+	</bean>
+
+	<bean id="scopeService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.scope.ScopeServiceImpl">
+		<property name="scopeManager" ref="scopeManager" />
+	</bean>
+
+	<bean id="roleService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.role.RoleServiceImpl">
+		<property name="roleManager" ref="roleManager" />
+		<property name="scopeManager" ref="scopeManager" />
+	</bean>
+
+	<bean id="userService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.user.UserServiceImpl">
+		<property name="userManager" ref="userManager" />
+		<property name="userDataBean" ref="userDataBean" />
+		<property name="securityContextManager" ref="securityManager" />
+		<property name="userSettingsManager" ref="userSettingsManager" />
+	</bean>
+
+	<bean id="privilegeService"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.privilege.PrivilegeServiceImpl">
+		<property name="privilegeManager" ref="privilegeManager" />
+	</bean>
+
+	<bean id="userDataBean"
+		class="nl.tranquilizedquality.adm.gwt.gui.server.service.user.UserDataBean"
+		scope="session">
+		<aop:scoped-proxy />
+	</bean>
+</beans>

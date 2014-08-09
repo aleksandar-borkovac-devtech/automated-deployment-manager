@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dashboardManager"
+		class="nl.tranquilizedquality.adm.itest.business.manager.impl.DashboardManagerImpl">
+	</bean>
+
+	<bean id="loginManager"
+		class="nl.tranquilizedquality.adm.itest.business.manager.impl.LoginManagerImpl">
+	</bean>
+
+	<bean id="destinationManagementManager"
+		class="nl.tranquilizedquality.adm.itest.business.manager.impl.DestinationManagementManagerImpl">
+		<property name="destinationDao" ref="destinationDao" />
+		<property name="deployerParameterDao" ref="deployerParameterDao" />
+	</bean>
+
+	<bean id="mavenModuleManagementManager"
+		class="nl.tranquilizedquality.adm.itest.business.manager.impl.MavenModuleManagementManagerImpl">
+		<property name="mavenModuleDao" ref="mavenModuleDao" />
+		<property name="userGroupDao" ref="userGroupDao" />
+	</bean>
+
+	<bean id="releaseManagementManager"
+		class="nl.tranquilizedquality.adm.itest.business.manager.impl.ReleaseManagementManagerImpl">
+		<property name="releaseDao" ref="releaseDao" />
+		<property name="mavenArtifactDao" ref="mavenArtifactDao" />
+		<property name="releaseExecutionDao" ref="releaseExecutionDao" />
+		<property name="userGroupDao" ref="userGroupDao" />
+	</bean>
+
+	<bean id="hostManagementManager"
+		class="nl.tranquilizedquality.adm.itest.business.manager.impl.HostManagementManagerImpl">
+		<property name="destinationHostDao" ref="destinationHostDao" />
+		<property name="userGroupDao" ref="userGroupDao" />
+		<property name="destinationDao" ref="destinationDao" />
+	</bean>
+
+</beans>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses" ref="hibernateClasses" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.generate_statistics">
+					${hibernate.generate_statistics}
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl.auto}
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!--
+		TransactionManager to synchronize database calls in one transaction
+	-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- Hibernate SessionFactory for API -->
+	<bean id="apiSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="apiDataSource" />
+		<property name="annotatedClasses" ref="apiHibernateClasses" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${api.hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${api.hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.generate_statistics">
+					${api.hibernate.generate_statistics}
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					${api.hibernate.hbm2ddl.auto}
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!--
+		TransactionManager to synchronize database calls in one transaction
+	-->
+	<bean id="apiTransactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+</beans>

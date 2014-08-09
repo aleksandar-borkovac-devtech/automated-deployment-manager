@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="adm_scopes_name_key" context="scratch">
+		<addUniqueConstraint columnNames="name"
+			constraintName="adm_scopes_name_key" deferrable="false" disabled="false"
+			initiallyDeferred="false" schemaName="SEC" tableName="adm_scopes" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_user_groups_name_key" context="scratch">
+		<addUniqueConstraint columnNames="name"
+			constraintName="adm_user_groups_name_key" deferrable="false"
+			disabled="false" initiallyDeferred="false" schemaName="SEC"
+			tableName="adm_user_groups" />
+	</changeSet>
+</databaseChangeLog>

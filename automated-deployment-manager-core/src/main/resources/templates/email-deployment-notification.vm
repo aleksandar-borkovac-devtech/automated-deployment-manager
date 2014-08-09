@@ -1,0 +1,10 @@
+<html>
+<body>
+The following artifacts from $release.name are deployed by $user.name to $environment.name:
+<ul>
+#foreach( $artifact in $artifacts )
+    <li>$artifact.parentModule.name - $artifact.version</li>
+#end
+</ul>
+</body>
+</html>

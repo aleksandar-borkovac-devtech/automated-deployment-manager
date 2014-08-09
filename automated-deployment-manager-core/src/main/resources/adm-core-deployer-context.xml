@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="artifactDeployers" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map>
+				<entry key="TOMCAT" value-ref="tomcatArtifactDeployer" />
+				<entry key="SHELL_SCRIPT" value-ref="shellScriptArtifactDeployer" />
+				<entry key="REMOTE_SHELL_COMMAND" value-ref="remoteShellScriptArtifactDeployer" />
+				<entry key="REMOTE_POWER_SHELL" value-ref="remotePowerShellScriptArtifactDeployer" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="tomcatArtifactDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.TomcatArtifactDeployer">
+		<property name="connectors" ref="connectors" />
+		<property name="deployers" ref="tomcatArtifactDeployers" />
+		<property name="deployProgress" ref="deployProgress" />
+	</bean>
+	
+	<!-- Specific artifact deployers -->
+	<bean id="tomcatArtifactDeployers" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="targetMapClass" value="java.util.HashMap" />
+		<property name="sourceMap">
+			<map>
+				<entry key="JAR" value-ref="jarDeployer" />
+				<entry key="WAR" value-ref="warDeployer" />
+				<entry key="TAR_GZIP" value-ref="distDeployer" />
+			</map>
+		</property>
+	</bean>	
+
+	<bean id="shellScriptArtifactDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.ShellScriptArtifactDeployer">
+		<property name="connectors" ref="connectors" />
+		<property name="shellScriptDeployer" ref="shellScriptDeployer" />
+	</bean>
+
+	<bean id="remoteShellScriptArtifactDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.ShellScriptArtifactDeployer">
+		<property name="connectors" ref="connectors" />
+		<property name="shellScriptDeployer" ref="remoteShellCommandDeployer" />
+	</bean>
+	
+	<bean id="remotePowerShellScriptArtifactDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.ShellScriptArtifactDeployer">
+		<property name="connectors" ref="connectors" />
+		<property name="shellScriptDeployer" ref="remotePowerShellDistributionPackageDeployer" />
+	</bean>	
+
+	<bean id="jarDeployer" class="nl.tranquilizedquality.adm.core.business.deployer.jar.JarDeployer" />
+
+	<bean id="warDeployer" class="nl.tranquilizedquality.adm.core.business.deployer.war.WarDeployer" />
+
+	<bean id="distDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.distribution.DistributionPackageDeployer">
+		<property name="workDirectory" value="${adm-work-directory}" />
+	</bean>
+
+	<bean id="shellScriptDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.shell.ShellScriptDistributionPackageDeployer">
+		<property name="workDirectory" value="${adm-work-directory}" />
+	</bean>
+
+	<bean id="remoteShellCommandDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.shell.RemoteShellCommandDistributionPackageDeployer">
+		<property name="workDirectory" value="${adm-work-directory}" />
+	</bean>
+
+	<bean id="remotePowerShellDistributionPackageDeployer"
+		class="nl.tranquilizedquality.adm.core.business.deployer.shell.RemotePowerShellDistributionPackageDeployer">
+		<property name="remoteWorkDirectory" value="${adm-remote-work-directory}" />
+	</bean>
+
+</beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- We use this so annotations like @Required are detected and the application 
+		doesn't start up. -->
+	<context:annotation-config />
+
+	<bean id="containerUtil" class="nl.tranquilizedquality.adm.itest.cargo.AdmContainerUtil"
+		parent="abstractContainerUtil">
+		<property name="deployableLocationConfigurations">
+			<list>
+				<ref bean="adm-gui" />
+				<ref bean="adm-ws" />
+			</list>
+		</property>
+		<property name="containerPort" value="8890" />
+		<property name="remoteLocation" value="http://tooling.dizizid.com/" />
+		<property name="containerFile" value="apache-tomcat-7.0.28.zip" />
+		<property name="jvmArguments">
+			<list>
+				<value>-XX:MaxPermSize=256m</value>
+				<value>-Xmx1024m -Xms512m</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="adm-gui"
+		class="nl.tranquilizedquality.itest.domain.DeployableLocationConfiguration">
+		<property name="contextName" value="adm-gui" />
+		<property name="path" value="../automated-deployment-manager-gui/target/adm-gui.war" />
+		<property name="type" value="WAR" />
+	</bean>
+
+	<bean id="adm-ws"
+		class="nl.tranquilizedquality.itest.domain.DeployableLocationConfiguration">
+		<property name="contextName" value="adm-ws" />
+		<property name="path" value="../automated-deployment-manager-ws/target/adm-ws.war" />
+		<property name="type" value="WAR" />
+	</bean>
+
+</beans>

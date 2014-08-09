@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="abstractRenderer"
+		class="nl.tranquilizedquality.adm.core.business.template.renderer.AbstractRenderer"
+		abstract="true">
+		<property name="velocityEngine" ref="velocityEngine" />
+	</bean>
+
+	<bean id="templateRenderer"
+		class="nl.tranquilizedquality.adm.core.business.template.renderer.VelocityTemplateRenderer"
+		parent="abstractRenderer">
+	</bean>
+
+	<bean id="velocityEngine" scope="singleton"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="velocityProperties">
+			<props>
+				<prop key="resource.loader">classpath</prop>
+				<prop key="classpath.resource.loader.class">
+					org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+				</prop>
+<!-- 				<prop key="file.resource.loader.path">/templates</prop> -->
+<!-- 				<prop key="file.resource.loader.cache">false</prop> -->
+			</props>
+		</property>
+	</bean>
+
+</beans>

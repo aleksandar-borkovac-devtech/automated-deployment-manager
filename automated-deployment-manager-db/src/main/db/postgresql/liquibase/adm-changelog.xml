@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<include relativeToChangelogFile="true" file="schemas/adm-schemas-changelog.xml" />
+	<include relativeToChangelogFile="true" file="baseline/adm-baseline-changelog.xml" />
+	
+	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.0.0-RC2.xml" />
+	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.0.0-RC3.xml" />
+	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.0.0-RC4.xml" />
+	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.0.0-RC5.xml" />
+	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.1.0.xml" />
+	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.2.0.xml" />
+	
+	<include relativeToChangelogFile="true" file="grants/adm-revokes-changelog.xml" />
+	<include relativeToChangelogFile="true" file="users/adm-users-changelog.xml" />
+	<include relativeToChangelogFile="true" file="roles/adm-roles-changelog.xml" />	
+	<include relativeToChangelogFile="true" file="grants/adm-grants-changelog.xml" />	
+
+</databaseChangeLog>

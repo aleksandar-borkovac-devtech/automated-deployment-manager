@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="idx_privilege_valid" context="scratch">
+		<createIndex indexName="idx_privilege_valid" schemaName="SEC"
+			tableName="adm_privileges" unique="false">
+			<column name="valid" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_role_name" context="scratch">
+		<createIndex indexName="idx_role_name" schemaName="SEC"
+			tableName="adm_roles" unique="false">
+			<column name="name" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_role_valid" context="scratch">
+		<createIndex indexName="idx_role_valid" schemaName="SEC"
+			tableName="adm_roles" unique="false">
+			<column name="valid" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_user_role_active" context="scratch">
+		<createIndex indexName="idx_user_role_active" schemaName="SEC"
+			tableName="adm_user_roles" unique="false">
+			<column name="active" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_user_role_active_from" context="scratch">
+		<createIndex indexName="idx_user_role_active_from"
+			schemaName="SEC" tableName="adm_user_roles" unique="false">
+			<column name="active_from" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_active_until" context="scratch">
+		<createIndex indexName="idx_active_until" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="active_until" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_blocked" context="scratch">
+		<createIndex indexName="idx_blocked" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="blocked" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_email" context="scratch">
+		<createIndex indexName="idx_email" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="email_address" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_last_login_date" context="scratch">
+		<createIndex indexName="idx_last_login_date" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="last_login_date" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_name" context="scratch">
+		<createIndex indexName="idx_name" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="name" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_password_sent" context="scratch">
+		<createIndex indexName="idx_password_sent" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="password_sent" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_user_active" context="scratch">
+		<createIndex indexName="idx_user_active" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="active" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="idx_user_name" context="scratch">
+		<createIndex indexName="idx_user_name" schemaName="SEC"
+			tableName="adm_users" unique="false">
+			<column name="username" />
+		</createIndex>
+	</changeSet>
+</databaseChangeLog>

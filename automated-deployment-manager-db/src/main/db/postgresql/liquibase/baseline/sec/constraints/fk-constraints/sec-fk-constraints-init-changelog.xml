@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="fk_grantable_role_user" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="rol_id"
+			baseTableName="adm_grantable_roles" baseTableSchemaName="sec"
+			constraintName="fk_grantable_role_user" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_roles"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_grantable_role" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="usr_id"
+			baseTableName="adm_grantable_roles" baseTableSchemaName="sec"
+			constraintName="fk_grantable_role" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_users"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_scope_privilege" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="scp_id"
+			baseTableName="adm_privileges" baseTableSchemaName="sec"
+			constraintName="fk_scope_privilege" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_scopes"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_privilege_role" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="prv_id"
+			baseTableName="adm_role_privileges" baseTableSchemaName="sec"
+			constraintName="fk_privilege_role" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_privileges"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_role_privilege" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="rol_id"
+			baseTableName="adm_role_privileges" baseTableSchemaName="sec"
+			constraintName="fk_role_privilege" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_roles"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_scope_role" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="scp_id"
+			baseTableName="adm_roles" baseTableSchemaName="sec" constraintName="fk_scope_role"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="adm_scopes"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_scope_manager" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="scp_id"
+			baseTableName="adm_scope_managers" baseTableSchemaName="sec"
+			constraintName="fk_scope_manager" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_scopes"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_user_scope_manager" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="usr_id"
+			baseTableName="adm_scope_managers" baseTableSchemaName="sec"
+			constraintName="fk_user_scope_manager" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_users"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_user_group_users" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="user_group_id"
+			baseTableName="adm_user_group_users" baseTableSchemaName="sec"
+			constraintName="fk_user_group_users" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_user_groups"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_users_group" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="user_id"
+			baseTableName="adm_user_group_users" baseTableSchemaName="sec"
+			constraintName="fk_users_group" deferrable="false" initiallyDeferred="false"
+			onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableName="adm_users" referencedTableSchemaName="sec"
+			referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_user_role_role" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="rol_id"
+			baseTableName="adm_user_roles" baseTableSchemaName="sec"
+			constraintName="fk_user_role_role" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="adm_roles"
+			referencedTableSchemaName="sec" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_user_role" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="usr_id"
+			baseTableName="adm_user_roles" baseTableSchemaName="sec"
+			constraintName="fk_user_role" deferrable="false" initiallyDeferred="false"
+			onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableName="adm_users" referencedTableSchemaName="sec"
+			referencesUniqueColumn="false" />
+	</changeSet>
+</databaseChangeLog>

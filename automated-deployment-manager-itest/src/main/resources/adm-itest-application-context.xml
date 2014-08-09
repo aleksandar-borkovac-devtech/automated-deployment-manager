@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="classpath:adm-itest-manager-context.xml"/>
+	<import resource="classpath:adm-itest-selenium-context.xml"/>
+	<import resource="classpath:adm-itest-transaction-context.xml"/>
+	<import resource="classpath:adm-jbehave-configuration-context.xml"/>
+	
+	<import resource="classpath:adm-security-annotated-classes-context.xml"/>
+	<import resource="classpath:adm-core-annotated-classes-context.xml"/>
+	<import resource="classpath:adm-core-dao-context.xml"/>
+	<import resource="classpath:adm-security-dao-context.xml"/>
+
+</beans>

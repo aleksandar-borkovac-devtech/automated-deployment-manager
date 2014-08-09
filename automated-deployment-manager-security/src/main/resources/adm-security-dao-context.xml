@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="privilegeDao"
+		class="nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernatePrivilegeDao">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+	<bean id="userDao"
+		class="nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernateUserDao">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+	<bean id="scopeDao"
+		class="nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernateScopeDao">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+	<bean id="userGroupDao"
+		class="nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernateUserGroupDao">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+	<bean id="roleDao"
+		class="nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernateRoleDao">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+	
+	<bean id="userRoleDao"
+		class="nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernateUserRoleDao">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+</beans>

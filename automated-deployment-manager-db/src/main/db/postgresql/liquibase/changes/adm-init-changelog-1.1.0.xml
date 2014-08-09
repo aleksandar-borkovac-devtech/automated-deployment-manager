@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet id="add_deployment_dependencies" author="Salomo Petrus">
+		<createTable schemaName="adm" tableName="deployment_dependencies">
+			<column name="maven_module_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+			<column name="dependency_module_id" type="int8">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<addPrimaryKey schemaName="adm" tableName="deployment_dependencies"
+			columnNames="maven_module_id,dependency_module_id" />
+		<addForeignKeyConstraint constraintName="fk_deployment_dependencies"
+			referencedTableSchemaName="adm" referencedTableName="maven_modules"
+			baseColumnNames="maven_module_id" baseTableName="deployment_dependencies"
+			baseTableSchemaName="adm" referencedColumnNames="id" />
+		<addForeignKeyConstraint constraintName="fk_dependent_module"
+			referencedTableSchemaName="adm" referencedTableName="maven_modules"
+			baseColumnNames="dependency_module_id" baseTableName="deployment_dependencies"
+			baseTableSchemaName="adm" referencedColumnNames="id" />
+	</changeSet>
+	<changeSet id="add_maven_module_destinations_pk" author="Salomo Petrus">
+		<dropUniqueConstraint schemaName="adm"
+			tableName="maven_module_destinations"
+			constraintName="maven_module_destinations_destinations_id_maven_modules_id_key" />
+		<addPrimaryKey schemaName="adm" tableName="maven_module_destinations"
+			columnNames="destinations_id,maven_modules_id" />
+	</changeSet>
+</databaseChangeLog>

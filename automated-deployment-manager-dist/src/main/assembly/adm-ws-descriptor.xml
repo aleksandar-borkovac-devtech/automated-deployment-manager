@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<assembly>
+	<id>ws</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<fileSets>
+		<!-- Production files -->
+		<fileSet>
+			<directory>src/tomcat-prod/</directory>
+			<outputDirectory>tomcat-prod/</outputDirectory>
+			<includes>
+				<include>**/*.*</include>
+			</includes>
+		</fileSet>
+
+		<!-- Demo files -->
+		<fileSet>
+			<directory>src/tomcat-demo/</directory>
+			<outputDirectory>tomcat-demo/</outputDirectory>
+			<includes>
+				<include>**/*.*</include>
+			</includes>
+		</fileSet>
+		
+		<!-- Demo files -->
+		<fileSet>
+			<directory>src/</directory>
+			<outputDirectory>/</outputDirectory>
+			<filtered>true</filtered>
+			<includes>
+				<include>*.sh</include>
+			</includes>
+			<fileMode>0755</fileMode>
+		</fileSet>
+		
+		<fileSet>
+			<directory>../automated-deployment-manager-ws/target/</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>*.war</include>
+			</includes>
+		</fileSet>		
+	</fileSets>
+</assembly>

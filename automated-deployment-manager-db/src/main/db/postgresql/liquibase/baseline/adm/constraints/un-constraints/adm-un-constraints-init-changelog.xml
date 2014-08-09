@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="environments_name_key" context="scratch">
+		<addUniqueConstraint columnNames="name"
+			constraintName="environments_name_key" deferrable="false" disabled="false"
+			initiallyDeferred="false" schemaName="adm" tableName="environments" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)"
+		id="maven_module_destinations_destinations_id_maven_modules_id_key" context="scratch">
+		<addUniqueConstraint columnNames="destinations_id, maven_modules_id"
+			constraintName="maven_module_destinations_destinations_id_maven_modules_id_key"
+			deferrable="false" disabled="false" initiallyDeferred="false"
+			schemaName="adm" tableName="maven_module_destinations" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="releases_name_key" context="scratch">
+		<addUniqueConstraint columnNames="name"
+			constraintName="releases_name_key" deferrable="false" disabled="false"
+			initiallyDeferred="false" schemaName="adm" tableName="releases" />
+	</changeSet>
+</databaseChangeLog>

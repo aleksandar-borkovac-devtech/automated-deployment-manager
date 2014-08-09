@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="hibernateClasses" class="nl.tranquilizedquality.adm.commons.hibernate.ListMergerFactoryBean">
+		<property name="mergeList">
+			<list>
+				<ref bean="admHibernateClasses" />
+				<ref bean="apiHibernateClasses" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="admHibernateClasses" class="org.springframework.beans.factory.config.ListFactoryBean">
+		<property name="sourceList">
+			<list>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDestination</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDeployer</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDestinationHost</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateEnvironment</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDeployerParameter</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateMavenArtifact</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateMavenModule</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateRelease</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateMavenArtifactSnapshot</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateReleaseExecution</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateReleaseExecutionLog</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateReleaseStepExecution</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateRepository</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateEnvironmentNotificationSetting</value>
+				<value>nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDeployerParameterTemplate</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

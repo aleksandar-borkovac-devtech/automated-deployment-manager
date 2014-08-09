@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="fk_destination_locations_destinations" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="destination_id"
+			baseTableName="destination_locations" baseTableSchemaName="adm"
+			constraintName="fk_destination_locations_destinations" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="destinations"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_destination_hosts_destinations" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="destination_host_id"
+			baseTableName="destinations" baseTableSchemaName="adm"
+			constraintName="fk_destination_hosts_destinations" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="destination_hosts"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_destination_environment" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="environment_id"
+			baseTableName="destinations" baseTableSchemaName="adm"
+			constraintName="fk_destination_environment" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="environments"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_artifact_snapshot_release_execution" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="execution_id"
+			baseTableName="maven_artifact_snapshots" baseTableSchemaName="adm"
+			constraintName="fk_artifact_snapshot_release_execution" deferrable="false"
+			initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="release_executions"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_artifact_parent" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="maven_module_id"
+			baseTableName="maven_artifacts" baseTableSchemaName="adm"
+			constraintName="fk_artifact_parent" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="maven_modules"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_artifact_release" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="release_id"
+			baseTableName="maven_artifacts" baseTableSchemaName="adm"
+			constraintName="fk_artifact_release" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="releases"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_destination_modules" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="destinations_id"
+			baseTableName="maven_module_destinations" baseTableSchemaName="adm"
+			constraintName="fk_destination_modules" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="destinations"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_maven_module_destinations" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="maven_modules_id"
+			baseTableName="maven_module_destinations" baseTableSchemaName="adm"
+			constraintName="fk_maven_module_destinations" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="maven_modules"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_release_execution_logs_artifacts" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="maven_artifact_id"
+			baseTableName="release_execution_logs" baseTableSchemaName="adm"
+			constraintName="fk_release_execution_logs_artifacts" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="maven_artifacts"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_release_execution_executions" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="release_execution_id"
+			baseTableName="release_execution_logs" baseTableSchemaName="adm"
+			constraintName="fk_release_execution_executions" deferrable="false"
+			initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="release_executions"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_release_execution_release" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="release_id"
+			baseTableName="release_executions" baseTableSchemaName="adm"
+			constraintName="fk_release_execution_release" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="releases"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_release_execution_environment" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="environment_id"
+			baseTableName="release_executions" baseTableSchemaName="adm"
+			constraintName="fk_release_execution_environment" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="environments"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_step_execution_release_execution" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="release_execution_id"
+			baseTableName="release_step_executions" baseTableSchemaName="adm"
+			constraintName="fk_step_execution_release_execution" deferrable="false"
+			initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="release_executions"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_environment_deployers" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="environment_id"
+			baseTableName="environment_deployers" baseTableSchemaName="adm"
+			constraintName="fk_environment_deployers" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableName="environments"
+			referencedTableSchemaName="adm" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="fk_deployers" context="scratch">
+		<addForeignKeyConstraint baseColumnNames="user_id"
+			baseTableName="environment_deployers" baseTableSchemaName="adm"
+			constraintName="fk_deployers" deferrable="false" initiallyDeferred="false"
+			onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableName="adm_users" referencedTableSchemaName="sec"
+			referencesUniqueColumn="false" />
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:adm.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="apiSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		depends-on="hsqlSchemaCreator">
+		<property name="dataSource" ref="apiDataSource" />
+		<property name="annotatedClasses" ref="apiHibernateClasses" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.generate_statistics">
+					${hibernate.generate_statistics}
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl.auto}
+				</prop>
+				<prop key="hibernate.default_schema">
+					${hibernate.default-schema}
+                </prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- TransactionManager to synchronize database calls in one transaction -->
+	<bean id="apiTransactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="apiSessionFactory" />
+	</bean>
+
+	<!-- Simple local DataSource that works in any environment. This uses the 
+		JDBC DriverManager to obtain connections, and does NOT perform connection 
+		pooling. Connection pooling is essential to all real-world applications. 
+		This definition is good for getting started, as it introduces no dependencies 
+		beyond the JDK, but DriverManagerDataSource is not intended for production 
+		usage. -->
+	<bean id="apiDataSource"
+		class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="suppressClose" value="true" />
+	</bean>
+
+	<bean id="hsqlSchemaCreator"
+		class="nl.tranquilizedquality.adm.commons.hibernate.HSQLSchemaCreator" depends-on="hsqlSchemaCreator2">
+		<property name="dataSource" ref="apiDataSource" />
+		<property name="schema" value="ADM" />
+	</bean>
+	
+	<bean id="hsqlSchemaCreator2"
+		class="nl.tranquilizedquality.adm.commons.hibernate.HSQLSchemaCreator">
+		<property name="dataSource" ref="apiDataSource" />
+		<property name="schema" value="SEC" />
+	</bean>	
+
+</beans>

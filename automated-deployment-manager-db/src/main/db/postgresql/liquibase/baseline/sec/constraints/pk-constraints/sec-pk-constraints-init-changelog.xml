@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="adm_grantable_roles_pkey" context="scratch">
+		<addPrimaryKey columnNames="usr_id, rol_id"
+			constraintName="adm_grantable_roles_pkey" schemaName="SEC"
+			tableName="adm_grantable_roles" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_role_privileges_pkey" context="scratch">
+		<addPrimaryKey columnNames="rol_id, prv_id"
+			constraintName="adm_role_privileges_pkey" schemaName="SEC"
+			tableName="adm_role_privileges" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="adm_scope_managers_pkey" context="scratch">
+		<addPrimaryKey columnNames="usr_id, scp_id"
+			constraintName="adm_scope_managers_pkey" schemaName="SEC"
+			tableName="adm_scope_managers" />
+	</changeSet>
+</databaseChangeLog>

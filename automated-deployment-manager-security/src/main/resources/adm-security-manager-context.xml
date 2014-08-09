@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="userGroupFilteringManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.UserGroupFilteringManager"
+		abstract="true">
+		<property name="securityContextManager" ref="securityManager" />
+		<property name="userGroupDao" ref="userGroupDao" />
+	</bean>
+
+	<bean id="userGroupManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.UserGroupManagerImpl" parent="userGroupFilteringManager">
+		<property name="userGroupDao" ref="userGroupDao" />
+		<property name="userGroupValidator" ref="userGroupValidator" />
+	</bean>
+
+	<bean id="emailManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.EmailManagerImpl">
+		<property name="from" value="${email.from}" />
+		<property name="host" value="${email.smtp-host}" />
+		<property name="userName" value="${email.username}" />
+		<property name="password" value="${email.password}" />
+        <property name="enabled" value="${email.enabled}"/>
+	</bean>
+
+	<bean id="roleManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.RoleManagerImpl">
+		<property name="roleDao" ref="roleDao" />
+		<property name="roleValidator" ref="roleValidator" />
+		<property name="userDao" ref="userDao" />
+		<property name="scopeDao" ref="scopeDao" />
+	</bean>
+
+	<bean id="scopeManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.ScopeManagerImpl">
+		<property name="scopeDao" ref="scopeDao" />
+		<property name="userDao" ref="userDao" />
+		<property name="scopeValidator" ref="scopeValidator" />
+		<property name="roleManager" ref="roleManager" />
+		<property name="privilegeManager" ref="privilegeManager" />
+		<property name="scopeName" value="${adm.scope}" />
+	</bean>
+
+	<bean id="userManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.UserManagerImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="userRoleDao" ref="userRoleDao" />
+		<property name="userValidator" ref="userValidator" />
+		<property name="userRoleValidator" ref="userRoleValidator" />
+		<property name="scopeDao" ref="scopeDao" />
+		<property name="roleDao" ref="roleDao" />
+		<property name="passwordGenerator" ref="passwordGenerator" />
+		<property name="emailManager" ref="emailManager" />
+		<property name="imageFileRepositoryManager" ref="imageFileRepositoryManager" />
+		<property name="securityContextManager" ref="securityManager"/>
+	</bean>
+	
+	<bean id="privilegeManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.PrivilegeManagerImpl">
+		<property name="privilegeDao" ref="privilegeDao" />
+		<property name="scopeDao" ref="scopeDao" />
+		<property name="privilegeValidator" ref="privilegeValidator" />
+	</bean>	
+
+	<bean id="securityManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.SecurityContextManagerImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	
+	<bean id="imageFileRepositoryManager"
+		class="nl.tranquilizedquality.adm.security.business.manager.impl.ImageFileRepositoryManagerImpl">
+		<property name="imageLocation" value="${image.location.user}" />
+	</bean>	
+
+</beans>

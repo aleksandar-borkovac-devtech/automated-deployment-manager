@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="repositoryValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.RepositoryValidator" />
+	<bean id="destinationValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.DestinationValidator" />
+	<bean id="destinationHostValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.DestinationHostValidator" />
+	<bean id="environmentValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.EnvironmentValidator" />
+	<bean id="mavenArtifactValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.MavenArtifactValidator" />
+	<bean id="releaseValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.ReleaseValidator" />
+	<bean id="mavenModuleValidator" class="nl.tranquilizedquality.adm.core.business.domain.validation.MavenModuleValidator" />
+
+</beans>

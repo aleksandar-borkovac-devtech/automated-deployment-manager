@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- The security configuration using a custom user detail service and using 
+		SHA-1 hashing for passwords. -->
+
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="userDetailService">
+			<security:password-encoder hash="sha" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="loggedInUserInterceptor" class="nl.tranquilizedquality.adm.security.audit.LoggedInUserAspect">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="passwordGenerator" class="nl.tranquilizedquality.adm.security.business.generator.SimplePasswordGenerator" />
+
+	<!-- Service that is responsible for retrieving the user. -->
+	<bean id="userDetailService" class="nl.tranquilizedquality.adm.security.business.manager.impl.AdmUserDetailsService">
+		<property name="privilegeDao" ref="privilegeDao" />
+		<property name="scope" value="${adm.scope}" />
+		<property name="userDao" ref="userDao" />
+		<property name="scopeDao" ref="scopeDao" />
+	</bean>
+
+	<bean id="accessDescisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<property name="decisionVoters">
+			<list>
+				<ref bean="roleVoter" />
+				<ref bean="authenticatedVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Override the default prefix with an empty one so we can specify any 
+		type of privilege. -->
+	<bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+		<property name="rolePrefix" value="" />
+	</bean>
+
+	<!-- Default authenticated voter used when using the default schema based 
+		configuration. -->
+	<bean id="authenticatedVoter"
+		class="org.springframework.security.access.vote.AuthenticatedVoter" />
+
+	<!-- The authorization manager where you can check if the current logged 
+		in user is authorized to do certain stuff. -->
+	<bean id="authorizationManager" class="nl.tranquilizedquality.adm.security.business.manager.impl.AdmAuthorizationManager" />
+
+	<aop:config>
+		<aop:pointcut id="storeUserPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.security.persistence.db.hibernate.dao.HibernateUserDao)" />
+		<aop:aspect id="storeUserAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeUserPointCut"
+				arg-names="object" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

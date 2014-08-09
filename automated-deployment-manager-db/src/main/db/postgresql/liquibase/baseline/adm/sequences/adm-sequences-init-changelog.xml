@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="destination_hosts_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="destination_hosts_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="destination_locations_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="destination_locations_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="destinations_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="destinations_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="environments_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="environments_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_artifact_snapshots_seq" context="scratch">
+		<createSequence schemaName="adm"
+			sequenceName="maven_artifact_snapshots_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_artifacts_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="maven_artifacts_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="maven_modules_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="maven_modules_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="rel_exec_logs_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="rel_exec_logs_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_executions_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="release_executions_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_step_executions_seq" context="scratch">
+		<createSequence schemaName="adm"
+			sequenceName="release_step_executions_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="releases_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="releases_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="repositories_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="repositories_seq" />
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="user_groups_seq" context="scratch">
+		<createSequence schemaName="adm" sequenceName="user_groups_seq" />
+	</changeSet>
+</databaseChangeLog>

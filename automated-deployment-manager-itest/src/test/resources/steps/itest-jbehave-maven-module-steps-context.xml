@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mavenModuleSteps" class="nl.tranquilizedquality.adm.itest.gui.step.MavenModuleSteps" init-method="init">
+		<property name="dashboardManager" ref="dashboardManager" />
+		<property name="loginManager" ref="loginManager" />
+		<property name="mavenModuleManagementManager" ref="mavenModuleManagementManager" />
+		<property name="selenium" ref="admSelenium" />
+		<property name="conditionRunner" ref="admConditionRunner" />
+	</bean>
+
+</beans>

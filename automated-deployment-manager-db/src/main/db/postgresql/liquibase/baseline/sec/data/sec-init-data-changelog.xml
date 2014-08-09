@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="default-scopes" context="scratch">
+		<insert schemaName="SEC" tableName="adm_scopes">
+			<column name="id" valueNumeric="1" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="description" />
+			<column name="name" value="ADM" />
+		</insert>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="default-privileges" context="scratch">
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="1" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="LOGIN" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="2" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DEPLOY_RELEASE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="3" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_RELEASE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="4" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_RELEASE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="5" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ARCHIVE_RELEASE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="6" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_ARTIFACT" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="7" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_ARTIFACT" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="8" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_ENVIRONMENT" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="9" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_ENVIRONMENT" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="10" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_HOST" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="11" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_HOST" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="12" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_MAVEN_MODULE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="13" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_MAVEN_MODULE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="14" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_USER" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="15" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_USER" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="16" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_REPOSITORY" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="17" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_REPOSITORY" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="18" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_REPOSITORY" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="19" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_RELEASE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="20" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_ARTIFACT" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="21" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_ENVIRONMENT" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="22" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_HOST" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="23" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_MAVEN_MODULE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="24" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_USER" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="25" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_ROLE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="26" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_ROLE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="27" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_ROLE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="28" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="GRANT_ROLE" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="29" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_USER_GROUP" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="30" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_USER_GROUP" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="31" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_USER_GROUP" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="32" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="ADD_DESTINATION" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="33" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="DELETE_DESTINATION" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_privileges">
+			<column name="id" valueNumeric="34" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="name" value="SEARCH_DESTINATION" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="default-roles" context="scratch">
+		<insert schemaName="SEC" tableName="adm_roles">
+			<column name="id" valueNumeric="1" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="frozen" value="Y" />
+			<column name="name" value="ADMINISTRATOR" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_roles">
+			<column name="id" valueNumeric="2" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="frozen" value="Y" />
+			<column name="name" value="DEPLOYER" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_roles">
+			<column name="id" valueNumeric="3" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="description" />
+			<column name="frozen" value="Y" />
+			<column name="name" value="DEVELOPER" />
+			<column name="valid" value="Y" />
+			<column name="scp_id" valueNumeric="1" />
+		</insert>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="default-users" context="scratch">
+		<insert schemaName="SEC" tableName="adm_users">
+			<column name="id" valueNumeric="1" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="active" value="Y" />
+			<column name="active_from" />
+			<column name="active_until" />
+			<column name="blocked" value="N" />
+			<column name="comments" />
+			<column name="email_address" />
+			<column name="last_login_date" />
+			<column name="name" value="Administrator" />
+			<column name="password" value="d033e22ae348aeb5660fc2140aec35850c4da997" />
+			<column name="password_sent" value="Y" />
+			<column name="username" value="admin" />
+		</insert>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="default-user-roles" context="scratch">
+		<insert schemaName="SEC" tableName="adm_user_roles">
+			<column name="id" valueNumeric="1" />
+			<column name="created" valueDate="2012-08-26T17:38:15.123" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" />
+			<column name="altered_by" />
+			<column name="active" value="Y" />
+			<column name="active_from" valueDate="2012-08-26T17:38:15.123" />
+			<column name="active_until" />
+			<column name="rol_id" valueNumeric="1" />
+			<column name="usr_id" valueNumeric="1" />
+		</insert>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="default-role-privileges" context="scratch">
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="2" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="3" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="4" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="5" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="6" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="7" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="8" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="9" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="10" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="11" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="12" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="13" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="14" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="15" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="16" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="17" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="18" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="19" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="20" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="21" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="22" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="23" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="24" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="25" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="26" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="27" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="28" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="29" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="30" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="31" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="32" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="33" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="1" />
+			<column name="prv_id" valueNumeric="34" />
+		</insert>
+	</changeSet>
+	<changeSet id="deployer-role" author="Salomo Petrus" context="scratch">
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="2" />
+			<column name="prv_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="2" />
+			<column name="prv_id" valueNumeric="2" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="2" />
+			<column name="prv_id" valueNumeric="19" />
+		</insert>
+	</changeSet>
+	<changeSet id="developer-role" author="Salomo Petrus" context="scratch">
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="1" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="2" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="3" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="4" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="5" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="6" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="7" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="8" />
+		</insert>
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="9" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="10" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="11" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="12" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="13" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="16" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="17" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="18" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="19" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="20" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="21" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="22" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="23" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="32" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="33" />
+		</insert>		
+		<insert schemaName="SEC" tableName="adm_role_privileges">
+			<column name="rol_id" valueNumeric="3" />
+			<column name="prv_id" valueNumeric="34" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

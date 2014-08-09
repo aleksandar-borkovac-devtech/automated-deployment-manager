@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<!-- Log4j initializer bean. -->
+	<bean id="log4jInitializer" class="nl.tranquilizedquality.adm.commons.logging.Log4jInitializer">
+		<constructor-arg>
+			<value>adm-log4j.xml</value>
+		</constructor-arg>
+	</bean>
+
+	<!-- This file is included by the web.xml to startup the spring context. Import all needed context files in here that do NOT belong in the servlet context. Controllers and web related stuff should be 
+		in the servlet context. The servlet context is seperated from the application context in a way that beans in the application context cannot access beans in the servlet context but beans in the servlet 
+		context can access beans in the application context. -->
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:adm-ws.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- The core application context. -->
+	<import resource="classpath:adm-core-remote-application-context.xml" />
+
+	<!-- Transaction context include. -->
+	<import resource="classpath:adm-ws-transaction-context.xml" />
+
+	<!-- Security context include. -->
+	<import resource="classpath:adm-ws-security-context.xml" />
+
+	<!-- The data source include. -->
+	<import resource="classpath:datasource-context.xml" />
+
+	<!-- The web service context. -->
+	<import resource="classpath:adm-ws-web-service-context.xml" />
+
+</beans>

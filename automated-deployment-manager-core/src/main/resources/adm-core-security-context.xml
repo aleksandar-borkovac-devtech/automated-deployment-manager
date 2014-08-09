@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<aop:config>
+		<aop:pointcut id="storeDestinationPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDestinationDao)" />
+		<aop:aspect id="storeDestinationAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeDestinationPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>	
+	
+	<aop:config>
+		<aop:pointcut id="storeDeployerParameterPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDeployerParameterDao)" />
+		<aop:aspect id="storeDeployerParameterAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeDeployerParameterPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="storeEnvironmentPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateEnvironmentDao)" />
+		<aop:aspect id="storeEnvironmentAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeEnvironmentPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>	
+	
+	<aop:config>
+		<aop:pointcut id="storeMavenArtifactPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateMavenArtifactDao)" />
+		<aop:aspect id="storeMavenArtifactAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeMavenArtifactPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>	
+		
+	<aop:config>
+		<aop:pointcut id="storeMavenModulePointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateMavenModuleDao)" />
+		<aop:aspect id="storeMavenModuleAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeMavenModulePointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="storeReleasePointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseDao)" />
+		<aop:aspect id="storeReleaseAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeReleasePointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="storeReleaseExecutionPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseExecutionDao)" />
+		<aop:aspect id="storeReleaseExecutionAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processDomainObject" pointcut-ref="storeReleaseExecutionPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="storeReleaseStepExecutionPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateReleaseStepExecutionDao)" />
+		<aop:aspect id="storeReleaseStepExecutionAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processDomainObject" pointcut-ref="storeReleaseStepExecutionPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>	
+	
+	<aop:config>
+		<aop:pointcut id="storeRepositoryPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateRepositoryDao)" />
+		<aop:aspect id="storeRepositoryAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeRepositoryPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="storeDestinationHostPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateDestinationHostDao)" />
+		<aop:aspect id="storeDestinationHostAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeDestinationHostPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>	
+	
+	<!-- Add aspect for snapshot artifacts -->
+	<aop:config>
+		<aop:pointcut id="createSnapshotPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.core.business.manager.impl.ReleaseSnapshotFactoryImpl.createSnapshot(..))" />
+		<aop:aspect id="createSnapshotAspect" ref="loggedInUserInterceptor">
+			<aop:after-returning returning="collection" method="processCollection" pointcut-ref="createSnapshotPointCut" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="storeEnvironmentPointCut"
+			expression="execution(* nl.tranquilizedquality.adm.commons.hibernate.dao.AbstractHibernateBaseDao.save(..))
+						and args(object)
+						and target(nl.tranquilizedquality.adm.core.persistence.db.hibernate.dao.HibernateEnvironmentDao)" />
+		<aop:aspect id="storeEnvironmentAspect" ref="loggedInUserInterceptor">
+			<aop:before method="processUpdateAbleObject" pointcut-ref="storeEnvironmentPointCut" arg-names="object" />
+		</aop:aspect>
+	</aop:config>	
+	
+</beans>

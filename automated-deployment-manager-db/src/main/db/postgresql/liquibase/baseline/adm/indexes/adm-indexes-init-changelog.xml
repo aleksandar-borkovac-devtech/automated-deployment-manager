@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Salomo Petrus (generated)" id="host_name_idx" context="scratch">
+		<createIndex indexName="host_name_idx" schemaName="adm"
+			tableName="destination_hosts" unique="false">
+			<column name="host_name" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="location_type_idx" context="scratch">
+		<createIndex indexName="location_type_idx" schemaName="adm"
+			tableName="destination_locations" unique="false">
+			<column name="location_type" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="destination_name_idx" context="scratch">
+		<createIndex indexName="destination_name_idx" schemaName="adm"
+			tableName="destinations" unique="false">
+			<column name="name" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="mar_rank_idx" context="scratch">
+		<createIndex indexName="mar_rank_idx" schemaName="adm"
+			tableName="maven_artifacts" unique="false">
+			<column name="rank" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="mar_version_idx" context="scratch">
+		<createIndex indexName="mar_version_idx" schemaName="adm"
+			tableName="maven_artifacts" unique="false">
+			<column name="maven_version" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="mmo_artifact_id_idx" context="scratch">
+		<createIndex indexName="mmo_artifact_id_idx" schemaName="adm"
+			tableName="maven_modules" unique="false">
+			<column name="maven_artifact_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="mmo_artifact_type_idx" context="scratch">
+		<createIndex indexName="mmo_artifact_type_idx" schemaName="adm"
+			tableName="maven_modules" unique="false">
+			<column name="artifact_type" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="mmo_maven_group_idx" context="scratch">
+		<createIndex indexName="mmo_maven_group_idx" schemaName="adm"
+			tableName="maven_modules" unique="false">
+			<column name="maven_group" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="mmo_name_idx" context="scratch">
+		<createIndex indexName="mmo_name_idx" schemaName="adm"
+			tableName="maven_modules" unique="false">
+			<column name="name" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_date_idx" context="scratch">
+		<createIndex indexName="release_date_idx" schemaName="adm"
+			tableName="releases" unique="false">
+			<column name="release_date" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="release_status_idx" context="scratch">
+		<createIndex indexName="release_status_idx" schemaName="adm"
+			tableName="releases" unique="false">
+			<column name="status" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="repository_enabled_idx" context="scratch">
+		<createIndex indexName="repository_enabled_idx"
+			schemaName="adm" tableName="repositories" unique="false">
+			<column name="enabled" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Salomo Petrus (generated)" id="repository_name_idx" context="scratch">
+		<createIndex indexName="repository_name_idx" schemaName="adm"
+			tableName="repositories" unique="false">
+			<column name="name" />
+		</createIndex>
+	</changeSet>
+</databaseChangeLog>

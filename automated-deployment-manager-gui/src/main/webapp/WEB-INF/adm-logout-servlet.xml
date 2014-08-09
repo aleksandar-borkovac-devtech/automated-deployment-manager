@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- The application context definition for the DispatcherServlet -->
+
+
+	<!-- Maps the request through to a concrete controller instance -->
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<map>
+				<entry
+					key="/nl.tranquilizedquality.adm.gwt.gui.AdmModule/j_spring_security_logout"
+					value-ref="logoutController" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="logoutController" class="nl.tranquilizedquality.adm.commons.gwt.ext.controller.LogoutController">
+		<property name="viewName" value="redirect:/j_spring_security_logout" />
+	</bean>
+
+</beans>

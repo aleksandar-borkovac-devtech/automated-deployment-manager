@@ -1,0 +1,6 @@
+#!/bin/bash
+
+java -jar liquibase/liquibase.jar --driver=org.postgresql.Driver --classpath="liquibase/postgresql-8.4-703.jdbc3.jar" --changeLogFile=liquibase/dumps/adm-backup-data-01032013.xml --url="jdbc:postgresql://localhost:5432/adm-db" --username=postgres --password=postgres --diffTypes=data --defaultSchemaName=adm generateChangelog
+java -jar liquibase/liquibase.jar --driver=org.postgresql.Driver --classpath="liquibase/postgresql-8.4-703.jdbc3.jar" --changeLogFile=liquibase/dumps/sec-backup-data-01032013.xml --url="jdbc:postgresql://localhost:5432/adm-db" --username=postgres --password=postgres --diffTypes=data --defaultSchemaName=sec generateChangelog
+java -jar liquibase/liquibase.jar --driver=org.postgresql.Driver --classpath="liquibase/postgresql-8.4-703.jdbc3.jar" --changeLogFile=liquibase/dumps/adm-backup-01032013.xml --url="jdbc:postgresql://localhost:5432/adm-db" --username=postgres --password=postgres --defaultSchemaName=adm generateChangelog
+java -jar liquibase/liquibase.jar --driver=org.postgresql.Driver --classpath="liquibase/postgresql-8.4-703.jdbc3.jar" --changeLogFile=liquibase/dumps/sec-backup-01032013.xml --url="jdbc:postgresql://localhost:5432/adm-db" --username=postgres --password=postgres --defaultSchemaName=sec generateChangelog

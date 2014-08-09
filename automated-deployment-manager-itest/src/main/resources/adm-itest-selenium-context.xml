@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="admSelenium" class="com.thoughtworks.selenium.DefaultSelenium">
+		<constructor-arg index="0" value="${selenium.adm.host}" />
+		<constructor-arg index="1" value="${selenium.adm.port}" />
+		<constructor-arg index="2" value="${selenium.adm.browser}" />
+		<constructor-arg index="3" value="${selenium.adm.base-url}" />
+	</bean>
+	
+	<bean id="admConditionRunner"
+		class="com.thoughtworks.selenium.condition.JUnitConditionRunner">
+		<constructor-arg index="0" ref="admSelenium" />
+		<constructor-arg index="1" value="${selenium.initial-delay}" />
+		<constructor-arg index="2" value="${selenium.interval}" />
+		<constructor-arg index="3" value="${selenium.timeout}" />
+	</bean>
+
+</beans>
