@@ -39,87 +39,87 @@ import org.hibernate.criterion.Restrictions;
  */
 public class HibernateUserDao extends AbstractHibernateBaseDao<HibernateUser, Long> implements UserDao<HibernateUser> {
 
-	@Override
-	protected Class<HibernateUser> getDomainClass() {
-		return HibernateUser.class;
-	}
+    @Override
+    protected Class<HibernateUser> getDomainClass() {
+        return HibernateUser.class;
+    }
 
-	@Override
-	public HibernateUser newDomainObject() {
-		return new HibernateUser();
-	}
+    @Override
+    public HibernateUser newDomainObject() {
+        return new HibernateUser();
+    }
 
-	@Override
-	public User findByEmail(final String email) {
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = currentSession.createCriteria(domainClass);
-		criteria.setMaxResults(1);
+    @Override
+    public User findByEmail(final String email) {
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = currentSession.createCriteria(domainClass);
+        criteria.setMaxResults(1);
 
-		criteria.add(Restrictions.eq("email", email));
+        criteria.add(Restrictions.eq("email", email));
 
-		return (User) criteria.uniqueResult();
-	}
+        return (User) criteria.uniqueResult();
+    }
 
-	@Override
-	public User findActiveUserByUserName(final String userName) {
-		final Criteria criteria = getDefaultCriteria();
-		criteria.add(Restrictions.eq("userName", userName));
-		criteria.add(Restrictions.eq("active", Boolean.TRUE));
+    @Override
+    public User findActiveUserByUserName(final String userName) {
+        final Criteria criteria = getDefaultCriteria();
+        criteria.add(Restrictions.eq("userName", userName));
+        criteria.add(Restrictions.eq("active", Boolean.TRUE));
 
-		return (User) criteria.uniqueResult();
-	}
+        return (User) criteria.uniqueResult();
+    }
 
-	@Override
-	public void updateLastLoginDate(final User user) {
-		final Long id = user.getId();
-		final HibernateUser foundUser = findById(id);
+    @Override
+    public void updateLastLoginDate(final User user) {
+        final Long id = user.getId();
+        final HibernateUser foundUser = findById(id);
 
-		if (foundUser != null) {
-			foundUser.setLastLoginDate(new Date());
-			save(foundUser);
-		}
-	}
+        if (foundUser != null) {
+            foundUser.setLastLoginDate(new Date());
+            save(foundUser);
+        }
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<User> findUsersBySearchCommand(final UserSearchCommand sc) {
-		final Criteria criteria = createUserSearchCriteria(sc);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> findUsersBySearchCommand(final UserSearchCommand sc) {
+        final Criteria criteria = createUserSearchCriteria(sc);
 
-		configurePagingAndSorting(sc, criteria);
+        configurePagingAndSorting(sc, criteria);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	public int findNumberOfUsers(final UserSearchCommand sc) {
-		final Criteria criteria = createUserSearchCriteria(sc);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public int findNumberOfUsers(final UserSearchCommand sc) {
+        final Criteria criteria = createUserSearchCriteria(sc);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	/**
-	 * Creates search criteria based on the passed in search command.
-	 * 
-	 * @param sc
-	 *            The search criteria that will be used to create a criteria.
-	 * @return Returns a hibernate {@link Criteria}.
-	 */
-	private Criteria createUserSearchCriteria(final UserSearchCommand sc) {
-		final Criteria criteria = getDefaultCriteria();
+    /**
+     * Creates search criteria based on the passed in search command.
+     * 
+     * @param sc
+     *            The search criteria that will be used to create a criteria.
+     * @return Returns a hibernate {@link Criteria}.
+     */
+    private Criteria createUserSearchCriteria(final UserSearchCommand sc) {
+        final Criteria criteria = getDefaultCriteria();
 
-		final String userName = sc.getUserName();
-		if (StringUtils.isNotBlank(userName)) {
-			criteria.add(Restrictions.ilike("userName", userName, MatchMode.START));
-		}
+        final String userName = sc.getUserName();
+        if (StringUtils.isNotBlank(userName)) {
+            criteria.add(Restrictions.ilike("userName", userName, MatchMode.START));
+        }
 
-		final String name = sc.getName();
-		if (StringUtils.isNotBlank(name)) {
-			criteria.add(Restrictions.ilike("name", name, MatchMode.START));
-		}
+        final String name = sc.getName();
+        if (StringUtils.isNotBlank(name)) {
+            criteria.add(Restrictions.ilike("name", name, MatchMode.START));
+        }
 
-		return criteria;
-	}
+        return criteria;
+    }
 
 }

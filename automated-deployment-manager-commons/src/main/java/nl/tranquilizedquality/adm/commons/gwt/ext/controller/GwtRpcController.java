@@ -27,64 +27,63 @@ import com.google.gwt.user.server.rpc.SerializationPolicy;
  * @since 28 aug. 2011
  */
 public class GwtRpcController extends RemoteServiceServlet implements Controller,
-		ServletContextAware {
+        ServletContextAware {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -2331371548698868301L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -2331371548698868301L;
 
-	/** The servlet application context. */
-	private ServletContext servletContext;
+    /** The servlet application context. */
+    private ServletContext servletContext;
 
-	/** The {@link RemoteService} that will be used to do the GWT RPC call. */
-	private RemoteService remoteService;
+    /** The {@link RemoteService} that will be used to do the GWT RPC call. */
+    private RemoteService remoteService;
 
-	/** The class name of the remote service class. */
-	@SuppressWarnings({ "rawtypes" })
-	private Class remoteServiceClass;
+    /** The class name of the remote service class. */
+    @SuppressWarnings({"rawtypes" })
+    private Class remoteServiceClass;
 
-	public ModelAndView handleRequest(final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-		/*
-		 * Call the post on the RemoteServiceServlet so the processCall can be
-		 * called.
-		 */
-		super.doPost(request, response);
+    public ModelAndView handleRequest(final HttpServletRequest request,
+            final HttpServletResponse response) throws Exception {
+        /*
+         * Call the post on the RemoteServiceServlet so the processCall can be
+         * called.
+         */
+        super.doPost(request, response);
 
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public String processCall(final String payload) throws SerializationException {
-		try {
-			// Extract request information from the payload
-			final RPCRequest rpcRequest = RPC.decodeRequest(payload, this.remoteServiceClass, this);
-			final Method targetMethod = rpcRequest.getMethod();
-			final Object[] parameters = rpcRequest.getParameters();
-			final SerializationPolicy policy = rpcRequest.getSerializationPolicy();
+    @Override
+    public String processCall(final String payload) throws SerializationException {
+        try {
+            // Extract request information from the payload
+            final RPCRequest rpcRequest = RPC.decodeRequest(payload, this.remoteServiceClass, this);
+            final Method targetMethod = rpcRequest.getMethod();
+            final Object[] parameters = rpcRequest.getParameters();
+            final SerializationPolicy policy = rpcRequest.getSerializationPolicy();
 
-			// Delegate work to the spring injected service
-			return RPC.invokeAndEncodeResponse(this.remoteService, targetMethod, parameters, policy);
-		}
-		catch (final IncompatibleRemoteServiceException e) {
-			return RPC.encodeResponseForFailure(null, e);
-		}
-	}
+            // Delegate work to the spring injected service
+            return RPC.invokeAndEncodeResponse(this.remoteService, targetMethod, parameters, policy);
+        } catch (final IncompatibleRemoteServiceException e) {
+            return RPC.encodeResponseForFailure(null, e);
+        }
+    }
 
-	@Override
-	public ServletContext getServletContext() {
-		return servletContext;
-	}
+    @Override
+    public ServletContext getServletContext() {
+        return servletContext;
+    }
 
-	public void setServletContext(final ServletContext servletContext) {
-		this.servletContext = servletContext;
-	}
+    public void setServletContext(final ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
 
-	@Required
-	public void setRemoteService(final RemoteService remoteService) {
-		this.remoteService = remoteService;
-		this.remoteServiceClass = this.remoteService.getClass();
-	}
+    @Required
+    public void setRemoteService(final RemoteService remoteService) {
+        this.remoteService = remoteService;
+        this.remoteServiceClass = this.remoteService.getClass();
+    }
 
 }

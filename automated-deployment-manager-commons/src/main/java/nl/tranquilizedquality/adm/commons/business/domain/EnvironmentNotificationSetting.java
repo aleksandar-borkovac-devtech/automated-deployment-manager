@@ -27,16 +27,16 @@ public interface EnvironmentNotificationSetting extends UpdatableDomainObject<Lo
     /**
      * Determines if an email notification should be sent.
      * 
-     * @return Returns true if an email notification should be sent otherwise no email should be
-     *         sent.
+     * @return Returns true if an email notification should be sent otherwise no
+     *         email should be sent.
      */
     boolean isEmailNotification();
 
     /**
      * Determines if a SMS notification should be sent.
      * 
-     * @return Returns true if a SMS notification should be sent otherwise no SMS notification
-     *         should be sent.
+     * @return Returns true if a SMS notification should be sent otherwise no
+     *         SMS notification should be sent.
      */
     boolean isSmsNotification();
 

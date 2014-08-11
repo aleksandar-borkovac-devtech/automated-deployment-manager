@@ -69,7 +69,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -84,7 +84,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final ArtifactType type) {
         this.type = type;
@@ -99,7 +99,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param group
-     *        the group to set
+     *            the group to set
      */
     public void setGroup(final String group) {
         this.group = group;
@@ -114,7 +114,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param artifactId
-     *        the artifactId to set
+     *            the artifactId to set
      */
     public void setArtifactId(final String artifactId) {
         this.artifactId = artifactId;
@@ -129,7 +129,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param releaseName
-     *        the releaseName to set
+     *            the releaseName to set
      */
     public void setReleaseName(final String releaseName) {
         this.releaseName = releaseName;
@@ -144,7 +144,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param status
-     *        the status to set
+     *            the status to set
      */
     public void setStatus(final ReleaseStatus status) {
         this.status = status;
@@ -159,7 +159,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param releaseDateStart
-     *        the releaseDateStart to set
+     *            the releaseDateStart to set
      */
     public void setReleaseDateStart(final Date releaseDateStart) {
         this.releaseDateStart = releaseDateStart;
@@ -174,7 +174,7 @@ public class MavenArtifactSearchCommand extends AbstractPagingUserGroupSearchCom
 
     /**
      * @param releaseDateEnd
-     *        the releaseDateEnd to set
+     *            the releaseDateEnd to set
      */
     public void setReleaseDateEnd(final Date releaseDateEnd) {
         this.releaseDateEnd = releaseDateEnd;

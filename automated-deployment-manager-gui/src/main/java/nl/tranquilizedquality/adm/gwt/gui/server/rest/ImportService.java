@@ -20,17 +20,17 @@ import nl.tranquilizedquality.adm.commons.business.domain.Scope;
 @Produces("text/html")
 public interface ImportService {
 
-	/**
-	 * Imports a non persistent scope.
-	 * 
-	 * @param scope
-	 *            The {@link Scope} that will be imported.
-	 * @return Returns a {@link Response} object with the appropriate response
-	 *         information.
-	 */
-	@POST
-	@Path("/import")
-	@Consumes("multipart/form-data")
-	Response importScope(@FormParam("scope") Scope scope);
+    /**
+     * Imports a non persistent scope.
+     * 
+     * @param scope
+     *            The {@link Scope} that will be imported.
+     * @return Returns a {@link Response} object with the appropriate response
+     *         information.
+     */
+    @POST
+    @Path("/import")
+    @Consumes("multipart/form-data")
+    Response importScope(@FormParam("scope") Scope scope);
 
 }

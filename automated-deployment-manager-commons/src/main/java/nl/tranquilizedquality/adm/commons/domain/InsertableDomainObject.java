@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        Primary key type.
+ *            Primary key type.
  */
 public interface InsertableDomainObject<T> extends DomainObject<T> {
 

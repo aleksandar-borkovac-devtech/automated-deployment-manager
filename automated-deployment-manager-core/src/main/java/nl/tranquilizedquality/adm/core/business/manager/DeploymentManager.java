@@ -19,11 +19,11 @@ public interface DeploymentManager {
      * method you are able to deploy a subset of a release.
      * 
      * @param artifacts
-     *        The artifacts that will be released.
+     *            The artifacts that will be released.
      * @param release
-     *        The release where the artifacts are part off.
+     *            The release where the artifacts are part off.
      * @param environment
-     *        The environment to deploy to.
+     *            The environment to deploy to.
      * @return Returns the {@link Release} that was deployed.
      */
     Release deployArtifacts(List<MavenArtifact> artifacts, Release release, Environment environment);
@@ -32,9 +32,9 @@ public interface DeploymentManager {
      * Deploys the whole release to the specified environment.
      * 
      * @param release
-     *        The release that will be deployed.
+     *            The release that will be deployed.
      * @param environment
-     *        The environment to deploy to.
+     *            The environment to deploy to.
      */
     void deployRelease(Release release, Environment environment);
 
@@ -42,9 +42,9 @@ public interface DeploymentManager {
      * Deploys the specified artifact to the specified environment.
      * 
      * @param artifact
-     *        The artifact that will be deployed.
+     *            The artifact that will be deployed.
      * @param environment
-     *        The environment to deploy to.
+     *            The environment to deploy to.
      */
     void deployArtifact(MavenArtifact artifact, Environment environment);
 

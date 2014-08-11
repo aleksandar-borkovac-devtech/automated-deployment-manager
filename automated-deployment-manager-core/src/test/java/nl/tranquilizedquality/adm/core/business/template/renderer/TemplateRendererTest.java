@@ -31,7 +31,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since 19 okt. 2012
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:adm-core-template-context.xml" })
+@ContextConfiguration(locations = {"classpath:adm-core-template-context.xml" })
 public class TemplateRendererTest {
 
     /** Logger for this class. */
@@ -81,7 +81,8 @@ public class TemplateRendererTest {
                 FileUtils.readFileToString(new File("src/test/resources/rendered-templates/email-deployment-notification.html"));
 
         // FIXME: For some reason it doesn't see that it's not the same.
-        // assertEquals("Template not rendered properly!", expectedMessage, message);
+        // assertEquals("Template not rendered properly!", expectedMessage,
+        // message);
     }
 
 }

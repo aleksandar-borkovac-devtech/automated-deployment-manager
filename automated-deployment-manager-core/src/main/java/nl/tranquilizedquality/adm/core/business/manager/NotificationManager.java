@@ -18,11 +18,12 @@ public interface NotificationManager {
      * Sends a notification for the release.
      * 
      * @param release
-     *        The release that was deployed.
+     *            The release that was deployed.
      * @param deployedArtifacts
-     *        The artifacts that were actually deployed from the specified release.
+     *            The artifacts that were actually deployed from the specified
+     *            release.
      * @param environment
-     *        The environment where the release was deployed to.
+     *            The environment where the release was deployed to.
      */
     void sendDeploymentNotification(Release release, List<MavenArtifact> deployedArtifacts, Environment environment);
 

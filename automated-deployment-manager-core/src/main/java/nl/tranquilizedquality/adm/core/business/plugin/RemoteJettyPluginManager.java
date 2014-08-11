@@ -32,8 +32,9 @@ import org.eclipse.jetty.server.handler.StatisticsHandler;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Plugin manager that uses the Jetty embedded servlet container to load plugins as WAR files. The
- * WAR files will be started and the plugins will register themsevles through an HTTP REST service.
+ * Plugin manager that uses the Jetty embedded servlet container to load plugins
+ * as WAR files. The WAR files will be started and the plugins will register
+ * themsevles through an HTTP REST service.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 29 mrt. 2013
@@ -43,7 +44,10 @@ public class RemoteJettyPluginManager implements PluginManager {
     /** Logger for this class. */
     private static final Log LOGGER = LogFactory.getLog(RemoteJettyPluginManager.class);
 
-    /** Jetty server that will be started to load plugins that register themselves to ADM. */
+    /**
+     * Jetty server that will be started to load plugins that register
+     * themselves to ADM.
+     */
     private final Server jettyServer;
 
     /** The directory where plugins are located. */
@@ -59,10 +63,11 @@ public class RemoteJettyPluginManager implements PluginManager {
     private final ContextHandlerCollection contextHandlerCollection;
 
     /**
-     * Initializes the Jetty server on localhost:1212 but doesn't start it up yet.
+     * Initializes the Jetty server on localhost:1212 but doesn't start it up
+     * yet.
      * 
      * @throws Exception
-     *         Is thrown if something goes wrong during initialization.
+     *             Is thrown if something goes wrong during initialization.
      */
     public RemoteJettyPluginManager() throws Exception {
         registeredPlugins = new HashMap<String, Plugin>();
@@ -76,7 +81,7 @@ public class RemoteJettyPluginManager implements PluginManager {
 
         final HandlerCollection handlers = new HandlerCollection();
         final RequestLogHandler requestLogHandler = new RequestLogHandler();
-        handlers.setHandlers(new Handler[] { contextHandlerCollection, new DefaultHandler(), requestLogHandler });
+        handlers.setHandlers(new Handler[] {contextHandlerCollection, new DefaultHandler(), requestLogHandler });
         final StatisticsHandler stats = new StatisticsHandler();
         stats.setHandler(handlers);
         jettyServer.setHandler(stats);

@@ -35,7 +35,8 @@ import org.hibernate.annotations.Type;
 import com.google.code.simplestuff.annotation.BusinessField;
 
 /**
- * Hibernate implementation of a {@link Role} that can be assigned to a {@link User}.
+ * Hibernate implementation of a {@link Role} that can be assigned to a
+ * {@link User}.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 24 nov. 2011
@@ -152,7 +153,7 @@ public class HibernateRole extends AbstractUpdatableDomainObject<Long> implement
 
     /**
      * @param privileges
-     *        the privileges to set
+     *            the privileges to set
      */
     @Override
     public void setPrivileges(final Set<Privilege> privileges) {
@@ -184,7 +185,7 @@ public class HibernateRole extends AbstractUpdatableDomainObject<Long> implement
 
     /**
      * @param userRoles
-     *        the user roles to set
+     *            the user roles to set
      */
     @Override
     public void setUserRoles(final List<UserRole> userRoles) {
@@ -201,7 +202,7 @@ public class HibernateRole extends AbstractUpdatableDomainObject<Long> implement
 
     /**
      * @param frozen
-     *        the frozen to set
+     *            the frozen to set
      */
     @Override
     public void setFrozen(final Boolean frozen) {

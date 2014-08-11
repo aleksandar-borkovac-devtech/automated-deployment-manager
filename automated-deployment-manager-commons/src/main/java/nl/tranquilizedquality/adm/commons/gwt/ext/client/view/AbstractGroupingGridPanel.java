@@ -53,113 +53,113 @@ import com.extjs.gxt.ui.client.widget.toolbar.ToolBar;
  */
 public abstract class AbstractGroupingGridPanel extends AbstractGridPanel {
 
-	/** Field to group on. */
-	protected String groupingField;
+    /** Field to group on. */
+    protected String groupingField;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractGroupingGridPanel() {
-		setBodyBorder(false);
-		setHeading("Records");
-		setButtonAlign(HorizontalAlignment.CENTER);
-		setLayout(new FitLayout());
+    /**
+     * Default constructor.
+     */
+    public AbstractGroupingGridPanel() {
+        setBodyBorder(false);
+        setHeading("Records");
+        setButtonAlign(HorizontalAlignment.CENTER);
+        setLayout(new FitLayout());
 
-		maxNumberOfRecords = 50;
+        maxNumberOfRecords = 50;
 
-		menuItems = new ArrayList<MenuItem>();
-		menuBarButtons = new ArrayList<Button>();
-	}
+        menuItems = new ArrayList<MenuItem>();
+        menuBarButtons = new ArrayList<Button>();
+    }
 
-	/**
-	 * Creates all widgets on the {@link ContentPanel}.
-	 */
-	@Override
-	protected void initializeWidgets() {
-		grid = createTable();
+    /**
+     * Creates all widgets on the {@link ContentPanel}.
+     */
+    @Override
+    protected void initializeWidgets() {
+        grid = createTable();
 
-		if (!menuBarButtons.isEmpty()) {
-			final ToolBar topToolbar = createTopToolbar();
-			setTopComponent(topToolbar);
-		}
+        if (!menuBarButtons.isEmpty()) {
+            final ToolBar topToolbar = createTopToolbar();
+            setTopComponent(topToolbar);
+        }
 
-		bottomToolbar = createBottomToolbar();
-		setBottomComponent(bottomToolbar);
+        bottomToolbar = createBottomToolbar();
+        setBottomComponent(bottomToolbar);
 
-		add(grid);
-	}
+        add(grid);
+    }
 
-	/**
-	 * Creates the table on a {@link ContentPanel}.
-	 * 
-	 * @return Returns the {@link ContentPanel} containing the grid.
-	 */
-	@Override
-	protected Grid<BeanModel> createTable() {
-		final List<ColumnConfig> configs = createColumns();
-		final ColumnModel cm = new ColumnModel(configs);
+    /**
+     * Creates the table on a {@link ContentPanel}.
+     * 
+     * @return Returns the {@link ContentPanel} containing the grid.
+     */
+    @Override
+    protected Grid<BeanModel> createTable() {
+        final List<ColumnConfig> configs = createColumns();
+        final ColumnModel cm = new ColumnModel(configs);
 
-		loader = new BasePagingLoader<PagingLoadResult<ModelData>>(proxy, new BeanModelReader());
-		loader.setRemoteSort(true);
+        loader = new BasePagingLoader<PagingLoadResult<ModelData>>(proxy, new BeanModelReader());
+        loader.setRemoteSort(true);
 
-		final GroupingStore<BeanModel> store = new GroupingStore<BeanModel>(loader);
-		store.groupBy(groupingField);
+        final GroupingStore<BeanModel> store = new GroupingStore<BeanModel>(loader);
+        store.groupBy(groupingField);
 
-		final GroupingView view = new GroupingView();
-		view.setShowGroupedColumn(false);
-		view.setForceFit(true);
-		view.setGroupRenderer(new GridGroupRenderer() {
-			public String render(final GroupColumnData data) {
-				final String f = cm.getColumnById(data.field).getHeader();
-				final String l = data.models.size() == 1 ? "Item" : "Items";
-				return f + ": " + data.group + " (" + data.models.size() + " " + l + ")";
-			}
-		});
+        final GroupingView view = new GroupingView();
+        view.setShowGroupedColumn(false);
+        view.setForceFit(true);
+        view.setGroupRenderer(new GridGroupRenderer() {
+            public String render(final GroupColumnData data) {
+                final String f = cm.getColumnById(data.field).getHeader();
+                final String l = data.models.size() == 1 ? "Item" : "Items";
+                return f + ": " + data.group + " (" + data.models.size() + " " + l + ")";
+            }
+        });
 
-		final Grid<BeanModel> grid = new Grid<BeanModel>(store, cm);
-		grid.setView(view);
-		grid.setStyleAttribute("borderTop", "none");
-		grid.getView().setForceFit(true);
-		grid.setBorders(true);
-		grid.setLoadMask(true);
-		grid.setStateId(panelStateId);
-		grid.setStateful(true);
-		grid.addListener(Events.CellDoubleClick, new Listener<GridEvent<BeanModel>>() {
+        final Grid<BeanModel> grid = new Grid<BeanModel>(store, cm);
+        grid.setView(view);
+        grid.setStyleAttribute("borderTop", "none");
+        grid.getView().setForceFit(true);
+        grid.setBorders(true);
+        grid.setLoadMask(true);
+        grid.setStateId(panelStateId);
+        grid.setStateful(true);
+        grid.addListener(Events.CellDoubleClick, new Listener<GridEvent<BeanModel>>() {
 
-			public void handleEvent(final GridEvent<BeanModel> be) {
-				handleDoubleClick();
-			}
+            public void handleEvent(final GridEvent<BeanModel> be) {
+                handleDoubleClick();
+            }
 
-		});
+        });
 
-		if (!menuItems.isEmpty()) {
-			final Menu menu = createContextMenu();
-			grid.setContextMenu(menu);
-		}
+        if (!menuItems.isEmpty()) {
+            final Menu menu = createContextMenu();
+            grid.setContextMenu(menu);
+        }
 
-		grid.addListener(Events.Attach, new Listener<GridEvent<BeanModel>>() {
+        grid.addListener(Events.Attach, new Listener<GridEvent<BeanModel>>() {
 
-			public void handleEvent(final GridEvent<BeanModel> be) {
-				final PagingLoadConfig config = new BasePagingLoadConfig();
-				config.setOffset(0);
-				config.setLimit(50);
+            public void handleEvent(final GridEvent<BeanModel> be) {
+                final PagingLoadConfig config = new BasePagingLoadConfig();
+                config.setOffset(0);
+                config.setLimit(50);
 
-				final Map<String, Object> state = grid.getState();
-				if (state.containsKey("offset")) {
-					final int offset = (Integer) state.get("offset");
-					final int limit = (Integer) state.get("limit");
-					config.setOffset(offset);
-					config.setLimit(limit);
-				}
-				if (state.containsKey("sortField")) {
-					config.setSortField((String) state.get("sortField"));
-					config.setSortDir(SortDir.valueOf((String) state.get("sortDir")));
-				}
-				loader.load(config);
-			}
-		});
+                final Map<String, Object> state = grid.getState();
+                if (state.containsKey("offset")) {
+                    final int offset = (Integer) state.get("offset");
+                    final int limit = (Integer) state.get("limit");
+                    config.setOffset(offset);
+                    config.setLimit(limit);
+                }
+                if (state.containsKey("sortField")) {
+                    config.setSortField((String) state.get("sortField"));
+                    config.setSortDir(SortDir.valueOf((String) state.get("sortDir")));
+                }
+                loader.load(config);
+            }
+        });
 
-		return grid;
-	}
+        return grid;
+    }
 
 }

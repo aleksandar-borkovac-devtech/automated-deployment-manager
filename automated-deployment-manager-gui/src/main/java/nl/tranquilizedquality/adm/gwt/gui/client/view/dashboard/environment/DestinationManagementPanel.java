@@ -48,161 +48,161 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class DestinationManagementPanel extends AbstractSearchPanel<ClientDestinationSearchCommand> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The name to search on. */
-	private TextField<String> name;
+    /** The name to search on. */
+    private TextField<String> name;
 
-	/** The {@link ComboBox} containing a list of protocols. */
-	private ComboBox<EnumWrapper<Protocol>> protocol;
+    /** The {@link ComboBox} containing a list of protocols. */
+    private ComboBox<EnumWrapper<Protocol>> protocol;
 
-	/**
-	 * Default constructor.
-	 */
-	public DestinationManagementPanel() {
-		icons = Registry.get(AdmModule.ICONS);
+    /**
+     * Default constructor.
+     */
+    public DestinationManagementPanel() {
+        icons = Registry.get(AdmModule.ICONS);
 
-		sc = new ClientDestinationSearchCommand();
+        sc = new ClientDestinationSearchCommand();
 
-		northHeight = 170;
+        northHeight = 170;
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected AbstractGridPanel createGridPanel() {
-		return new DestinationTable(sc);
-	}
+    @Override
+    protected AbstractGridPanel createGridPanel() {
+        return new DestinationTable(sc);
+    }
 
-	@Override
-	protected FormPanel createFilterPanel() {
-		final FormPanel formPanel = new FormPanel();
-		formPanel.setHeading("Search criteria");
-		formPanel.setFrame(true);
-		formPanel.setLabelWidth(200);
-		formPanel.setButtonAlign(HorizontalAlignment.LEFT);
-		formPanel.setIcon(AbstractImagePrototype.create(icons.destinationManagement()));
-		formPanel.setHeight(160);
+    @Override
+    protected FormPanel createFilterPanel() {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setHeading("Search criteria");
+        formPanel.setFrame(true);
+        formPanel.setLabelWidth(200);
+        formPanel.setButtonAlign(HorizontalAlignment.LEFT);
+        formPanel.setIcon(AbstractImagePrototype.create(icons.destinationManagement()));
+        formPanel.setHeight(160);
 
-		/*
-		 * Add name.
-		 */
-		name = new TextField<String>();
-		name.setId("destination-management-host-name");
-		name.setName("hostName");
-		name.setFieldLabel("Host Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add name.
+         */
+        name = new TextField<String>();
+        name.setId("destination-management-host-name");
+        name.setName("hostName");
+        name.setFieldLabel("Host Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add environment name.
-		 */
-		name = new TextField<String>();
-		name.setId("destination-management-environment-name");
-		name.setName("environment");
-		name.setFieldLabel("Environment Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add environment name.
+         */
+        name = new TextField<String>();
+        name.setId("destination-management-environment-name");
+        name.setName("environment");
+        name.setFieldLabel("Environment Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add protocol.
-		 */
-		protocol = new ComboBox<EnumWrapper<Protocol>>();
-		protocol.setId("destination-management-protocol");
-		protocol.setName("protocol");
-		protocol.setFieldLabel("Protocol");
-		protocol.setDisplayField("value");
-		protocol.setEmptyText("Select protocol..");
-		protocol.setTriggerAction(TriggerAction.ALL);
-		protocol.setForceSelection(true);
-		protocol.setEditable(false);
+        /*
+         * Add protocol.
+         */
+        protocol = new ComboBox<EnumWrapper<Protocol>>();
+        protocol.setId("destination-management-protocol");
+        protocol.setName("protocol");
+        protocol.setFieldLabel("Protocol");
+        protocol.setDisplayField("value");
+        protocol.setEmptyText("Select protocol..");
+        protocol.setTriggerAction(TriggerAction.ALL);
+        protocol.setForceSelection(true);
+        protocol.setEditable(false);
 
-		/*
-		 * Add enums.
-		 */
-		final ListStore<EnumWrapper<Protocol>> store = new ListStore<EnumWrapper<Protocol>>();
-		final Protocol[] values = Protocol.values();
-		store.add(new EnumWrapper<Protocol>(null));
-		for (final Protocol protocol : values) {
-			final EnumWrapper<Protocol> wrapper = new EnumWrapper<Protocol>(protocol);
-			store.add(wrapper);
-		}
+        /*
+         * Add enums.
+         */
+        final ListStore<EnumWrapper<Protocol>> store = new ListStore<EnumWrapper<Protocol>>();
+        final Protocol[] values = Protocol.values();
+        store.add(new EnumWrapper<Protocol>(null));
+        for (final Protocol protocol : values) {
+            final EnumWrapper<Protocol> wrapper = new EnumWrapper<Protocol>(protocol);
+            store.add(wrapper);
+        }
 
-		protocol.setStore(store);
+        protocol.setStore(store);
 
-		formPanel.add(protocol);
+        formPanel.add(protocol);
 
-		/*
-		 * Add search button.
-		 */
-		final Button search = new Button("Search");
-		search.setIcon(AbstractImagePrototype.create(icons.find()));
+        /*
+         * Add search button.
+         */
+        final Button search = new Button("Search");
+        search.setIcon(AbstractImagePrototype.create(icons.find()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				for (final FieldBinding fieldBinding : fieldBindings) {
-					fieldBinding.updateModel();
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                for (final FieldBinding fieldBinding : fieldBindings) {
+                    fieldBinding.updateModel();
+                }
 
-				search();
-			}
+                search();
+            }
 
-		};
-		search.addSelectionListener(listener);
+        };
+        search.addSelectionListener(listener);
 
-		formPanel.addButton(search);
+        formPanel.addButton(search);
 
-		return formPanel;
-	}
+        return formPanel;
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Setup layout.
+         */
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		/*
-		 * Create the filter panel.
-		 */
-		formPanel = createFilterPanel();
+        /*
+         * Create the filter panel.
+         */
+        formPanel = createFilterPanel();
 
-		/*
-		 * Create grid panel.
-		 */
-		gridPanel = createGridPanel();
+        /*
+         * Create grid panel.
+         */
+        gridPanel = createGridPanel();
 
-		final FieldBinding binding = new FieldBinding(this.protocol, "protocol");
-		binding.setConverter(new EnumConverter<Protocol>());
-		fieldBindings.add(binding);
+        final FieldBinding binding = new FieldBinding(this.protocol, "protocol");
+        binding.setConverter(new EnumConverter<Protocol>());
+        fieldBindings.add(binding);
 
-		/*
-		 * Bind model.
-		 */
-		bindModel(this.sc);
+        /*
+         * Bind model.
+         */
+        bindModel(this.sc);
 
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
-		northData.setCollapsible(true);
-		northData.setFloatable(true);
-		northData.setSplit(true);
-		northData.setMaxSize(northMaxHeight);
-		northData.setSize(northHeight);
-		northData.setSplit(true);
-		northData.setMargins(new Margins(1, 1, 1, 1));
+        /*
+         * Setup layout.
+         */
+        final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
+        northData.setCollapsible(true);
+        northData.setFloatable(true);
+        northData.setSplit(true);
+        northData.setMaxSize(northMaxHeight);
+        northData.setSize(northHeight);
+        northData.setSplit(true);
+        northData.setMargins(new Margins(1, 1, 1, 1));
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
-		centerData.setMargins(new Margins(0, 1, 1, 1));
-		centerData.setSplit(true);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        centerData.setMargins(new Margins(0, 1, 1, 1));
+        centerData.setSplit(true);
 
-		add(formPanel, northData);
-		add(gridPanel, centerData);
-	}
+        add(formPanel, northData);
+        add(gridPanel, centerData);
+    }
 
 }

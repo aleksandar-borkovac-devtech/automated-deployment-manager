@@ -6,7 +6,7 @@ package nl.tranquilizedquality.adm.commons.domain;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        Implementation type.
+ *            Implementation type.
  */
 public abstract class AbstractModel<T> implements DomainObject<T> {
     private static final long serialVersionUID = 3104762646305286306L;
@@ -16,7 +16,7 @@ public abstract class AbstractModel<T> implements DomainObject<T> {
 
     /**
      * @param id
-     *        the id to set.
+     *            the id to set.
      */
     public void setId(final T id) {
         this.id = id;
@@ -46,7 +46,7 @@ public abstract class AbstractModel<T> implements DomainObject<T> {
      * to copy the inherited properties.
      * 
      * @param object
-     *        the object to copy.
+     *            the object to copy.
      */
     @Override
     public void copy(final DomainObject<T> object) {

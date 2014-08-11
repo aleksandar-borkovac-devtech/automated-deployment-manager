@@ -162,7 +162,8 @@ public class WarDeployerTest {
         final SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
         final String now = formatter.format(new Date());
         final String backupDir = "/srv/tomcat/instances/8080/backups/INT_Release_" + now + "/adm-gui";
-        connector.performCommand(SshCommand.COPY, "/srv/tomcat/instances/8080/webapps/automated-deployment-manager-core.war " + backupDir);
+        connector.performCommand(SshCommand.COPY, "/srv/tomcat/instances/8080/webapps/automated-deployment-manager-core.war "
+                + backupDir);
         expectLastCall().once();
         connector.transferFileToHost(isA(File.class), isA(String.class));
         expectLastCall().once();
@@ -189,7 +190,8 @@ public class WarDeployerTest {
         file = new File("src/test/resources/automated-deployment-manager-core-1.0.0.war");
         artifact.setFile(file.getAbsolutePath());
 
-        connector.performCommand(SshCommand.COPY, "/srv/tomcat/instances/8080/webapps/automated-deployment-manager-core.war " + backupDir);
+        connector.performCommand(SshCommand.COPY, "/srv/tomcat/instances/8080/webapps/automated-deployment-manager-core.war "
+                + backupDir);
         expectLastCall().once();
         connector.transferFileToHost(isA(File.class), isA(String.class));
         expectLastCall().once();
@@ -216,7 +218,8 @@ public class WarDeployerTest {
         file = new File("src/test/resources/automated-deployment-manager-core.war");
         artifact.setFile(file.getAbsolutePath());
 
-        connector.performCommand(SshCommand.COPY, "/srv/tomcat/instances/8080/webapps/automated-deployment-manager-core.war " + backupDir);
+        connector.performCommand(SshCommand.COPY, "/srv/tomcat/instances/8080/webapps/automated-deployment-manager-core.war "
+                + backupDir);
         expectLastCall().once();
         connector.transferFileToHost(isA(File.class), isA(String.class));
         expectLastCall().once();

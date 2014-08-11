@@ -25,13 +25,13 @@ public interface RoleServiceAsync {
      * Retrieves the children of a {@link Role}.
      * 
      * @param treeItem
-     *        The {@link RoleTreeItem} where the children will be retrieved
-     *        from.
+     *            The {@link RoleTreeItem} where the children will be retrieved
+     *            from.
      * @param model
-     *        The list with model objects.
+     *            The list with model objects.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to retrieve the {@link List} containing
-     *        {@link ModelData} objects.
+     *            The {@link AsyncCallback} that will be used to retrieve the
+     *            {@link List} containing {@link ModelData} objects.
      */
     void getRoleChildren(RoleTreeItem treeItem, List<? extends DomainObject<Long>> model, AsyncCallback<List<ModelData>> callback);
 
@@ -39,13 +39,13 @@ public interface RoleServiceAsync {
      * Searches for {@link Role} objects based on the specified search criteria.
      * 
      * @param loadConfig
-     *        The {@link PagingLoadConfig} that holds the paging
-     *        information.
+     *            The {@link PagingLoadConfig} that holds the paging
+     *            information.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the
-     *        search results.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            search results.
      */
     void findRoles(PagingLoadConfig loadConfig, ClientRoleSearchCommand sc, AsyncCallback<PagingLoadResult<ClientRole>> callback);
 
@@ -53,10 +53,10 @@ public interface RoleServiceAsync {
      * Searches for {@link Role} objects based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the
-     *        search results.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            search results.
      */
     void findRoles(ClientRoleSearchCommand sc, AsyncCallback<List<ClientRole>> callback);
 
@@ -64,9 +64,10 @@ public interface RoleServiceAsync {
      * Retrieves a {@link ClientRole} with the specified unique identifier.
      * 
      * @param id
-     *        The unique identifier of a role.
+     *            The unique identifier of a role.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the {@link ClientRole}.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            {@link ClientRole}.
      */
     void findRoleById(Long id, AsyncCallback<ClientRole> callback);
 
@@ -74,10 +75,10 @@ public interface RoleServiceAsync {
      * Saves the specified {@link ClientRole}.
      * 
      * @param role
-     *        The {@link ClientRole} that will be saved.
+     *            The {@link ClientRole} that will be saved.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the
-     *        saved {@link ClientRole}.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            saved {@link ClientRole}.
      */
     void saveRole(ClientRole role, AsyncCallback<ClientRole> callback);
 
@@ -86,9 +87,9 @@ public interface RoleServiceAsync {
      * the specified role.
      * 
      * @param role
-     *        The {@link ClientRole} that will be deleted.
+     *            The {@link ClientRole} that will be deleted.
      * @param callback
-     *        The {@link AsyncCallback} used to return errors if applicable.
+     *            The {@link AsyncCallback} used to return errors if applicable.
      */
     void deleteRole(ClientRole role, AsyncCallback<Void> callback);
 
@@ -97,12 +98,13 @@ public interface RoleServiceAsync {
      * in the search criteria.
      * 
      * @param config
-     *        The {@link PagingLoadConfig} containing paging information.
+     *            The {@link PagingLoadConfig} containing paging information.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        The {@link AsyncCallback} used to return the search result.
+     *            The {@link AsyncCallback} used to return the search result.
      */
-    void findGrantableRoles(PagingLoadConfig config, ClientRoleSearchCommand sc, AsyncCallback<PagingLoadResult<ClientRole>> callback);
+    void findGrantableRoles(PagingLoadConfig config, ClientRoleSearchCommand sc,
+            AsyncCallback<PagingLoadResult<ClientRole>> callback);
 
 }

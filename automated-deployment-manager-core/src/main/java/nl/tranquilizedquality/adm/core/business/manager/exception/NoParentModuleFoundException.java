@@ -22,38 +22,38 @@ package nl.tranquilizedquality.adm.core.business.manager.exception;
  */
 public class NoParentModuleFoundException extends RuntimeException {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = 5802137336994865855L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = 5802137336994865855L;
 
-	/**
-	 * Default constructor.
-	 */
-	public NoParentModuleFoundException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public NoParentModuleFoundException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public NoParentModuleFoundException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public NoParentModuleFoundException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public NoParentModuleFoundException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public NoParentModuleFoundException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

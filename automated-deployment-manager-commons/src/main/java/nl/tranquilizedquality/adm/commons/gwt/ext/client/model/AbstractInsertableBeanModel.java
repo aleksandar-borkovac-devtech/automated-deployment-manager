@@ -13,9 +13,9 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  *            The implementation type of the primary key of this object.
  */
 public abstract class AbstractInsertableBeanModel<T> extends AbstractInsertableModel<T> implements
-		BeanModelTag {
+        BeanModelTag {
 
-	/** Unique identifier. */
-	private static final long serialVersionUID = -5540897967771867864L;
+    /** Unique identifier. */
+    private static final long serialVersionUID = -5540897967771867864L;
 
 }

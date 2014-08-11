@@ -10,12 +10,12 @@ package nl.tranquilizedquality.adm.commons.gwt.ext.client.view;
  */
 public interface NavigationalItem<T> {
 
-	/**
-	 * Set the model for the GUI object that is navigated to.
-	 * 
-	 * @param model
-	 *            the model that contains the (key) data for the item to
-	 *            display.
-	 */
-	void setModel(T model);
+    /**
+     * Set the model for the GUI object that is navigated to.
+     * 
+     * @param model
+     *            the model that contains the (key) data for the item to
+     *            display.
+     */
+    void setModel(T model);
 }

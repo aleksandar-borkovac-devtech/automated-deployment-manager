@@ -26,17 +26,17 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.environment.ClientDeploye
  * @since 17 sep. 2011
  */
 public class DestinationLocationFactory
-		extends
-		AbstractFactory<ClientDeployerParameter, HibernateDeployerParameter, DeployerParameter> {
+        extends
+        AbstractFactory<ClientDeployerParameter, HibernateDeployerParameter, DeployerParameter> {
 
-	@Override
-	protected ClientDeployerParameter createNewClientBean() {
-		return new ClientDeployerParameter();
-	}
+    @Override
+    protected ClientDeployerParameter createNewClientBean() {
+        return new ClientDeployerParameter();
+    }
 
-	@Override
-	protected HibernateDeployerParameter createNewPersistentBean() {
-		return new HibernateDeployerParameter();
-	}
+    @Override
+    protected HibernateDeployerParameter createNewPersistentBean() {
+        return new HibernateDeployerParameter();
+    }
 
 }

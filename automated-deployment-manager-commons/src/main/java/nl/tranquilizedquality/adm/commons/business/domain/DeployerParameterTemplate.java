@@ -3,8 +3,8 @@ package nl.tranquilizedquality.adm.commons.business.domain;
 import nl.tranquilizedquality.adm.commons.domain.UpdatableDomainObject;
 
 /**
- * Representation of a template configuration for a deployer. This basically determines what
- * parameter types are allowed/needed for a deployer.
+ * Representation of a template configuration for a deployer. This basically
+ * determines what parameter types are allowed/needed for a deployer.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 30 jan. 2013

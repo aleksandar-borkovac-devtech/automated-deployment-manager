@@ -35,63 +35,64 @@ import org.hibernate.criterion.Restrictions;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 1 sep. 2011
  */
-public class HibernateEnvironmentDao extends AbstractHibernateBaseDao<HibernateEnvironment, Long> implements EnvironmentDao<HibernateEnvironment> {
+public class HibernateEnvironmentDao extends AbstractHibernateBaseDao<HibernateEnvironment, Long> implements
+        EnvironmentDao<HibernateEnvironment> {
 
-	@Override
-	protected Class<HibernateEnvironment> getDomainClass() {
-		return HibernateEnvironment.class;
-	}
+    @Override
+    protected Class<HibernateEnvironment> getDomainClass() {
+        return HibernateEnvironment.class;
+    }
 
-	@Override
-	public HibernateEnvironment newDomainObject() {
-		return new HibernateEnvironment();
-	}
+    @Override
+    public HibernateEnvironment newDomainObject() {
+        return new HibernateEnvironment();
+    }
 
-	@Override
-	public int findNumberOfEnvironmentsBySearchCommand(final EnvironmentSearchCommand sc) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = getEnvironmentCriteria(sc, session);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public int findNumberOfEnvironmentsBySearchCommand(final EnvironmentSearchCommand sc) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = getEnvironmentCriteria(sc, session);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Environment> findEnvironmentsBySearchCommand(final EnvironmentSearchCommand sc) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = getEnvironmentCriteria(sc, session);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Environment> findEnvironmentsBySearchCommand(final EnvironmentSearchCommand sc) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = getEnvironmentCriteria(sc, session);
 
-		configurePagingAndSorting(sc, criteria);
+        configurePagingAndSorting(sc, criteria);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	/**
-	 * Creates a hibernate criteria object based on the passed in search
-	 * criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @param session
-	 *            The session to use for doing the query.
-	 * @return Returns a {@link Criteria}.
-	 */
-	private Criteria getEnvironmentCriteria(final EnvironmentSearchCommand sc, final Session session) {
-		final Criteria criteria = getDefaultCriteria();
+    /**
+     * Creates a hibernate criteria object based on the passed in search
+     * criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @param session
+     *            The session to use for doing the query.
+     * @return Returns a {@link Criteria}.
+     */
+    private Criteria getEnvironmentCriteria(final EnvironmentSearchCommand sc, final Session session) {
+        final Criteria criteria = getDefaultCriteria();
 
-		final String environmentName = sc.getName();
-		if (!StringUtils.isEmpty(environmentName)) {
-			criteria.add(Restrictions.ilike("name", environmentName.trim(), MatchMode.START));
-		}
+        final String environmentName = sc.getName();
+        if (!StringUtils.isEmpty(environmentName)) {
+            criteria.add(Restrictions.ilike("name", environmentName.trim(), MatchMode.START));
+        }
 
-		final String prefix = sc.getPrefix();
-		if (prefix != null) {
-			criteria.add(Restrictions.eq("status", prefix));
-		}
+        final String prefix = sc.getPrefix();
+        if (prefix != null) {
+            criteria.add(Restrictions.eq("status", prefix));
+        }
 
-		return criteria;
-	}
+        return criteria;
+    }
 
 }

@@ -32,8 +32,8 @@ public interface Repository extends UpdatableDomainObject<Long> {
     Boolean isEnabled();
 
     /**
-     * Retrieves id that is used in Sonatype Nexus to identify a repository. e.g. public-snapshots,
-     * releases, snapshots etc.
+     * Retrieves id that is used in Sonatype Nexus to identify a repository.
+     * e.g. public-snapshots, releases, snapshots etc.
      * 
      * @return Returns a {@link String} value of the repository id.
      */

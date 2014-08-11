@@ -18,7 +18,8 @@ import nl.tranquilizedquality.adm.core.business.manager.ReleaseManager;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Implementation of a REST service that provides facilities to deploy an artifact.
+ * Implementation of a REST service that provides facilities to deploy an
+ * artifact.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 1 okt. 2012

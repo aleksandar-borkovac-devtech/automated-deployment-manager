@@ -46,7 +46,7 @@ public interface UserGroup extends UpdatableDomainObject<Long> {
      * Sets the users that are part of this user group.
      * 
      * @param users
-     *        The users that will be set.
+     *            The users that will be set.
      */
     void setUsers(List<User> users);
 

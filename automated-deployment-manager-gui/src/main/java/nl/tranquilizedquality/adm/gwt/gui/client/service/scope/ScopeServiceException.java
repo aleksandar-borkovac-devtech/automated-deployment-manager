@@ -15,70 +15,70 @@ import nl.tranquilizedquality.adm.commons.gwt.ext.client.service.AbstractService
  */
 public class ScopeServiceException extends AbstractServiceException {
 
-	/**
+    /**
      * 
      */
-	private static final long serialVersionUID = 7302209070748686084L;
+    private static final long serialVersionUID = 7302209070748686084L;
 
-	/**
-	 * Default constructor.
-	 */
-	public ScopeServiceException() {
-		errors = new ArrayList<String>();
-	}
+    /**
+     * Default constructor.
+     */
+    public ScopeServiceException() {
+        errors = new ArrayList<String>();
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public ScopeServiceException(final String msg) {
-		super(msg);
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public ScopeServiceException(final String msg) {
+        super(msg);
 
-		errors = new ArrayList<String>();
-	}
+        errors = new ArrayList<String>();
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public ScopeServiceException(final String msg, final Throwable cause) {
-		super(msg, cause);
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public ScopeServiceException(final String msg, final Throwable cause) {
+        super(msg, cause);
 
-		errors = new ArrayList<String>();
-	}
+        errors = new ArrayList<String>();
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public ScopeServiceException(final String msg, final List<String> errors) {
-		super(msg);
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public ScopeServiceException(final String msg, final List<String> errors) {
+        super(msg);
 
-		this.errors = errors;
-	}
+        this.errors = errors;
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public ScopeServiceException(final String msg, final Throwable cause, final List<String> errors) {
-		super(msg, cause);
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public ScopeServiceException(final String msg, final Throwable cause, final List<String> errors) {
+        super(msg, cause);
 
-		this.errors = errors;
-	}
+        this.errors = errors;
+    }
 
 }

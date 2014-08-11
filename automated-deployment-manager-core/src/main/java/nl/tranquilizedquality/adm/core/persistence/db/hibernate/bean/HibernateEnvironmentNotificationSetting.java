@@ -30,14 +30,16 @@ import org.hibernate.annotations.Type;
 import com.google.code.simplestuff.annotation.BusinessField;
 
 /**
- * Hibernate bean implementation where the notification settings are configured for a specific user.
+ * Hibernate bean implementation where the notification settings are configured
+ * for a specific user.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 22 okt. 2012
  */
 @Entity()
 @Table(name = "ENVIRONMENT_NOTIFICATION_SETTINGS", schema = "ADM")
-public class HibernateEnvironmentNotificationSetting extends AbstractUpdatableDomainObject<Long> implements EnvironmentNotificationSetting {
+public class HibernateEnvironmentNotificationSetting extends AbstractUpdatableDomainObject<Long> implements
+        EnvironmentNotificationSetting {
 
     /** The user where these settings are for. */
     @BusinessField
@@ -48,15 +50,15 @@ public class HibernateEnvironmentNotificationSetting extends AbstractUpdatableDo
     private Environment environment;
 
     /**
-     * Determines if an email notification needs to be sent for this environment when a deployment
-     * was done.
+     * Determines if an email notification needs to be sent for this environment
+     * when a deployment was done.
      */
     @BusinessField
     private boolean emailNotification;
 
     /**
-     * Determines if an SMS notification needs to be sent for this environment when a deployment was
-     * done.
+     * Determines if an SMS notification needs to be sent for this environment
+     * when a deployment was done.
      */
     @BusinessField
     private boolean smsNotification;

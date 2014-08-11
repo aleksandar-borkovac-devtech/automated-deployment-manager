@@ -116,7 +116,7 @@ public class ClientDestination extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param deployer
-     *        the deployer to set
+     *            the deployer to set
      */
     public void setDeployer(final Deployer deployer) {
         this.deployer = deployer;
@@ -132,7 +132,7 @@ public class ClientDestination extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param environment
-     *        the environment to set
+     *            the environment to set
      */
     public void setEnvironment(final Environment environment) {
         this.environment = environment;
@@ -164,7 +164,7 @@ public class ClientDestination extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param parameters
-     *        the parameters to set
+     *            the parameters to set
      */
     @Override
     public void setDeployerParameters(final List<DeployerParameter> parameters) {
@@ -187,7 +187,7 @@ public class ClientDestination extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param prefix
-     *        the prefix to set
+     *            the prefix to set
      */
     public void setPrefix(final String prefix) {
         this.prefix = prefix;

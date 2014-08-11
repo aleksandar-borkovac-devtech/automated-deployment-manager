@@ -337,7 +337,7 @@ public class MavenArtifactManagerImpl extends UserGroupFilteringManager implemen
 
     /**
      * @param mavenArtifactDao
-     *        the mavenArtifactDao to set
+     *            the mavenArtifactDao to set
      */
     @Required
     public void setMavenArtifactDao(final MavenArtifactDao<MavenArtifact> mavenArtifactDao) {
@@ -346,7 +346,7 @@ public class MavenArtifactManagerImpl extends UserGroupFilteringManager implemen
 
     /**
      * @param mavenModuleDao
-     *        the mavenModuleDao to set
+     *            the mavenModuleDao to set
      */
     @Required
     public void setMavenModuleDao(final MavenModuleDao<MavenModule> mavenModuleDao) {
@@ -355,7 +355,7 @@ public class MavenArtifactManagerImpl extends UserGroupFilteringManager implemen
 
     /**
      * @param mavenArtifactValidator
-     *        the mavenArtifactValidator to set
+     *            the mavenArtifactValidator to set
      */
     @Required
     public void setMavenArtifactValidator(final Validator mavenArtifactValidator) {
@@ -364,7 +364,7 @@ public class MavenArtifactManagerImpl extends UserGroupFilteringManager implemen
 
     /**
      * @param mavenModuleValidator
-     *        the mavenModuleValidator to set
+     *            the mavenModuleValidator to set
      */
     @Required
     public void setMavenModuleValidator(final Validator mavenModuleValidator) {
@@ -373,7 +373,7 @@ public class MavenArtifactManagerImpl extends UserGroupFilteringManager implemen
 
     /**
      * @param releaseDao
-     *        the releaseDao to set
+     *            the releaseDao to set
      */
     @Required
     public void setReleaseDao(final ReleaseDao<Release> releaseDao) {

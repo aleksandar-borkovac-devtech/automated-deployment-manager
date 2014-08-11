@@ -26,54 +26,54 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class AdmAuthorizationManagerTest {
 
-	/** The manager that will be tested. */
-	private AdmAuthorizationManager authorizationManager;
+    /** The manager that will be tested. */
+    private AdmAuthorizationManager authorizationManager;
 
-	private class TestingAuthenticationToken extends AbstractAuthenticationToken {
+    private class TestingAuthenticationToken extends AbstractAuthenticationToken {
 
-		/**
+        /**
          * 
          */
-		private static final long serialVersionUID = 2562611504888074619L;
+        private static final long serialVersionUID = 2562611504888074619L;
 
-		public TestingAuthenticationToken(final Collection<GrantedAuthority> authorities) {
-			super(authorities);
-			final UserDetails userDetails = new User("username", "123456", true, false, false, false, authorities);
-			this.setDetails(userDetails);
-		}
+        public TestingAuthenticationToken(final Collection<GrantedAuthority> authorities) {
+            super(authorities);
+            final UserDetails userDetails = new User("username", "123456", true, false, false, false, authorities);
+            this.setDetails(userDetails);
+        }
 
-		public Object getCredentials() {
-			return "123456";
-		}
+        public Object getCredentials() {
+            return "123456";
+        }
 
-		public Object getPrincipal() {
-			return this.getDetails();
-		}
+        public Object getPrincipal() {
+            return this.getDetails();
+        }
 
-	};
+    };
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		authorizationManager = new AdmAuthorizationManager();
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        authorizationManager = new AdmAuthorizationManager();
 
-		final Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
-		grantedAuthorities.add(new GrantedAuthorityImpl("ROLE_CUSTOMER"));
-		final Authentication authentication = new TestingAuthenticationToken(grantedAuthorities);
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-	}
+        final Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        grantedAuthorities.add(new GrantedAuthorityImpl("ROLE_CUSTOMER"));
+        final Authentication authentication = new TestingAuthenticationToken(grantedAuthorities);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
 
-	@Test
-	public void testIsLoggedInUserAuthorized() {
-		boolean authorized = authorizationManager.isLoggedInUserAuthorized("ROLE_CUSTOMER");
+    @Test
+    public void testIsLoggedInUserAuthorized() {
+        boolean authorized = authorizationManager.isLoggedInUserAuthorized("ROLE_CUSTOMER");
 
-		assertTrue(authorized);
+        assertTrue(authorized);
 
-		authorized = authorizationManager.isLoggedInUserAuthorized("ROLE_CUSTOMER_");
+        authorized = authorizationManager.isLoggedInUserAuthorized("ROLE_CUSTOMER_");
 
-		assertFalse(authorized);
-	}
+        assertFalse(authorized);
+    }
 
 }

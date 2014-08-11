@@ -59,7 +59,7 @@ public class DestinationSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param hostName
-     *        the hostName to set
+     *            the hostName to set
      */
     public void setHostName(final String hostName) {
         this.hostName = hostName;
@@ -74,7 +74,7 @@ public class DestinationSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param environment
-     *        the environment to set
+     *            the environment to set
      */
     public void setEnvironment(final String environment) {
         this.environment = environment;
@@ -89,7 +89,7 @@ public class DestinationSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param protocol
-     *        the protocol to set
+     *            the protocol to set
      */
     public void setProtocol(final Protocol protocol) {
         this.protocol = protocol;

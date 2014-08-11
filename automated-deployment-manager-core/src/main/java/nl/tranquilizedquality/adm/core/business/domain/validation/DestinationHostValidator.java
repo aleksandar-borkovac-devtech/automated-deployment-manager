@@ -31,28 +31,30 @@ import org.springframework.validation.Validator;
  */
 public class DestinationHostValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateDestinationHost.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateDestinationHost.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "hostName", "destination.host-name-empty", "No host name filled in.");
-		AdmValidationUtils.rejectIfNull(errors, "port", "destination.port-empty", "No port specified.");
-		AdmValidationUtils.rejectIfNull(errors, "protocol", "destination.protocol-empty", "No protocol specified.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "destination.username-empty", "No username filled in.");
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "hostName", "destination.host-name-empty", "No host name filled in.");
+        AdmValidationUtils.rejectIfNull(errors, "port", "destination.port-empty", "No port specified.");
+        AdmValidationUtils.rejectIfNull(errors, "protocol", "destination.protocol-empty", "No protocol specified.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "destination.username-empty", "No username filled in.");
 
-		final DestinationHost host = (DestinationHost) target;
-		final String password = host.getPassword();
+        final DestinationHost host = (DestinationHost) target;
+        final String password = host.getPassword();
 
-		if (StringUtils.isEmpty(password)) {
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "privateKey", "destination.private-key-empty", "No private key filled in.");
-		}
-		else {
-			AdmValidationUtils.rejectIfNotNull(errors, "privateKey", "destination.private-key-not-empty", "No private key should be filled in if you use password authentication.");
-		}
-	}
+        if (StringUtils.isEmpty(password)) {
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "privateKey", "destination.private-key-empty",
+                    "No private key filled in.");
+        }
+        else {
+            AdmValidationUtils.rejectIfNotNull(errors, "privateKey", "destination.private-key-not-empty",
+                    "No private key should be filled in if you use password authentication.");
+        }
+    }
 
 }

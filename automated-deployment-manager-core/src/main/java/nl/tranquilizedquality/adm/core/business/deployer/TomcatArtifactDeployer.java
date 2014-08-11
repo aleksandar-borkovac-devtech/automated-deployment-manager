@@ -178,17 +178,18 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
     }
 
     /**
-     * Deploys the {@link MavenArtifact} to the specified {@link Destination} using SSH.
+     * Deploys the {@link MavenArtifact} to the specified {@link Destination}
+     * using SSH.
      * 
      * @param artifact
-     *        The artifact that will be deployed.
+     *            The artifact that will be deployed.
      * @param destination
-     *        The destination where the artifact will be deployed to.
+     *            The destination where the artifact will be deployed to.
      * @param connector
-     *        The {@link ProtocolConnector} that will be used to communicate
-     *        with the destination host.
+     *            The {@link ProtocolConnector} that will be used to communicate
+     *            with the destination host.
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked" })
     private void deployThroughSSH(final MavenArtifact artifact, final Destination destination, final ProtocolConnector connector) {
         String backupDirectory = null;
         String tomcatHome = null;
@@ -373,14 +374,14 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
      * Cleans up the work directory of Tomcat.
      * 
      * @param artifact
-     *        The artifact that will be deployed.
+     *            The artifact that will be deployed.
      * @param destination
-     *        The destination server.
+     *            The destination server.
      * @param connector
-     *        The {@link ProtocolConnector} that will be used to perform the
-     *        clean up.
+     *            The {@link ProtocolConnector} that will be used to perform the
+     *            clean up.
      * @param tomcatHome
-     *        The root directory of where Tomcat is installed.
+     *            The root directory of where Tomcat is installed.
      */
     private void cleanUpTomcat(final MavenArtifact artifact, final Destination destination, final ProtocolConnector connector,
             final String tomcatHome) {
@@ -399,14 +400,14 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
      * Removes the exploded WAR specified by the artifact.
      * 
      * @param artifact
-     *        The artifact that will be deployed.
+     *            The artifact that will be deployed.
      * @param connector
-     *        The connector used to perform commands.
+     *            The connector used to perform commands.
      * @param tomcatHome
-     *        The root directory of where Tomcat is installed.
+     *            The root directory of where Tomcat is installed.
      * @param contextPath
-     *        The name of the context path which represents the name of the the exploded WAR
-     *        directory.
+     *            The name of the context path which represents the name of the
+     *            the exploded WAR directory.
      */
     private void removeExplodedWar(final MavenArtifact artifact, final ProtocolConnector connector, final String tomcatHome,
             final String contextPath) {
@@ -431,8 +432,8 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
      * startup.sh script.
      * 
      * @param connector
-     *        The connector that will be used to start up Tomcat on the
-     *        remote host.
+     *            The connector that will be used to start up Tomcat on the
+     *            remote host.
      */
     private void startTomcat(final ProtocolConnector connector, final String tomcatHome) {
 
@@ -470,7 +471,7 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
      * work it will throw an exception.
      * 
      * @param connector
-     *        The connector that will be used to stop Tomcat.
+     *            The connector that will be used to stop Tomcat.
      */
     private void stopTomcat(final ProtocolConnector connector, final String tomcatHome) {
 
@@ -520,8 +521,8 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
         pause(2000);
 
         /*
-         * Check if Tomcat is still running by looking at the response
-         * output line which is the second last.
+         * Check if Tomcat is still running by looking at the response output
+         * line which is the second last.
          */
         boolean tomcatDown = isTomcatDown(connector);
 
@@ -579,7 +580,7 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
      * Waits the specified number of miliseconds.
      * 
      * @param waitTime
-     *        The time to wait in miliseconds.
+     *            The time to wait in miliseconds.
      */
     private void pause(final long waitTime) {
         try {
@@ -595,8 +596,8 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
      * Determines if Tomcat is still running on the remote host.
      * 
      * @param connector
-     *        The connector that will be used to check if Tomcat is still
-     *        running or not.
+     *            The connector that will be used to check if Tomcat is still
+     *            running or not.
      * @return Returns true if Tomcat is down otherwise it will return false.
      */
     private boolean isTomcatDown(final ProtocolConnector connector) {
@@ -622,7 +623,7 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
 
     /**
      * @param tomcatServiceName
-     *        the tomcatServiceName to set
+     *            the tomcatServiceName to set
      */
     public void setTomcatServiceName(final String tomcatServiceName) {
         this.tomcatServiceName = tomcatServiceName;
@@ -630,7 +631,7 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
 
     /**
      * @param tomcatServiceStartCommand
-     *        the tomcatServiceStartCommand to set
+     *            the tomcatServiceStartCommand to set
      */
     public void setTomcatServiceStartCommand(final String tomcatServiceStartCommand) {
         this.tomcatServiceStartCommand = tomcatServiceStartCommand;
@@ -638,7 +639,7 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
 
     /**
      * @param tomcatServiceStopCommand
-     *        the tomcatServiceStopCommand to set
+     *            the tomcatServiceStopCommand to set
      */
     public void setTomcatServiceStopCommand(final String tomcatServiceStopCommand) {
         this.tomcatServiceStopCommand = tomcatServiceStopCommand;
@@ -646,7 +647,7 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
 
     /**
      * @param connectors
-     *        the connectors to set
+     *            the connectors to set
      */
     @Required
     public void setConnectors(final Map<Protocol, ProtocolConnector> connectors) {
@@ -655,10 +656,10 @@ public class TomcatArtifactDeployer extends AbstractProgressManager implements A
 
     /**
      * @param deployers
-     *        the deployers to set
+     *            the deployers to set
      */
     @Required
-    @SuppressWarnings({ "rawtypes" })
+    @SuppressWarnings({"rawtypes" })
     public void setDeployers(final Map<ArtifactType, Deployer> deployers) {
         this.deployers = deployers;
     }

@@ -36,7 +36,9 @@ public interface LogTailService extends RemoteService {
 
     /**
      * Start tailing the log file.
-     * @param logFile The log file to tail
+     * 
+     * @param logFile
+     *            The log file to tail
      */
     void startTailing(String logFile);
 

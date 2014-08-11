@@ -37,61 +37,61 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class HibernateRepositoryDaoTest extends AbstractDaoTest {
 
-	/** DAO that will be tested. */
-	@Autowired
-	private HibernateRepositoryDao repositoryDao;
+    /** DAO that will be tested. */
+    @Autowired
+    private HibernateRepositoryDao repositoryDao;
 
-	@Before
-	public void setUp() {
-		final HibernateRepository repo = new HibernateRepository();
-		repo.setName("Nexus");
-		repo.setEnabled(true);
-		repo.setRepositoryUrl("http://cybertron/nexus/content/groups/public/");
-		repo.setCreated(new Date());
-		repo.setCreatedBy("s-petrus");
+    @Before
+    public void setUp() {
+        final HibernateRepository repo = new HibernateRepository();
+        repo.setName("Nexus");
+        repo.setEnabled(true);
+        repo.setRepositoryUrl("http://cybertron/nexus/content/groups/public/");
+        repo.setCreated(new Date());
+        repo.setCreatedBy("s-petrus");
 
-		repositoryDao.save(repo);
-		repositoryDao.flush();
-	}
+        repositoryDao.save(repo);
+        repositoryDao.flush();
+    }
 
-	@Test
-	public void testFindAll() {
-		final List<HibernateRepository> repos = repositoryDao.findAll();
+    @Test
+    public void testFindAll() {
+        final List<HibernateRepository> repos = repositoryDao.findAll();
 
-		assertNotNull("No repositories!", repos);
-		assertEquals("Invalid number of repositories!", 1, repos.size());
-	}
+        assertNotNull("No repositories!", repos);
+        assertEquals("Invalid number of repositories!", 1, repos.size());
+    }
 
-	@Test
-	public void testFindBySearchCommand() {
-		final RepositorySearchCommand sc = new RepositorySearchCommand();
-		sc.setEnabled(true);
+    @Test
+    public void testFindBySearchCommand() {
+        final RepositorySearchCommand sc = new RepositorySearchCommand();
+        sc.setEnabled(true);
 
-		List<Repository> repos = repositoryDao.findBySearchCommand(sc);
+        List<Repository> repos = repositoryDao.findBySearchCommand(sc);
 
-		assertEquals("Invalid number of repositories!", 1, repos.size());
+        assertEquals("Invalid number of repositories!", 1, repos.size());
 
-		sc.setEnabled(false);
+        sc.setEnabled(false);
 
-		repos = repositoryDao.findBySearchCommand(sc);
+        repos = repositoryDao.findBySearchCommand(sc);
 
-		assertEquals("Invalid number of repositories!", 0, repos.size());
-	}
+        assertEquals("Invalid number of repositories!", 0, repos.size());
+    }
 
-	@Test
-	public void testFindNumberOfRepositories() {
-		final RepositorySearchCommand sc = new RepositorySearchCommand();
-		sc.setEnabled(true);
+    @Test
+    public void testFindNumberOfRepositories() {
+        final RepositorySearchCommand sc = new RepositorySearchCommand();
+        sc.setEnabled(true);
 
-		int count = repositoryDao.findNumberOfRepositories(sc);
+        int count = repositoryDao.findNumberOfRepositories(sc);
 
-		assertEquals("Invalid number of repositories!", 1, count);
+        assertEquals("Invalid number of repositories!", 1, count);
 
-		sc.setEnabled(false);
+        sc.setEnabled(false);
 
-		count = repositoryDao.findNumberOfRepositories(sc);
+        count = repositoryDao.findNumberOfRepositories(sc);
 
-		assertEquals("Invalid number of repositories!", 0, count);
-	}
+        assertEquals("Invalid number of repositories!", 0, count);
+    }
 
 }

@@ -141,7 +141,8 @@ public class RemoteShellCommandDistributionPackageDeployerTest {
         expectLastCall().once();
         connector.performCustomCommand("rm salomo.sh");
         expectLastCall().once();
-        connector.performCustomCommand("cp /Users/snkpetrus/Development/TQ/automated-deployment-manager/pom.xml /Users/snkpetrus/salomo.xml");
+        connector
+                .performCustomCommand("cp /Users/snkpetrus/Development/TQ/automated-deployment-manager/pom.xml /Users/snkpetrus/salomo.xml");
         expectLastCall().once();
         connector.disconnectFromHost();
         expectLastCall().once();

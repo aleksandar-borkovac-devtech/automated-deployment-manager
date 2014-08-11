@@ -26,12 +26,11 @@ public class StringUtils {
      * Checks if a String is null, returning "" instead
      */
     public static String defaultString(String str) {
-        if(str == null) {
+        if (str == null) {
             return "";
         } else {
             return str;
         }
     }
-
 
 }

@@ -44,13 +44,15 @@ public class ArtifactDetailsWindow extends Window {
     private ClientMavenArtifact artifact;
 
     /**
-     * Constructor taking the Maven module and the release where an artifact will be added to.
+     * Constructor taking the Maven module and the release where an artifact
+     * will be added to.
      * 
      * @param module
-     *        The Maven module that will be used to display the common information of an artifact so
-     *        you only have to specify the version information.
+     *            The Maven module that will be used to display the common
+     *            information of an artifact so you only have to specify the
+     *            version information.
      * @param release
-     *        The release where the artifact will be added to.
+     *            The release where the artifact will be added to.
      */
     public ArtifactDetailsWindow(final ClientMavenModule module, final ClientRelease release) {
         setHeading("Artifact Creation");
@@ -76,9 +78,9 @@ public class ArtifactDetailsWindow extends Window {
      * Sets the module on the new artifact.
      * 
      * @param module
-     *        The module that will be set.
+     *            The module that will be set.
      * @param release
-     *        The release where the artifact is part of.
+     *            The release where the artifact is part of.
      */
     public void setUpArtifact(final ClientMavenModule module, final ClientRelease release) {
         artifact = new ClientMavenArtifact();

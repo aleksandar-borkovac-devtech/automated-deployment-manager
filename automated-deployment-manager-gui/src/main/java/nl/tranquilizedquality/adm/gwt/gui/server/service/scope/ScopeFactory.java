@@ -15,14 +15,14 @@ import nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.Hiberna
  */
 public class ScopeFactory extends AbstractFactory<ClientScope, HibernateScope, Scope> {
 
-	@Override
-	protected ClientScope createNewClientBean() {
-		return new ClientScope();
-	}
+    @Override
+    protected ClientScope createNewClientBean() {
+        return new ClientScope();
+    }
 
-	@Override
-	protected HibernateScope createNewPersistentBean() {
-		return new HibernateScope();
-	}
+    @Override
+    protected HibernateScope createNewPersistentBean() {
+        return new HibernateScope();
+    }
 
 }

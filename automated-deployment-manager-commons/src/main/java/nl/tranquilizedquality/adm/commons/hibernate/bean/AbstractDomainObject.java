@@ -13,7 +13,7 @@ import com.google.code.simplestuff.bean.AbstractBusinessObject;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        The key type.
+ *            The key type.
  */
 public abstract class AbstractDomainObject<T> extends AbstractBusinessObject implements DomainObject<T> {
 
@@ -27,7 +27,7 @@ public abstract class AbstractDomainObject<T> extends AbstractBusinessObject imp
 
     /**
      * @param id
-     *        the id to set.
+     *            the id to set.
      */
     public void setId(final T id) {
         this.id = id;
@@ -53,7 +53,7 @@ public abstract class AbstractDomainObject<T> extends AbstractBusinessObject imp
      * to copy the inherited properties.
      * 
      * @param object
-     *        the object to copy.
+     *            the object to copy.
      */
     @Override
     public void copy(final DomainObject<T> object) {

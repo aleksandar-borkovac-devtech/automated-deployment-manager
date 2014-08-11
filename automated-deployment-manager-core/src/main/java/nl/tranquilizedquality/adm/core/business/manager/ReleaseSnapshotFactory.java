@@ -19,11 +19,11 @@ public interface ReleaseSnapshotFactory {
      * Creates a snapshot from the passed in release and artifacts.
      * 
      * @param execution
-     *        The execution where this snapshot is part of.
+     *            The execution where this snapshot is part of.
      * @param artifacts
-     *        The artifacts that will be used in the snapshot.
-     * @return Returns a list of {@link MavenArtifactSnapshot} objects based on the artifacts that
-     *         are being deployed.
+     *            The artifacts that will be used in the snapshot.
+     * @return Returns a list of {@link MavenArtifactSnapshot} objects based on
+     *         the artifacts that are being deployed.
      */
     List<MavenArtifactSnapshot> createSnapshot(ReleaseExecution execution, List<MavenArtifact> artifacts);
 

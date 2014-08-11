@@ -43,8 +43,8 @@ public class ClientRepository extends AbstractUpdatableBeanModel<Long> implement
     private Boolean enabled;
 
     /**
-     * The unique name that is used in Sonatype Nexus to identify a repository e.g. publi-snapshots,
-     * releases, snapshots etc.
+     * The unique name that is used in Sonatype Nexus to identify a repository
+     * e.g. publi-snapshots, releases, snapshots etc.
      */
     @BusinessField
     private String repositoryId;
@@ -64,7 +64,7 @@ public class ClientRepository extends AbstractUpdatableBeanModel<Long> implement
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -80,7 +80,7 @@ public class ClientRepository extends AbstractUpdatableBeanModel<Long> implement
 
     /**
      * @param repositoryUrl
-     *        the repositoryUrl to set
+     *            the repositoryUrl to set
      */
     public void setRepositoryUrl(final String repositoryUrl) {
         this.repositoryUrl = repositoryUrl;
@@ -101,7 +101,7 @@ public class ClientRepository extends AbstractUpdatableBeanModel<Long> implement
 
     /**
      * @param enabled
-     *        the enabled to set
+     *            the enabled to set
      */
     public void setEnabled(final Boolean enabled) {
         this.enabled = enabled;

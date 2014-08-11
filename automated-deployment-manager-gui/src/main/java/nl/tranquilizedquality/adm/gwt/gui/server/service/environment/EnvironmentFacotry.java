@@ -26,16 +26,16 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.environment.ClientEnviron
  * @since 11 sep. 2011
  */
 public class EnvironmentFacotry extends
-		AbstractFactory<ClientEnvironment, HibernateEnvironment, Environment> {
+        AbstractFactory<ClientEnvironment, HibernateEnvironment, Environment> {
 
-	@Override
-	protected ClientEnvironment createNewClientBean() {
-		return new ClientEnvironment();
-	}
+    @Override
+    protected ClientEnvironment createNewClientBean() {
+        return new ClientEnvironment();
+    }
 
-	@Override
-	protected HibernateEnvironment createNewPersistentBean() {
-		return new HibernateEnvironment();
-	}
+    @Override
+    protected HibernateEnvironment createNewPersistentBean() {
+        return new HibernateEnvironment();
+    }
 
 }

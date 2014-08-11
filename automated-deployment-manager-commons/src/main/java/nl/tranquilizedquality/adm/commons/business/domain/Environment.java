@@ -38,15 +38,15 @@ public interface Environment extends UpdatableDomainObject<Long> {
      * Sets the users that are allowed to deploy to this environment.
      * 
      * @param users
-     *        The users that will be set.
+     *            The users that will be set.
      */
     void setUsers(List<User> users);
 
     /**
      * Determines if this is a production environment.
      * 
-     * @return Returns true if it's a production environment otherwise it's a none production
-     *         environment.
+     * @return Returns true if it's a production environment otherwise it's a
+     *         none production environment.
      */
     boolean isProduction();
 

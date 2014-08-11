@@ -22,38 +22,38 @@ package nl.tranquilizedquality.adm.core.business.deployer.exception;
  */
 public class UnsupportedProtocolException extends RuntimeException {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = -2409066931440572999L;
+    private static final long serialVersionUID = -2409066931440572999L;
 
-	/**
-	 * Default constructor.
-	 */
-	public UnsupportedProtocolException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public UnsupportedProtocolException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public UnsupportedProtocolException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public UnsupportedProtocolException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public UnsupportedProtocolException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public UnsupportedProtocolException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

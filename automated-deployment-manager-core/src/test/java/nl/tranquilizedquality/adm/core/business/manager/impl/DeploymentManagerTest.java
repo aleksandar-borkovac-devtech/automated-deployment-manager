@@ -397,7 +397,8 @@ public class DeploymentManagerTest extends EasyMockSupport {
         releaseHistoryManager.registerActivity(execution, "Deploying artifact dam-gwt-gui version 1.0.0-M1");
         expectLastCall().once();
         expect(mavenArtifactManager.findArtifactById(artifact.getId())).andReturn(artifact);
-        releaseHistoryManager.registerActivity(execution, "Failed to deploy artifact dam-gwt-gui", "Couldn't deploy artifact to int");
+        releaseHistoryManager.registerActivity(execution, "Failed to deploy artifact dam-gwt-gui",
+                "Couldn't deploy artifact to int");
         expectLastCall().once();
         releaseHistoryManager.registerActivity(execution, "Artifact dam-gwt-gui will NOT be deployed to dev");
         expectLastCall().once();

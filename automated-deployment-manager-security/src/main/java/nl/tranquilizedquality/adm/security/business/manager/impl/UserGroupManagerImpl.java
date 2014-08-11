@@ -39,120 +39,120 @@ import org.springframework.validation.Validator;
  */
 public class UserGroupManagerImpl extends UserGroupFilteringManager implements UserGroupManager {
 
-	/** Logger for this class. */
-	private static final Log LOGGER = LogFactory.getLog(UserGroupManagerImpl.class);
+    /** Logger for this class. */
+    private static final Log LOGGER = LogFactory.getLog(UserGroupManagerImpl.class);
 
-	/** Validator that validates user groups. */
-	private Validator userGroupValidator;
+    /** Validator that validates user groups. */
+    private Validator userGroupValidator;
 
-	@Override
-	public UserGroup storeUserGroup(final UserGroup userGroup, final Errors errors) {
-		if (userGroup == null) {
-			final String msg = "No user group specified!";
-			if (LOGGER.isErrorEnabled()) {
-				LOGGER.error(msg);
-			}
+    @Override
+    public UserGroup storeUserGroup(final UserGroup userGroup, final Errors errors) {
+        if (userGroup == null) {
+            final String msg = "No user group specified!";
+            if (LOGGER.isErrorEnabled()) {
+                LOGGER.error(msg);
+            }
 
-			throw new InvalidUserGroupException(msg);
-		}
+            throw new InvalidUserGroupException(msg);
+        }
 
-		/*
-		 * Validate the repository.
-		 */
-		userGroupValidator.validate(userGroup, errors);
+        /*
+         * Validate the repository.
+         */
+        userGroupValidator.validate(userGroup, errors);
 
-		/*
-		 * Check for errors.
-		 */
-		if (errors.hasErrors()) {
-			final String msg = "Invalid user group.. " + userGroup.getName();
+        /*
+         * Check for errors.
+         */
+        if (errors.hasErrors()) {
+            final String msg = "Invalid user group.. " + userGroup.getName();
 
-			if (LOGGER.isDebugEnabled()) {
-				final List<ObjectError> allErrors = errors.getAllErrors();
-				for (final ObjectError objectError : allErrors) {
-					LOGGER.debug(objectError.getDefaultMessage());
-				}
-			}
+            if (LOGGER.isDebugEnabled()) {
+                final List<ObjectError> allErrors = errors.getAllErrors();
+                for (final ObjectError objectError : allErrors) {
+                    LOGGER.debug(objectError.getDefaultMessage());
+                }
+            }
 
-			throw new InvalidUserGroupException(msg);
-		}
+            throw new InvalidUserGroupException(msg);
+        }
 
-		/*
-		 * Check if we are doing an insert or an update.
-		 */
-		if (userGroup.isPersistent()) {
-			/*
-			 * Create supported domain object
-			 */
-			final UserGroup original = userGroupDao.findById(userGroup.getId());
-			original.copy(userGroup);
+        /*
+         * Check if we are doing an insert or an update.
+         */
+        if (userGroup.isPersistent()) {
+            /*
+             * Create supported domain object
+             */
+            final UserGroup original = userGroupDao.findById(userGroup.getId());
+            original.copy(userGroup);
 
-			final UserGroup savedUserGroup = userGroupDao.save(original);
-			initialize(savedUserGroup);
+            final UserGroup savedUserGroup = userGroupDao.save(original);
+            initialize(savedUserGroup);
 
-			return savedUserGroup;
-		}
-		else {
-			final UserGroup newUserGroup = userGroupDao.newDomainObject();
-			newUserGroup.copy(userGroup);
+            return savedUserGroup;
+        }
+        else {
+            final UserGroup newUserGroup = userGroupDao.newDomainObject();
+            newUserGroup.copy(userGroup);
 
-			final UserGroup savedUserGroup = userGroupDao.save(newUserGroup);
-			initialize(savedUserGroup);
+            final UserGroup savedUserGroup = userGroupDao.save(newUserGroup);
+            initialize(savedUserGroup);
 
-			return savedUserGroup;
-		}
-	}
+            return savedUserGroup;
+        }
+    }
 
-	/**
-	 * @param userGroup
-	 */
-	private void initialize(final UserGroup userGroup) {
-		final List<User> users = userGroup.getUsers();
-		for (final User user : users) {
-			final Set<UserRole> userRoles = user.getUserRoles();
-			for (final UserRole userRole : userRoles) {
-				userRole.getId();
-			}
-		}
-	}
+    /**
+     * @param userGroup
+     */
+    private void initialize(final UserGroup userGroup) {
+        final List<User> users = userGroup.getUsers();
+        for (final User user : users) {
+            final Set<UserRole> userRoles = user.getUserRoles();
+            for (final UserRole userRole : userRoles) {
+                userRole.getId();
+            }
+        }
+    }
 
-	@Override
-	public List<UserGroup> findUserGroupsBySearchCommand(final UserGroupSearchCommand sc) {
-		final List<UserGroup> userGroups = userGroupDao.findUserGroupsBySearchCommand(sc);
+    @Override
+    public List<UserGroup> findUserGroupsBySearchCommand(final UserGroupSearchCommand sc) {
+        final List<UserGroup> userGroups = userGroupDao.findUserGroupsBySearchCommand(sc);
 
-		for (final UserGroup userGroup : userGroups) {
-			initialize(userGroup);
-		}
+        for (final UserGroup userGroup : userGroups) {
+            initialize(userGroup);
+        }
 
-		return userGroups;
-	}
+        return userGroups;
+    }
 
-	public List<UserGroup> findLoggedInUserUserGroups() {
-		final User loggedInUser = securityContextManager.findLoggedInUser();
-		final List<UserGroup> userGroups = userGroupDao.findUserGroupsByUser(loggedInUser);
-		for (final UserGroup userGroup : userGroups) {
-			initialize(userGroup);
-		}
+    public List<UserGroup> findLoggedInUserUserGroups() {
+        final User loggedInUser = securityContextManager.findLoggedInUser();
+        final List<UserGroup> userGroups = userGroupDao.findUserGroupsByUser(loggedInUser);
+        for (final UserGroup userGroup : userGroups) {
+            initialize(userGroup);
+        }
 
-		return userGroups;
-	}
+        return userGroups;
+    }
 
-	@Override
-	public int findNumberOfUserGroups(final UserGroupSearchCommand sc) {
-		return userGroupDao.findNumberUserGroups(sc);
-	}
+    @Override
+    public int findNumberOfUserGroups(final UserGroupSearchCommand sc) {
+        return userGroupDao.findNumberUserGroups(sc);
+    }
 
-	@Override
-	public UserGroup findUserGroupById(final Long id) {
-		final UserGroup userGroup = userGroupDao.findById(id);
-		initialize(userGroup);
+    @Override
+    public UserGroup findUserGroupById(final Long id) {
+        final UserGroup userGroup = userGroupDao.findById(id);
+        initialize(userGroup);
 
-		return userGroup;
-	}
+        return userGroup;
+    }
 
-	@Required
-	public void setUserGroupValidator(final Validator userGroupValidator) {
-		this.userGroupValidator = userGroupValidator;
-	}
+    @Required
+    public void setUserGroupValidator(final Validator userGroupValidator) {
+        this.userGroupValidator = userGroupValidator;
+    }
 
 }

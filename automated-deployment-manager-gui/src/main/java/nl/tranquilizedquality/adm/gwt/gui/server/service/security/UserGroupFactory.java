@@ -13,14 +13,14 @@ import nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.Hiberna
  */
 public class UserGroupFactory extends AbstractFactory<ClientUserGroup, HibernateUserGroup, UserGroup> {
 
-	@Override
-	protected ClientUserGroup createNewClientBean() {
-		return new ClientUserGroup();
-	}
+    @Override
+    protected ClientUserGroup createNewClientBean() {
+        return new ClientUserGroup();
+    }
 
-	@Override
-	protected HibernateUserGroup createNewPersistentBean() {
-		return new HibernateUserGroup();
-	}
+    @Override
+    protected HibernateUserGroup createNewPersistentBean() {
+        return new HibernateUserGroup();
+    }
 
 }

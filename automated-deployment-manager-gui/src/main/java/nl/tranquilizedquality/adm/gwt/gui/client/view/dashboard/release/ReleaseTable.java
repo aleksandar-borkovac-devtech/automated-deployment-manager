@@ -94,7 +94,7 @@ public class ReleaseTable extends AbstractGroupingGridPanel {
      * Constructor that takes the search criteria to filter on.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      */
     public ReleaseTable(final ClientReleaseSearchCommand sc) {
         setHeading("Releases");

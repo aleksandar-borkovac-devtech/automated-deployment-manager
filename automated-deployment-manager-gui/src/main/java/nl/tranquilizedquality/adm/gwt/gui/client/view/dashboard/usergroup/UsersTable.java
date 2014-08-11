@@ -45,134 +45,134 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 class UsersTable extends AbstractRelationListTable<User, ClientUser> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** Button to remove the selected user(s) from a {@link UserGroup}. */
-	private Button removeButton;
+    /** Button to remove the selected user(s) from a {@link UserGroup}. */
+    private Button removeButton;
 
-	/** Details panel where the {@link UserGroup} is displayed in. */
-	private final UserGroupDetailsPanel detailsPanel;
+    /** Details panel where the {@link UserGroup} is displayed in. */
+    private final UserGroupDetailsPanel detailsPanel;
 
-	/**
-	 * Default constructor.
-	 */
-	public UsersTable(final UserGroupDetailsPanel detailsPanel) {
-		setHeading("Users in group");
-		this.icons = Registry.get(AdmModule.ICONS);
-		this.detailsPanel = detailsPanel;
-		setIcon(AbstractImagePrototype.create(icons.usersInGroup()));
-		initializeWidgets();
-	}
+    /**
+     * Default constructor.
+     */
+    public UsersTable(final UserGroupDetailsPanel detailsPanel) {
+        setHeading("Users in group");
+        this.icons = Registry.get(AdmModule.ICONS);
+        this.detailsPanel = detailsPanel;
+        setIcon(AbstractImagePrototype.create(icons.usersInGroup()));
+        initializeWidgets();
+    }
 
-	public void initialize() {
-		final ClientUserGroup userGroup = detailsPanel.getUserGroup();
-		if (userGroup.isPersistent()) {
-			removeButton.enable();
-		}
-		else {
-			removeButton.disable();
-		}
-	}
+    public void initialize() {
+        final ClientUserGroup userGroup = detailsPanel.getUserGroup();
+        if (userGroup.isPersistent()) {
+            removeButton.enable();
+        }
+        else {
+            removeButton.disable();
+        }
+    }
 
-	@Override
-	protected void initializeWidgets() {
+    @Override
+    protected void initializeWidgets() {
 
-		removeButton = new Button("Remove User from group");
-		removeButton.setIcon(AbstractImagePrototype.create(icons.removeUserFromGroup()));
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        removeButton = new Button("Remove User from group");
+        removeButton.setIcon(AbstractImagePrototype.create(icons.removeUserFromGroup()));
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				final ClientUserGroup userGroup = detailsPanel.getUserGroup();
-				final List<User> users = userGroup.getUsers();
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                final ClientUserGroup userGroup = detailsPanel.getUserGroup();
+                final List<User> users = userGroup.getUsers();
 
-				final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-				final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
+                final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+                final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
 
-				if (!selectedItems.isEmpty()) {
-					for (final BeanModel beanModel : selectedItems) {
-						final ClientUser user = beanModel.getBean();
-						users.remove(user);
-					}
+                if (!selectedItems.isEmpty()) {
+                    for (final BeanModel beanModel : selectedItems) {
+                        final ClientUser user = beanModel.getBean();
+                        users.remove(user);
+                    }
 
-					detailsPanel.saveUserGroup();
-				}
-			}
-		};
-		removeButton.addSelectionListener(listener);
+                    detailsPanel.saveUserGroup();
+                }
+            }
+        };
+        removeButton.addSelectionListener(listener);
 
-		menuBarButtons.add(removeButton);
+        menuBarButtons.add(removeButton);
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	@Override
-	protected String getPanelStateId() {
-		return AvailableDestinationTable.class.getName();
-	}
+    @Override
+    protected String getPanelStateId() {
+        return AvailableDestinationTable.class.getName();
+    }
 
-	@Override
-	protected Class<ClientUser> getBeanModelClass() {
-		return ClientUser.class;
-	}
+    @Override
+    protected Class<ClientUser> getBeanModelClass() {
+        return ClientUser.class;
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("userName");
-		column.setHeader("Username");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("userName");
+        column.setHeader("Username");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("created");
-		column.setHeader("Created");
-		column.setWidth(60);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("created");
+        column.setHeader("Created");
+        column.setWidth(60);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Created By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Created By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("altered");
-		column.setHeader("Altered");
-		column.setWidth(60);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("altered");
+        column.setHeader("Altered");
+        column.setWidth(60);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("alteredBy");
-		column.setHeader("Altered By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("alteredBy");
+        column.setHeader("Altered By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	@Override
-	public void setModel(final Collection<User> model) {
-		super.setModel(model);
+    @Override
+    public void setModel(final Collection<User> model) {
+        super.setModel(model);
 
-		initialize();
-	}
+        initialize();
+    }
 
 }

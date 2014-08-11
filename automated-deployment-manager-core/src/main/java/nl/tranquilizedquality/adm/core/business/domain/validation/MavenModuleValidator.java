@@ -29,19 +29,20 @@ import org.springframework.validation.Validator;
  */
 public class MavenModuleValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateMavenModule.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateMavenModule.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "type", "maven-module.type-empty", "No type filled in.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "group", "maven-module.group-empty", "No group filled in.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "artifactId", "maven-module.artifact-id-empty", "No artifact id filled in.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "maven-module.name-empty", "No name filled in.");
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "type", "maven-module.type-empty", "No type filled in.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "group", "maven-module.group-empty", "No group filled in.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "artifactId", "maven-module.artifact-id-empty",
+                "No artifact id filled in.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "maven-module.name-empty", "No name filled in.");
 
-	}
+    }
 
 }

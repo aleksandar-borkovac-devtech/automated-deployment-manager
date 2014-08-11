@@ -22,38 +22,38 @@ package nl.tranquilizedquality.adm.core.business.manager.exception;
  */
 public class NoRepositoryFoundException extends RuntimeException {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -346207791061594045L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -346207791061594045L;
 
-	/**
-	 * Default constructor.
-	 */
-	public NoRepositoryFoundException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public NoRepositoryFoundException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public NoRepositoryFoundException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public NoRepositoryFoundException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public NoRepositoryFoundException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public NoRepositoryFoundException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

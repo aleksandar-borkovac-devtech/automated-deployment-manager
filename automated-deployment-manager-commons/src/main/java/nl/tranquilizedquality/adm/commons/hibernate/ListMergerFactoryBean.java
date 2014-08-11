@@ -13,42 +13,42 @@ import org.springframework.beans.factory.config.ListFactoryBean;
  */
 public class ListMergerFactoryBean extends ListFactoryBean {
 
-	/** The list that contains lists with values that can be merged. */
-	private List<List<Object>> mergeList;
+    /** The list that contains lists with values that can be merged. */
+    private List<List<Object>> mergeList;
 
-	/**
-	 * Default constructor.
-	 */
-	public ListMergerFactoryBean() {
-		mergeList = new ArrayList<List<Object>>();
+    /**
+     * Default constructor.
+     */
+    public ListMergerFactoryBean() {
+        mergeList = new ArrayList<List<Object>>();
 
-		setSourceList(new ArrayList<Object>());
-	}
+        setSourceList(new ArrayList<Object>());
+    }
 
-	/**
-	 * Sets the list of lists that need to be merged.
-	 * 
-	 * @param mergeList
-	 *            The list of lists that will be merged.
-	 */
-	public void setMergeList(final List<List<Object>> mergeList) {
-		this.mergeList = mergeList;
-	}
+    /**
+     * Sets the list of lists that need to be merged.
+     * 
+     * @param mergeList
+     *            The list of lists that will be merged.
+     */
+    public void setMergeList(final List<List<Object>> mergeList) {
+        this.mergeList = mergeList;
+    }
 
-	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected List createInstance() {
-		final List<Object> listOrigin = super.createInstance();
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked" })
+    protected List createInstance() {
+        final List<Object> listOrigin = super.createInstance();
 
-		for (final List list : mergeList) {
+        for (final List list : mergeList) {
 
-			for (final Object object : list) {
-				listOrigin.add(object);
-			}
-		}
+            for (final Object object : list) {
+                listOrigin.add(object);
+            }
+        }
 
-		System.out.println(listOrigin);
+        System.out.println(listOrigin);
 
-		return listOrigin;
-	}
+        return listOrigin;
+    }
 }

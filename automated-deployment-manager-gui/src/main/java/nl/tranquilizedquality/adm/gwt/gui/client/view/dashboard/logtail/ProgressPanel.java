@@ -47,7 +47,7 @@ public class ProgressPanel extends LayoutContainer {
         logTailPanel.startTailingSystemLog();
 
         panel.add(label, new RowData(1, Style.DEFAULT, new Margins(4)));
-        panel.add(progressBar, new RowData(1, Style.DEFAULT, new Margins(0, 4, 0 ,4)));
+        panel.add(progressBar, new RowData(1, Style.DEFAULT, new Margins(0, 4, 0, 4)));
         panel.add(logTailPanel, new RowData(1, 1, new Margins(4)));
 
         add(panel, new FitData(4));
@@ -63,7 +63,8 @@ public class ProgressPanel extends LayoutContainer {
     /**
      * Sets the message for the current activity.
      *
-     * @param message The message to set
+     * @param message
+     *            The message to set
      */
     public void setMessage(String message) {
         label.setText(message);
@@ -71,7 +72,9 @@ public class ProgressPanel extends LayoutContainer {
 
     /**
      * Set text in the progress bar.
-     * @param text The text to set
+     * 
+     * @param text
+     *            The text to set
      */
     public void setProgressText(String text) {
         progressBar.updateText(text);
@@ -80,8 +83,10 @@ public class ProgressPanel extends LayoutContainer {
     /**
      * Set text and progress in the progress bar.
      *
-     * @param increment A value between 0 and 1 (e.g., .5, defaults to 0)
-     * @param text The string to display in the progress text element
+     * @param increment
+     *            A value between 0 and 1 (e.g., .5, defaults to 0)
+     * @param text
+     *            The string to display in the progress text element
      */
     public void setProgress(float increment, String text) {
         progressBar.updateProgress(increment, text);

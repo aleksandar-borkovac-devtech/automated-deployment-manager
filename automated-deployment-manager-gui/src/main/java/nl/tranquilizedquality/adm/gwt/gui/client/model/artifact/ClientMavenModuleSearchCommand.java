@@ -25,11 +25,11 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  * @since 24 sep. 2011
  */
 public class ClientMavenModuleSearchCommand extends MavenModuleSearchCommand implements
-		BeanModelTag {
+        BeanModelTag {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -4699996311194262792L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -4699996311194262792L;
 
 }

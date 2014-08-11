@@ -18,89 +18,89 @@ import com.extjs.gxt.ui.client.widget.layout.FitLayout;
  */
 public abstract class AbstractManagementWindow extends Window {
 
-	/** The {@link FormPanel}. */
-	protected FormPanel formPanel;
+    /** The {@link FormPanel}. */
+    protected FormPanel formPanel;
 
-	/** {@link FormBinding} object used to bind a form to a bean. */
-	protected FormBinding binding;
+    /** {@link FormBinding} object used to bind a form to a bean. */
+    protected FormBinding binding;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractManagementWindow() {
-		this.setPlain(true);
-		this.setModal(true);
-		this.setBlinkModal(true);
-		this.setLayout(new FitLayout());
-		this.setResizable(false);
-		this.setSize(400, 300);
-	}
+    /**
+     * Default constructor.
+     */
+    public AbstractManagementWindow() {
+        this.setPlain(true);
+        this.setModal(true);
+        this.setBlinkModal(true);
+        this.setLayout(new FitLayout());
+        this.setResizable(false);
+        this.setSize(400, 300);
+    }
 
-	/**
-	 * Initializes all widgets on the {@link Window}.
-	 */
-	protected void initializeWidgets() {
-		initializeForm();
+    /**
+     * Initializes all widgets on the {@link Window}.
+     */
+    protected void initializeWidgets() {
+        initializeForm();
 
-		final Button cancelButton = new Button("Cancel");
-		final SelectionListener<ButtonEvent> cancelListener = new SelectionListener<ButtonEvent>() {
+        final Button cancelButton = new Button("Cancel");
+        final SelectionListener<ButtonEvent> cancelListener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				hide();
-			}
-		};
-		cancelButton.addSelectionListener(cancelListener);
-		addButton(cancelButton);
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                hide();
+            }
+        };
+        cancelButton.addSelectionListener(cancelListener);
+        addButton(cancelButton);
 
-		final Button saveButton = new Button("Save");
-		final SelectionListener<ButtonEvent> saveListener = new SelectionListener<ButtonEvent>() {
+        final Button saveButton = new Button("Save");
+        final SelectionListener<ButtonEvent> saveListener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				save();
-			}
-		};
-		saveButton.addSelectionListener(saveListener);
-		addButton(saveButton);
-	}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                save();
+            }
+        };
+        saveButton.addSelectionListener(saveListener);
+        addButton(saveButton);
+    }
 
-	/**
-	 * Initializes the widgets on the {@link FormPanel}.
-	 */
-	protected abstract void initializeForm();
+    /**
+     * Initializes the widgets on the {@link FormPanel}.
+     */
+    protected abstract void initializeForm();
 
-	/**
-	 * Saves the bean object that is bound to the form.
-	 */
-	protected abstract void save();
+    /**
+     * Saves the bean object that is bound to the form.
+     */
+    protected abstract void save();
 
-	/**
-	 * Binds the bean model to the form.
-	 */
-	protected void bindModel() {
-		if (binding == null) {
-			binding = new FormBinding(this.formPanel);
-		}
-		else {
-			binding.unbind();
-		}
+    /**
+     * Binds the bean model to the form.
+     */
+    protected void bindModel() {
+        if (binding == null) {
+            binding = new FormBinding(this.formPanel);
+        }
+        else {
+            binding.unbind();
+        }
 
-		/*
-		 * Create the BeanModel.
-		 */
-		final BeanModel model = createBindModel();
+        /*
+         * Create the BeanModel.
+         */
+        final BeanModel model = createBindModel();
 
-		binding.bind(model);
+        binding.bind(model);
 
-		binding.autoBind();
-	}
+        binding.autoBind();
+    }
 
-	/**
-	 * Creates the {@link BeanModel} that can be used by the {@link FormBinding}
-	 * .
-	 * 
-	 * @return Returns a {@link BeanModel} object.
-	 */
-	protected abstract BeanModel createBindModel();
+    /**
+     * Creates the {@link BeanModel} that can be used by the {@link FormBinding}
+     * .
+     * 
+     * @return Returns a {@link BeanModel} object.
+     */
+    protected abstract BeanModel createBindModel();
 }

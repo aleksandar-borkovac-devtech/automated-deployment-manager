@@ -70,7 +70,8 @@ public class ShellScriptDistributionPackageDeployer implements Deployer<MavenArt
             final File destinationDirectory = new File(destinationPath);
             FileExtractorUtil.extractTarGz(artifactFile, destinationDirectory);
         } catch (final Exception e) {
-            final String msg = "Failed to extract distribution package! -> " + artifactFile.getAbsolutePath() + " to " + destinationPath;
+            final String msg = "Failed to extract distribution package! -> " + artifactFile.getAbsolutePath() + " to "
+                    + destinationPath;
 
             if (LOGGER.isErrorEnabled()) {
                 LOGGER.error(msg, e);
@@ -142,7 +143,7 @@ public class ShellScriptDistributionPackageDeployer implements Deployer<MavenArt
      * Executes a shell command.
      * 
      * @param command
-     *        The command that will be executed.
+     *            The command that will be executed.
      * @return Returns the log.
      */
     private String executeCommand(final String command) {

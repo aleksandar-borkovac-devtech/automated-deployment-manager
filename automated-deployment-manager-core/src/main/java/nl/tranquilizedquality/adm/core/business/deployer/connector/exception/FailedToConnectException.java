@@ -22,38 +22,38 @@ package nl.tranquilizedquality.adm.core.business.deployer.connector.exception;
  */
 public class FailedToConnectException extends RuntimeException {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 5058295679954355407L;
+    private static final long serialVersionUID = 5058295679954355407L;
 
-	/**
-	 * Default constructor.
-	 */
-	public FailedToConnectException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public FailedToConnectException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public FailedToConnectException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public FailedToConnectException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public FailedToConnectException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public FailedToConnectException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

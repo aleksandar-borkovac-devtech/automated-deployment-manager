@@ -18,7 +18,7 @@ import com.google.code.simplestuff.annotation.BusinessField;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        The key type.
+ *            The key type.
  */
 @MappedSuperclass
 public abstract class AbstractInsertableDomainObject<T> extends AbstractDomainObject<T> implements InsertableDomainObject<T> {
@@ -45,7 +45,7 @@ public abstract class AbstractInsertableDomainObject<T> extends AbstractDomainOb
 
     /**
      * @param created
-     *        the creation date and time to set.
+     *            the creation date and time to set.
      */
     public void setCreated(final Date created) {
         this.created = created;
@@ -62,7 +62,7 @@ public abstract class AbstractInsertableDomainObject<T> extends AbstractDomainOb
 
     /**
      * @param createdBy
-     *        the name of the user that creates this instance.
+     *            the name of the user that creates this instance.
      */
     public void setCreatedBy(final String createdBy) {
         this.createdBy = createdBy;
@@ -74,7 +74,7 @@ public abstract class AbstractInsertableDomainObject<T> extends AbstractDomainOb
      * to copy the inherited properties.
      * 
      * @param object
-     *        the object to copy.
+     *            the object to copy.
      */
     @Override
     public void copy(final DomainObject<T> object) {

@@ -21,7 +21,8 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.security.ClientUser;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 23 okt. 2012
  */
-public class ClientEnvironmentNotificationSetting extends AbstractUpdatableBeanModel<Long> implements EnvironmentNotificationSetting {
+public class ClientEnvironmentNotificationSetting extends AbstractUpdatableBeanModel<Long> implements
+        EnvironmentNotificationSetting {
 
     /** The user where these settings are for. */
     private User user;
@@ -30,14 +31,14 @@ public class ClientEnvironmentNotificationSetting extends AbstractUpdatableBeanM
     private Environment environment;
 
     /**
-     * Determines if an email notification needs to be sent for this environment when a deployment
-     * was done.
+     * Determines if an email notification needs to be sent for this environment
+     * when a deployment was done.
      */
     private boolean emailNotification;
 
     /**
-     * Determines if an SMS notification needs to be sent for this environment when a deployment was
-     * done.
+     * Determines if an SMS notification needs to be sent for this environment
+     * when a deployment was done.
      */
     private boolean smsNotification;
 

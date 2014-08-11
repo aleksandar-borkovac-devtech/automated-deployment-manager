@@ -18,40 +18,40 @@ import com.extjs.gxt.ui.client.widget.form.FormPanel;
  */
 public class ImportedScope {
 
-	/** The scope that was imported. */
-	private Scope scope;
+    /** The scope that was imported. */
+    private Scope scope;
 
-	/** Error message that occurred when trying to import a blacklist file. */
-	private String errorMessage;
+    /** Error message that occurred when trying to import a blacklist file. */
+    private String errorMessage;
 
-	/**
-	 * @return the scope
-	 */
-	public Scope getScope() {
-		return scope;
-	}
+    /**
+     * @return the scope
+     */
+    public Scope getScope() {
+        return scope;
+    }
 
-	/**
-	 * @param scope
-	 *            the scope to set
-	 */
-	public void setScope(final Scope scope) {
-		this.scope = scope;
-	}
+    /**
+     * @param scope
+     *            the scope to set
+     */
+    public void setScope(final Scope scope) {
+        this.scope = scope;
+    }
 
-	/**
-	 * @return the errorMessage
-	 */
-	public String getErrorMessage() {
-		return errorMessage;
-	}
+    /**
+     * @return the errorMessage
+     */
+    public String getErrorMessage() {
+        return errorMessage;
+    }
 
-	/**
-	 * @param errorMessage
-	 *            the errorMessage to set
-	 */
-	public void setErrorMessage(final String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
+    /**
+     * @param errorMessage
+     *            the errorMessage to set
+     */
+    public void setErrorMessage(final String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 
 }

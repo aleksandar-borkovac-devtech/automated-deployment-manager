@@ -73,7 +73,7 @@ public class RepositoryTable extends AbstractGridPanel {
      * Constructor that takes the search criteria to filter on.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      */
     public RepositoryTable(final ClientRepositorySearchCommand sc) {
         setHeading("Repositories");

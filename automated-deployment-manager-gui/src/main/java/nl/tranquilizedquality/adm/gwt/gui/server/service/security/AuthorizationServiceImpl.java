@@ -31,7 +31,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
     /**
      * @param authorizationManager
-     *        the authorizationManager to set
+     *            the authorizationManager to set
      */
     @Required
     public void setAuthorizationManager(final AuthorizationManager authorizationManager) {

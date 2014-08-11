@@ -28,128 +28,128 @@ import org.springframework.validation.Validator;
  */
 public class PrivilegeManagerImpl implements PrivilegeManager {
 
-	/** Logger for this class. */
-	private static final Log LOG = LogFactory.getLog(PrivilegeManagerImpl.class);
+    /** Logger for this class. */
+    private static final Log LOG = LogFactory.getLog(PrivilegeManagerImpl.class);
 
-	/** DAO used to manage {@link Privilege} objects. */
-	private PrivilegeDao<Privilege> privilegeDao;
+    /** DAO used to manage {@link Privilege} objects. */
+    private PrivilegeDao<Privilege> privilegeDao;
 
-	/** DAO used to manage {@link Scope} objects. */
-	private ScopeDao<Scope> scopeDao;
+    /** DAO used to manage {@link Scope} objects. */
+    private ScopeDao<Scope> scopeDao;
 
-	/** {@link Validator} used to validate a privilege. */
-	private Validator privilegeValidator;
+    /** {@link Validator} used to validate a privilege. */
+    private Validator privilegeValidator;
 
-	public Privilege storePrivilege(final Privilege privilege, final Errors errors) throws PrivilegeManagerException {
+    public Privilege storePrivilege(final Privilege privilege, final Errors errors) throws PrivilegeManagerException {
 
-		privilegeValidator.validate(privilege, errors);
+        privilegeValidator.validate(privilege, errors);
 
-		if (errors.hasErrors()) {
-			if (LOG.isWarnEnabled()) {
-				LOG.warn("Invalid privilege: " + errors.getErrorCount());
-			}
-			throw new PrivilegeManagerException("Invalid privilege.");
-		}
+        if (errors.hasErrors()) {
+            if (LOG.isWarnEnabled()) {
+                LOG.warn("Invalid privilege: " + errors.getErrorCount());
+            }
+            throw new PrivilegeManagerException("Invalid privilege.");
+        }
 
-		/*
-		 * Check if we are editing or creating a privilege.
-		 */
-		if (privilege.isPersistent()) {
-			final Privilege originalPrivilege = privilegeDao.findById(privilege.getId());
-			originalPrivilege.copy(privilege);
+        /*
+         * Check if we are editing or creating a privilege.
+         */
+        if (privilege.isPersistent()) {
+            final Privilege originalPrivilege = privilegeDao.findById(privilege.getId());
+            originalPrivilege.copy(privilege);
 
-			final Privilege savedPrivilege = privilegeDao.save(originalPrivilege);
+            final Privilege savedPrivilege = privilegeDao.save(originalPrivilege);
 
-			initialize(savedPrivilege);
+            initialize(savedPrivilege);
 
-			return savedPrivilege;
-		}
-		else {
-			final Privilege savedPrivilege = privilegeDao.save(privilege);
+            return savedPrivilege;
+        }
+        else {
+            final Privilege savedPrivilege = privilegeDao.save(privilege);
 
-			return savedPrivilege;
-		}
-	}
+            return savedPrivilege;
+        }
+    }
 
-	private void initialize(final Privilege privilege) {
+    private void initialize(final Privilege privilege) {
 
-		final Set<Role> roles = privilege.getRoles();
-		if (roles != null) {
-			for (final Role role : roles) {
-				role.getId();
-			}
-		}
-	}
+        final Set<Role> roles = privilege.getRoles();
+        if (roles != null) {
+            for (final Role role : roles) {
+                role.getId();
+            }
+        }
+    }
 
-	public List<Privilege> findPrivileges(final PrivilegeSearchCommand sc) {
-		final Scope scope = sc.getScope();
-		if (scope != null) {
-			final Scope scopeById = scopeDao.findById(scope.getId());
-			sc.setScope(scopeById);
-		}
+    public List<Privilege> findPrivileges(final PrivilegeSearchCommand sc) {
+        final Scope scope = sc.getScope();
+        if (scope != null) {
+            final Scope scopeById = scopeDao.findById(scope.getId());
+            sc.setScope(scopeById);
+        }
 
-		final List<Privilege> privileges = privilegeDao.findPrivileges(sc);
+        final List<Privilege> privileges = privilegeDao.findPrivileges(sc);
 
-		for (final Privilege privilege : privileges) {
-			initializePrivilege(privilege);
-		}
+        for (final Privilege privilege : privileges) {
+            initializePrivilege(privilege);
+        }
 
-		return privileges;
-	}
+        return privileges;
+    }
 
-	public int findNumberOfPrivileges(final PrivilegeSearchCommand sc) {
-		return privilegeDao.findNumberOfPrivileges(sc);
-	}
+    public int findNumberOfPrivileges(final PrivilegeSearchCommand sc) {
+        return privilegeDao.findNumberOfPrivileges(sc);
+    }
 
-	@Override
-	public Privilege findPrivilegeById(final Long id) {
-		final Privilege privilege = privilegeDao.findById(id);
+    @Override
+    public Privilege findPrivilegeById(final Long id) {
+        final Privilege privilege = privilegeDao.findById(id);
 
-		initializePrivilege(privilege);
+        initializePrivilege(privilege);
 
-		return privilege;
-	}
+        return privilege;
+    }
 
-	/**
-	 * @param privilege
-	 */
-	private void initializePrivilege(final Privilege privilege) {
-		/*
-		 * Initialize collection.
-		 */
-		final Set<Role> roles = privilege.getRoles();
-		if (roles != null) {
-			for (final Role role : roles) {
-				role.getId();
-			}
-		}
-	}
+    /**
+     * @param privilege
+     */
+    private void initializePrivilege(final Privilege privilege) {
+        /*
+         * Initialize collection.
+         */
+        final Set<Role> roles = privilege.getRoles();
+        if (roles != null) {
+            for (final Role role : roles) {
+                role.getId();
+            }
+        }
+    }
 
-	/**
-	 * @param privilegeDao
-	 *            the privilegeDao to set
-	 */
-	@Required
-	public void setPrivilegeDao(final PrivilegeDao<Privilege> privilegeDao) {
-		this.privilegeDao = privilegeDao;
-	}
+    /**
+     * @param privilegeDao
+     *            the privilegeDao to set
+     */
+    @Required
+    public void setPrivilegeDao(final PrivilegeDao<Privilege> privilegeDao) {
+        this.privilegeDao = privilegeDao;
+    }
 
-	/**
-	 * @param scopeDao
-	 *            the scopeDao to set
-	 */
-	@Required
-	public void setScopeDao(final ScopeDao<Scope> scopeDao) {
-		this.scopeDao = scopeDao;
-	}
+    /**
+     * @param scopeDao
+     *            the scopeDao to set
+     */
+    @Required
+    public void setScopeDao(final ScopeDao<Scope> scopeDao) {
+        this.scopeDao = scopeDao;
+    }
 
-	/**
-	 * @param privilegeValidator
-	 *            the privilegeValidator to set
-	 */
-	@Required
-	public void setPrivilegeValidator(final Validator privilegeValidator) {
-		this.privilegeValidator = privilegeValidator;
-	}
+    /**
+     * @param privilegeValidator
+     *            the privilegeValidator to set
+     */
+    @Required
+    public void setPrivilegeValidator(final Validator privilegeValidator) {
+        this.privilegeValidator = privilegeValidator;
+    }
 
 }

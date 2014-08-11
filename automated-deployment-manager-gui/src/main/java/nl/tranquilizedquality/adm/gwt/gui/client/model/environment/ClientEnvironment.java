@@ -43,8 +43,8 @@ public class ClientEnvironment extends AbstractUpdatableBeanModel<Long> implemen
     private String description;
 
     /**
-     * Determines if this environment is a production environment so alerts will be displayed when
-     * deploying to it.
+     * Determines if this environment is a production environment so alerts will
+     * be displayed when deploying to it.
      */
     private boolean production;
 
@@ -70,7 +70,7 @@ public class ClientEnvironment extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -83,7 +83,7 @@ public class ClientEnvironment extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param description
-     *        the description to set
+     *            the description to set
      */
     public void setDescription(final String description) {
         this.description = description;

@@ -102,7 +102,7 @@ public class HibernateDestinationHost extends AbstractUpdatableDomainObject<Long
 
     /**
      * @param hostName
-     *        the hostName to set
+     *            the hostName to set
      */
     public void setHostName(final String hostName) {
         this.hostName = hostName;
@@ -117,7 +117,7 @@ public class HibernateDestinationHost extends AbstractUpdatableDomainObject<Long
 
     /**
      * @param protocol
-     *        the protocol to set
+     *            the protocol to set
      */
     public void setProtocol(final Protocol protocol) {
         this.protocol = protocol;
@@ -131,7 +131,7 @@ public class HibernateDestinationHost extends AbstractUpdatableDomainObject<Long
 
     /**
      * @param username
-     *        the username to set
+     *            the username to set
      */
     public void setUsername(final String username) {
         this.username = username;
@@ -145,7 +145,7 @@ public class HibernateDestinationHost extends AbstractUpdatableDomainObject<Long
 
     /**
      * @param password
-     *        the password to set
+     *            the password to set
      */
     public void setPassword(final String password) {
         this.password = password;
@@ -159,7 +159,7 @@ public class HibernateDestinationHost extends AbstractUpdatableDomainObject<Long
 
     /**
      * @param port
-     *        the port to set
+     *            the port to set
      */
     public void setPort(final Integer port) {
         this.port = port;

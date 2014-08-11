@@ -46,94 +46,94 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class HibernateUserGroupDaoTest extends AbstractDaoTest {
 
-	/** DAO that will be tested. */
-	@Autowired
-	private UserDao<User> userDao;
+    /** DAO that will be tested. */
+    @Autowired
+    private UserDao<User> userDao;
 
-	@Autowired
-	private UserGroupDao<UserGroup> userGroupDao;
+    @Autowired
+    private UserGroupDao<UserGroup> userGroupDao;
 
-	private HibernateUser user;
+    private HibernateUser user;
 
-	private HibernateUserGroup userGroup;
+    private HibernateUserGroup userGroup;
 
-	@Before
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void setUp() {
-		user = new HibernateUser();
-		user.setActive(true);
-		user.setActiveFrom(new Date());
-		user.setCreated(new Date());
-		user.setCreatedBy("s-petrus");
-		user.setName("Salomo Petrus");
-		user.setPassword("asfdasdfas");
-		user.setUserName("s-petrus");
-		user.setPasswordSent(true);
-		user.setBlocked(false);
+    @Before
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void setUp() {
+        user = new HibernateUser();
+        user.setActive(true);
+        user.setActiveFrom(new Date());
+        user.setCreated(new Date());
+        user.setCreatedBy("s-petrus");
+        user.setName("Salomo Petrus");
+        user.setPassword("asfdasdfas");
+        user.setUserName("s-petrus");
+        user.setPasswordSent(true);
+        user.setBlocked(false);
 
-		userDao.save(user);
-		userDao.flush();
+        userDao.save(user);
+        userDao.flush();
 
-		final List<User> users = new ArrayList<User>();
-		users.add(user);
+        final List<User> users = new ArrayList<User>();
+        users.add(user);
 
-		userGroup = new HibernateUserGroup();
-		userGroup.setCreated(new Date());
-		userGroup.setCreatedBy("s-petrus");
-		userGroup.setName("adminsitrators");
-		userGroup.setUsers(users);
+        userGroup = new HibernateUserGroup();
+        userGroup.setCreated(new Date());
+        userGroup.setCreatedBy("s-petrus");
+        userGroup.setName("adminsitrators");
+        userGroup.setUsers(users);
 
-		userGroupDao.save(userGroup);
-		userGroupDao.flush();
-	}
+        userGroupDao.save(userGroup);
+        userGroupDao.flush();
+    }
 
-	@Test
-	public void testFindAll() {
-		final List<UserGroup> all = userGroupDao.findAll();
+    @Test
+    public void testFindAll() {
+        final List<UserGroup> all = userGroupDao.findAll();
 
-		assertNotNull("No groups returned!", all);
-		assertFalse("No groups returned!", all.isEmpty());
+        assertNotNull("No groups returned!", all);
+        assertFalse("No groups returned!", all.isEmpty());
 
-		for (final UserGroup userGroup : all) {
-			final List<User> users = userGroup.getUsers();
-			assertFalse("No users in group!", users.isEmpty());
-		}
-	}
+        for (final UserGroup userGroup : all) {
+            final List<User> users = userGroup.getUsers();
+            assertFalse("No users in group!", users.isEmpty());
+        }
+    }
 
-	@Test
-	public void testRemove() {
-		final List<User> users = userGroup.getUsers();
-		users.remove(user);
+    @Test
+    public void testRemove() {
+        final List<User> users = userGroup.getUsers();
+        users.remove(user);
 
-		userGroupDao.save(userGroup);
-		userGroupDao.flush();
+        userGroupDao.save(userGroup);
+        userGroupDao.flush();
 
-		final List<UserGroup> all = userGroupDao.findAll();
+        final List<UserGroup> all = userGroupDao.findAll();
 
-		assertNotNull("No groups returned!", all);
+        assertNotNull("No groups returned!", all);
 
-		for (final UserGroup userGroup : all) {
-			final List<User> userGroupUsers = userGroup.getUsers();
-			assertTrue("Users found!", userGroupUsers.isEmpty());
-		}
+        for (final UserGroup userGroup : all) {
+            final List<User> userGroupUsers = userGroup.getUsers();
+            assertTrue("Users found!", userGroupUsers.isEmpty());
+        }
 
-	}
+    }
 
-	@Test
-	public void testFindUserGroupByUser() {
-		final List<UserGroup> userGroups = userGroupDao.findUserGroupsByUser(user);
+    @Test
+    public void testFindUserGroupByUser() {
+        final List<UserGroup> userGroups = userGroupDao.findUserGroupsByUser(user);
 
-		assertEquals("Invalid number of groups found!", 1, userGroups.size());
-	}
+        assertEquals("Invalid number of groups found!", 1, userGroups.size());
+    }
 
-	@Test
-	public void testFindUserGroupBySearchCommand() {
-		final UserGroupSearchCommand sc = new UserGroupSearchCommand();
-		final List<UserGroup> userGroups = new ArrayList<UserGroup>();
-		userGroups.add(userGroup);
-		sc.setUserGroups(userGroups);
+    @Test
+    public void testFindUserGroupBySearchCommand() {
+        final UserGroupSearchCommand sc = new UserGroupSearchCommand();
+        final List<UserGroup> userGroups = new ArrayList<UserGroup>();
+        userGroups.add(userGroup);
+        sc.setUserGroups(userGroups);
 
-		userGroupDao.findUserGroupsBySearchCommand(sc);
-	}
+        userGroupDao.findUserGroupsBySearchCommand(sc);
+    }
 
 }

@@ -35,7 +35,8 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 
 /**
- * Hibernate implementation of a DAO that manages {@link HibernateRelease} beans.
+ * Hibernate implementation of a DAO that manages {@link HibernateRelease}
+ * beans.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
@@ -78,9 +79,9 @@ public class HibernateReleaseDao extends AbstractHibernateBaseDao<HibernateRelea
      * criteria.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param session
-     *        The session to use for doing the query.
+     *            The session to use for doing the query.
      * @return Returns a {@link Criteria}.
      */
     private Criteria getReleaseCriteria(final ReleaseSearchCommand sc, final Session session) {

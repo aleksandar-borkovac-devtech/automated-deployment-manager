@@ -31,38 +31,38 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class MavenModuleSelectionWindow extends Window {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** Panel where the selection can be done on. */
-	private final MavenModuleSelectionPanel selectionPanel;
+    /** Panel where the selection can be done on. */
+    private final MavenModuleSelectionPanel selectionPanel;
 
-	/**
-	 * Default constructor.
-	 */
-	public MavenModuleSelectionWindow() {
-		setHeading("Maven Module Selection");
-		setClosable(false);
-		setLayout(new FitLayout());
-		setSize(500, 600);
+    /**
+     * Default constructor.
+     */
+    public MavenModuleSelectionWindow() {
+        setHeading("Maven Module Selection");
+        setClosable(false);
+        setLayout(new FitLayout());
+        setSize(500, 600);
 
-		this.icons = Registry.get(AdmModule.ICONS);
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.addArtifact()));
+        setIcon(AbstractImagePrototype.create(icons.addArtifact()));
 
-		this.selectionPanel = new MavenModuleSelectionPanel(this);
+        this.selectionPanel = new MavenModuleSelectionPanel(this);
 
-		add(selectionPanel);
-	}
+        add(selectionPanel);
+    }
 
-	/**
-	 * Sets the release that is currently being edited.
-	 * 
-	 * @param release
-	 *            The release that will be set.
-	 */
-	public void setRelease(final ClientRelease release) {
-		this.selectionPanel.setRelease(release);
-	}
+    /**
+     * Sets the release that is currently being edited.
+     * 
+     * @param release
+     *            The release that will be set.
+     */
+    public void setRelease(final ClientRelease release) {
+        this.selectionPanel.setRelease(release);
+    }
 
 }

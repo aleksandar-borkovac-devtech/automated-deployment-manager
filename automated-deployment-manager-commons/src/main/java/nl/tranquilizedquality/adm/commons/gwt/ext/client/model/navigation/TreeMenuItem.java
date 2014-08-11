@@ -40,7 +40,7 @@ public class TreeMenuItem extends BaseTreeModel implements Serializable {
      * Constructor taking a name of the item.
      * 
      * @param name
-     *        The name of the item.
+     *            The name of the item.
      */
     public TreeMenuItem(final String name) {
         set("id", ID++);
@@ -51,9 +51,9 @@ public class TreeMenuItem extends BaseTreeModel implements Serializable {
      * Constructor taking a name of the item.
      * 
      * @param name
-     *        The name of the item.
+     *            The name of the item.
      * @param tab
-     *        The promTabs to which the menu items will refer to.
+     *            The promTabs to which the menu items will refer to.
      */
     public TreeMenuItem(final String name, final TabEnum tab) {
         set("id", ID++);
@@ -66,9 +66,9 @@ public class TreeMenuItem extends BaseTreeModel implements Serializable {
      * Constructor taking a name of the item.
      * 
      * @param name
-     *        The name of the item.
+     *            The name of the item.
      * @param logoutItem
-     *        Determines if this item is a logout item.
+     *            Determines if this item is a logout item.
      */
     public TreeMenuItem(final String name, final boolean logoutItem) {
         set("id", ID++);
@@ -81,9 +81,9 @@ public class TreeMenuItem extends BaseTreeModel implements Serializable {
      * the current item.
      * 
      * @param name
-     *        The name of the item.
+     *            The name of the item.
      * @param children
-     *        the children that will be added to the item.
+     *            the children that will be added to the item.
      */
     public TreeMenuItem(final String name, final TabEnum tab, final BaseTreeModel[] children) {
         this(name, tab);

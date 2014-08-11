@@ -30,14 +30,14 @@ import org.springframework.validation.Validator;
  */
 public class UserGroupValidator implements Validator {
 
-	@Override
-	public boolean supports(final Class<?> clazz) {
-		return clazz.isAssignableFrom(HibernateUserGroup.class);
-	}
+    @Override
+    public boolean supports(final Class<?> clazz) {
+        return clazz.isAssignableFrom(HibernateUserGroup.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "usergroup.name-empty", "No name filled in.");
-	}
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "usergroup.name-empty", "No name filled in.");
+    }
 
 }

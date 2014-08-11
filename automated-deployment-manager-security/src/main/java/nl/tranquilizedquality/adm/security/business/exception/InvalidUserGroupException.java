@@ -23,38 +23,38 @@ package nl.tranquilizedquality.adm.security.business.exception;
  */
 public class InvalidUserGroupException extends RuntimeException {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = 3272639865245325136L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = 3272639865245325136L;
 
-	/**
-	 * Default constructor.
-	 */
-	public InvalidUserGroupException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public InvalidUserGroupException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public InvalidUserGroupException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public InvalidUserGroupException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public InvalidUserGroupException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public InvalidUserGroupException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

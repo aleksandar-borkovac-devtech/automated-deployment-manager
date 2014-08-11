@@ -18,60 +18,60 @@ import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
  */
 public class AdmViewPort extends Viewport {
 
-	/**
-	 * Default constructor.
-	 */
-	public AdmViewPort() {
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    /**
+     * Default constructor.
+     */
+    public AdmViewPort() {
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		initialize();
-	}
+        initialize();
+    }
 
-	/**
-	 * Initializes the widgets.
-	 */
-	private void initialize() {
-		createNorthPanel();
+    /**
+     * Initializes the widgets.
+     */
+    private void initialize() {
+        createNorthPanel();
 
-		createWestPanel();
+        createWestPanel();
 
-		createCenterPanel();
-	}
+        createCenterPanel();
+    }
 
-	/**
-	 * Creates the north panel.
-	 */
-	private void createNorthPanel() {
-		final Header header = new Header("Automated Deployment Manager");
+    /**
+     * Creates the north panel.
+     */
+    private void createNorthPanel() {
+        final Header header = new Header("Automated Deployment Manager");
 
-		final BorderLayoutData data = new BorderLayoutData(LayoutRegion.NORTH);
-		data.setMargins(new Margins());
-		data.setSize(30);
-		add(header, data);
-	}
+        final BorderLayoutData data = new BorderLayoutData(LayoutRegion.NORTH);
+        data.setMargins(new Margins());
+        data.setSize(30);
+        add(header, data);
+    }
 
-	/**
-	 * Creates the center panel.
-	 */
-	private void createCenterPanel() {
-		final AdmDashBoard dashBoard = new AdmDashBoard();
+    /**
+     * Creates the center panel.
+     */
+    private void createCenterPanel() {
+        final AdmDashBoard dashBoard = new AdmDashBoard();
 
-		final BorderLayoutData data = new BorderLayoutData(LayoutRegion.CENTER);
-		data.setMargins(new Margins(5, 5, 5, 0));
-		add(dashBoard, data);
-	}
+        final BorderLayoutData data = new BorderLayoutData(LayoutRegion.CENTER);
+        data.setMargins(new Margins(5, 5, 5, 0));
+        add(dashBoard, data);
+    }
 
-	/**
-	 * Creates the west panel.
-	 */
-	private void createWestPanel() {
-		final AdmNavigationPanel navPanel = new AdmNavigationPanel();
+    /**
+     * Creates the west panel.
+     */
+    private void createWestPanel() {
+        final AdmNavigationPanel navPanel = new AdmNavigationPanel();
 
-		final BorderLayoutData data = new BorderLayoutData(LayoutRegion.WEST, 220, 150, 320);
-		data.setMargins(new Margins(5, 5, 5, 5));
-		data.setCollapsible(true);
-		add(navPanel, data);
-	}
+        final BorderLayoutData data = new BorderLayoutData(LayoutRegion.WEST, 220, 150, 320);
+        data.setMargins(new Margins(5, 5, 5, 5));
+        data.setCollapsible(true);
+        add(navPanel, data);
+    }
 
 }

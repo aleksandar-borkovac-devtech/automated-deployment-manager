@@ -34,7 +34,10 @@ public class PostReleaseCheckManagerImpl implements PostReleaseCheckManager {
     /** The directory where plugins are located. */
     private String pluginDirectory;
 
-    /** The work directory for plugins that will be used for e.g. reporting of a plugin. */
+    /**
+     * The work directory for plugins that will be used for e.g. reporting of a
+     * plugin.
+     */
     private String pluginWorkDirectory;
 
     @Override

@@ -28,7 +28,7 @@ public abstract class AbstractUpdatableModel<T> extends AbstractInsertableModel<
 
     /**
      * @param altered
-     *        the alteration date and time to set.
+     *            the alteration date and time to set.
      */
     public void setAltered(final Date altered) {
         this.altered = altered;
@@ -44,7 +44,7 @@ public abstract class AbstractUpdatableModel<T> extends AbstractInsertableModel<
 
     /**
      * @param alteredBy
-     *        the name of the user that last modified this instance.
+     *            the name of the user that last modified this instance.
      */
     public void setAlteredBy(final String alteredBy) {
         this.alteredBy = alteredBy;
@@ -56,7 +56,7 @@ public abstract class AbstractUpdatableModel<T> extends AbstractInsertableModel<
      * to copy the inherited properties.
      * 
      * @param object
-     *        the object to copy.
+     *            the object to copy.
      */
     @Override
     public void copy(final DomainObject<T> object) {

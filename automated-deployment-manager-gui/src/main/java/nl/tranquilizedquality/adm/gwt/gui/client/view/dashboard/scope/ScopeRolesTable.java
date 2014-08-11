@@ -45,254 +45,254 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class ScopeRolesTable extends AbstractRelationTreeTable<Role> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** Remote service. */
-	private final RoleServiceAsync roleService = Registry.get(AdmModule.ROLE_SERVICE);
+    /** Remote service. */
+    private final RoleServiceAsync roleService = Registry.get(AdmModule.ROLE_SERVICE);
 
-	/** The {@link ClientScope} where the roles belong to. */
-	private ClientScope scope;
+    /** The {@link ClientScope} where the roles belong to. */
+    private ClientScope scope;
 
-	/** The {@link Button} used to add roles to a scope. */
-	private Button addButton;
+    /** The {@link Button} used to add roles to a scope. */
+    private Button addButton;
 
-	private Button deleteButton;
+    private Button deleteButton;
 
-	/**
-	 * Default constructor.
-	 */
-	public ScopeRolesTable() {
-		/*
-		 * Get the application icons.
-		 */
-		this.icons = Registry.get(AdmModule.ICONS);
+    /**
+     * Default constructor.
+     */
+    public ScopeRolesTable() {
+        /*
+         * Get the application icons.
+         */
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(this.icons.role()));
+        setIcon(AbstractImagePrototype.create(this.icons.role()));
 
-		/*
-		 * Initialize the widgets.
-		 */
-		initializeWidgets();
+        /*
+         * Initialize the widgets.
+         */
+        initializeWidgets();
 
-		/*
-		 * Check authorization.
-		 */
-		checkAuthorization();
+        /*
+         * Check authorization.
+         */
+        checkAuthorization();
 
-		setHeading("Roles");
-	}
+        setHeading("Roles");
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Add the add button.
-		 */
-		addButton = new Button();
-		addButton.setText("Add");
-		addButton.setIcon(AbstractImagePrototype.create(icons.add()));
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Add the add button.
+         */
+        addButton = new Button();
+        addButton.setText("Add");
+        addButton.setIcon(AbstractImagePrototype.create(icons.add()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
 
-				final ClientRole clientRole = new ClientRole();
-				clientRole.setScope(scope);
+                final ClientRole clientRole = new ClientRole();
+                clientRole.setScope(scope);
 
-				controller.selectTab(AdmTabs.ROLE_DETAIL_TAB, clientRole);
-			}
+                controller.selectTab(AdmTabs.ROLE_DETAIL_TAB, clientRole);
+            }
 
-		};
-		addButton.addSelectionListener(listener);
+        };
+        addButton.addSelectionListener(listener);
 
-		menuBarButtons.add(addButton);
+        menuBarButtons.add(addButton);
 
-		/*
-		 * Add the delete button.
-		 */
-		deleteButton = new Button("Delete selected");
-		deleteButton.setIcon(AbstractImagePrototype.create(icons.delete()));
+        /*
+         * Add the delete button.
+         */
+        deleteButton = new Button("Delete selected");
+        deleteButton.setIcon(AbstractImagePrototype.create(icons.delete()));
 
-		final SelectionListener<ButtonEvent> removeListener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> removeListener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				final RoleServiceAsync roleService = Registry.get(AdmModule.ROLE_SERVICE);
-				final GridSelectionModel<ModelData> selectionModel = grid.getSelectionModel();
-				final ModelData selectedItem = selectionModel.getSelectedItem();
-				final RoleTreeItem treeItem = (RoleTreeItem) selectedItem;
-				final DomainObject<Long> clientObject = treeItem.getClientObject();
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                final RoleServiceAsync roleService = Registry.get(AdmModule.ROLE_SERVICE);
+                final GridSelectionModel<ModelData> selectionModel = grid.getSelectionModel();
+                final ModelData selectedItem = selectionModel.getSelectedItem();
+                final RoleTreeItem treeItem = (RoleTreeItem) selectedItem;
+                final DomainObject<Long> clientObject = treeItem.getClientObject();
 
-				if (clientObject instanceof ClientRole) {
-					final ClientRole clientRole = (ClientRole) clientObject;
+                if (clientObject instanceof ClientRole) {
+                    final ClientRole clientRole = (ClientRole) clientObject;
 
-					final AsyncCallback<Void> callback = new AsyncCallback<Void>() {
+                    final AsyncCallback<Void> callback = new AsyncCallback<Void>() {
 
-						@Override
-						public void onFailure(final Throwable throwable) {
-							final StringBuilder builder = new StringBuilder();
+                        @Override
+                        public void onFailure(final Throwable throwable) {
+                            final StringBuilder builder = new StringBuilder();
 
-							if (throwable instanceof RoleServiceException) {
-								final RoleServiceException ex = (RoleServiceException) throwable;
-								final List<String> errors = ex.getErrors();
+                            if (throwable instanceof RoleServiceException) {
+                                final RoleServiceException ex = (RoleServiceException) throwable;
+                                final List<String> errors = ex.getErrors();
 
-								for (final String string : errors) {
-									builder.append(string);
-									builder.append("<br>");
-								}
-							}
-							else {
-								builder.append(throwable.getMessage());
-							}
+                                for (final String string : errors) {
+                                    builder.append(string);
+                                    builder.append("<br>");
+                                }
+                            }
+                            else {
+                                builder.append(throwable.getMessage());
+                            }
 
-							final MessageBox box = new MessageBox();
-							box.setIcon(MessageBox.ERROR);
-							box.setTitle("Scope management.");
-							box.setMessage(builder.toString());
-							box.setButtons(MessageBox.OK);
-							box.show();
-						}
+                            final MessageBox box = new MessageBox();
+                            box.setIcon(MessageBox.ERROR);
+                            box.setTitle("Scope management.");
+                            box.setMessage(builder.toString());
+                            box.setButtons(MessageBox.OK);
+                            box.show();
+                        }
 
-						@Override
-						public void onSuccess(final Void arg0) {
-							/*
-							 * Remove the role.
-							 */
-							scope.removeRole(clientRole);
+                        @Override
+                        public void onSuccess(final Void arg0) {
+                            /*
+                             * Remove the role.
+                             */
+                            scope.removeRole(clientRole);
 
-							/*
-							 * Retrieve the remaining roles and set the model.
-							 */
-							final Set<Role> roles = scope.getRoles();
+                            /*
+                             * Retrieve the remaining roles and set the model.
+                             */
+                            final Set<Role> roles = scope.getRoles();
 
-							setModel(new ArrayList<Role>(roles));
-						}
+                            setModel(new ArrayList<Role>(roles));
+                        }
 
-					};
+                    };
 
-					roleService.deleteRole(clientRole, callback);
-				}
-			}
+                    roleService.deleteRole(clientRole, callback);
+                }
+            }
 
-		};
-		deleteButton.addSelectionListener(removeListener);
+        };
+        deleteButton.addSelectionListener(removeListener);
 
-		this.menuBarButtons.add(deleteButton);
+        this.menuBarButtons.add(deleteButton);
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	/**
-	 * Do some authorization checks.
-	 */
-	private void checkAuthorization() {
-		/*
-		 * Check if the user is allowed to add roles.
-		 */
-		final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
-		final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
+    /**
+     * Do some authorization checks.
+     */
+    private void checkAuthorization() {
+        /*
+         * Check if the user is allowed to add roles.
+         */
+        final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
+        final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onFailure(final Throwable throwable) {
-				final MessageBox box = new MessageBox();
-				box.setIcon(MessageBox.ERROR);
-				box.setTitle("Add roles.");
-				box.setMessage(throwable.getMessage());
-				box.setButtons(MessageBox.OK);
-				box.show();
-			}
+            @Override
+            public void onFailure(final Throwable throwable) {
+                final MessageBox box = new MessageBox();
+                box.setIcon(MessageBox.ERROR);
+                box.setTitle("Add roles.");
+                box.setMessage(throwable.getMessage());
+                box.setButtons(MessageBox.OK);
+                box.show();
+            }
 
-			@Override
-			public void onSuccess(final Boolean authorized) {
-				if (authorized) {
-					addButton.setEnabled(true);
-					deleteButton.setEnabled(true);
-				}
-				else {
-					addButton.setEnabled(false);
-					deleteButton.setEnabled(false);
-				}
-			}
+            @Override
+            public void onSuccess(final Boolean authorized) {
+                if (authorized) {
+                    addButton.setEnabled(true);
+                    deleteButton.setEnabled(true);
+                }
+                else {
+                    addButton.setEnabled(false);
+                    deleteButton.setEnabled(false);
+                }
+            }
 
-		};
-		authorizationService.isLoggedInUserAuthorized("ADD_ROLE", callback);
-	}
+        };
+        authorizationService.isLoggedInUserAuthorized("ADD_ROLE", callback);
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(200);
-		column.setSortable(true);
-		column.setRenderer(new TreeGridCellRenderer<BeanModel>());
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(200);
+        column.setSortable(true);
+        column.setRenderer(new TreeGridCellRenderer<BeanModel>());
+        configs.add(column);
 
-		column = new CheckColumnConfig();
-		column.setId("valid");
-		column.setHeader("Valid");
-		column.setWidth(35);
-		column.setSortable(true);
-		configs.add(column);
+        column = new CheckColumnConfig();
+        column.setId("valid");
+        column.setHeader("Valid");
+        column.setWidth(35);
+        column.setSortable(true);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	@Override
-	protected boolean isParent(final ModelData data) {
-		return data instanceof RoleTreeItem && ((RoleTreeItem) data).isParent();
-	}
+    @Override
+    protected boolean isParent(final ModelData data) {
+        return data instanceof RoleTreeItem && ((RoleTreeItem) data).isParent();
+    }
 
-	@Override
-	protected RpcProxy<List<ModelData>> getProxy() {
-		// Data proxy
-		final RpcProxy<List<ModelData>> proxy = new RpcProxy<List<ModelData>>() {
+    @Override
+    protected RpcProxy<List<ModelData>> getProxy() {
+        // Data proxy
+        final RpcProxy<List<ModelData>> proxy = new RpcProxy<List<ModelData>>() {
 
-			@Override
-			protected void load(final Object loadConfig, final AsyncCallback<List<ModelData>> callback) {
-				roleService.getRoleChildren((RoleTreeItem) loadConfig, model, callback);
-			}
-		};
+            @Override
+            protected void load(final Object loadConfig, final AsyncCallback<List<ModelData>> callback) {
+                roleService.getRoleChildren((RoleTreeItem) loadConfig, model, callback);
+            }
+        };
 
-		return proxy;
-	}
+        return proxy;
+    }
 
-	@Override
-	protected void handleDoubleClick(final TreeGridEvent<ModelData> be) {
-		final TreeGrid<ModelData> treeGrid = be.getTreeGrid();
+    @Override
+    protected void handleDoubleClick(final TreeGridEvent<ModelData> be) {
+        final TreeGrid<ModelData> treeGrid = be.getTreeGrid();
 
-		final GridSelectionModel<ModelData> selectionModel = treeGrid.getSelectionModel();
-		final RoleTreeItem treeItem = (RoleTreeItem) selectionModel.getSelectedItem();
-		if (treeItem != null) {
-			final DomainObject<Long> clientObject = treeItem.getClientObject();
+        final GridSelectionModel<ModelData> selectionModel = treeGrid.getSelectionModel();
+        final RoleTreeItem treeItem = (RoleTreeItem) selectionModel.getSelectedItem();
+        if (treeItem != null) {
+            final DomainObject<Long> clientObject = treeItem.getClientObject();
 
-			if (clientObject != null && clientObject instanceof Role) {
-				final Role role = (Role) clientObject;
+            if (clientObject != null && clientObject instanceof Role) {
+                final Role role = (Role) clientObject;
 
-				final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+                final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
 
-				controller.selectTab(AdmTabs.ROLE_DETAIL_TAB, role);
-			}
-			else if (clientObject != null && clientObject instanceof Privilege) {
-				final Privilege privilege = (Privilege) clientObject;
+                controller.selectTab(AdmTabs.ROLE_DETAIL_TAB, role);
+            }
+            else if (clientObject != null && clientObject instanceof Privilege) {
+                final Privilege privilege = (Privilege) clientObject;
 
-				final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+                final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
 
-				controller.selectTab(AdmTabs.PRIVILEGE_DETAIL_TAB, privilege);
-			}
-		}
-	}
+                controller.selectTab(AdmTabs.PRIVILEGE_DETAIL_TAB, privilege);
+            }
+        }
+    }
 
-	/**
-	 * @param scope
-	 *            the scope to set
-	 */
-	public void setScope(final ClientScope scope) {
-		this.scope = scope;
-	}
+    /**
+     * @param scope
+     *            the scope to set
+     */
+    public void setScope(final ClientScope scope) {
+        this.scope = scope;
+    }
 
 }

@@ -95,7 +95,7 @@ public class AssignMultipleUserRolePanel extends AbstractGridPanel {
      * scope manager from.
      * 
      * @param clientUser
-     *        The {@link ClientUser} where the roles are being managed.
+     *            The {@link ClientUser} where the roles are being managed.
      */
     public AssignMultipleUserRolePanel(final List<ClientUser> users) {
         setLayout(new BorderLayout());
@@ -244,7 +244,7 @@ public class AssignMultipleUserRolePanel extends AbstractGridPanel {
      * Binds the bean model to the form.
      * 
      * @param sc
-     *        The {@link ClientRoleSearchCommand} object to bind to.
+     *            The {@link ClientRoleSearchCommand} object to bind to.
      */
     protected void bindModel(final ClientRoleSearchCommand sc) {
         if (binding == null) {
@@ -275,7 +275,7 @@ public class AssignMultipleUserRolePanel extends AbstractGridPanel {
      * Create the {@link BeanModel} of the {@link User} object.
      * 
      * @param user
-     *        the user object.
+     *            the user object.
      * @return the resulting model object.
      */
     protected BeanModel createBindModel(final ClientRoleSearchCommand sc) {
@@ -313,7 +313,7 @@ public class AssignMultipleUserRolePanel extends AbstractGridPanel {
 
     /**
      * @param clientUser
-     *        the clientUser to set
+     *            the clientUser to set
      */
     public void setUsers(final List<ClientUser> users) {
         this.users = users;
@@ -321,7 +321,7 @@ public class AssignMultipleUserRolePanel extends AbstractGridPanel {
 
     /**
      * @param window
-     *        the window to set
+     *            the window to set
      */
     public void setWindow(final Window window) {
         this.window = window;

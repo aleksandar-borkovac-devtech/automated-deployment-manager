@@ -15,14 +15,14 @@ import nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.Hiberna
  */
 public class UserFactory extends AbstractFactory<ClientUser, HibernateUser, User> {
 
-	@Override
-	protected ClientUser createNewClientBean() {
-		return new ClientUser();
-	}
+    @Override
+    protected ClientUser createNewClientBean() {
+        return new ClientUser();
+    }
 
-	@Override
-	protected HibernateUser createNewPersistentBean() {
-		return new HibernateUser();
-	}
+    @Override
+    protected HibernateUser createNewPersistentBean() {
+        return new HibernateUser();
+    }
 
 }

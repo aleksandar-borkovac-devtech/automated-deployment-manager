@@ -14,13 +14,13 @@ import org.junit.Test;
  */
 public class FileExtractorUtilTest {
 
-	@Test
-	public void testExtractTarGz() throws Exception {
-		final File tarGzipFile = new File("src/test/resources/dist.tar.gz");
-		final File dest = new File("target/extracted/");
+    @Test
+    public void testExtractTarGz() throws Exception {
+        final File tarGzipFile = new File("src/test/resources/dist.tar.gz");
+        final File dest = new File("target/extracted/");
 
-		FileExtractorUtil.extractTarGz(tarGzipFile, dest);
+        FileExtractorUtil.extractTarGz(tarGzipFile, dest);
 
-	}
+    }
 
 }

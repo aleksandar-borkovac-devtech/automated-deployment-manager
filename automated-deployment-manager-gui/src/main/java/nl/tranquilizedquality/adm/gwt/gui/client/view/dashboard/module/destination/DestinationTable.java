@@ -63,7 +63,7 @@ public class DestinationTable extends AbstractRelationListTable<Destination, Cli
      * Constructor taking the details panel where this table is displayed on.
      * 
      * @param detailsPanel
-     *        The details panel where this table is displayed on.
+     *            The details panel where this table is displayed on.
      */
     public DestinationTable(final MavenModuleDetailsPanel detailsPanel) {
         setHeading("Destinations");

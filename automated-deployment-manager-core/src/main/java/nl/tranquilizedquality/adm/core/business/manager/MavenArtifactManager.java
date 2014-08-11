@@ -30,7 +30,7 @@ public interface MavenArtifactManager {
      * identifier.
      * 
      * @param id
-     *        The unique identifier of the {@link MavenArtifact}.
+     *            The unique identifier of the {@link MavenArtifact}.
      * @return Returns a {@link MavenArtifact} or null if none could be found.
      */
     MavenArtifact findArtifactById(Long id);
@@ -39,10 +39,10 @@ public interface MavenArtifactManager {
      * Saves the specified {@link MavenArtifact}.
      * 
      * @param artifact
-     *        The artifact that will be saved.
+     *            The artifact that will be saved.
      * @param errors
-     *        Errors object that will be populated when something goes
-     *        wrong.
+     *            Errors object that will be populated when something goes
+     *            wrong.
      * @return Returns the saved {@link MavenArtifact}.
      */
     MavenArtifact storeMavenArtifact(MavenArtifact artifact, Errors errors);
@@ -51,7 +51,7 @@ public interface MavenArtifactManager {
      * Retrieves all available {@link MavenArtifact} objects.
      * 
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns a {@link List} containing {@link MavenArtifact} objects.
      */
     List<MavenArtifact> findArtifacts(MavenArtifactSearchCommand sc);
@@ -60,7 +60,7 @@ public interface MavenArtifactManager {
      * Counts the number of artifacts based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns an integer value of 0 or greater.
      */
     int findNumberOfArtifacts(MavenArtifactSearchCommand sc);
@@ -70,7 +70,7 @@ public interface MavenArtifactManager {
      * criteria.
      * 
      * @param sc
-     *        The search criteria to search on.
+     *            The search criteria to search on.
      * @return Returns a {@link List} of {@link MavenModule} objects or an empty
      *         one if none could be found.
      */
@@ -81,7 +81,7 @@ public interface MavenArtifactManager {
      * returned based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria to search on.
+     *            The search criteria to search on.
      * @return Returns an integer value of 0 or higher.
      */
     int findNumberOfMavenModules(MavenModuleSearchCommand sc);
@@ -90,7 +90,7 @@ public interface MavenArtifactManager {
      * Retrieves a {@link MavenModule} with the specified id.
      * 
      * @param id
-     *        The unique identifier of the {@link MavenModule}.
+     *            The unique identifier of the {@link MavenModule}.
      * @return Returns a {@link MavenModule} or null if none could be found.
      */
     MavenModule findMavenModuleById(Long id);
@@ -99,10 +99,10 @@ public interface MavenArtifactManager {
      * Stores the specified {@link MavenModule}.
      * 
      * @param module
-     *        The module that will be stored.
+     *            The module that will be stored.
      * @param errors
-     *        Errors object that will be populated when something goes
-     *        wrong.
+     *            Errors object that will be populated when something goes
+     *            wrong.
      * @return Returns the stored {@link MavenModule}.
      */
     MavenModule storeMavenModule(MavenModule module, Errors errors);
@@ -111,18 +111,20 @@ public interface MavenArtifactManager {
      * Removes the specified artifact.
      * 
      * @param artifact
-     *        The artifact that will be removed.
+     *            The artifact that will be removed.
      */
     void removeMavenArtifact(MavenArtifact artifact);
 
     /**
-     * Searches for all available maven modules excluding the one that has the specified unique
-     * identifier since you cannot have a dependency on yourself.
+     * Searches for all available maven modules excluding the one that has the
+     * specified unique identifier since you cannot have a dependency on
+     * yourself.
      * 
      * @param excludeMavenModuleId
-     *        The unique identifier of the maven module that should not be included.
-     * @return Returns a {@link List} containing {@link MavenModule} objects or an empty one if
-     *         there are no dependencies available.
+     *            The unique identifier of the maven module that should not be
+     *            included.
+     * @return Returns a {@link List} containing {@link MavenModule} objects or
+     *         an empty one if there are no dependencies available.
      */
     List<MavenModule> findAvailableDependencies(Long excludeMavenModuleId);
 

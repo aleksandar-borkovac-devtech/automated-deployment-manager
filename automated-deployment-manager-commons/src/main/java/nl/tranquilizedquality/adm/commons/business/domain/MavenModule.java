@@ -51,7 +51,7 @@ public interface MavenModule extends UpdatableDomainObject<Long> {
      * Sets the specified destinations.
      * 
      * @param destinations
-     *        The destinations to set.
+     *            The destinations to set.
      */
     void setDestinations(List<Destination> destinations);
 
@@ -91,17 +91,19 @@ public interface MavenModule extends UpdatableDomainObject<Long> {
     UserGroup getUserGroup();
 
     /**
-     * Retrieves the modules where this module depends on to go ahead with a deployment.
+     * Retrieves the modules where this module depends on to go ahead with a
+     * deployment.
      * 
      * @return Returns a {@link List} containing the dependencies.
      */
     List<MavenModule> getDeploymentDependencies();
 
     /**
-     * Sets the dependencies where this module depends on to go ahead with a deployment.
+     * Sets the dependencies where this module depends on to go ahead with a
+     * deployment.
      * 
      * @param dependencies
-     *        The dependencies that will be set.
+     *            The dependencies that will be set.
      */
     void setDeploymentDependencies(List<MavenModule> dependencies);
 

@@ -554,7 +554,8 @@ public class DestinationDetailsPanel extends AbstractDetailPanel<ClientDestinati
     }
 
     /**
-     * Sets and populates the store on the deployer combobox with the available deployers.
+     * Sets and populates the store on the deployer combobox with the available
+     * deployers.
      */
     private void refreshDeployers() {
 

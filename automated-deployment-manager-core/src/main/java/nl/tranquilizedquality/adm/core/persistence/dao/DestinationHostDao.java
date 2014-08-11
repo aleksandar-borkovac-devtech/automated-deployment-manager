@@ -15,25 +15,25 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface DestinationHostDao<T extends DestinationHost> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for {@link DestinationHost} objects based on the specified
-	 * search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns a {@link List} of {@link DestinationHost} objects or an
-	 *         empty one of none could be found.
-	 */
-	List<DestinationHost> findBySearchCommand(DestinationHostSearchCommand sc);
+    /**
+     * Searches for {@link DestinationHost} objects based on the specified
+     * search criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @return Returns a {@link List} of {@link DestinationHost} objects or an
+     *         empty one of none could be found.
+     */
+    List<DestinationHost> findBySearchCommand(DestinationHostSearchCommand sc);
 
-	/**
-	 * Counts the number of {@link DestinationHost} objects based on the
-	 * specified search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns an integer value of 0 or greater.
-	 */
-	int findNumberOfDestinationHosts(DestinationHostSearchCommand sc);
+    /**
+     * Counts the number of {@link DestinationHost} objects based on the
+     * specified search criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @return Returns an integer value of 0 or greater.
+     */
+    int findNumberOfDestinationHosts(DestinationHostSearchCommand sc);
 
 }

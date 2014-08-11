@@ -20,47 +20,47 @@ import org.springframework.security.core.userdetails.User;
  */
 public class SecurityContextManagerImpl implements SecurityContextManager {
 
-	/** Logger for this class. */
-	private static final Log LOGGER = LogFactory.getLog(SecurityContextManagerImpl.class);
+    /** Logger for this class. */
+    private static final Log LOGGER = LogFactory.getLog(SecurityContextManagerImpl.class);
 
-	/** DAO used to retrieve the user. */
-	private UserDao<nl.tranquilizedquality.adm.commons.business.domain.User> userDao;
+    /** DAO used to retrieve the user. */
+    private UserDao<nl.tranquilizedquality.adm.commons.business.domain.User> userDao;
 
-	@Override
-	public nl.tranquilizedquality.adm.commons.business.domain.User findLoggedInUser() {
-		/*
-		 * Retrieve the security context of the current thread.
-		 */
-		final SecurityContext context = SecurityContextHolder.getContext();
+    @Override
+    public nl.tranquilizedquality.adm.commons.business.domain.User findLoggedInUser() {
+        /*
+         * Retrieve the security context of the current thread.
+         */
+        final SecurityContext context = SecurityContextHolder.getContext();
 
-		/*
-		 * Retrieve the current authentication.
-		 */
-		final Authentication authentication = context.getAuthentication();
+        /*
+         * Retrieve the current authentication.
+         */
+        final Authentication authentication = context.getAuthentication();
 
-		/*
-		 * Return null if there is no logged in user.
-		 */
-		if (authentication == null) {
-			final String msg = "No authentication available! No user logged in.";
-			if (LOGGER.isWarnEnabled()) {
-				LOGGER.warn(msg);
-			}
+        /*
+         * Return null if there is no logged in user.
+         */
+        if (authentication == null) {
+            final String msg = "No authentication available! No user logged in.";
+            if (LOGGER.isWarnEnabled()) {
+                LOGGER.warn(msg);
+            }
 
-			throw new SecurityException(msg);
-		}
+            throw new SecurityException(msg);
+        }
 
-		final User principal = (User) authentication.getPrincipal();
-		final String username = principal.getUsername();
+        final User principal = (User) authentication.getPrincipal();
+        final String username = principal.getUsername();
 
-		final nl.tranquilizedquality.adm.commons.business.domain.User member = userDao.findActiveUserByUserName(username);
+        final nl.tranquilizedquality.adm.commons.business.domain.User member = userDao.findActiveUserByUserName(username);
 
-		return member;
-	}
+        return member;
+    }
 
-	@Required
-	public void setUserDao(final UserDao<nl.tranquilizedquality.adm.commons.business.domain.User> userDao) {
-		this.userDao = userDao;
-	}
+    @Required
+    public void setUserDao(final UserDao<nl.tranquilizedquality.adm.commons.business.domain.User> userDao) {
+        this.userDao = userDao;
+    }
 
 }

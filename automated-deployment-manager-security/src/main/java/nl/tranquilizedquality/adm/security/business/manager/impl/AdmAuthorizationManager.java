@@ -23,7 +23,8 @@ public class AdmAuthorizationManager implements AuthorizationManager {
     /**
      * Retrieves the granted authorities of the logged in user.
      * 
-     * @return Returns a {@link Collection} containing {@link GrantedAuthority} objects.
+     * @return Returns a {@link Collection} containing {@link GrantedAuthority}
+     *         objects.
      */
     private Collection<GrantedAuthority> findGrantedAuthorities() {
         /*

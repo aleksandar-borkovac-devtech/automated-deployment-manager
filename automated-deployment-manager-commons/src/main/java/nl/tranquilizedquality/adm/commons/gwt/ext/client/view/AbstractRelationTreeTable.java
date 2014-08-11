@@ -36,185 +36,185 @@ import com.extjs.gxt.ui.client.widget.treegrid.TreeGrid;
  *            The implementation type of the model this table is displaying.
  */
 public abstract class AbstractRelationTreeTable<T> extends ContentPanel implements
-		NavigationalItem<List<T>> {
+        NavigationalItem<List<T>> {
 
-	/** The {@link TreeGrid} containing all the records. */
-	protected TreeGrid<ModelData> grid;
+    /** The {@link TreeGrid} containing all the records. */
+    protected TreeGrid<ModelData> grid;
 
-	/** The model used in this grid */
-	protected List<T> model;
+    /** The model used in this grid */
+    protected List<T> model;
 
-	/**
-	 * A {@link List} containing {@link MenuItem} objects that will be used to
-	 * create a context menu on the grid.
-	 */
-	protected List<MenuItem> menuItems;
+    /**
+     * A {@link List} containing {@link MenuItem} objects that will be used to
+     * create a context menu on the grid.
+     */
+    protected List<MenuItem> menuItems;
 
-	/**
-	 * A {@link List} containing {@link Button} objects that will be put on the
-	 * toolbar.
-	 */
-	protected List<Button> menuBarButtons;
+    /**
+     * A {@link List} containing {@link Button} objects that will be put on the
+     * toolbar.
+     */
+    protected List<Button> menuBarButtons;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractRelationTreeTable() {
-		setBodyBorder(false);
-		setHeading("Records");
-		setButtonAlign(HorizontalAlignment.CENTER);
-		setLayout(new FitLayout());
+    /**
+     * Default constructor.
+     */
+    public AbstractRelationTreeTable() {
+        setBodyBorder(false);
+        setHeading("Records");
+        setButtonAlign(HorizontalAlignment.CENTER);
+        setLayout(new FitLayout());
 
-		menuItems = new ArrayList<MenuItem>();
-		menuBarButtons = new ArrayList<Button>();
-	}
+        menuItems = new ArrayList<MenuItem>();
+        menuBarButtons = new ArrayList<Button>();
+    }
 
-	/**
-	 * Set the model used by the grid.
-	 * 
-	 * @param model
-	 *            the model.
-	 */
-	public void setModel(List<T> model) {
-		// The model must be a plain ArrayList, otherwise it won't be
-		// serializable
-		if (!(model instanceof ArrayList<?>)) {
-			final List<T> objects = new ArrayList<T>();
+    /**
+     * Set the model used by the grid.
+     * 
+     * @param model
+     *            the model.
+     */
+    public void setModel(List<T> model) {
+        // The model must be a plain ArrayList, otherwise it won't be
+        // serializable
+        if (!(model instanceof ArrayList<?>)) {
+            final List<T> objects = new ArrayList<T>();
 
-			if (model != null) {
-				for (final T object : model) {
-					objects.add(object);
-				}
-			}
+            if (model != null) {
+                for (final T object : model) {
+                    objects.add(object);
+                }
+            }
 
-			model = objects;
-		}
+            model = objects;
+        }
 
-		this.model = model;
+        this.model = model;
 
-		final TreeLoader<ModelData> loader = grid.getTreeStore().getLoader();
-		loader.load(null);
-	}
+        final TreeLoader<ModelData> loader = grid.getTreeStore().getLoader();
+        loader.load(null);
+    }
 
-	/**
-	 * @return the model
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<T> getModel() {
-		return model;
-	}
+    /**
+     * @return the model
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<T> getModel() {
+        return model;
+    }
 
-	protected void initializeWidgets() {
-		grid = createTable();
+    protected void initializeWidgets() {
+        grid = createTable();
 
-		if (menuBarButtons != null && !menuBarButtons.isEmpty()) {
-			setTopComponent(createTopToolbar());
-		}
+        if (menuBarButtons != null && !menuBarButtons.isEmpty()) {
+            setTopComponent(createTopToolbar());
+        }
 
-		add(grid);
-	}
+        add(grid);
+    }
 
-	/**
-	 * Create a toolbar for the panel.
-	 * 
-	 * @return the {@link ToolBar}.
-	 */
-	protected ToolBar createTopToolbar() {
-		/*
-		 * Create the toolbar itself.
-		 */
-		final ToolBar toolBar = new ToolBar();
+    /**
+     * Create a toolbar for the panel.
+     * 
+     * @return the {@link ToolBar}.
+     */
+    protected ToolBar createTopToolbar() {
+        /*
+         * Create the toolbar itself.
+         */
+        final ToolBar toolBar = new ToolBar();
 
-		for (final Button button : menuBarButtons) {
-			toolBar.add(button);
-			toolBar.add(new SeparatorToolItem());
-		}
+        for (final Button button : menuBarButtons) {
+            toolBar.add(button);
+            toolBar.add(new SeparatorToolItem());
+        }
 
-		return toolBar;
-	}
+        return toolBar;
+    }
 
-	/**
-	 * Creates a context menu.
-	 * 
-	 * @return Returns a {@link Menu}.
-	 */
-	protected Menu createContextMenu() {
-		final Menu menu = new Menu();
+    /**
+     * Creates a context menu.
+     * 
+     * @return Returns a {@link Menu}.
+     */
+    protected Menu createContextMenu() {
+        final Menu menu = new Menu();
 
-		for (final MenuItem menuItem : this.menuItems) {
-			menu.add(menuItem);
-		}
+        for (final MenuItem menuItem : this.menuItems) {
+            menu.add(menuItem);
+        }
 
-		return menu;
-	}
+        return menu;
+    }
 
-	/**
-	 * Create the column configuration for the grid.
-	 * 
-	 * @return a list of column configurations.
-	 */
-	protected abstract List<ColumnConfig> createColumns();
+    /**
+     * Create the column configuration for the grid.
+     * 
+     * @return a list of column configurations.
+     */
+    protected abstract List<ColumnConfig> createColumns();
 
-	/**
-	 * Get the proxy that will retrieve the children of a parent object.
-	 * 
-	 * @return the proxy to use for the grid.
-	 */
-	protected abstract RpcProxy<List<ModelData>> getProxy();
+    /**
+     * Get the proxy that will retrieve the children of a parent object.
+     * 
+     * @return the proxy to use for the grid.
+     */
+    protected abstract RpcProxy<List<ModelData>> getProxy();
 
-	/**
-	 * Determine if the given {@link ModelData} object is a parent that could
-	 * have children to show.
-	 * 
-	 * @param data
-	 *            the tree item that is a possible parent.
-	 * @return a boolean indicating if it is a parent.
-	 */
-	protected abstract boolean isParent(ModelData data);
+    /**
+     * Determine if the given {@link ModelData} object is a parent that could
+     * have children to show.
+     * 
+     * @param data
+     *            the tree item that is a possible parent.
+     * @return a boolean indicating if it is a parent.
+     */
+    protected abstract boolean isParent(ModelData data);
 
-	/**
-	 * Creates the table on a {@link ContentPanel}.
-	 * 
-	 * @return Returns the grid.
-	 */
-	protected TreeGrid<ModelData> createTable() {
-		final List<ColumnConfig> configs = createColumns();
-		final ColumnModel cm = new ColumnModel(configs);
+    /**
+     * Creates the table on a {@link ContentPanel}.
+     * 
+     * @return Returns the grid.
+     */
+    protected TreeGrid<ModelData> createTable() {
+        final List<ColumnConfig> configs = createColumns();
+        final ColumnModel cm = new ColumnModel(configs);
 
-		// Tree loader
-		final TreeLoader<ModelData> loader = new BaseTreeLoader<ModelData>(getProxy()) {
+        // Tree loader
+        final TreeLoader<ModelData> loader = new BaseTreeLoader<ModelData>(getProxy()) {
 
-			@Override
-			public boolean hasChildren(final ModelData parent) {
-				return isParent(parent);
-			}
-		};
+            @Override
+            public boolean hasChildren(final ModelData parent) {
+                return isParent(parent);
+            }
+        };
 
-		// Trees store
-		final TreeStore<ModelData> store = new TreeStore<ModelData>(loader);
+        // Trees store
+        final TreeStore<ModelData> store = new TreeStore<ModelData>(loader);
 
-		final TreeGrid<ModelData> grid = new TreeGrid<ModelData>(store, cm);
-		grid.setStyleAttribute("borderTop", "none");
-		grid.getView().setForceFit(true);
-		grid.setBorders(true);
-		grid.addListener(Events.CellDoubleClick, new Listener<TreeGridEvent<ModelData>>() {
+        final TreeGrid<ModelData> grid = new TreeGrid<ModelData>(store, cm);
+        grid.setStyleAttribute("borderTop", "none");
+        grid.getView().setForceFit(true);
+        grid.setBorders(true);
+        grid.addListener(Events.CellDoubleClick, new Listener<TreeGridEvent<ModelData>>() {
 
-			public void handleEvent(final TreeGridEvent<ModelData> be) {
-				handleDoubleClick(be);
-			}
+            public void handleEvent(final TreeGridEvent<ModelData> be) {
+                handleDoubleClick(be);
+            }
 
-		});
+        });
 
-		if (this.menuItems != null && !this.menuItems.isEmpty()) {
-			final Menu menu = createContextMenu();
-			grid.setContextMenu(menu);
-		}
+        if (this.menuItems != null && !this.menuItems.isEmpty()) {
+            final Menu menu = createContextMenu();
+            grid.setContextMenu(menu);
+        }
 
-		return grid;
-	}
+        return grid;
+    }
 
-	protected void handleDoubleClick(final TreeGridEvent<ModelData> be) {
+    protected void handleDoubleClick(final TreeGridEvent<ModelData> be) {
 
-	}
+    }
 }

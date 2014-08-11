@@ -16,23 +16,23 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface ReleaseExecutionDao<T extends ReleaseExecution> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for release history for a specific release.
-	 * 
-	 * @param sc
-	 *            The search criteria used to retrieve the release executions.
-	 * @return Returns a list of {@link ReleaseExecution} objects or an empty
-	 *         one if none could be found.
-	 */
-	List<ReleaseExecution> findBySearchCommand(ReleaseExecutionSearchCommand sc);
+    /**
+     * Searches for release history for a specific release.
+     * 
+     * @param sc
+     *            The search criteria used to retrieve the release executions.
+     * @return Returns a list of {@link ReleaseExecution} objects or an empty
+     *         one if none could be found.
+     */
+    List<ReleaseExecution> findBySearchCommand(ReleaseExecutionSearchCommand sc);
 
-	/**
-	 * Counts the number of release executions of the specified release.
-	 * 
-	 * @param sc
-	 *            The search criteria used to retrieve the release executions.
-	 * @return Returns an integer value of 0 or greater.
-	 */
-	int findNumberOfReleaseExecutionsBySearchCommand(ReleaseExecutionSearchCommand sc);
+    /**
+     * Counts the number of release executions of the specified release.
+     * 
+     * @param sc
+     *            The search criteria used to retrieve the release executions.
+     * @return Returns an integer value of 0 or greater.
+     */
+    int findNumberOfReleaseExecutionsBySearchCommand(ReleaseExecutionSearchCommand sc);
 
 }

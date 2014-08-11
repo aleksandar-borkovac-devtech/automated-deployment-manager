@@ -92,7 +92,8 @@ public class DeploymentServiceImpl extends AbstractService implements Deployment
          * Deploy release.
          */
         final Release deployedRelease =
-                deploymentManager.deployArtifacts(persistentReleaseBean.getArtifacts(), persistentReleaseBean, persistentEnvironmentBean);
+                deploymentManager.deployArtifacts(persistentReleaseBean.getArtifacts(), persistentReleaseBean,
+                        persistentEnvironmentBean);
 
         initializeRelease(deployedRelease);
 
@@ -122,7 +123,8 @@ public class DeploymentServiceImpl extends AbstractService implements Deployment
         /*
          * Deploy release.
          */
-        final Release deployedRelease = deploymentManager.deployArtifacts(mavenArtifacts, persistentReleaseBean, persistentEnvironmentBean);
+        final Release deployedRelease = deploymentManager.deployArtifacts(mavenArtifacts, persistentReleaseBean,
+                persistentEnvironmentBean);
 
         initializeRelease(deployedRelease);
 
@@ -170,7 +172,7 @@ public class DeploymentServiceImpl extends AbstractService implements Deployment
 
     /**
      * @param deploymentManager
-     *        the deploymentManager to set
+     *            the deploymentManager to set
      */
     @Required
     public void setDeploymentManager(final DeploymentManager deploymentManager) {

@@ -9,13 +9,13 @@ package nl.tranquilizedquality.adm.security.business.generator;
  */
 public interface PasswordGenerator {
 
-	/**
-	 * Generates a random password of the specified length.
-	 * 
-	 * @param length
-	 *            The length the password will have.
-	 * @return Returns the generated password as a {@link String} value.
-	 */
-	String generate(int length);
+    /**
+     * Generates a random password of the specified length.
+     * 
+     * @param length
+     *            The length the password will have.
+     * @return Returns the generated password as a {@link String} value.
+     */
+    String generate(int length);
 
 }

@@ -12,8 +12,8 @@ import nl.tranquilizedquality.adm.api.plugin.RemotePluginService;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Abstract base class for plugins that are bundled in a WAR that register themselves to a REST
- * service of ADM.
+ * Abstract base class for plugins that are bundled in a WAR that register
+ * themselves to a REST service of ADM.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 29 mrt. 2013

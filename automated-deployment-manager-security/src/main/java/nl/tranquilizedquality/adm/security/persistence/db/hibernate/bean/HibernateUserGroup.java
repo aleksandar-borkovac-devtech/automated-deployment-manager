@@ -92,7 +92,7 @@ public class HibernateUserGroup extends AbstractUpdatableDomainObject<Long> impl
     @Override
     @OrderBy(value = "id")
     @ForeignKey(name = "FK_USER_GROUP_USERS", inverseName = "FK_USERS_GROUP")
-    @JoinTable(name = "ADM_USER_GROUP_USERS", schema = "SEC", joinColumns = { @JoinColumn(name = "USER_GROUP_ID") }, inverseJoinColumns = { @JoinColumn(name = "USER_ID") })
+    @JoinTable(name = "ADM_USER_GROUP_USERS", schema = "SEC", joinColumns = {@JoinColumn(name = "USER_GROUP_ID") }, inverseJoinColumns = {@JoinColumn(name = "USER_ID") })
     @ManyToMany(targetEntity = HibernateUser.class, cascade = CascadeType.ALL)
     public List<User> getUsers() {
         return users;

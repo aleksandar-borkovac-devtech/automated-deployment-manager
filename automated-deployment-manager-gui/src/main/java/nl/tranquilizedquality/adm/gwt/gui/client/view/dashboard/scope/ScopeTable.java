@@ -39,176 +39,176 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class ScopeTable extends AbstractGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** Search criteria bean. */
-	private final ClientScopeSearchCommand sc;
+    /** Search criteria bean. */
+    private final ClientScopeSearchCommand sc;
 
-	/** Remote service. */
-	private ScopeServiceAsync scopeService;
+    /** Remote service. */
+    private ScopeServiceAsync scopeService;
 
-	/** Import window */
-	private Window importWindow;
+    /** Import window */
+    private Window importWindow;
 
-	/** The button where you can import a scope with. */
-	private Button importButton;
+    /** The button where you can import a scope with. */
+    private Button importButton;
 
-	/**
-	 * Default constructor.
-	 */
-	public ScopeTable(final ClientScopeSearchCommand sc) {
-		setHeading("Scopes");
+    /**
+     * Default constructor.
+     */
+    public ScopeTable(final ClientScopeSearchCommand sc) {
+        setHeading("Scopes");
 
-		this.sc = sc;
-		this.icons = Registry.get(AdmModule.ICONS);
-		setIcon(AbstractImagePrototype.create(icons.managedScopes()));
+        this.sc = sc;
+        this.icons = Registry.get(AdmModule.ICONS);
+        setIcon(AbstractImagePrototype.create(icons.managedScopes()));
 
-		/*
-		 * Setup the menu bars.
-		 */
-		setupMenuBarButtons();
+        /*
+         * Setup the menu bars.
+         */
+        setupMenuBarButtons();
 
-		/*
-		 * Initialize the widgets.
-		 */
-		initializeWidgets();
+        /*
+         * Initialize the widgets.
+         */
+        initializeWidgets();
 
-		/*
-		 * Check logged in user privileges.
-		 */
-		performPrivilegeCheck();
-	}
+        /*
+         * Check logged in user privileges.
+         */
+        performPrivilegeCheck();
+    }
 
-	/**
-	 * Checks the privileges of the logged in user to enable and disable certain
-	 * GUI functionality.
-	 */
-	protected void performPrivilegeCheck() {
-		final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
+    /**
+     * Checks the privileges of the logged in user to enable and disable certain
+     * GUI functionality.
+     */
+    protected void performPrivilegeCheck() {
+        final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
 
-		final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
+        final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onFailure(final Throwable throwable) {
-				final MessageBox box = new MessageBox();
-				box.setIcon(MessageBox.ERROR);
-				box.setTitle("Create organization check.");
-				box.setMessage(throwable.getMessage());
-				box.setButtons(MessageBox.OK);
-				box.show();
-			}
+            @Override
+            public void onFailure(final Throwable throwable) {
+                final MessageBox box = new MessageBox();
+                box.setIcon(MessageBox.ERROR);
+                box.setTitle("Create organization check.");
+                box.setMessage(throwable.getMessage());
+                box.setButtons(MessageBox.OK);
+                box.show();
+            }
 
-			@Override
-			public void onSuccess(final Boolean authorized) {
-				if (authorized) {
-					importButton.enable();
-				}
-				else {
-					importButton.disable();
-				}
-			}
+            @Override
+            public void onSuccess(final Boolean authorized) {
+                if (authorized) {
+                    importButton.enable();
+                }
+                else {
+                    importButton.disable();
+                }
+            }
 
-		};
-		authorizationService.isLoggedInUserAuthorized("IMPORT_SCOPE", callback);
-	}
+        };
+        authorizationService.isLoggedInUserAuthorized("IMPORT_SCOPE", callback);
+    }
 
-	/**
-	 * Creates the appropriate menu bars.
-	 */
-	private void setupMenuBarButtons() {
-		importButton = new Button("Import scope");
-		final SelectionListener<ButtonEvent> selectionListener = new SelectionListener<ButtonEvent>() {
+    /**
+     * Creates the appropriate menu bars.
+     */
+    private void setupMenuBarButtons() {
+        importButton = new Button("Import scope");
+        final SelectionListener<ButtonEvent> selectionListener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				if (importWindow == null) {
-					importWindow = new ScopeImportWindow(ScopeTable.this);
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                if (importWindow == null) {
+                    importWindow = new ScopeImportWindow(ScopeTable.this);
+                }
 
-				importWindow.show();
-			}
-		};
+                importWindow.show();
+            }
+        };
 
-		importButton.addSelectionListener(selectionListener);
+        importButton.addSelectionListener(selectionListener);
 
-		menuBarButtons.add(importButton);
-	}
+        menuBarButtons.add(importButton);
+    }
 
-	public void refreshTable() {
-		super.refresh();
-	}
+    public void refreshTable() {
+        super.refresh();
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		scopeService = Registry.get(AdmModule.SCOPE_SERVICE);
+    @Override
+    protected void initializeWidgets() {
+        scopeService = Registry.get(AdmModule.SCOPE_SERVICE);
 
-		proxy = new RpcProxy<PagingLoadResult<ClientScope>>() {
+        proxy = new RpcProxy<PagingLoadResult<ClientScope>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientScope>> callback) {
-				scopeService.findScopes((PagingLoadConfig) loadConfig, sc, callback);
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientScope>> callback) {
+                scopeService.findScopes((PagingLoadConfig) loadConfig, sc, callback);
+            }
+        };
 
-		this.panelStateId = ScopeTable.class.getName();
+        this.panelStateId = ScopeTable.class.getName();
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
-		configs.add(new RowNumberer());
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+        configs.add(new RowNumberer());
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("description");
-		column.setHeader("Description");
-		column.setWidth(200);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("description");
+        column.setHeader("Description");
+        column.setWidth(200);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("created");
-		column.setHeader("Created");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("created");
+        column.setHeader("Created");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Created By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Created By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	protected void view() {
-		final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-		final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
+    protected void view() {
+        final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+        final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
 
-		if (selectedItems.size() == 1) {
-			final BeanModel beanModel = selectedItems.get(0);
-			final ClientScope scope = beanModel.getBean();
-			final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
-			controller.selectTab(AdmTabs.SCOPE_DETAIL_TAB, scope);
-		}
-		else if (selectedItems.size() > 1) {
-			selectionModel.deselect(selectedItems);
-		}
-	}
+        if (selectedItems.size() == 1) {
+            final BeanModel beanModel = selectedItems.get(0);
+            final ClientScope scope = beanModel.getBean();
+            final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+            controller.selectTab(AdmTabs.SCOPE_DETAIL_TAB, scope);
+        }
+        else if (selectedItems.size() > 1) {
+            selectionModel.deselect(selectedItems);
+        }
+    }
 
-	@Override
-	protected void handleDoubleClick() {
-		view();
-	}
+    @Override
+    protected void handleDoubleClick() {
+        view();
+    }
 }

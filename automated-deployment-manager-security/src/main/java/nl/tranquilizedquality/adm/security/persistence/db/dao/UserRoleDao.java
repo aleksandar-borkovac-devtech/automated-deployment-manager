@@ -16,13 +16,13 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface UserRoleDao<T extends UserRole> extends BaseDao<T, Long> {
 
-	/**
-	 * Retrieves all active and inactive roles from a {@link User}.
-	 * 
-	 * @param user
-	 *            The {@link User} where the roles will be retrieve for.
-	 * @return Returns a {@link List} containing {@link UserRole} objects or an
-	 *         empty one if none can be found.
-	 */
-	List<UserRole> findByUser(User user);
+    /**
+     * Retrieves all active and inactive roles from a {@link User}.
+     * 
+     * @param user
+     *            The {@link User} where the roles will be retrieve for.
+     * @return Returns a {@link List} containing {@link UserRole} objects or an
+     *         empty one if none can be found.
+     */
+    List<UserRole> findByUser(User user);
 }

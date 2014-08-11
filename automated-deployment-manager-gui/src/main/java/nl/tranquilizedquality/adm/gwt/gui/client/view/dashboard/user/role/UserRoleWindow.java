@@ -30,103 +30,103 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class UserRoleWindow extends Window {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The {@link ClientUser} where roles will be added to. */
-	private ClientUser user;
+    /** The {@link ClientUser} where roles will be added to. */
+    private ClientUser user;
 
-	/** The grid that initiated this window. */
-	private final UserRolesTable table;
+    /** The grid that initiated this window. */
+    private final UserRolesTable table;
 
-	/** The panel that contains the user role add functionality. */
-	private final UserRolePanel userRolePanel;
+    /** The panel that contains the user role add functionality. */
+    private final UserRolePanel userRolePanel;
 
-	/**
-	 * List of scopes the user is managing containing all the roles he/she has
-	 * for the specific scope.
-	 */
-	private List<ClientScope> managedScopes;
+    /**
+     * List of scopes the user is managing containing all the roles he/she has
+     * for the specific scope.
+     */
+    private List<ClientScope> managedScopes;
 
-	/** The main panel where the user details are displayed on. */
-	private final UserDetailPanel userDetailPanel;
+    /** The main panel where the user details are displayed on. */
+    private final UserDetailPanel userDetailPanel;
 
-	/**
-	 * Constructor taking the {@link ClientUser} where the roles will be added
-	 * to.
-	 * 
-	 * @param user
-	 *            The {@link ClientUser} where the roles will be added to.
-	 * @param table
-	 *            The {@link UserRolesTable} where the roles of the users are
-	 *            displayed in.
-	 */
-	public UserRoleWindow(final ClientUser user, final UserRolesTable table, final UserDetailPanel userDetailPanel) {
-		setLayout(new FitLayout());
-		setSize(400, 500);
+    /**
+     * Constructor taking the {@link ClientUser} where the roles will be added
+     * to.
+     * 
+     * @param user
+     *            The {@link ClientUser} where the roles will be added to.
+     * @param table
+     *            The {@link UserRolesTable} where the roles of the users are
+     *            displayed in.
+     */
+    public UserRoleWindow(final ClientUser user, final UserRolesTable table, final UserDetailPanel userDetailPanel) {
+        setLayout(new FitLayout());
+        setSize(400, 500);
 
-		this.user = user;
-		this.table = table;
-		this.userDetailPanel = userDetailPanel;
-		this.icons = Registry.get(AdmModule.ICONS);
+        this.user = user;
+        this.table = table;
+        this.userDetailPanel = userDetailPanel;
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.role()));
+        setIcon(AbstractImagePrototype.create(icons.role()));
 
-		final List<ClientScope> managedScopes = this.table.getManagedScopes();
-		userRolePanel = new UserRolePanel(user, managedScopes);
-		userRolePanel.setWindow(this);
+        final List<ClientScope> managedScopes = this.table.getManagedScopes();
+        userRolePanel = new UserRolePanel(user, managedScopes);
+        userRolePanel.setWindow(this);
 
-		add(userRolePanel);
-	}
+        add(userRolePanel);
+    }
 
-	@Override
-	public void hide() {
-		if (this.user != null) {
+    @Override
+    public void hide() {
+        if (this.user != null) {
 
-			final AsyncCallback<ClientUser> callback = new AsyncCallback<ClientUser>() {
+            final AsyncCallback<ClientUser> callback = new AsyncCallback<ClientUser>() {
 
-				@Override
-				public void onFailure(final Throwable throwable) {
-					final MessageBox box = new MessageBox();
-					box.setIcon(MessageBox.ERROR);
-					box.setTitle("Retrieve user.");
-					box.setMessage(throwable.getMessage());
-					box.setButtons(MessageBox.OK);
-					box.show();
-				}
+                @Override
+                public void onFailure(final Throwable throwable) {
+                    final MessageBox box = new MessageBox();
+                    box.setIcon(MessageBox.ERROR);
+                    box.setTitle("Retrieve user.");
+                    box.setMessage(throwable.getMessage());
+                    box.setButtons(MessageBox.OK);
+                    box.show();
+                }
 
-				@Override
-				public void onSuccess(final ClientUser user) {
-					UserRoleWindow.this.user = user;
+                @Override
+                public void onSuccess(final ClientUser user) {
+                    UserRoleWindow.this.user = user;
 
-					UserRoleWindow.this.userDetailPanel.setModel(UserRoleWindow.this.user);
-				}
+                    UserRoleWindow.this.userDetailPanel.setModel(UserRoleWindow.this.user);
+                }
 
-			};
+            };
 
-			final UserServiceAsync userService = Registry.get(AdmModule.USER_SERVICE);
-			userService.findUserById(UserRoleWindow.this.user.getId(), callback);
-		}
+            final UserServiceAsync userService = Registry.get(AdmModule.USER_SERVICE);
+            userService.findUserById(UserRoleWindow.this.user.getId(), callback);
+        }
 
-		final Viewport viewport = Registry.get(AdmModule.VIEW_PORT);
-		viewport.unmask();
+        final Viewport viewport = Registry.get(AdmModule.VIEW_PORT);
+        viewport.unmask();
 
-		super.hide();
-	}
+        super.hide();
+    }
 
-	/**
-	 * @param user
-	 *            the user to set
-	 */
-	public void setUser(final ClientUser user) {
-		this.user = user;
-		userRolePanel.setClientUser(user);
+    /**
+     * @param user
+     *            the user to set
+     */
+    public void setUser(final ClientUser user) {
+        this.user = user;
+        userRolePanel.setClientUser(user);
 
-		/*
-		 * Retrieve the manages scopes so it can be used as filter in the grid
-		 * view.
-		 */
-		managedScopes = this.table.getManagedScopes();
-		userRolePanel.setFilterScopes(managedScopes);
-	}
+        /*
+         * Retrieve the manages scopes so it can be used as filter in the grid
+         * view.
+         */
+        managedScopes = this.table.getManagedScopes();
+        userRolePanel.setFilterScopes(managedScopes);
+    }
 }

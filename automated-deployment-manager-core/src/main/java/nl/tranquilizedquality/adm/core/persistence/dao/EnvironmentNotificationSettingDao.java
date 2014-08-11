@@ -12,7 +12,7 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 23 okt. 2012
  * @param <T>
- *        The implementation type.
+ *            The implementation type.
  */
 public interface EnvironmentNotificationSettingDao<T extends EnvironmentNotificationSetting> extends BaseDao<T, Long> {
 
@@ -20,8 +20,9 @@ public interface EnvironmentNotificationSettingDao<T extends EnvironmentNotifica
      * Retrieves all settings for a user.
      * 
      * @param user
-     *        The user where the settings should be retrieved for.
-     * @return Returns a {@link List} containing {@link EnvironmentNotificationSetting} objects.
+     *            The user where the settings should be retrieved for.
+     * @return Returns a {@link List} containing
+     *         {@link EnvironmentNotificationSetting} objects.
      */
     List<EnvironmentNotificationSetting> findSettingsForUser(User user);
 

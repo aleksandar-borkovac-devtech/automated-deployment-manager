@@ -31,7 +31,10 @@ public class ClientUserSearchCommand extends UserSearchCommand implements BeanMo
      */
     private static final long serialVersionUID = -2602818142768516203L;
 
-    /** Determines if this is the initial search done when the grid is being rendered. */
+    /**
+     * Determines if this is the initial search done when the grid is being
+     * rendered.
+     */
     private boolean initSearch = true;
 
     public boolean isInitSearch() {

@@ -313,7 +313,7 @@ public class DeployerParameterDetailsPanel extends AbstractDetailPanel<ClientDep
 
     /**
      * @param destination
-     *        the destination to set
+     *            the destination to set
      */
     public void setDestination(final ClientDestination destination) {
         this.destination = destination;

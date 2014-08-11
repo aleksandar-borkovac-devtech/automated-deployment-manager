@@ -31,46 +31,46 @@ import org.springframework.beans.factory.config.MapFactoryBean;
  */
 public class MapMergerFactoryBean extends MapFactoryBean {
 
-	private List<Map<?, ?>> mergeList;
+    private List<Map<?, ?>> mergeList;
 
-	/**
-	 * Default constructor.
-	 */
-	public MapMergerFactoryBean() {
-		mergeList = new ArrayList<Map<?, ?>>();
+    /**
+     * Default constructor.
+     */
+    public MapMergerFactoryBean() {
+        mergeList = new ArrayList<Map<?, ?>>();
 
-		setSourceMap(new LinkedHashMap<Object, Object>());
-	}
+        setSourceMap(new LinkedHashMap<Object, Object>());
+    }
 
-	/**
-	 * Sets the list of lists that need to be merged.
-	 * 
-	 * @param mergeList
-	 *            The list of lists that will be merged.
-	 */
-	public void setMergeList(final List<Map<?, ?>> mergeList) {
-		this.mergeList = mergeList;
-	}
+    /**
+     * Sets the list of lists that need to be merged.
+     * 
+     * @param mergeList
+     *            The list of lists that will be merged.
+     */
+    public void setMergeList(final List<Map<?, ?>> mergeList) {
+        this.mergeList = mergeList;
+    }
 
-	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected Map createInstance() {
-		final Map mapOrigin = super.createInstance();
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked" })
+    protected Map createInstance() {
+        final Map mapOrigin = super.createInstance();
 
-		for (final Map map : mergeList) {
+        for (final Map map : mergeList) {
 
-			final Set entrySet = map.entrySet();
-			final Iterator iterator = entrySet.iterator();
-			while (iterator.hasNext()) {
-				final Map.Entry pairs = (Map.Entry) iterator.next();
+            final Set entrySet = map.entrySet();
+            final Iterator iterator = entrySet.iterator();
+            while (iterator.hasNext()) {
+                final Map.Entry pairs = (Map.Entry) iterator.next();
 
-				mapOrigin.put(pairs.getKey(), pairs.getValue());
-			}
-		}
+                mapOrigin.put(pairs.getKey(), pairs.getValue());
+            }
+        }
 
-		System.out.println(mapOrigin);
+        System.out.println(mapOrigin);
 
-		return mapOrigin;
-	}
+        return mapOrigin;
+    }
 
 }

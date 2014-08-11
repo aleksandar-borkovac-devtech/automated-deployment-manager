@@ -37,8 +37,8 @@ public interface Destination extends UpdatableDomainObject<Long> {
     /**
      * Retrieves the parameters used for a the configured deployer.
      * 
-     * @return Returns a {@link List} containing configured parameters or an empty
-     *         one if there are none.
+     * @return Returns a {@link List} containing configured parameters or an
+     *         empty one if there are none.
      */
     List<DeployerParameter> getDeployerParameters();
 
@@ -46,7 +46,7 @@ public interface Destination extends UpdatableDomainObject<Long> {
      * Sets the specified parameters.
      * 
      * @param locations
-     *        The parameters that will be set.
+     *            The parameters that will be set.
      */
     void setDeployerParameters(List<DeployerParameter> locations);
 

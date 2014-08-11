@@ -11,19 +11,19 @@ import java.io.IOException;
  */
 public interface HttpUtil {
 
-	/**
-	 * Downloads a file from the specified source URL.
-	 * 
-	 * @param sourceUrl
-	 *            The download URL.
-	 * @param destinationPath
-	 *            The destination directory.
-	 * @return Returns the downloaded {@link File}.
-	 * @throws IOException
-	 *             Is thrown when something goes wrong when downloading the
-	 *             file.
-	 */
-	File downloadFile(String sourceUrl, String destinationPath, String destinationFileName)
-			throws IOException;
+    /**
+     * Downloads a file from the specified source URL.
+     * 
+     * @param sourceUrl
+     *            The download URL.
+     * @param destinationPath
+     *            The destination directory.
+     * @return Returns the downloaded {@link File}.
+     * @throws IOException
+     *             Is thrown when something goes wrong when downloading the
+     *             file.
+     */
+    File downloadFile(String sourceUrl, String destinationPath, String destinationFileName)
+            throws IOException;
 
 }

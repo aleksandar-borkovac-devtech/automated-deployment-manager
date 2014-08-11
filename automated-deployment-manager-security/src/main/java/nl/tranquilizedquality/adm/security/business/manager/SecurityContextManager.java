@@ -11,11 +11,11 @@ import nl.tranquilizedquality.adm.commons.business.domain.User;
  */
 public interface SecurityContextManager {
 
-	/**
-	 * Searches for the logged in User.
-	 * 
-	 * @return Returns the {@link User} which is currently logged in.
-	 */
-	User findLoggedInUser();
+    /**
+     * Searches for the logged in User.
+     * 
+     * @return Returns the {@link User} which is currently logged in.
+     */
+    User findLoggedInUser();
 
 }

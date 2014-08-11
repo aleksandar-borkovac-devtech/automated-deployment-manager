@@ -61,7 +61,7 @@ public class EmailManagerImpl implements EmailManager {
             email.setSubject(subject);
             email.setMsg(message);
 
-            if(enabled) {
+            if (enabled) {
                 email.send();
             } else {
                 LOGGER.info("Not sending email. Email sending disabled.");
@@ -77,7 +77,7 @@ public class EmailManagerImpl implements EmailManager {
 
     /**
      * @param host
-     *        the host to set
+     *            the host to set
      */
     @Required
     public void setHost(final String host) {
@@ -86,7 +86,7 @@ public class EmailManagerImpl implements EmailManager {
 
     /**
      * @param from
-     *        the from to set
+     *            the from to set
      */
     @Required
     public void setFrom(final String from) {

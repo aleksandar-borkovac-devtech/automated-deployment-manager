@@ -24,7 +24,7 @@ public interface DestinationManager {
      * Searches for destinations based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns a {@link List} containing {@link Destination} objects or
      *         an empty one if none could be found.
      */
@@ -42,7 +42,7 @@ public interface DestinationManager {
      * Counts the number of destinations based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns an integer value of 0 or greater.
      */
     int findNumberOfDestinations(DestinationSearchCommand sc);
@@ -59,10 +59,10 @@ public interface DestinationManager {
      * Stores a {@link Destination}.
      * 
      * @param destination
-     *        The {@link Destination} that will be stored.
+     *            The {@link Destination} that will be stored.
      * @param errors
-     *        {@link Errors} object that will be populated when something
-     *        goes wrong.
+     *            {@link Errors} object that will be populated when something
+     *            goes wrong.
      * @return Returns the stored {@link Destination}.
      */
     Destination storeDestination(Destination destination, Errors errors);
@@ -71,7 +71,7 @@ public interface DestinationManager {
      * Retrieves the destination with the specified id.
      * 
      * @param id
-     *        The unique identifier of the {@link Destination}.
+     *            The unique identifier of the {@link Destination}.
      * @return Returns a {@link Destination} or null if none could be found.
      */
     Destination findDestinationById(Long id);
@@ -80,7 +80,7 @@ public interface DestinationManager {
      * Retrieves the environment with the specified id.
      * 
      * @param id
-     *        The unique identifier of the {@link Environment}.
+     *            The unique identifier of the {@link Environment}.
      * @return Returns a {@link Environment} or null if none could be found.
      */
     Environment findEnvironmentById(Long id);
@@ -89,10 +89,10 @@ public interface DestinationManager {
      * Stores the specified environment.
      * 
      * @param environment
-     *        The {@link Environment} that will be stored.
+     *            The {@link Environment} that will be stored.
      * @param errors
-     *        {@link Errors} object that will be populated when something
-     *        goes wrong.
+     *            {@link Errors} object that will be populated when something
+     *            goes wrong.
      * @return Returns the stored {@link Environment}.
      */
     Environment storeEnvironment(Environment environment, Errors errors);
@@ -101,7 +101,7 @@ public interface DestinationManager {
      * Removes the specified location.
      * 
      * @param location
-     *        The location that will be removed.
+     *            The location that will be removed.
      */
     void removeDestinationLocation(DeployerParameter location);
 
@@ -110,7 +110,7 @@ public interface DestinationManager {
      * identifier.
      * 
      * @param id
-     *        The unique identifier to use.
+     *            The unique identifier to use.
      * @return Returns a {@link DeployerParameter} or null if none could be
      *         found.
      */
@@ -120,7 +120,7 @@ public interface DestinationManager {
      * Retrieves a {@link DestinationHost} with the specified unique identifier.
      * 
      * @param id
-     *        The unique identifier to use.
+     *            The unique identifier to use.
      * @return Returns a {@link DestinationHost} or null if none could be found.
      */
     DestinationHost findDestinationHostById(Long id);
@@ -129,10 +129,10 @@ public interface DestinationManager {
      * Stores a {@link DestinationHost}.
      * 
      * @param destinationHost
-     *        The {@link DestinationHost} that will be stored.
+     *            The {@link DestinationHost} that will be stored.
      * @param errors
-     *        {@link Errors} object that will be populated when something
-     *        goes wrong.
+     *            {@link Errors} object that will be populated when something
+     *            goes wrong.
      * @return Returns the stored {@link DestinationHost}.
      */
     DestinationHost storeDestinationHost(DestinationHost destinationHost, Errors errors);
@@ -141,7 +141,7 @@ public interface DestinationManager {
      * Searches for destinations based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns a {@link List} containing {@link DestinationHost} objects
      *         or an empty one if none could be found.
      */
@@ -151,7 +151,7 @@ public interface DestinationManager {
      * Retrieves the number of hosts based on the specified search criteria.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns an integer value of 0 or higher.
      */
     int findNumberOfDestinationHosts(DestinationHostSearchCommand sc);
@@ -168,16 +168,18 @@ public interface DestinationManager {
      * Retrieves the environments that match the specified search criteria.
      * 
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns a {@link List} containing {@link Environment} objects or
      *         an empty one if none could be found.
      */
     List<Environment> findEnvironments(EnvironmentSearchCommand sc);
 
     /**
-     * Retrieves all the environments the logged in user is allowed to deploy to.
+     * Retrieves all the environments the logged in user is allowed to deploy
+     * to.
      * 
-     * @return Returns a {@link List} containing environments or an empty one if there are none.
+     * @return Returns a {@link List} containing environments or an empty one if
+     *         there are none.
      */
     List<Environment> findDeployEnvironments();
 

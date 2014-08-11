@@ -29,66 +29,66 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class ScopePrivilegesTable extends AbstractRelationListTable<Privilege, ClientPrivilege> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/**
-	 * Default constructor.
-	 */
-	public ScopePrivilegesTable() {
-		setHeading("Privileges");
+    /**
+     * Default constructor.
+     */
+    public ScopePrivilegesTable() {
+        setHeading("Privileges");
 
-		icons = Registry.get(AdmModule.ICONS);
+        icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.privilege()));
+        setIcon(AbstractImagePrototype.create(icons.privilege()));
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected Class<ClientPrivilege> getBeanModelClass() {
-		return ClientPrivilege.class;
-	}
+    @Override
+    protected Class<ClientPrivilege> getBeanModelClass() {
+        return ClientPrivilege.class;
+    }
 
-	@Override
-	protected String getPanelStateId() {
-		return ScopePrivilegesTable.class.getName();
-	}
+    @Override
+    protected String getPanelStateId() {
+        return ScopePrivilegesTable.class.getName();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(200);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(200);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new CheckColumnConfig();
-		column.setId("valid");
-		column.setHeader("Valid");
-		column.setWidth(35);
-		column.setSortable(true);
-		configs.add(column);
+        column = new CheckColumnConfig();
+        column.setId("valid");
+        column.setHeader("Valid");
+        column.setWidth(35);
+        column.setSortable(true);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	@Override
-	protected void handleDoubleClick(final GridEvent<BeanModel> gridEvent) {
-		final Grid<BeanModel> grid = gridEvent.getGrid();
-		final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-		final BeanModel selectedItem = selectionModel.getSelectedItem();
+    @Override
+    protected void handleDoubleClick(final GridEvent<BeanModel> gridEvent) {
+        final Grid<BeanModel> grid = gridEvent.getGrid();
+        final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+        final BeanModel selectedItem = selectionModel.getSelectedItem();
 
-		if (selectedItem != null) {
-			final ClientPrivilege privilege = (ClientPrivilege) selectedItem.getBean();
+        if (selectedItem != null) {
+            final ClientPrivilege privilege = (ClientPrivilege) selectedItem.getBean();
 
-			final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+            final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
 
-			controller.selectTab(AdmTabs.PRIVILEGE_DETAIL_TAB, privilege);
-		}
-	}
+            controller.selectTab(AdmTabs.PRIVILEGE_DETAIL_TAB, privilege);
+        }
+    }
 
 }

@@ -245,7 +245,7 @@ public class ScopeManagerImpl implements ScopeManager {
      * Initializes the passed in scope to avoid lazy initialization exceptions.
      * 
      * @param scope
-     *        The {@link Scope} object that will be initialized.
+     *            The {@link Scope} object that will be initialized.
      */
     private void initialize(final Scope scope) {
         if (LOG.isDebugEnabled()) {
@@ -513,7 +513,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param scopeDao
-     *        the scopeDao to set
+     *            the scopeDao to set
      */
     @Required
     public void setScopeDao(final ScopeDao<Scope> scopeDao) {
@@ -522,7 +522,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param userDao
-     *        the userDao to set
+     *            the userDao to set
      */
     @Required
     public void setUserDao(final UserDao<User> userDao) {
@@ -531,7 +531,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param scopeValidator
-     *        the scopeValidator to set
+     *            the scopeValidator to set
      */
     @Required
     public void setScopeValidator(final Validator scopeValidator) {
@@ -540,7 +540,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param roleManager
-     *        the roleManager to set
+     *            the roleManager to set
      */
     @Required
     public void setRoleManager(final RoleManager roleManager) {
@@ -549,7 +549,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param scopeName
-     *        the scopeName to set
+     *            the scopeName to set
      */
     @Required
     public void setScopeName(final String scopeName) {
@@ -558,7 +558,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param maximumManagedScopes
-     *        the maximumManagedScopes to set
+     *            the maximumManagedScopes to set
      */
     public void setMaximumManagedScopes(final Integer maximumManagedScopes) {
         this.maximumManagedScopes = maximumManagedScopes;
@@ -566,7 +566,7 @@ public class ScopeManagerImpl implements ScopeManager {
 
     /**
      * @param privilegeManager
-     *        the privilegeManager to set
+     *            the privilegeManager to set
      */
     @Required
     public void setPrivilegeManager(final PrivilegeManager privilegeManager) {

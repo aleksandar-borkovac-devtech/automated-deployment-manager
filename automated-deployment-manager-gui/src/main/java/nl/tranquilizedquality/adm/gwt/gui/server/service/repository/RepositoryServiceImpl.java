@@ -42,98 +42,97 @@ import com.extjs.gxt.ui.client.data.PagingLoadResult;
  */
 public class RepositoryServiceImpl extends AbstractService implements RepositoryService {
 
-	/**
-	 * Factory that transforms client side beans into persistent beans and vice
-	 * versa.
-	 */
-	private static final RepositoryFactory REPOSITORY_FACTORY = new RepositoryFactory();
+    /**
+     * Factory that transforms client side beans into persistent beans and vice
+     * versa.
+     */
+    private static final RepositoryFactory REPOSITORY_FACTORY = new RepositoryFactory();
 
-	/** Manager that manages repositories. */
-	private RepositoryManager repositoryManager;
+    /** Manager that manages repositories. */
+    private RepositoryManager repositoryManager;
 
-	@Override
-	public ClientRepository findRepositoryById(final Long id) {
-		final Repository repository = repositoryManager.findRepositoryById(id);
+    @Override
+    public ClientRepository findRepositoryById(final Long id) {
+        final Repository repository = repositoryManager.findRepositoryById(id);
 
-		final ClientRepository clientBean = REPOSITORY_FACTORY.createClientBean(repository);
+        final ClientRepository clientBean = REPOSITORY_FACTORY.createClientBean(repository);
 
-		return clientBean;
-	}
+        return clientBean;
+    }
 
-	@Override
-	public ClientRepository saveRepository(final ClientRepository repository)
-			throws RepositoryServiceException {
-		final HibernateRepository hibernateRepository = REPOSITORY_FACTORY.createPersistentBean(repository);
+    @Override
+    public ClientRepository saveRepository(final ClientRepository repository)
+            throws RepositoryServiceException {
+        final HibernateRepository hibernateRepository = REPOSITORY_FACTORY.createPersistentBean(repository);
 
-		final Errors errors = new BindException(hibernateRepository, hibernateRepository.getClass().getName());
+        final Errors errors = new BindException(hibernateRepository, hibernateRepository.getClass().getName());
 
-		try {
-			final Repository storedOffice = repositoryManager.storeRepository(hibernateRepository, errors);
+        try {
+            final Repository storedOffice = repositoryManager.storeRepository(hibernateRepository, errors);
 
-			final ClientRepository storedClientOffice = REPOSITORY_FACTORY.createClientBean(storedOffice);
+            final ClientRepository storedClientOffice = REPOSITORY_FACTORY.createClientBean(storedOffice);
 
-			return storedClientOffice;
-		}
-		catch (final Exception e) {
-			final List<String> errorList = createErrorList(errors);
+            return storedClientOffice;
+        } catch (final Exception e) {
+            final List<String> errorList = createErrorList(errors);
 
-			throw new RepositoryServiceException("Failed to save repository!", e, errorList);
-		}
-	}
+            throw new RepositoryServiceException("Failed to save repository!", e, errorList);
+        }
+    }
 
-	@Override
-	public PagingLoadResult<ClientRepository> findRepositories(final PagingLoadConfig config,
-			final ClientRepositorySearchCommand sc) {
-		/*
-		 * Setup search command.
-		 */
-		final SortDir sortDir = config.getSortDir();
-		if (sortDir.equals(SortDir.ASC)) {
-			sc.setAsc(true);
-		}
-		else {
-			sc.setAsc(false);
-		}
+    @Override
+    public PagingLoadResult<ClientRepository> findRepositories(final PagingLoadConfig config,
+            final ClientRepositorySearchCommand sc) {
+        /*
+         * Setup search command.
+         */
+        final SortDir sortDir = config.getSortDir();
+        if (sortDir.equals(SortDir.ASC)) {
+            sc.setAsc(true);
+        }
+        else {
+            sc.setAsc(false);
+        }
 
-		final String sortField = config.getSortField();
-		if (sortField != null) {
-			sc.setOrderBy(sortField);
-		}
+        final String sortField = config.getSortField();
+        if (sortField != null) {
+            sc.setOrderBy(sortField);
+        }
 
-		final int limit = config.getLimit();
-		sc.setMaxResults(limit);
+        final int limit = config.getLimit();
+        sc.setMaxResults(limit);
 
-		final int offset = config.getOffset();
-		sc.setStart(offset);
+        final int offset = config.getOffset();
+        sc.setStart(offset);
 
-		/*
-		 * Search for the offices.
-		 */
-		final List<Repository> offices = repositoryManager.findRepositories(sc);
+        /*
+         * Search for the offices.
+         */
+        final List<Repository> offices = repositoryManager.findRepositories(sc);
 
-		/*
-		 * Create client beans.
-		 */
-		final List<ClientRepository> clientBeans = REPOSITORY_FACTORY.createClientBeans(offices);
+        /*
+         * Create client beans.
+         */
+        final List<ClientRepository> clientBeans = REPOSITORY_FACTORY.createClientBeans(offices);
 
-		/*
-		 * Retrieve the total count.
-		 */
-		final int count = repositoryManager.findNumberOfRepositories(sc);
+        /*
+         * Retrieve the total count.
+         */
+        final int count = repositoryManager.findNumberOfRepositories(sc);
 
-		/*
-		 * Return the results for a grid.
-		 */
-		return new BasePagingLoadResult<ClientRepository>(clientBeans, config.getOffset(), count);
-	}
+        /*
+         * Return the results for a grid.
+         */
+        return new BasePagingLoadResult<ClientRepository>(clientBeans, config.getOffset(), count);
+    }
 
-	/**
-	 * @param repositoryManager
-	 *            the repositoryManager to set
-	 */
-	@Required
-	public void setRepositoryManager(final RepositoryManager repositoryManager) {
-		this.repositoryManager = repositoryManager;
-	}
+    /**
+     * @param repositoryManager
+     *            the repositoryManager to set
+     */
+    @Required
+    public void setRepositoryManager(final RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
+    }
 
 }

@@ -27,11 +27,11 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  * @since Aug 1, 2012
  */
 public class ClientEnvironmentSearchCommand extends EnvironmentSearchCommand implements
-		BeanModelTag {
+        BeanModelTag {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = -2575988658222217471L;
+    private static final long serialVersionUID = -2575988658222217471L;
 
 }

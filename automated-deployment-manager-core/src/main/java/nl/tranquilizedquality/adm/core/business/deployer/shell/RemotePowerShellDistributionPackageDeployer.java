@@ -27,7 +27,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Deployer that can deploy an artifact using packaged power shell scripts on a windows machine.
+ * Deployer that can deploy an artifact using packaged power shell scripts on a
+ * windows machine.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 20 feb. 2013
@@ -72,7 +73,7 @@ public class RemotePowerShellDistributionPackageDeployer implements Deployer<Mav
         } catch (final Exception e) {
             final String msg =
                     "Failed to transfer distribution package! -> " + artifactFile.getAbsolutePath() + " to " + destinationPath
-                        + " on host " + hostName;
+                            + " on host " + hostName;
 
             if (LOGGER.isErrorEnabled()) {
                 LOGGER.error(msg, e);

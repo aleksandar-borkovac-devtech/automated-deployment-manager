@@ -65,7 +65,7 @@ public class ClientDestinationHost extends AbstractUpdatableBeanModel<Long> impl
 
     /**
      * @param hostName
-     *        the hostName to set
+     *            the hostName to set
      */
     public void setHostName(final String hostName) {
         this.hostName = hostName;
@@ -78,7 +78,7 @@ public class ClientDestinationHost extends AbstractUpdatableBeanModel<Long> impl
 
     /**
      * @param protocol
-     *        the protocol to set
+     *            the protocol to set
      */
     public void setProtocol(final Protocol protocol) {
         this.protocol = protocol;
@@ -91,7 +91,7 @@ public class ClientDestinationHost extends AbstractUpdatableBeanModel<Long> impl
 
     /**
      * @param username
-     *        the username to set
+     *            the username to set
      */
     public void setUsername(final String username) {
         this.username = username;
@@ -104,7 +104,7 @@ public class ClientDestinationHost extends AbstractUpdatableBeanModel<Long> impl
 
     /**
      * @param password
-     *        the password to set
+     *            the password to set
      */
     public void setPassword(final String password) {
         this.password = password;
@@ -120,7 +120,7 @@ public class ClientDestinationHost extends AbstractUpdatableBeanModel<Long> impl
 
     /**
      * @param port
-     *        the port to set
+     *            the port to set
      */
     public void setPort(final Integer port) {
         this.port = port;
@@ -134,7 +134,8 @@ public class ClientDestinationHost extends AbstractUpdatableBeanModel<Long> impl
     @Override
     public void setPrivateKey(final String privateKey) {
         /*
-         * Do nothing by default so the private key is not available on the client side.
+         * Do nothing by default so the private key is not available on the
+         * client side.
          */
     }
 

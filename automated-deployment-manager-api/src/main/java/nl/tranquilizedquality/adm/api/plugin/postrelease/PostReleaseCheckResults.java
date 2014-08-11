@@ -15,7 +15,10 @@ package nl.tranquilizedquality.adm.api.plugin.postrelease;
  */
 public class PostReleaseCheckResults {
 
-    /** The log messages to show in the GUI for the user so he/she can check what went wrong. */
+    /**
+     * The log messages to show in the GUI for the user so he/she can check what
+     * went wrong.
+     */
     private final String logs;
 
     /** The status of the checks that were performed. */
@@ -25,9 +28,9 @@ public class PostReleaseCheckResults {
      * Constructor taking the logs and the status.
      * 
      * @param logs
-     *        The logs to be shown in the GUI.
+     *            The logs to be shown in the GUI.
      * @param status
-     *        The status of the checks.
+     *            The status of the checks.
      */
     public PostReleaseCheckResults(final String logs, final PostReleaseCheckStatus status) {
         this.logs = logs;

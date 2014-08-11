@@ -13,33 +13,33 @@ import nl.tranquilizedquality.adm.commons.gwt.ext.client.service.ApplicationServ
  */
 public class ApplicationServiceImpl implements ApplicationService {
 
-	/** All the application properties. */
-	private Map<String, String> properties;
+    /** All the application properties. */
+    private Map<String, String> properties;
 
-	/**
-	 * Default constructor.
-	 */
-	public ApplicationServiceImpl() {
-		properties = new HashMap<String, String>();
-	}
+    /**
+     * Default constructor.
+     */
+    public ApplicationServiceImpl() {
+        properties = new HashMap<String, String>();
+    }
 
-	public String getProperty(final String key) {
-		return properties.get(key);
-	}
+    public String getProperty(final String key) {
+        return properties.get(key);
+    }
 
-	/**
-	 * @return the properties
-	 */
-	public Map<String, String> getProperties() {
-		return properties;
-	}
+    /**
+     * @return the properties
+     */
+    public Map<String, String> getProperties() {
+        return properties;
+    }
 
-	/**
-	 * @param properties
-	 *            the properties to set
-	 */
-	public void setProperties(final Map<String, String> properties) {
-		this.properties = properties;
-	}
+    /**
+     * @param properties
+     *            the properties to set
+     */
+    public void setProperties(final Map<String, String> properties) {
+        this.properties = properties;
+    }
 
 }

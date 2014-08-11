@@ -23,65 +23,65 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class PrivilegeRoleTable extends AbstractRelationListTable<Role, ClientRole> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/**
-	 * Default constructor.
-	 */
-	public PrivilegeRoleTable() {
-		setHeading("Roles");
+    /**
+     * Default constructor.
+     */
+    public PrivilegeRoleTable() {
+        setHeading("Roles");
 
-		icons = Registry.get(AdmModule.ICONS);
+        icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.role()));
+        setIcon(AbstractImagePrototype.create(icons.role()));
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(200);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(200);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("scope");
-		column.setHeader("Scope");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("scope");
+        column.setHeader("Scope");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("description");
-		column.setHeader("Description");
-		column.setWidth(200);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("description");
+        column.setHeader("Description");
+        column.setWidth(200);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new CheckColumnConfig();
-		column.setId("valid");
-		column.setHeader("Valid");
-		column.setWidth(50);
-		column.setSortable(true);
-		configs.add(column);
+        column = new CheckColumnConfig();
+        column.setId("valid");
+        column.setHeader("Valid");
+        column.setWidth(50);
+        column.setSortable(true);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	@Override
-	protected Class<ClientRole> getBeanModelClass() {
-		return ClientRole.class;
-	}
+    @Override
+    protected Class<ClientRole> getBeanModelClass() {
+        return ClientRole.class;
+    }
 
-	@Override
-	protected String getPanelStateId() {
-		return PrivilegeRoleTable.class.getName();
-	}
+    @Override
+    protected String getPanelStateId() {
+        return PrivilegeRoleTable.class.getName();
+    }
 
 }

@@ -13,7 +13,8 @@ public interface DeployerParameter extends UpdatableDomainObject<Long> {
     /**
      * Retrieves the value of the parameter.
      * 
-     * @return Returns a {@link String} representation of the value of the parameter.
+     * @return Returns a {@link String} representation of the value of the
+     *         parameter.
      */
     String getValue();
 
@@ -25,10 +26,11 @@ public interface DeployerParameter extends UpdatableDomainObject<Long> {
     DeployerParameterType getType();
 
     /**
-     * Retrieves the rank of the parameter to determine at what position a parameter will be passed.
+     * Retrieves the rank of the parameter to determine at what position a
+     * parameter will be passed.
      * 
-     * @return Return an {@link Integer} value of 0 or greater. If 0 is used the order doesn't
-     *         matter.
+     * @return Return an {@link Integer} value of 0 or greater. If 0 is used the
+     *         order doesn't matter.
      */
     Integer getRank();
 

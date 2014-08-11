@@ -21,13 +21,13 @@ public interface ReleaseManagementManager {
     void cleanUp();
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     void setUpPages(Selenium selenium, ConditionRunner conditionRunner);
 
@@ -35,7 +35,7 @@ public interface ReleaseManagementManager {
      * Adds a new release based on the passed in {@link ReleaseDto}.
      * 
      * @param release
-     *        The release data that will be used to create a release.
+     *            The release data that will be used to create a release.
      */
     void addRelease(ReleaseDto release);
 
@@ -43,9 +43,9 @@ public interface ReleaseManagementManager {
      * Adds the specified artifact to the specified release.
      * 
      * @param release
-     *        The release that will be edited.
+     *            The release that will be edited.
      * @param artifact
-     *        The artifact that will be added.
+     *            The artifact that will be added.
      */
     void addArtifactToRelease(ReleaseDto release, MavenArtifactDto artifact);
 
@@ -53,9 +53,9 @@ public interface ReleaseManagementManager {
      * Deploys the specified release.
      * 
      * @param release
-     *        The release that will be deployed.
+     *            The release that will be deployed.
      * @param environmentName
-     *        The name of the environment to deploy to.
+     *            The name of the environment to deploy to.
      */
     void deployReleaseToEnvironment(ReleaseDto release, String environmentName);
 
@@ -63,7 +63,7 @@ public interface ReleaseManagementManager {
      * Searches for the release status of the release.
      * 
      * @param release
-     *        The release where the status will be retrieved for.
+     *            The release where the status will be retrieved for.
      * @return Returns a {@link ReleaseStatus}.
      */
     ReleaseStatus findReleaseStatusForRelease(ReleaseDto release);

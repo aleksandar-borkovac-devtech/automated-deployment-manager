@@ -43,7 +43,8 @@ import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
 /**
- * Publisher that signals ADM (Automated Deployment Manager) to deploy a specific artifact.
+ * Publisher that signals ADM (Automated Deployment Manager) to deploy a
+ * specific artifact.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 27 feb. 2013
@@ -66,20 +67,20 @@ public class AdmArtifactDeployerRecorder extends Publisher {
     private final String password;
 
     /**
-     * Constructor taking the URL to the ADM REST service to deploy an artifact. Also the name of
-     * the release is used to select the release where the artifact is part of and the target
-     * environment to deploy to.
+     * Constructor taking the URL to the ADM REST service to deploy an artifact.
+     * Also the name of the release is used to select the release where the
+     * artifact is part of and the target environment to deploy to.
      * 
      * @param releaseName
-     *        The name of the release where the artifact is configured in.
+     *            The name of the release where the artifact is configured in.
      * @param environmentName
-     *        The name of the environment to deploy to.
+     *            The name of the environment to deploy to.
      * @param artifactId
-     *        The Maven artifact identifier.
+     *            The Maven artifact identifier.
      * @param username
-     *        The user name to use for authentication.
+     *            The user name to use for authentication.
      * @param password
-     *        The password to use for authentication.
+     *            The password to use for authentication.
      */
     @DataBoundConstructor
     public AdmArtifactDeployerRecorder(final String releaseName, final String environmentName, final String artifactId,
@@ -143,8 +144,9 @@ public class AdmArtifactDeployerRecorder extends Publisher {
         final PostMethod method = new PostMethod(targetUrl);
         final HttpClient client = new HttpClient();
         final HttpState state = client.getState();
-        state.setCredentials(new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, AuthScope.ANY_REALM), new UsernamePasswordCredentials(
-                username, password));
+        state.setCredentials(new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, AuthScope.ANY_REALM),
+                new UsernamePasswordCredentials(
+                        username, password));
         final int responseCode = client.executeMethod(method);
         final String responseBody = method.getResponseBodyAsString();
         switch (responseCode) {
@@ -163,11 +165,12 @@ public class AdmArtifactDeployerRecorder extends Publisher {
     }
 
     @Extension
-    // This indicates to Jenkins that this is an implementation of an extension point.
+    // This indicates to Jenkins that this is an implementation of an extension
+    // point.
     public static final class DescriptorImpl extends BuildStepDescriptor<Publisher> {
         /**
-         * To persist global configuration information,
-         * simply store it in a field and call save().
+         * To persist global configuration information, simply store it in a
+         * field and call save().
          * <p>
          * If you don't want fields to be persisted, use <tt>transient</tt>.
          */
@@ -177,9 +180,9 @@ public class AdmArtifactDeployerRecorder extends Publisher {
          * Performs on-the-fly validation of the form field 'name'.
          * 
          * @param value
-         *        This parameter receives the value that the user has typed.
-         * @return
-         *         Indicates the outcome of the validation. This is sent to the browser.
+         *            This parameter receives the value that the user has typed.
+         * @return Indicates the outcome of the validation. This is sent to the
+         *         browser.
          */
         public FormValidation doCheckName(@QueryParameter final String value) throws IOException, ServletException {
             if (value.length() == 0) {
@@ -193,7 +196,8 @@ public class AdmArtifactDeployerRecorder extends Publisher {
 
         @Override
         public boolean isApplicable(final Class<? extends AbstractProject> aClass) {
-            // Indicates that this builder can be used with all kinds of project types
+            // Indicates that this builder can be used with all kinds of project
+            // types
             return true;
         }
 
@@ -211,7 +215,8 @@ public class AdmArtifactDeployerRecorder extends Publisher {
             // set that to properties and call save().
             admRestUrl = formData.getString("admRestUrl");
             // ^Can also use req.bindJSON(this, formData);
-            // (easier when there are many fields; need set* methods for this, like setUseFrench)
+            // (easier when there are many fields; need set* methods for this,
+            // like setUseFrench)
             save();
             return super.configure(req, formData);
         }

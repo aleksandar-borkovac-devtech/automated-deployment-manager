@@ -64,7 +64,7 @@ public enum SshCommand implements Command {
      * Constructor taking the command that will be executed.
      * 
      * @param command
-     *        The command that will be set.
+     *            The command that will be set.
      */
     private SshCommand(final String command) {
         this.command = command;

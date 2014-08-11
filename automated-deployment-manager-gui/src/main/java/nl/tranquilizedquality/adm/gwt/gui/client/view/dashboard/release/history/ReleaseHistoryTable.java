@@ -53,144 +53,145 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class ReleaseHistoryTable extends AbstractGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The release where the release history needs to be displayed for. */
-	private final ClientReleaseExecutionSearchCommand sc;
+    /** The release where the release history needs to be displayed for. */
+    private final ClientReleaseExecutionSearchCommand sc;
 
-	/**
-	 * Default constructor.
-	 */
-	public ReleaseHistoryTable() {
-		setHeading("Release History");
+    /**
+     * Default constructor.
+     */
+    public ReleaseHistoryTable() {
+        setHeading("Release History");
 
-		this.sc = new ClientReleaseExecutionSearchCommand();
-		this.icons = Registry.get(AdmModule.ICONS);
+        this.sc = new ClientReleaseExecutionSearchCommand();
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.releaseHistory()));
+        setIcon(AbstractImagePrototype.create(icons.releaseHistory()));
 
-		/*
-		 * Initialize the widgets.
-		 */
-		initializeWidgets();
-	}
+        /*
+         * Initialize the widgets.
+         */
+        initializeWidgets();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("releaseStatus");
-		column.setHeader("Status");
-		column.setWidth(80);
-		column.setSortable(true);
-		column.setRenderer(new GridCellRenderer<ModelData>() {
+        ColumnConfig column = new ColumnConfig();
+        column.setId("releaseStatus");
+        column.setHeader("Status");
+        column.setWidth(80);
+        column.setSortable(true);
+        column.setRenderer(new GridCellRenderer<ModelData>() {
 
-			@Override
-			public Object render(final ModelData model, final String property, final ColumnData config, final int rowIndex, final int colIndex, final ListStore<ModelData> store,
-					final Grid<ModelData> grid) {
-				final Object value = model.get(property);
+            @Override
+            public Object render(final ModelData model, final String property, final ColumnData config, final int rowIndex,
+                    final int colIndex, final ListStore<ModelData> store,
+                    final Grid<ModelData> grid) {
+                final Object value = model.get(property);
 
-				String style = "black";
+                String style = "black";
 
-				if (value != null) {
-					GWT.log(value.toString());
-					GWT.log(value.getClass().getName());
-					final DeployStatus status = (DeployStatus) value;
+                if (value != null) {
+                    GWT.log(value.toString());
+                    GWT.log(value.getClass().getName());
+                    final DeployStatus status = (DeployStatus) value;
 
-					switch (status) {
-						case FAILED:
-							style = "red";
-							break;
+                    switch (status) {
+                        case FAILED:
+                            style = "red";
+                            break;
 
-						case SUCCESS:
-							style = "green";
-							break;
+                        case SUCCESS:
+                            style = "green";
+                            break;
 
-						case ONGOING:
-							style = "orange";
-							break;
+                        case ONGOING:
+                            style = "orange";
+                            break;
 
-					}
-				}
+                    }
+                }
 
-				return "<span style='font-weight:bold; color:" + style + "'>" + String.valueOf(value) + "</span>";
-			}
-		});
-		configs.add(column);
+                return "<span style='font-weight:bold; color:" + style + "'>" + String.valueOf(value) + "</span>";
+            }
+        });
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("releaseDate");
-		column.setHeader("Date");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("releaseDate");
+        column.setHeader("Date");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("environmentName");
-		column.setHeader("Environment");
-		column.setWidth(100);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("environmentName");
+        column.setHeader("Environment");
+        column.setWidth(100);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Deployer");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Deployer");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("numberOfArtifacts");
-		column.setHeader("Artifacts");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("numberOfArtifacts");
+        column.setHeader("Artifacts");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	/**
-	 * Retrieves the selected item and displays it in the release history
-	 * screen.
-	 */
-	private void view() {
-		final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-		final BeanModel selectedItem = selectionModel.getSelectedItem();
+    /**
+     * Retrieves the selected item and displays it in the release history
+     * screen.
+     */
+    private void view() {
+        final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+        final BeanModel selectedItem = selectionModel.getSelectedItem();
 
-		if (selectedItem != null) {
-			final ClientReleaseExecution releaseHistory = selectedItem.getBean();
-			final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
-			controller.selectTab(AdmTabs.RELEASE_HISTORY_TAB, releaseHistory);
-		}
-	}
+        if (selectedItem != null) {
+            final ClientReleaseExecution releaseHistory = selectedItem.getBean();
+            final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+            controller.selectTab(AdmTabs.RELEASE_HISTORY_TAB, releaseHistory);
+        }
+    }
 
-	@Override
-	protected void handleDoubleClick() {
-		view();
-	}
+    @Override
+    protected void handleDoubleClick() {
+        view();
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		final ReleaseServiceAsync releaseService = Registry.get(AdmModule.RELEASE_SERVICE);
+    @Override
+    protected void initializeWidgets() {
+        final ReleaseServiceAsync releaseService = Registry.get(AdmModule.RELEASE_SERVICE);
 
-		proxy = new RpcProxy<PagingLoadResult<ClientReleaseExecution>>() {
+        proxy = new RpcProxy<PagingLoadResult<ClientReleaseExecution>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientReleaseExecution>> callback) {
-				releaseService.findReleaseHistory((PagingLoadConfig) loadConfig, ReleaseHistoryTable.this.sc, callback);
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientReleaseExecution>> callback) {
+                releaseService.findReleaseHistory((PagingLoadConfig) loadConfig, ReleaseHistoryTable.this.sc, callback);
+            }
+        };
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	public void setRelease(final Release release) {
-		sc.setRelease(release);
+    public void setRelease(final Release release) {
+        sc.setRelease(release);
 
-		refresh();
-	}
+        refresh();
+    }
 
 }

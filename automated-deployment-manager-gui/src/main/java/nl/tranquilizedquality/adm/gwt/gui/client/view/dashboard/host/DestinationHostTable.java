@@ -54,204 +54,204 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class DestinationHostTable extends AbstractGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The search criteria. */
-	private final ClientDestinationHostSearchCommand sc;
+    /** The search criteria. */
+    private final ClientDestinationHostSearchCommand sc;
 
-	/** The repository service. */
-	private EnvironmentServiceAsync environmentService;
+    /** The repository service. */
+    private EnvironmentServiceAsync environmentService;
 
-	/** The add button. */
-	private Button addButton;
+    /** The add button. */
+    private Button addButton;
 
-	/** The edit menu item. */
-	private MenuItem editMenuItem;
+    /** The edit menu item. */
+    private MenuItem editMenuItem;
 
-	/**
-	 * Constructor that takes the search criteria to filter on.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 */
-	public DestinationHostTable(final ClientDestinationHostSearchCommand sc) {
-		setHeading("Hosts");
-		this.sc = sc;
-		this.icons = Registry.get(AdmModule.ICONS);
-		initializeWidgets();
-		performPrivilegeCheck();
-	}
+    /**
+     * Constructor that takes the search criteria to filter on.
+     * 
+     * @param sc
+     *            The search criteria.
+     */
+    public DestinationHostTable(final ClientDestinationHostSearchCommand sc) {
+        setHeading("Hosts");
+        this.sc = sc;
+        this.icons = Registry.get(AdmModule.ICONS);
+        initializeWidgets();
+        performPrivilegeCheck();
+    }
 
-	private void performPrivilegeCheck() {
-		final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
-		final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
+    private void performPrivilegeCheck() {
+        final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
+        final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onFailure(final Throwable throwable) {
-				final MessageBox box = new MessageBox();
-				box.setIcon(MessageBox.ERROR);
-				box.setTitle("Create host check.");
-				box.setMessage(throwable.getMessage());
-				box.setButtons(MessageBox.OK);
-				box.show();
-			}
+            @Override
+            public void onFailure(final Throwable throwable) {
+                final MessageBox box = new MessageBox();
+                box.setIcon(MessageBox.ERROR);
+                box.setTitle("Create host check.");
+                box.setMessage(throwable.getMessage());
+                box.setButtons(MessageBox.OK);
+                box.show();
+            }
 
-			@Override
-			public void onSuccess(final Boolean authorized) {
-				if (authorized) {
-					addButton.enable();
-					editMenuItem.enable();
-				}
-				else {
-					addButton.disable();
-					editMenuItem.disable();
-				}
-			}
+            @Override
+            public void onSuccess(final Boolean authorized) {
+                if (authorized) {
+                    addButton.enable();
+                    editMenuItem.enable();
+                }
+                else {
+                    addButton.disable();
+                    editMenuItem.disable();
+                }
+            }
 
-		};
-		authorizationService.isLoggedInUserAuthorized("ADD_HOST", callback);
-	}
+        };
+        authorizationService.isLoggedInUserAuthorized("ADD_HOST", callback);
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		environmentService = Registry.get(AdmModule.ENVIRONMENT_SERVICE);
+    @Override
+    protected void initializeWidgets() {
+        environmentService = Registry.get(AdmModule.ENVIRONMENT_SERVICE);
 
-		proxy = new RpcProxy<PagingLoadResult<ClientDestinationHost>>() {
+        proxy = new RpcProxy<PagingLoadResult<ClientDestinationHost>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientDestinationHost>> callback) {
-				environmentService.findDestinationHosts((PagingLoadConfig) loadConfig, DestinationHostTable.this.sc, callback);
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientDestinationHost>> callback) {
+                environmentService.findDestinationHosts((PagingLoadConfig) loadConfig, DestinationHostTable.this.sc, callback);
+            }
+        };
 
-		this.panelStateId = RepositoryTable.class.getName();
+        this.panelStateId = RepositoryTable.class.getName();
 
-		addButton = new Button("Add");
-		addButton.setIcon(AbstractImagePrototype.create(icons.addHost()));
+        addButton = new Button("Add");
+        addButton.setIcon(AbstractImagePrototype.create(icons.addHost()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				add();
-			}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                add();
+            }
 
-		};
-		addButton.addSelectionListener(listener);
+        };
+        addButton.addSelectionListener(listener);
 
-		this.menuBarButtons.add(addButton);
+        this.menuBarButtons.add(addButton);
 
-		editMenuItem = new MenuItem();
-		editMenuItem.setIcon(AbstractImagePrototype.create(icons.edit()));
-		editMenuItem.setText("Edit");
-		editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
+        editMenuItem = new MenuItem();
+        editMenuItem.setIcon(AbstractImagePrototype.create(icons.edit()));
+        editMenuItem.setText("Edit");
+        editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
 
-			@Override
-			public void componentSelected(final MenuEvent ce) {
-				view();
-			}
-		});
-		menuItems.add(editMenuItem);
+            @Override
+            public void componentSelected(final MenuEvent ce) {
+                view();
+            }
+        });
+        menuItems.add(editMenuItem);
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	/**
-	 * Refreshes the content of the table.
-	 */
-	public void refreshTable() {
-		super.refresh();
-	}
+    /**
+     * Refreshes the content of the table.
+     */
+    public void refreshTable() {
+        super.refresh();
+    }
 
-	/**
-	 * Creates a fresh {@link ClientRepositorys} and navigates to the details
-	 * panel.
-	 */
-	private void add() {
-		final ClientDestinationHost destinationHost = new ClientDestinationHost();
+    /**
+     * Creates a fresh {@link ClientRepositorys} and navigates to the details
+     * panel.
+     */
+    private void add() {
+        final ClientDestinationHost destinationHost = new ClientDestinationHost();
 
-		final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
-		controller.selectTab(AdmTabs.DESTINATION_HOSTS_DETAILS_TAB, destinationHost);
-	}
+        final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+        controller.selectTab(AdmTabs.DESTINATION_HOSTS_DETAILS_TAB, destinationHost);
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
-		configs.add(new RowNumberer());
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+        configs.add(new RowNumberer());
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("hostName");
-		column.setHeader("Host");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("hostName");
+        column.setHeader("Host");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("port");
-		column.setHeader("Port Number");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("port");
+        column.setHeader("Port Number");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("protocol");
-		column.setHeader("Protocol");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("protocol");
+        column.setHeader("Protocol");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("created");
-		column.setHeader("Created");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("created");
+        column.setHeader("Created");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Created By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Created By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("altered");
-		column.setHeader("Altered");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("altered");
+        column.setHeader("Altered");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("alteredBy");
-		column.setHeader("Altered By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("alteredBy");
+        column.setHeader("Altered By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	/**
-	 * Retrieves the selected item and displays it in the destination host
-	 * details screen.
-	 */
-	private void view() {
-		final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-		final BeanModel selectedItem = selectionModel.getSelectedItem();
+    /**
+     * Retrieves the selected item and displays it in the destination host
+     * details screen.
+     */
+    private void view() {
+        final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+        final BeanModel selectedItem = selectionModel.getSelectedItem();
 
-		if (selectedItem != null) {
-			final ClientDestinationHost host = selectedItem.getBean();
-			final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
-			controller.selectTab(AdmTabs.DESTINATION_HOSTS_DETAILS_TAB, host);
-		}
-	}
+        if (selectedItem != null) {
+            final ClientDestinationHost host = selectedItem.getBean();
+            final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+            controller.selectTab(AdmTabs.DESTINATION_HOSTS_DETAILS_TAB, host);
+        }
+    }
 
-	@Override
-	protected void handleDoubleClick() {
-		view();
-	}
+    @Override
+    protected void handleDoubleClick() {
+        view();
+    }
 
 }

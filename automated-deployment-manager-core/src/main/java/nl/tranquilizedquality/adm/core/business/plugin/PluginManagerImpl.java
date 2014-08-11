@@ -56,11 +56,15 @@ public class PluginManagerImpl implements PluginManager, ApplicationContextAware
     /** The application context where this manager is loaded in. */
     private ApplicationContext applicationContext;
 
-    /** The list containing all the application contexts where plugins are loaded in. */
+    /**
+     * The list containing all the application contexts where plugins are loaded
+     * in.
+     */
     private final List<FileSystemXmlApplicationContext> pluginContexts;
 
     /**
-     * Default constructor initializing the plugin contexts and registered plugins collections.
+     * Default constructor initializing the plugin contexts and registered
+     * plugins collections.
      */
     public PluginManagerImpl() {
         pluginContexts = new ArrayList<FileSystemXmlApplicationContext>();
@@ -117,11 +121,11 @@ public class PluginManagerImpl implements PluginManager, ApplicationContextAware
     }
 
     /**
-     * Extracts the plugin distribution ZIP file to the plugin directory so the resources can be
-     * accessed on the classpath.
+     * Extracts the plugin distribution ZIP file to the plugin directory so the
+     * resources can be accessed on the classpath.
      * 
      * @param fileName
-     *        The name of the ZIP file.
+     *            The name of the ZIP file.
      */
     private void extractPluginDistribution(final String fileName) {
         try {
@@ -175,12 +179,13 @@ public class PluginManagerImpl implements PluginManager, ApplicationContextAware
     }
 
     /**
-     * Extracts the plugin-application-context.xml file from the plugin JAR file so it can be used
-     * to load the plugin.
+     * Extracts the plugin-application-context.xml file from the plugin JAR file
+     * so it can be used to load the plugin.
      * 
      * @param fileName
-     *        The name of the JAR file name.
-     * @return Returns a {@link File} pointing to the spring application context file of the plugin.
+     *            The name of the JAR file name.
+     * @return Returns a {@link File} pointing to the spring application context
+     *         file of the plugin.
      */
     private File extractJarFile(final String fileName) {
         try {
@@ -245,11 +250,12 @@ public class PluginManagerImpl implements PluginManager, ApplicationContextAware
     }
 
     /**
-     * Starts up the application context for the plugin using the current application context as
-     * parent so the plugin can register itself calling this manager.
+     * Starts up the application context for the plugin using the current
+     * application context as parent so the plugin can register itself calling
+     * this manager.
      * 
      * @param contextFile
-     *        The context file of the plugin.
+     *            The context file of the plugin.
      */
     private void startupPluginContext(final File contextFile) {
 
@@ -259,7 +265,7 @@ public class PluginManagerImpl implements PluginManager, ApplicationContextAware
         pluginContexts.clear();
 
         final FileSystemXmlApplicationContext pluginContext =
-                new FileSystemXmlApplicationContext(new String[] { "/" + contextFile.getAbsolutePath() }, applicationContext);
+                new FileSystemXmlApplicationContext(new String[] {"/" + contextFile.getAbsolutePath() }, applicationContext);
         pluginContext.start();
         pluginContexts.add(pluginContext);
     }

@@ -26,31 +26,31 @@ import com.extjs.gxt.ui.client.widget.layout.FitLayout;
  */
 public class EnvironmentSelectionPanel extends LayoutContainer {
 
-	/** Window where this panel is displayed in. */
-	private final EnvironmentSelectionWindow window;
+    /** Window where this panel is displayed in. */
+    private final EnvironmentSelectionWindow window;
 
-	/** Panel where the release details are displayed on. */
-	private final ReleaseDetailsPanel detailsPanel;
+    /** Panel where the release details are displayed on. */
+    private final ReleaseDetailsPanel detailsPanel;
 
-	public EnvironmentSelectionPanel(final ReleaseDetailsPanel detailsPanel,
-			final EnvironmentSelectionWindow window) {
-		this.detailsPanel = detailsPanel;
-		this.window = window;
+    public EnvironmentSelectionPanel(final ReleaseDetailsPanel detailsPanel,
+            final EnvironmentSelectionWindow window) {
+        this.detailsPanel = detailsPanel;
+        this.window = window;
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	private void initializeWidgets() {
-		final FitLayout layout = new FitLayout();
-		setLayout(layout);
+    private void initializeWidgets() {
+        final FitLayout layout = new FitLayout();
+        setLayout(layout);
 
-		final ContentPanel gridPanel = createGridPanel();
+        final ContentPanel gridPanel = createGridPanel();
 
-		add(gridPanel);
-	}
+        add(gridPanel);
+    }
 
-	private ContentPanel createGridPanel() {
-		return new EnvironmentSelectionTable(detailsPanel, window);
-	}
+    private ContentPanel createGridPanel() {
+        return new EnvironmentSelectionTable(detailsPanel, window);
+    }
 
 }

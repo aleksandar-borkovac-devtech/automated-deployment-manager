@@ -54,7 +54,7 @@ public class MavenModuleSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -69,7 +69,7 @@ public class MavenModuleSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final ArtifactType type) {
         this.type = type;
@@ -84,7 +84,7 @@ public class MavenModuleSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param group
-     *        the group to set
+     *            the group to set
      */
     public void setGroup(final String group) {
         this.group = group;
@@ -99,7 +99,7 @@ public class MavenModuleSearchCommand extends AbstractPagingUserGroupSearchComma
 
     /**
      * @param artifactId
-     *        the artifactId to set
+     *            the artifactId to set
      */
     public void setArtifactId(final String artifactId) {
         this.artifactId = artifactId;

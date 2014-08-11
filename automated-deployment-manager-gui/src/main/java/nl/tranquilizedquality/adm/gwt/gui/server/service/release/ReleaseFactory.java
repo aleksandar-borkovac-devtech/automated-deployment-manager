@@ -27,14 +27,14 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.release.ClientRelease;
  */
 public class ReleaseFactory extends AbstractFactory<ClientRelease, HibernateRelease, Release> {
 
-	@Override
-	protected ClientRelease createNewClientBean() {
-		return new ClientRelease();
-	}
+    @Override
+    protected ClientRelease createNewClientBean() {
+        return new ClientRelease();
+    }
 
-	@Override
-	protected HibernateRelease createNewPersistentBean() {
-		return new HibernateRelease();
-	}
+    @Override
+    protected HibernateRelease createNewPersistentBean() {
+        return new HibernateRelease();
+    }
 
 }

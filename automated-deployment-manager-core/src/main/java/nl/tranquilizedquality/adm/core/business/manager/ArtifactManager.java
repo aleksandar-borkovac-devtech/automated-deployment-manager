@@ -26,16 +26,16 @@ import nl.tranquilizedquality.adm.commons.business.domain.MavenArtifact;
  */
 public interface ArtifactManager {
 
-	/**
-	 * Retrieves the artifact from the repository.
-	 * 
-	 * @param artifact
-	 *            The artifact that needs to be retrieved.
-	 * @param release
-	 *            The release name used for storing artifacts in a sub
-	 *            directory.
-	 * @return Returns a {@link File} which points to the retrieved artifact.
-	 */
-	File retrieveArtifact(MavenArtifact artifact, String release);
+    /**
+     * Retrieves the artifact from the repository.
+     * 
+     * @param artifact
+     *            The artifact that needs to be retrieved.
+     * @param release
+     *            The release name used for storing artifacts in a sub
+     *            directory.
+     * @return Returns a {@link File} which points to the retrieved artifact.
+     */
+    File retrieveArtifact(MavenArtifact artifact, String release);
 
 }

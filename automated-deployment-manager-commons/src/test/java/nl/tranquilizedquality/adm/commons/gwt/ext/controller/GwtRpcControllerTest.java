@@ -16,23 +16,25 @@ import org.springframework.web.servlet.mvc.Controller;
  */
 public class GwtRpcControllerTest {
 
-	/** The {@link Controller} that will be tested. */
-	private GwtRpcController controller;
+    /** The {@link Controller} that will be tested. */
+    private GwtRpcController controller;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		controller = new GwtRpcController();
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        controller = new GwtRpcController();
+    }
 
-	@Test
-	public void testProcessCallString() throws Exception {
+    @Test
+    public void testProcessCallString() throws Exception {
 
-		final String processCall = controller.processCall("badcall");
+        final String processCall = controller.processCall("badcall");
 
-		assertEquals("//EX[2,1,[\"com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533\",\"This application is out of date, please click the refresh button on your browser. ( Malformed or old RPC message received - expecting version 5 )\"],0,5]", processCall);
-	}
+        assertEquals(
+                "//EX[2,1,[\"com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533\",\"This application is out of date, please click the refresh button on your browser. ( Malformed or old RPC message received - expecting version 5 )\"],0,5]",
+                processCall);
+    }
 
 }

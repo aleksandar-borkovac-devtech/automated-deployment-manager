@@ -16,7 +16,7 @@ import org.springframework.validation.Validator;
 public class UserValidator implements Validator {
 
     @Override
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes" })
     public boolean supports(final Class clazz) {
         return clazz.isAssignableFrom(HibernateUser.class);
     }

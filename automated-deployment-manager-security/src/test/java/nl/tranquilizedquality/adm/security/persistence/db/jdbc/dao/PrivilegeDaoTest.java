@@ -24,35 +24,35 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class PrivilegeDaoTest extends AbstractDaoTest {
 
-	/** The DAO that will be tested. */
-	@Autowired
-	private PrivilegeDao<Privilege> apiPrivilegeDao;
+    /** The DAO that will be tested. */
+    @Autowired
+    private PrivilegeDao<Privilege> apiPrivilegeDao;
 
-	@Autowired
-	private UserDao<User> apiUserDao;
+    @Autowired
+    private UserDao<User> apiUserDao;
 
-	@Autowired
-	private ScopeDao<Scope> scopeDao;
+    @Autowired
+    private ScopeDao<Scope> scopeDao;
 
-	@Before
-	public void setUp() {
-		executeSqlScript("adm-test-data-cleanup.sql", false);
-		executeSqlScript("adm-test-data.sql", false);
-	}
+    @Before
+    public void setUp() {
+        executeSqlScript("adm-test-data-cleanup.sql", false);
+        executeSqlScript("adm-test-data.sql", false);
+    }
 
-	@After
-	public void cleanUp() {
-		executeSqlScript("adm-test-data-cleanup.sql", false);
-	}
+    @After
+    public void cleanUp() {
+        executeSqlScript("adm-test-data-cleanup.sql", false);
+    }
 
-	@Test
-	public void testFindByUserAndScope() {
-		final User user = apiUserDao.findActiveUserByUserName("s-petrus");
+    @Test
+    public void testFindByUserAndScope() {
+        final User user = apiUserDao.findActiveUserByUserName("s-petrus");
 
-		final Scope scope = scopeDao.findByName("ADM");
+        final Scope scope = scopeDao.findByName("ADM");
 
-		final List<Privilege> privileges = apiPrivilegeDao.findByUserAndScope(user, scope);
+        final List<Privilege> privileges = apiPrivilegeDao.findByUserAndScope(user, scope);
 
-		assertEquals(2, privileges.size());
-	}
+        assertEquals(2, privileges.size());
+    }
 }

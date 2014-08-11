@@ -27,41 +27,41 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  */
 public class ClientRepositorySearchCommand extends RepositorySearchCommand implements BeanModelTag {
 
-	/** Unique identifier used for serialization. */
-	private static final long serialVersionUID = 6145048549798189987L;
+    /** Unique identifier used for serialization. */
+    private static final long serialVersionUID = 6145048549798189987L;
 
-	/**
-	 * @return the activeValue
-	 */
-	public String getEnabledValue() {
-		final Boolean active = getEnabled();
-		if (active != null) {
-			if (active) {
-				return "Enabled";
-			}
-			else {
-				return "Disabled";
-			}
-		}
-		else {
-			return "Any...";
-		}
-	}
+    /**
+     * @return the activeValue
+     */
+    public String getEnabledValue() {
+        final Boolean active = getEnabled();
+        if (active != null) {
+            if (active) {
+                return "Enabled";
+            }
+            else {
+                return "Disabled";
+            }
+        }
+        else {
+            return "Any...";
+        }
+    }
 
-	/**
-	 * @param activeValue
-	 *            the activeValue to set
-	 */
-	public void setEnabledValue(final String activeValue) {
-		if ("Enabled".equals(activeValue)) {
-			setEnabled(true);
-		}
-		else if ("Disabled".equals(activeValue)) {
-			setEnabled(false);
-		}
-		else {
-			setEnabled(null);
-		}
-	}
+    /**
+     * @param activeValue
+     *            the activeValue to set
+     */
+    public void setEnabledValue(final String activeValue) {
+        if ("Enabled".equals(activeValue)) {
+            setEnabled(true);
+        }
+        else if ("Disabled".equals(activeValue)) {
+            setEnabled(false);
+        }
+        else {
+            setEnabled(null);
+        }
+    }
 
 }

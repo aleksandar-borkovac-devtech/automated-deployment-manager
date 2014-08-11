@@ -22,42 +22,42 @@ package nl.tranquilizedquality.adm.commons.business.domain;
  */
 public enum ArtifactType {
 
-	/** A web archive. */
-	WAR(".war"),
+    /** A web archive. */
+    WAR(".war"),
 
-	/** Tape archive. */
-	TAR(".tar"),
+    /** Tape archive. */
+    TAR(".tar"),
 
-	/** Zip file. */
-	ZIP(".zip"),
+    /** Zip file. */
+    ZIP(".zip"),
 
-	/** Java Archive. */
-	JAR(".jar"),
+    /** Java Archive. */
+    JAR(".jar"),
 
-	/** Enterprise Archive. */
-	EAR(".ear"),
+    /** Enterprise Archive. */
+    EAR(".ear"),
 
-	/** Tape arhive gzipped. */
-	TAR_GZIP(".tar.gz");
+    /** Tape arhive gzipped. */
+    TAR_GZIP(".tar.gz");
 
-	/** The file exention. */
-	private String extention;
+    /** The file exention. */
+    private String extention;
 
-	/**
-	 * Constructor taking the file extention.
-	 * 
-	 * @param extention
-	 *            The file extentions to use.
-	 */
-	private ArtifactType(final String extention) {
-		this.extention = extention;
-	}
+    /**
+     * Constructor taking the file extention.
+     * 
+     * @param extention
+     *            The file extentions to use.
+     */
+    private ArtifactType(final String extention) {
+        this.extention = extention;
+    }
 
-	/**
-	 * @return the extention
-	 */
-	public String getExtention() {
-		return extention;
-	}
+    /**
+     * @return the extention
+     */
+    public String getExtention() {
+        return extention;
+    }
 
 }

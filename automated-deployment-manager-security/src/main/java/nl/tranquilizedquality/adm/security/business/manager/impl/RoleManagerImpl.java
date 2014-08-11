@@ -112,7 +112,7 @@ public class RoleManagerImpl implements RoleManager {
      * Initializes the role collections.
      * 
      * @param role
-     *        The {@link Role} that will be initialized.
+     *            The {@link Role} that will be initialized.
      */
     private void initialize(final Role role) {
         final Set<Privilege> privileges = role.getPrivileges();
@@ -198,7 +198,7 @@ public class RoleManagerImpl implements RoleManager {
 
     /**
      * @param roleDao
-     *        the roleDao to set
+     *            the roleDao to set
      */
     @Required
     public void setRoleDao(final RoleDao<Role> roleDao) {
@@ -207,7 +207,7 @@ public class RoleManagerImpl implements RoleManager {
 
     /**
      * @param roleValidator
-     *        the roleValidator to set
+     *            the roleValidator to set
      */
     @Required
     public void setRoleValidator(final Validator roleValidator) {
@@ -216,7 +216,7 @@ public class RoleManagerImpl implements RoleManager {
 
     /**
      * @param userDao
-     *        the userDao to set
+     *            the userDao to set
      */
     @Required
     public void setUserDao(final UserDao<User> userDao) {
@@ -225,7 +225,7 @@ public class RoleManagerImpl implements RoleManager {
 
     /**
      * @param scopeDao
-     *        the scopeDao to set
+     *            the scopeDao to set
      */
     @Required
     public void setScopeDao(final ScopeDao<Scope> scopeDao) {

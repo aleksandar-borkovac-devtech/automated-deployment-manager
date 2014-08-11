@@ -43,10 +43,10 @@ public interface ScopeService extends RemoteService {
      * criteria.
      * 
      * @param config
-     *        The {@link PagingLoadConfig} containing the paging
-     *        information.
+     *            The {@link PagingLoadConfig} containing the paging
+     *            information.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns a {@link PagingLoadResult} that will be used by a proxy
      *         to populate a paging grid.
      */
@@ -57,12 +57,12 @@ public interface ScopeService extends RemoteService {
      * criteria.
      * 
      * @param config
-     *        The {@link PagingLoadConfig} containing the paging
-     *        information.
+     *            The {@link PagingLoadConfig} containing the paging
+     *            information.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param filter
-     *        The filter list
+     *            The filter list
      * @return Returns a {@link PagingLoadResult} that will be used by a proxy
      *         to populate a paging grid.
      */
@@ -72,8 +72,8 @@ public interface ScopeService extends RemoteService {
      * Retrieves a {@link ClientScope} with the specified unique identifier.
      * 
      * @param id
-     *        The unique identifier of the {@link ClientScope} that will be
-     *        retrieved.
+     *            The unique identifier of the {@link ClientScope} that will be
+     *            retrieved.
      * @return Returns a {@link ClientScope} object.
      */
     ClientScope findScopeById(Long id);
@@ -82,19 +82,20 @@ public interface ScopeService extends RemoteService {
      * Saves the specified {@link ClientScope} object.
      * 
      * @param scope
-     *        The {@link ClientScope} object that will be saved.
+     *            The {@link ClientScope} object that will be saved.
      * @return Returns the saved {@link ClientScope} object.
      * @throws ScopeServiceException
-     *         Is thrown when something goes wrong during scope storage.
+     *             Is thrown when something goes wrong during scope storage.
      */
     ClientScope saveScope(ClientScope scope) throws ScopeServiceException;
 
     /**
-     * Retrieves all managed scopes with grantable roles for the specified {@link ClientUser}.
+     * Retrieves all managed scopes with grantable roles for the specified
+     * {@link ClientUser}.
      * 
      * @param user
-     *        The {@link ClientUser} where the {@link ClientScope} objects
-     *        will be retrieved for.
+     *            The {@link ClientUser} where the {@link ClientScope} objects
+     *            will be retrieved for.
      * @return Returns a {@link List} containing {@link ClientScope} objects or
      *         an empty one if none could be found.
      */

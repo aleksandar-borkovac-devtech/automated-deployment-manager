@@ -261,7 +261,7 @@ public class ReleaseHistoryManagerImpl implements ReleaseHistoryManager {
 
     /**
      * @param releaseStepExecutionDao
-     *        the releaseStepExecutionDao to set
+     *            the releaseStepExecutionDao to set
      */
     @Required
     public void setReleaseStepExecutionDao(final ReleaseStepExecutionDao<ReleaseStepExecution> releaseStepExecutionDao) {
@@ -270,7 +270,7 @@ public class ReleaseHistoryManagerImpl implements ReleaseHistoryManager {
 
     /**
      * @param snapshotFactory
-     *        the snapshotFactory to set
+     *            the snapshotFactory to set
      */
     @Required
     public void setSnapshotFactory(final ReleaseSnapshotFactory snapshotFactory) {

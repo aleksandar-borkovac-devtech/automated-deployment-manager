@@ -25,38 +25,38 @@ import nl.tranquilizedquality.adm.commons.business.domain.ArtifactType;
  */
 public class UnsupportedArtifactTypeException extends RuntimeException {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 6112675757448786006L;
+    private static final long serialVersionUID = 6112675757448786006L;
 
-	/**
-	 * Default constructor.
-	 */
-	public UnsupportedArtifactTypeException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public UnsupportedArtifactTypeException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public UnsupportedArtifactTypeException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public UnsupportedArtifactTypeException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public UnsupportedArtifactTypeException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public UnsupportedArtifactTypeException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

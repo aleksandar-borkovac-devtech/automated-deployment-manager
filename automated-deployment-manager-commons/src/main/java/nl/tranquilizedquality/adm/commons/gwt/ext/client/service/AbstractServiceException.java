@@ -10,41 +10,41 @@ import java.util.List;
  */
 public abstract class AbstractServiceException extends Exception {
 
-	/** Unique identifier */
-	private static final long serialVersionUID = -7565794778046194125L;
+    /** Unique identifier */
+    private static final long serialVersionUID = -7565794778046194125L;
 
-	/** List of errors that occurred. */
-	protected List<String> errors;
+    /** List of errors that occurred. */
+    protected List<String> errors;
 
-	public AbstractServiceException() {
-		super();
-	}
+    public AbstractServiceException() {
+        super();
+    }
 
-	public AbstractServiceException(final String message) {
-		super(message);
-	}
+    public AbstractServiceException(final String message) {
+        super(message);
+    }
 
-	public AbstractServiceException(final Throwable cause) {
-		super(cause);
-	}
+    public AbstractServiceException(final Throwable cause) {
+        super(cause);
+    }
 
-	public AbstractServiceException(final String message, final Throwable cause) {
-		super(message, cause);
-	}
+    public AbstractServiceException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
 
-	/**
-	 * @return the errors
-	 */
-	public List<String> getErrors() {
-		return errors;
-	}
+    /**
+     * @return the errors
+     */
+    public List<String> getErrors() {
+        return errors;
+    }
 
-	/**
-	 * @param errors
-	 *            the errors to set
-	 */
-	public void setErrors(final List<String> errors) {
-		this.errors = errors;
-	}
+    /**
+     * @param errors
+     *            the errors to set
+     */
+    public void setErrors(final List<String> errors) {
+        this.errors = errors;
+    }
 
 }

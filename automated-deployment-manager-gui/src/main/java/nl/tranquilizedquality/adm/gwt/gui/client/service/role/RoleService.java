@@ -45,8 +45,8 @@ public interface RoleService extends RemoteService {
      * object. If the identifier is null it will return the model list itself.
      * 
      * @param treeItem
-     *        The {@link RoleTreeItem} that identifies the object who's
-     *        children will be retrieved.
+     *            The {@link RoleTreeItem} that identifies the object who's
+     *            children will be retrieved.
      * @return Returns a list of children objects.
      */
     List<ModelData> getRoleChildren(RoleTreeItem treeItem, List<? extends DomainObject<Long>> model);
@@ -56,9 +56,9 @@ public interface RoleService extends RemoteService {
      * criteria.
      * 
      * @param config
-     *        The {@link PagingLoadConfig} containing paging information.
+     *            The {@link PagingLoadConfig} containing paging information.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns the {@link PagingLoadResult}.
      */
     PagingLoadResult<ClientRole> findRoles(PagingLoadConfig config, ClientRoleSearchCommand sc);
@@ -68,7 +68,7 @@ public interface RoleService extends RemoteService {
      * criteria.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns the {@link List} containing {@link ClientRole} objects or
      *         an empty one if none are available.
      */
@@ -78,7 +78,7 @@ public interface RoleService extends RemoteService {
      * Retrieves a {@link ClientRole} with the specified id.
      * 
      * @param id
-     *        The unique identifier of the {@link ClientRole}.
+     *            The unique identifier of the {@link ClientRole}.
      * @return Returns a {@link ClientRole}.
      */
     ClientRole findRoleById(Long id);
@@ -87,10 +87,10 @@ public interface RoleService extends RemoteService {
      * Saves the specified role.
      * 
      * @param role
-     *        The {@link ClientRole} that will be stored.
+     *            The {@link ClientRole} that will be stored.
      * @return Returns the saved {@link ClientRole}.
      * @throws RoleServiceException
-     *         Is thrown when something goes wrong during saving of role.
+     *             Is thrown when something goes wrong during saving of role.
      */
     ClientRole saveRole(ClientRole role) throws RoleServiceException;
 
@@ -99,9 +99,9 @@ public interface RoleService extends RemoteService {
      * in the search criteria.
      * 
      * @param config
-     *        The {@link PagingLoadConfig} containing paging information.
+     *            The {@link PagingLoadConfig} containing paging information.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns the {@link PagingLoadResult}.
      */
     PagingLoadResult<ClientRole> findGrantableRoles(PagingLoadConfig config, ClientRoleSearchCommand sc);
@@ -111,9 +111,9 @@ public interface RoleService extends RemoteService {
      * the specified role.
      * 
      * @param role
-     *        The {@link ClientRole} that will be deleted.
+     *            The {@link ClientRole} that will be deleted.
      * @throws RoleServiceException
-     *         Is thrown when something goes wrong during deletion.
+     *             Is thrown when something goes wrong during deletion.
      */
     void deleteRole(ClientRole role) throws RoleServiceException;
 

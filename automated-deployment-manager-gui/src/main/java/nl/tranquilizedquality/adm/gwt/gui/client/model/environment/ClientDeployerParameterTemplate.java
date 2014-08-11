@@ -15,8 +15,8 @@ import nl.tranquilizedquality.adm.commons.domain.DomainObject;
 import nl.tranquilizedquality.adm.commons.gwt.ext.client.model.AbstractUpdatableBeanModel;
 
 /**
- * Client side representation of a deployer parameter template that is used to determine which
- * parameter types to display when configuring a destination.
+ * Client side representation of a deployer parameter template that is used to
+ * determine which parameter types to display when configuring a destination.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 30 jan. 2013

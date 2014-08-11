@@ -25,8 +25,8 @@ import org.hibernate.annotations.Type;
 import com.google.code.simplestuff.annotation.BusinessField;
 
 /**
- * Hibernate implementation of a parameter template configuration that can be used to determine what
- * parameters are allowed/needed for a specific deployer.
+ * Hibernate implementation of a parameter template configuration that can be
+ * used to determine what parameters are allowed/needed for a specific deployer.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 30 jan. 2013

@@ -16,36 +16,36 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface PrivilegeDao<T extends Privilege> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for {@link Privilege} objects that belong the the specified
-	 * {@link User} and the scope name.
-	 * 
-	 * @param user
-	 *            The {@link User} where the privileges need to be retrieved
-	 *            for.
-	 * @param scopeName
-	 *            The scope name of the privileges.
-	 * @return Returns a list of {@link Privilege} objects or an empty one if
-	 *         none could be found.
-	 */
-	List<Privilege> findByUserAndScope(User user, Scope scope);
+    /**
+     * Searches for {@link Privilege} objects that belong the the specified
+     * {@link User} and the scope name.
+     * 
+     * @param user
+     *            The {@link User} where the privileges need to be retrieved
+     *            for.
+     * @param scopeName
+     *            The scope name of the privileges.
+     * @return Returns a list of {@link Privilege} objects or an empty one if
+     *         none could be found.
+     */
+    List<Privilege> findByUserAndScope(User user, Scope scope);
 
-	/**
-	 * Searches for privileges who match the search criteria
-	 * 
-	 * @param searchCommand
-	 *            criteria
-	 * @return List of privileges matching the criteria
-	 */
-	List<Privilege> findPrivileges(PrivilegeSearchCommand searchCommand);
+    /**
+     * Searches for privileges who match the search criteria
+     * 
+     * @param searchCommand
+     *            criteria
+     * @return List of privileges matching the criteria
+     */
+    List<Privilege> findPrivileges(PrivilegeSearchCommand searchCommand);
 
-	/**
-	 * Finds the number of privileges based on the specified search criteria.
-	 * 
-	 * @param searchCommand
-	 *            The search criteria to search on.
-	 * @return Returns a value of 0 or higher.
-	 */
-	int findNumberOfPrivileges(PrivilegeSearchCommand searchCommand);
+    /**
+     * Finds the number of privileges based on the specified search criteria.
+     * 
+     * @param searchCommand
+     *            The search criteria to search on.
+     * @return Returns a value of 0 or higher.
+     */
+    int findNumberOfPrivileges(PrivilegeSearchCommand searchCommand);
 
 }

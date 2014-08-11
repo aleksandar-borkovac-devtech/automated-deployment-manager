@@ -44,19 +44,20 @@ public abstract class AbstractRenderer {
     }
 
     /**
-     * Merges the given properties with the give template into a HTML/CSS structure.
+     * Merges the given properties with the give template into a HTML/CSS
+     * structure.
      * 
      * @param id
-     *        The template {@link String} id.
+     *            The template {@link String} id.
      * @param properties
-     *        The template {@link Map} properties.
+     *            The template {@link Map} properties.
      * @return Returns the {@link String} containing the HTML/CSS structure.
      */
     protected abstract String merge(String id, Map<String, Object> properties);
 
     /**
      * @param velocityEngine
-     *        the velocityEngine to set
+     *            the velocityEngine to set
      */
     @Required
     public void setVelocityEngine(final VelocityEngine velocityEngine) {

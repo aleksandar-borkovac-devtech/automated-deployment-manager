@@ -26,7 +26,8 @@ import org.hibernate.criterion.Restrictions;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 23 okt. 2012
  */
-public class HibernateEnvironmentNotificationSettingDao extends AbstractHibernateBaseDao<HibernateEnvironmentNotificationSetting, Long>
+public class HibernateEnvironmentNotificationSettingDao extends
+        AbstractHibernateBaseDao<HibernateEnvironmentNotificationSetting, Long>
         implements EnvironmentNotificationSettingDao<HibernateEnvironmentNotificationSetting> {
 
     @Override

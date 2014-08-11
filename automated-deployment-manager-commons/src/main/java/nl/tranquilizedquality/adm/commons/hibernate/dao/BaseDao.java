@@ -12,9 +12,9 @@ import org.springframework.dao.DataAccessException;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        The implementation type that this DAO is managing.
+ *            The implementation type that this DAO is managing.
  * @param <K>
- *        The key type of the object this DAO is managing.
+ *            The key type of the object this DAO is managing.
  */
 public interface BaseDao<T, K> {
 
@@ -22,7 +22,7 @@ public interface BaseDao<T, K> {
      * Stores the passed object into a data store.
      * 
      * @param object
-     *        The object that will be stored.
+     *            The object that will be stored.
      * @return Returns the saved object.
      */
     T save(final T object);
@@ -31,7 +31,7 @@ public interface BaseDao<T, K> {
      * Removes the passed object from the data store.
      * 
      * @param object
-     *        The object that will be removed.
+     *            The object that will be removed.
      */
     void delete(final T object);
 
@@ -39,7 +39,7 @@ public interface BaseDao<T, K> {
      * Finds an object with the specified identifier.
      * 
      * @param id
-     *        The unique identifier of the object.
+     *            The unique identifier of the object.
      * @return Returns the object with the corresponding unique identifier.
      */
     T findById(final K id);
@@ -55,7 +55,7 @@ public interface BaseDao<T, K> {
      * Deletes all objects.
      * 
      * @throws DataAccessException
-     *         Is thrown when something goes wrong during deletion.
+     *             Is thrown when something goes wrong during deletion.
      */
     void deleteAll() throws DataAccessException;
 
@@ -63,7 +63,7 @@ public interface BaseDao<T, K> {
      * Refreshed the object with the data store.
      * 
      * @param object
-     *        The object that will be refreshed.
+     *            The object that will be refreshed.
      */
     void refresh(final T object);
 
@@ -89,7 +89,7 @@ public interface BaseDao<T, K> {
      * within the {@link PagingSearchCommand}.
      * 
      * @param sc
-     *        The {@link PagingSearchCommand} configuration.
+     *            The {@link PagingSearchCommand} configuration.
      * @return Returns a list containing objects of type T or an emtpy one if
      *         none could be found.
      */

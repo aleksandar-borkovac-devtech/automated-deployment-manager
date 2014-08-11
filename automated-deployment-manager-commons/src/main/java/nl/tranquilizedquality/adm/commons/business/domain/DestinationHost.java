@@ -57,7 +57,7 @@ public interface DestinationHost extends UpdatableDomainObject<Long> {
      * Sets the private key for this destination host.
      * 
      * @param privateKey
-     *        The key that will be used for authentication.
+     *            The key that will be used for authentication.
      */
     void setPrivateKey(String privateKey);
 
@@ -69,8 +69,8 @@ public interface DestinationHost extends UpdatableDomainObject<Long> {
     UserGroup getUserGroup();
 
     /**
-     * Retrieves the terminal that should be used to connect to the host. If empty the default
-     * "gogrid" terminal will be used.
+     * Retrieves the terminal that should be used to connect to the host. If
+     * empty the default "gogrid" terminal will be used.
      * 
      * @return Returns a {@link String} representation of the terminal.
      */

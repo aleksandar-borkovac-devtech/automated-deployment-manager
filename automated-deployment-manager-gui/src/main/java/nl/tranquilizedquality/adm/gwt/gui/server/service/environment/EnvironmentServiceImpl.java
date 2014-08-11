@@ -116,7 +116,8 @@ public class EnvironmentServiceImpl extends AbstractService implements Environme
     }
 
     @Override
-    public PagingLoadResult<ClientEnvironment> findEnvironments(final PagingLoadConfig loadConfig, final ClientEnvironmentSearchCommand sc) {
+    public PagingLoadResult<ClientEnvironment> findEnvironments(final PagingLoadConfig loadConfig,
+            final ClientEnvironmentSearchCommand sc) {
         final List<Environment> environments = destinationManager.findEnvironments(sc);
 
         for (final Environment environment : environments) {
@@ -191,7 +192,7 @@ public class EnvironmentServiceImpl extends AbstractService implements Environme
      * Retrieves a location with the specified identifier.
      * 
      * @param id
-     *        The unique identifier to use.
+     *            The unique identifier to use.
      * @return Returns a {@link ClientDeployerParameter} with the specified
      *         identifier.
      */
@@ -219,7 +220,8 @@ public class EnvironmentServiceImpl extends AbstractService implements Environme
     }
 
     @Override
-    public PagingLoadResult<ClientDestination> findDestinations(final PagingLoadConfig config, final ClientDestinationSearchCommand sc) {
+    public PagingLoadResult<ClientDestination> findDestinations(final PagingLoadConfig config,
+            final ClientDestinationSearchCommand sc) {
         /*
          * Setup search command.
          */
@@ -437,7 +439,7 @@ public class EnvironmentServiceImpl extends AbstractService implements Environme
 
     /**
      * @param destinationManager
-     *        the destinationManager to set
+     *            the destinationManager to set
      */
     @Required
     public void setDestinationManager(final DestinationManager destinationManager) {

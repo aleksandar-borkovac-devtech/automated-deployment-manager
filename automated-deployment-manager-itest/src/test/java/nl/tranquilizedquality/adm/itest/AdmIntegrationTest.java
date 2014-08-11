@@ -24,7 +24,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 25 jan. 2013
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AdmLoginStory.class, AdmAddDestinationStory.class, AdmAddMavenModuleStory.class, AdmAddDestinationHostStory.class })
+@SuiteClasses({AdmLoginStory.class, AdmAddDestinationStory.class, AdmAddMavenModuleStory.class, AdmAddDestinationHostStory.class })
 public class AdmIntegrationTest extends AbstractDefaultHibernateDeploymentTest {
 
 }

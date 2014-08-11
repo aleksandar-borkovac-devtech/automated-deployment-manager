@@ -106,7 +106,7 @@ public class ArtifactDetailsPanel extends AbstractDetailPanel<ClientMavenArtifac
      * Constructor taking the window where it's displayed in.
      * 
      * @param window
-     *        The parent window.
+     *            The parent window.
      */
     public ArtifactDetailsPanel(final Window window) {
         this.icons = Registry.get(AdmModule.ICONS);

@@ -348,8 +348,9 @@ public class ReleaseDetailsPanel extends AbstractDetailPanel<ClientRelease> {
         name.setFieldLabel("Name");
         name.setReadOnly(false);
         name.setRegex("^[\\S]*$");
-        name.getMessages().setRegexText(
-                "Invalid name specified. The name should not contain any spaces or tab characters. Please check the name and try again.");
+        name.getMessages()
+                .setRegexText(
+                        "Invalid name specified. The name should not contain any spaces or tab characters. Please check the name and try again.");
         releaseInfoFieldSet.add(name);
 
         /*
@@ -556,7 +557,7 @@ public class ReleaseDetailsPanel extends AbstractDetailPanel<ClientRelease> {
      * environment.
      * 
      * @param environment
-     *        The environment the release will be deployed to.
+     *            The environment the release will be deployed to.
      */
     public void deployRelease(final ClientEnvironment environment) {
         final DeploymentServiceAsync deploymentService = Registry.get(AdmModule.DEPLOYMENT_SERVICE);

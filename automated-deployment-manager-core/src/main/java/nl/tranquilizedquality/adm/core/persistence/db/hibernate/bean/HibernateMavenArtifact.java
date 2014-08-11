@@ -97,7 +97,7 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
 
     /**
      * @param version
-     *        the version to set
+     *            the version to set
      */
     public void setVersion(final String version) {
         this.version = version;
@@ -109,15 +109,15 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
     @Override
     @ForeignKey(name = "FK_ARTIFACT_PARENT")
     @JoinColumn(name = "MAVEN_MODULE_ID")
-    @ManyToOne(targetEntity = HibernateMavenModule.class, optional = false, cascade = { CascadeType.MERGE, CascadeType.PERSIST,
-                                                                                       CascadeType.REFRESH })
+    @ManyToOne(targetEntity = HibernateMavenModule.class, optional = false, cascade = {CascadeType.MERGE, CascadeType.PERSIST,
+            CascadeType.REFRESH })
     public MavenModule getParentModule() {
         return parentModule;
     }
 
     /**
      * @param parentModule
-     *        the parentModule to set
+     *            the parentModule to set
      */
     public void setParentModule(final MavenModule parentModule) {
         this.parentModule = parentModule;
@@ -136,7 +136,7 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
 
     /**
      * @param release
-     *        the release to set
+     *            the release to set
      */
     public void setRelease(final Release release) {
         this.release = release;
@@ -153,7 +153,7 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
 
     /**
      * @param targetSystemShutdown
-     *        the targetSystemShutdown to set
+     *            the targetSystemShutdown to set
      */
     public void setTargetSystemShutdown(final Boolean targetSystemShutdown) {
         this.targetSystemShutdown = targetSystemShutdown;
@@ -170,7 +170,7 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
 
     /**
      * @param targetSystemStartup
-     *        the targetSystemStartup to set
+     *            the targetSystemStartup to set
      */
     public void setTargetSystemStartup(final Boolean targetSystemStartup) {
         this.targetSystemStartup = targetSystemStartup;
@@ -188,7 +188,7 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
 
     /**
      * @param rank
-     *        the rank to set
+     *            the rank to set
      */
     @Override
     public void setRank(final Integer rank) {
@@ -206,7 +206,7 @@ public class HibernateMavenArtifact extends AbstractUpdatableDomainObject<Long> 
 
     /**
      * @param file
-     *        the file to set
+     *            the file to set
      */
     @Override
     public void setFile(final String file) {

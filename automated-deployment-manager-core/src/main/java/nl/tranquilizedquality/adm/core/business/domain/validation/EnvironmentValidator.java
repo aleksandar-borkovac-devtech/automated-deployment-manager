@@ -29,16 +29,17 @@ import org.springframework.validation.Validator;
  */
 public class EnvironmentValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateEnvironment.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateEnvironment.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "environment.name-empty", "No name filled in.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "environment.description-empty", "No description specified.");
-	}
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "environment.name-empty", "No name filled in.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "environment.description-empty",
+                "No description specified.");
+    }
 
 }

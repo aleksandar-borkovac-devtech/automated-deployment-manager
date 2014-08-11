@@ -90,7 +90,8 @@ public class ArtifactManagerImpl implements ArtifactManager {
                         LOG.error(msg, e);
                     }
                 } catch (final Exception e) {
-                    final String msg = "Failed to access repository! -> " + repository.getName() + " - " + repository.getRepositoryUrl();
+                    final String msg = "Failed to access repository! -> " + repository.getName() + " - "
+                            + repository.getRepositoryUrl();
 
                     if (LOG.isErrorEnabled()) {
                         LOG.error(msg, e);
@@ -105,13 +106,13 @@ public class ArtifactManagerImpl implements ArtifactManager {
     }
 
     /**
-     * Generates the download URL to use for downloading an artifact based on the artifact and
-     * repository that are passed.
+     * Generates the download URL to use for downloading an artifact based on
+     * the artifact and repository that are passed.
      * 
      * @param repository
-     *        The repository to download from.
+     *            The repository to download from.
      * @param artifact
-     *        The artifact that needs to be downloaded.
+     *            The artifact that needs to be downloaded.
      * @return Returns a {@link String} representation of the URL.
      */
     private String generateDownloadUrl(final Repository repository, final MavenArtifact artifact) {
@@ -192,8 +193,8 @@ public class ArtifactManagerImpl implements ArtifactManager {
             artifactUrl = repositoryUrl + artifactUrl;
 
             /*
-             * If the identifier is specified it should be added to the
-             * URL so it can be retrieved properly.
+             * If the identifier is specified it should be added to the URL so
+             * it can be retrieved properly.
              */
             final String extention = artifactType.getExtention();
             if (!StringUtils.isEmpty(identifier)) {
@@ -208,7 +209,7 @@ public class ArtifactManagerImpl implements ArtifactManager {
 
     /**
      * @param repositoryDao
-     *        the repositoryDao to set
+     *            the repositoryDao to set
      */
     @Required
     public void setRepositoryDao(final RepositoryDao<Repository> repositoryDao) {
@@ -217,7 +218,7 @@ public class ArtifactManagerImpl implements ArtifactManager {
 
     /**
      * @param workDirectory
-     *        the workDirectory to set
+     *            the workDirectory to set
      */
     @Required
     public void setWorkDirectory(final String workDirectory) {
@@ -226,7 +227,7 @@ public class ArtifactManagerImpl implements ArtifactManager {
 
     /**
      * @param httpUtilImpl
-     *        the httpUtilImpl to set
+     *            the httpUtilImpl to set
      */
     @Required
     public void setHttpUtil(final HttpUtil httpUtilImpl) {

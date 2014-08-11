@@ -38,7 +38,7 @@ public interface Release extends UpdatableDomainObject<Long> {
      * Sets the status of a release.
      * 
      * @param status
-     *        The status that will be set.
+     *            The status that will be set.
      */
     void setStatus(ReleaseStatus status);
 
@@ -79,15 +79,15 @@ public interface Release extends UpdatableDomainObject<Long> {
      * Sets the released date.
      * 
      * @param date
-     *        The date on which the release was performed.
+     *            The date on which the release was performed.
      */
     void setLastReleasedDate(Date date);
 
     /**
      * Retrieves the artifacts that need to be released.
      * 
-     * @return Returns a {@link List} containing the {@link MavenArtifact} objects that need to be
-     *         released.
+     * @return Returns a {@link List} containing the {@link MavenArtifact}
+     *         objects that need to be released.
      */
     List<MavenArtifact> getArtifacts();
 
@@ -95,7 +95,7 @@ public interface Release extends UpdatableDomainObject<Long> {
      * Sets the artifacts of a release.
      * 
      * @param artifacts
-     *        The artifacts that will be set.
+     *            The artifacts that will be set.
      */
     void setArtifacts(List<MavenArtifact> artifacts);
 
@@ -109,7 +109,8 @@ public interface Release extends UpdatableDomainObject<Long> {
     /**
      * Determines if the release is archived or not.
      * 
-     * @return Returns true if the release is archived otherwise it will return false.
+     * @return Returns true if the release is archived otherwise it will return
+     *         false.
      */
     boolean isArchived();
 

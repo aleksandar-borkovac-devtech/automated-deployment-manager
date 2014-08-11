@@ -9,7 +9,7 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 12 dec. 2012
  * @param <T>
- *        The implementation type.
+ *            The implementation type.
  */
 public interface DeployerDao<T extends Deployer> extends BaseDao<T, Long> {
 

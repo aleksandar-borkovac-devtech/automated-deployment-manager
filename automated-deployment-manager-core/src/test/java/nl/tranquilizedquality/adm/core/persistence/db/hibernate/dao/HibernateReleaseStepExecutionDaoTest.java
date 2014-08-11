@@ -55,153 +55,153 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class HibernateReleaseStepExecutionDaoTest extends AbstractDaoTest {
 
-	/** DAO that will be tested. */
-	@Autowired
-	private HibernateReleaseStepExecutionDao releaseStepExecutionDao;
+    /** DAO that will be tested. */
+    @Autowired
+    private HibernateReleaseStepExecutionDao releaseStepExecutionDao;
 
-	@Autowired
-	private HibernateReleaseExecutionDao releaseHistoryDao;
+    @Autowired
+    private HibernateReleaseExecutionDao releaseHistoryDao;
 
-	@Autowired
-	private HibernateReleaseDao releaseDao;
+    @Autowired
+    private HibernateReleaseDao releaseDao;
 
-	@Autowired
-	private HibernateMavenModuleDao mavenModuleDao;
+    @Autowired
+    private HibernateMavenModuleDao mavenModuleDao;
 
-	@Autowired
-	private HibernateMavenArtifactDao mavenArtifactDao;
+    @Autowired
+    private HibernateMavenArtifactDao mavenArtifactDao;
 
-	@Autowired
-	private UserDao<User> userDao;
+    @Autowired
+    private UserDao<User> userDao;
 
-	@Autowired
-	private UserGroupDao<UserGroup> userGroupDao;
+    @Autowired
+    private UserGroupDao<UserGroup> userGroupDao;
 
-	@Autowired
-	private EnvironmentDao<Environment> environmentDao;
+    @Autowired
+    private EnvironmentDao<Environment> environmentDao;
 
-	@Before
-	public void setUp() {
-		final HibernateUser user = new HibernateUser();
-		user.setActive(true);
-		user.setActiveFrom(new Date());
-		user.setCreated(new Date());
-		user.setCreatedBy("s-petrus");
-		user.setName("Salomo Petrus");
-		user.setPassword("asfdasdfas");
-		user.setUserName("s-petrus");
-		user.setPasswordSent(true);
-		user.setBlocked(false);
+    @Before
+    public void setUp() {
+        final HibernateUser user = new HibernateUser();
+        user.setActive(true);
+        user.setActiveFrom(new Date());
+        user.setCreated(new Date());
+        user.setCreatedBy("s-petrus");
+        user.setName("Salomo Petrus");
+        user.setPassword("asfdasdfas");
+        user.setUserName("s-petrus");
+        user.setPasswordSent(true);
+        user.setBlocked(false);
 
-		userDao.save(user);
-		userDao.flush();
+        userDao.save(user);
+        userDao.flush();
 
-		final List<User> users = new ArrayList<User>();
-		users.add(user);
+        final List<User> users = new ArrayList<User>();
+        users.add(user);
 
-		final HibernateUserGroup userGroup = new HibernateUserGroup();
-		userGroup.setCreated(new Date());
-		userGroup.setCreatedBy("s-petrus");
-		userGroup.setName("adminsitrators");
-		userGroup.setUsers(users);
+        final HibernateUserGroup userGroup = new HibernateUserGroup();
+        userGroup.setCreated(new Date());
+        userGroup.setCreatedBy("s-petrus");
+        userGroup.setName("adminsitrators");
+        userGroup.setUsers(users);
 
-		userGroupDao.save(userGroup);
-		userGroupDao.flush();
+        userGroupDao.save(userGroup);
+        userGroupDao.flush();
 
-		/*
-		 * Create release.
-		 */
-		final HibernateRelease release = new HibernateRelease();
-		release.setName("Sprint 1");
-		release.setReleaseDate(new Date());
-		release.setCreated(new Date());
-		release.setCreatedBy("s-petrus");
-		release.setUserGroup(userGroup);
+        /*
+         * Create release.
+         */
+        final HibernateRelease release = new HibernateRelease();
+        release.setName("Sprint 1");
+        release.setReleaseDate(new Date());
+        release.setCreated(new Date());
+        release.setCreatedBy("s-petrus");
+        release.setUserGroup(userGroup);
 
-		releaseDao.save(release);
-		releaseDao.flush();
+        releaseDao.save(release);
+        releaseDao.flush();
 
-		/*
-		 * Create module.
-		 */
-		final HibernateMavenModule module = new HibernateMavenModule();
-		module.setName("adm-dist");
-		module.setType(ArtifactType.TAR_GZIP);
-		module.setGroup("nl.Tranquilized Quality.adm");
-		module.setArtifactId("adm-dist");
-		module.setTargetSystemShutdown(true);
-		module.setTargetSystemStartup(true);
-		module.setCreated(new Date());
-		module.setCreatedBy("s-petrus");
-		module.setUserGroup(userGroup);
+        /*
+         * Create module.
+         */
+        final HibernateMavenModule module = new HibernateMavenModule();
+        module.setName("adm-dist");
+        module.setType(ArtifactType.TAR_GZIP);
+        module.setGroup("nl.Tranquilized Quality.adm");
+        module.setArtifactId("adm-dist");
+        module.setTargetSystemShutdown(true);
+        module.setTargetSystemStartup(true);
+        module.setCreated(new Date());
+        module.setCreatedBy("s-petrus");
+        module.setUserGroup(userGroup);
 
-		mavenModuleDao.save(module);
-		mavenModuleDao.flush();
+        mavenModuleDao.save(module);
+        mavenModuleDao.flush();
 
-		/*
-		 * Create artifact.
-		 */
-		final HibernateMavenArtifact artifact = new HibernateMavenArtifact();
-		artifact.setVersion("1.0.0-SNAPSHOT");
-		artifact.setParentModule(module);
-		artifact.setRelease(release);
-		artifact.setTargetSystemShutdown(true);
-		artifact.setTargetSystemStartup(true);
-		artifact.setCreated(new Date());
-		artifact.setCreatedBy("s-petrus");
-		artifact.setRank(1);
-		artifact.setUserGroup(userGroup);
+        /*
+         * Create artifact.
+         */
+        final HibernateMavenArtifact artifact = new HibernateMavenArtifact();
+        artifact.setVersion("1.0.0-SNAPSHOT");
+        artifact.setParentModule(module);
+        artifact.setRelease(release);
+        artifact.setTargetSystemShutdown(true);
+        artifact.setTargetSystemStartup(true);
+        artifact.setCreated(new Date());
+        artifact.setCreatedBy("s-petrus");
+        artifact.setRank(1);
+        artifact.setUserGroup(userGroup);
 
-		mavenArtifactDao.save(artifact);
-		mavenArtifactDao.flush();
+        mavenArtifactDao.save(artifact);
+        mavenArtifactDao.flush();
 
-		/*
-		 * Create environment.
-		 */
-		final HibernateEnvironment environment = new HibernateEnvironment();
-		environment.setName("INT");
-		environment.setDescription("Integration Test environment");
-		environment.setCreated(new Date());
-		environment.setCreatedBy("s-petrus");
+        /*
+         * Create environment.
+         */
+        final HibernateEnvironment environment = new HibernateEnvironment();
+        environment.setName("INT");
+        environment.setDescription("Integration Test environment");
+        environment.setCreated(new Date());
+        environment.setCreatedBy("s-petrus");
 
-		environmentDao.save(environment);
-		environmentDao.flush();
+        environmentDao.save(environment);
+        environmentDao.flush();
 
-		/*
-		 * Create release history.
-		 */
-		final HibernateReleaseExecution history = new HibernateReleaseExecution();
-		history.setRelease(release);
-		history.setEnvironment(environment);
-		history.setReleaseDate(new Date());
-		history.setReleaseStatus(DeployStatus.SUCCESS);
-		history.setCreated(new Date());
-		history.setCreatedBy("s-petrus");
+        /*
+         * Create release history.
+         */
+        final HibernateReleaseExecution history = new HibernateReleaseExecution();
+        history.setRelease(release);
+        history.setEnvironment(environment);
+        history.setReleaseDate(new Date());
+        history.setReleaseStatus(DeployStatus.SUCCESS);
+        history.setCreated(new Date());
+        history.setCreatedBy("s-petrus");
 
-		releaseHistoryDao.save(history);
-		releaseHistoryDao.flush();
+        releaseHistoryDao.save(history);
+        releaseHistoryDao.flush();
 
-		/*
-		 * Create step execution.
-		 */
-		final HibernateReleaseStepExecution step = new HibernateReleaseStepExecution();
-		step.setName("Backup previous installation");
-		step.setReleaseExecution(history);
-		step.setStatus(DeployStatus.SUCCESS);
-		step.setExecutionDate(new Date());
-		step.setCreated(new Date());
-		step.setCreatedBy("s-petrus");
+        /*
+         * Create step execution.
+         */
+        final HibernateReleaseStepExecution step = new HibernateReleaseStepExecution();
+        step.setName("Backup previous installation");
+        step.setReleaseExecution(history);
+        step.setStatus(DeployStatus.SUCCESS);
+        step.setExecutionDate(new Date());
+        step.setCreated(new Date());
+        step.setCreatedBy("s-petrus");
 
-		releaseStepExecutionDao.save(step);
-		releaseStepExecutionDao.flush();
-	}
+        releaseStepExecutionDao.save(step);
+        releaseStepExecutionDao.flush();
+    }
 
-	@Test
-	public void testFindAll() {
-		final List<HibernateReleaseStepExecution> steps = releaseStepExecutionDao.findAll();
+    @Test
+    public void testFindAll() {
+        final List<HibernateReleaseStepExecution> steps = releaseStepExecutionDao.findAll();
 
-		assertNotNull("No steps!", steps);
-		assertEquals("Invalid number of steps!", 1, steps.size());
-	}
+        assertNotNull("No steps!", steps);
+        assertEquals("Invalid number of steps!", 1, steps.size());
+    }
 
 }

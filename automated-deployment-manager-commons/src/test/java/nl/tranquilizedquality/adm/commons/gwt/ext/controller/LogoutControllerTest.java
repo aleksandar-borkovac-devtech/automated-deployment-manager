@@ -21,28 +21,28 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class LogoutControllerTest {
 
-	/** Controller that will be tested. */
-	private LogoutController logoutController;
+    /** Controller that will be tested. */
+    private LogoutController logoutController;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		logoutController = new LogoutController();
-		logoutController.setViewName("logout");
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        logoutController = new LogoutController();
+        logoutController.setViewName("logout");
+    }
 
-	@Test
-	public void testHandleRequest() throws Exception {
-		final HttpServletRequest request = new MockHttpServletRequest("GET", "");
-		final HttpServletResponse response = new MockHttpServletResponse();
+    @Test
+    public void testHandleRequest() throws Exception {
+        final HttpServletRequest request = new MockHttpServletRequest("GET", "");
+        final HttpServletResponse response = new MockHttpServletResponse();
 
-		final ModelAndView modelAndView = logoutController.handleRequest(request, response);
+        final ModelAndView modelAndView = logoutController.handleRequest(request, response);
 
-		final String viewName = modelAndView.getViewName();
+        final String viewName = modelAndView.getViewName();
 
-		assertEquals("logout", viewName);
-	}
+        assertEquals("logout", viewName);
+    }
 
 }

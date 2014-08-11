@@ -30,117 +30,117 @@ import nl.tranquilizedquality.adm.commons.domain.PagingSearchCommand;
  */
 public class UserSearchCommand extends PagingSearchCommand {
 
-	/**
-	 * Unique identifier used to search for users.
-	 */
-	private static final long serialVersionUID = -3591229733503541264L;
+    /**
+     * Unique identifier used to search for users.
+     */
+    private static final long serialVersionUID = -3591229733503541264L;
 
-	/** The name of the users to search for. */
-	private String name;
+    /** The name of the users to search for. */
+    private String name;
 
-	/** The user name to search for. */
-	private String userName;
+    /** The user name to search for. */
+    private String userName;
 
-	/** The state of the user account. */
-	private Boolean active;
+    /** The state of the user account. */
+    private Boolean active;
 
-	/** The scope where the user has a role in. */
-	private Scope scope;
+    /** The scope where the user has a role in. */
+    private Scope scope;
 
-	private String activeValue;
+    private String activeValue;
 
-	/** The roles a user should have. */
-	private List<Role> userRoles;
+    /** The roles a user should have. */
+    private List<Role> userRoles;
 
-	/**
-	 * Default constructor.
-	 */
-	public UserSearchCommand() {
-		active = true;
-		userRoles = new ArrayList<Role>();
-	}
+    /**
+     * Default constructor.
+     */
+    public UserSearchCommand() {
+        active = true;
+        userRoles = new ArrayList<Role>();
+    }
 
-	public Boolean getActive() {
-		return active;
-	}
+    public Boolean getActive() {
+        return active;
+    }
 
-	public void setActive(final Boolean active) {
-		this.active = active;
-	}
+    public void setActive(final Boolean active) {
+        this.active = active;
+    }
 
-	/**
-	 * @return the activeValue
-	 */
-	public String getActiveValue() {
-		return activeValue;
-	}
+    /**
+     * @return the activeValue
+     */
+    public String getActiveValue() {
+        return activeValue;
+    }
 
-	/**
-	 * @param activeValue
-	 *            the activeValue to set
-	 */
-	public void setActiveValue(final String activeValue) {
-		if ("Active".equals(activeValue)) {
-			this.active = true;
-		}
-		else if ("Non Active".equals(activeValue)) {
-			this.active = false;
-		}
-		else {
-			this.active = null;
-		}
+    /**
+     * @param activeValue
+     *            the activeValue to set
+     */
+    public void setActiveValue(final String activeValue) {
+        if ("Active".equals(activeValue)) {
+            this.active = true;
+        }
+        else if ("Non Active".equals(activeValue)) {
+            this.active = false;
+        }
+        else {
+            this.active = null;
+        }
 
-		this.activeValue = activeValue;
-	}
+        this.activeValue = activeValue;
+    }
 
-	/**
-	 * @return the scope
-	 */
-	public Scope getScope() {
-		return scope;
-	}
+    /**
+     * @return the scope
+     */
+    public Scope getScope() {
+        return scope;
+    }
 
-	/**
-	 * @param scope
-	 *            the scope to set
-	 */
-	public void setScope(final Scope scope) {
-		this.scope = scope;
-	}
+    /**
+     * @param scope
+     *            the scope to set
+     */
+    public void setScope(final Scope scope) {
+        this.scope = scope;
+    }
 
-	/**
-	 * @return the userRoles
-	 */
-	public List<Role> getUserRoles() {
-		return userRoles;
-	}
+    /**
+     * @return the userRoles
+     */
+    public List<Role> getUserRoles() {
+        return userRoles;
+    }
 
-	/**
-	 * @param userRoles
-	 *            the userRoles to set
-	 */
-	public void setUserRoles(final List<Role> userRoles) {
-		this.userRoles = userRoles;
-	}
+    /**
+     * @param userRoles
+     *            the userRoles to set
+     */
+    public void setUserRoles(final List<Role> userRoles) {
+        this.userRoles = userRoles;
+    }
 
-	public void addRole(final Role role) {
-		this.userRoles.add(role);
-	}
+    public void addRole(final Role role) {
+        this.userRoles.add(role);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(final String name) {
-		this.name = name;
-	}
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserName(final String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(final String userName) {
+        this.userName = userName;
+    }
 
 }

@@ -57,8 +57,8 @@ public class HibernateDeployerParameter extends AbstractUpdatableDomainObject<Lo
     private DeployerParameterType type;
 
     /**
-     * Determines the rank of the parameter. e.g. if you specify 2 it will be the second parameter
-     * passed to the script.
+     * Determines the rank of the parameter. e.g. if you specify 2 it will be
+     * the second parameter passed to the script.
      */
     @BusinessField
     private Integer rank;
@@ -80,7 +80,7 @@ public class HibernateDeployerParameter extends AbstractUpdatableDomainObject<Lo
 
     /**
      * @param value
-     *        the value of the parameter.
+     *            the value of the parameter.
      */
     public void setValue(final String value) {
         this.value = value;
@@ -96,7 +96,7 @@ public class HibernateDeployerParameter extends AbstractUpdatableDomainObject<Lo
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final DeployerParameterType type) {
         this.type = type;

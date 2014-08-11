@@ -44,132 +44,132 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class EnvironmentManagementPanel extends AbstractSearchPanel<ClientEnvironmentSearchCommand> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The name to search on. */
-	private TextField<String> name;
+    /** The name to search on. */
+    private TextField<String> name;
 
-	/**
-	 * The {@link TextField} containing the prefix that will be used when
-	 * extracting environment specific information from .
-	 */
-	private TextField<String> prefix;
+    /**
+     * The {@link TextField} containing the prefix that will be used when
+     * extracting environment specific information from .
+     */
+    private TextField<String> prefix;
 
-	/**
-	 * Default constructor.
-	 */
-	public EnvironmentManagementPanel() {
-		icons = Registry.get(AbstractModule.ICONS);
+    /**
+     * Default constructor.
+     */
+    public EnvironmentManagementPanel() {
+        icons = Registry.get(AbstractModule.ICONS);
 
-		sc = new ClientEnvironmentSearchCommand();
+        sc = new ClientEnvironmentSearchCommand();
 
-		northHeight = 200;
+        northHeight = 200;
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected AbstractGridPanel createGridPanel() {
-		return new EnvironmentTable(sc);
-	}
+    @Override
+    protected AbstractGridPanel createGridPanel() {
+        return new EnvironmentTable(sc);
+    }
 
-	@Override
-	protected FormPanel createFilterPanel() {
-		final FormPanel formPanel = new FormPanel();
-		formPanel.setHeading("Search criteria");
-		formPanel.setFrame(true);
-		formPanel.setLabelWidth(200);
-		formPanel.setButtonAlign(HorizontalAlignment.LEFT);
-		formPanel.setIcon(AbstractImagePrototype.create(icons.findEnvironment()));
-		formPanel.setHeight(160);
+    @Override
+    protected FormPanel createFilterPanel() {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setHeading("Search criteria");
+        formPanel.setFrame(true);
+        formPanel.setLabelWidth(200);
+        formPanel.setButtonAlign(HorizontalAlignment.LEFT);
+        formPanel.setIcon(AbstractImagePrototype.create(icons.findEnvironment()));
+        formPanel.setHeight(160);
 
-		/*
-		 * Add name.
-		 */
-		name = new TextField<String>();
-		name.setId("environment-management-name");
-		name.setName("name");
-		name.setFieldLabel("Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add name.
+         */
+        name = new TextField<String>();
+        name.setId("environment-management-name");
+        name.setName("name");
+        name.setFieldLabel("Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add environment name.
-		 */
-		prefix = new TextField<String>();
-		prefix.setId("environment-management-prefix");
-		prefix.setName("prefix");
-		prefix.setFieldLabel("Prefix");
-		prefix.setAllowBlank(true);
-		formPanel.add(prefix);
+        /*
+         * Add environment name.
+         */
+        prefix = new TextField<String>();
+        prefix.setId("environment-management-prefix");
+        prefix.setName("prefix");
+        prefix.setFieldLabel("Prefix");
+        prefix.setAllowBlank(true);
+        formPanel.add(prefix);
 
-		/*
-		 * Add search button.
-		 */
-		final Button search = new Button("Search");
-		search.setIcon(AbstractImagePrototype.create(icons.find()));
+        /*
+         * Add search button.
+         */
+        final Button search = new Button("Search");
+        search.setIcon(AbstractImagePrototype.create(icons.find()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				for (final FieldBinding fieldBinding : fieldBindings) {
-					fieldBinding.updateModel();
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                for (final FieldBinding fieldBinding : fieldBindings) {
+                    fieldBinding.updateModel();
+                }
 
-				search();
-			}
+                search();
+            }
 
-		};
-		search.addSelectionListener(listener);
+        };
+        search.addSelectionListener(listener);
 
-		formPanel.addButton(search);
+        formPanel.addButton(search);
 
-		return formPanel;
-	}
+        return formPanel;
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Setup layout.
+         */
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		/*
-		 * Create the filter panel.
-		 */
-		formPanel = createFilterPanel();
+        /*
+         * Create the filter panel.
+         */
+        formPanel = createFilterPanel();
 
-		/*
-		 * Create grid panel.
-		 */
-		gridPanel = createGridPanel();
+        /*
+         * Create grid panel.
+         */
+        gridPanel = createGridPanel();
 
-		/*
-		 * Bind model.
-		 */
-		bindModel(sc);
+        /*
+         * Bind model.
+         */
+        bindModel(sc);
 
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
-		northData.setCollapsible(true);
-		northData.setFloatable(true);
-		northData.setSplit(true);
-		northData.setMaxSize(northMaxHeight);
-		northData.setSize(northHeight);
-		northData.setSplit(true);
-		northData.setMargins(new Margins(1, 1, 1, 1));
+        /*
+         * Setup layout.
+         */
+        final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
+        northData.setCollapsible(true);
+        northData.setFloatable(true);
+        northData.setSplit(true);
+        northData.setMaxSize(northMaxHeight);
+        northData.setSize(northHeight);
+        northData.setSplit(true);
+        northData.setMargins(new Margins(1, 1, 1, 1));
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
-		centerData.setMargins(new Margins(0, 1, 1, 1));
-		centerData.setSplit(true);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        centerData.setMargins(new Margins(0, 1, 1, 1));
+        centerData.setSplit(true);
 
-		add(formPanel, northData);
-		add(gridPanel, centerData);
-	}
+        add(formPanel, northData);
+        add(gridPanel, centerData);
+    }
 
 }

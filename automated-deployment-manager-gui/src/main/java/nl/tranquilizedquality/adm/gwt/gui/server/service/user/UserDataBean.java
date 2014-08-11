@@ -12,27 +12,27 @@ import java.util.Map;
  */
 public class UserDataBean {
 
-	/** The data used for a specific user. */
-	private final Map<String, Object> data;
+    /** The data used for a specific user. */
+    private final Map<String, Object> data;
 
-	/**
-	 * Default constructor.
-	 */
-	public UserDataBean() {
-		data = new HashMap<String, Object>();
-	}
+    /**
+     * Default constructor.
+     */
+    public UserDataBean() {
+        data = new HashMap<String, Object>();
+    }
 
-	public void addData(final String key, final Object data) {
-		this.data.put(key, data);
-	}
+    public void addData(final String key, final Object data) {
+        this.data.put(key, data);
+    }
 
-	public void removeData(final String key) {
-		this.data.remove(key);
-	}
+    public void removeData(final String key) {
+        this.data.remove(key);
+    }
 
-	@SuppressWarnings("unchecked")
-	public <X> X getData(final String key) {
-		return (X) this.data.get(key);
-	}
+    @SuppressWarnings("unchecked")
+    public <X> X getData(final String key) {
+        return (X) this.data.get(key);
+    }
 
 }

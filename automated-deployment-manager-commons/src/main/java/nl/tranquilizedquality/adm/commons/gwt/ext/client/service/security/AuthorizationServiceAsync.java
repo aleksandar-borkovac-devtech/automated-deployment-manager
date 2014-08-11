@@ -17,10 +17,10 @@ public interface AuthorizationServiceAsync {
      * Checks if the logged in user is authorized.
      * 
      * @param authority
-     *        The authority to check on.
+     *            The authority to check on.
      * @param callback
-     *        The {@link AsyncCallback} used to return true if the user is
-     *        authorized or false if the user is not authorized.
+     *            The {@link AsyncCallback} used to return true if the user is
+     *            authorized or false if the user is not authorized.
      */
     void isLoggedInUserAuthorized(String authority, AsyncCallback<Boolean> callback);
 
@@ -28,7 +28,8 @@ public interface AuthorizationServiceAsync {
      * Retrieves all privileges the logged in user has.
      * 
      * @param callback
-     *        The {@link AsyncCallback} used to return the privileges of a logged in user.
+     *            The {@link AsyncCallback} used to return the privileges of a
+     *            logged in user.
      */
     void findLoggedInUserPrivileges(AsyncCallback<List<String>> callback);
 

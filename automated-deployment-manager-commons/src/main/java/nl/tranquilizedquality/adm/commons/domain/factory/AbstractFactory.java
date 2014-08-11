@@ -7,18 +7,19 @@ import java.util.List;
 import nl.tranquilizedquality.adm.commons.domain.DomainObject;
 
 /**
- * Factory for transforming client side beans to persistent beans and visa versa.
+ * Factory for transforming client side beans to persistent beans and visa
+ * versa.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <ClientType>
- *        The client side implementation.
+ *            The client side implementation.
  * @param <PersistentType>
- *        The persistent type side implementation.
+ *            The persistent type side implementation.
  * @param <InterfaceType>
- *        The interface of the domain object.
+ *            The interface of the domain object.
  */
-@SuppressWarnings({ "unchecked", "rawtypes" })
+@SuppressWarnings({"unchecked", "rawtypes" })
 public abstract class AbstractFactory<ClientType extends DomainObject, PersistentType extends DomainObject, InterfaceType extends DomainObject> {
 
     /**
@@ -29,10 +30,11 @@ public abstract class AbstractFactory<ClientType extends DomainObject, Persisten
     protected abstract ClientType createNewClientBean();
 
     /**
-     * Transforms a single {@link InterfaceTye} into a {@link ClientType} object.
+     * Transforms a single {@link InterfaceTye} into a {@link ClientType}
+     * object.
      * 
      * @param bean
-     *        The object that will be transformed.
+     *            The object that will be transformed.
      * @return Returns a client side representation that has all the values of
      *         the passed in bean.
      */
@@ -44,12 +46,12 @@ public abstract class AbstractFactory<ClientType extends DomainObject, Persisten
     }
 
     /**
-     * Transforms all InterfaceType objects in the passed in {@link Collection} into a
-     * ClientType object.
+     * Transforms all InterfaceType objects in the passed in {@link Collection}
+     * into a ClientType object.
      * 
      * @param beans
-     *        the {@link Collection} containing all the {@link Privilege} objects that
-     *        will be transformed.
+     *            the {@link Collection} containing all the {@link Privilege}
+     *            objects that will be transformed.
      * @return Returns a {@link List} containing objects that were passed in.
      */
     public List<ClientType> createClientBeans(final Collection<InterfaceType> beans) {
@@ -71,7 +73,7 @@ public abstract class AbstractFactory<ClientType extends DomainObject, Persisten
      * Transforms a single bean into a persistent type object.
      * 
      * @param bean
-     *        The object that will be transformed.
+     *            The object that will be transformed.
      * @return Returns a persistent object that has all the values of the passed
      *         in bean.
      */
@@ -83,12 +85,12 @@ public abstract class AbstractFactory<ClientType extends DomainObject, Persisten
     }
 
     /**
-     * Transforms all objects in the passed in {@link Collection} into a persistent
-     * object.
+     * Transforms all objects in the passed in {@link Collection} into a
+     * persistent object.
      * 
      * @param beans
-     *        the {@link Collection} containing all the objects that will be
-     *        transformed.
+     *            the {@link Collection} containing all the objects that will be
+     *            transformed.
      * @return Returns a {@link List} containing persistent objects that were
      *         passed in.
      */

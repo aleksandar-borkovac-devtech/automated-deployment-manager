@@ -22,109 +22,109 @@ import org.springframework.security.core.userdetails.User;
  */
 public class LoggedInUserAspect {
 
-	/** Logger for this class. */
-	private static final Log log = LogFactory.getLog(LoggedInUserAspect.class);
+    /** Logger for this class. */
+    private static final Log log = LogFactory.getLog(LoggedInUserAspect.class);
 
-	/** DAO used to retrieve the ADM user. */
-	private UserDao userDao;
+    /** DAO used to retrieve the ADM user. */
+    private UserDao userDao;
 
-	/**
-	 * @return
-	 */
-	private nl.tranquilizedquality.adm.commons.business.domain.User findLoggedInUser() {
-		/*
-		 * Set the logged in user. This is extracted from the manager itself
-		 * since it contains security specific code which should not be mingled
-		 * in the manager class. This way you separate the concerns and it's
-		 * easier to switch to other type of security.
-		 */
-		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    /**
+     * @return
+     */
+    private nl.tranquilizedquality.adm.commons.business.domain.User findLoggedInUser() {
+        /*
+         * Set the logged in user. This is extracted from the manager itself
+         * since it contains security specific code which should not be mingled
+         * in the manager class. This way you separate the concerns and it's
+         * easier to switch to other type of security.
+         */
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		/*
-		 * Return null if there is no logged in user.
-		 */
-		if (authentication == null) {
-			if (log.isWarnEnabled()) {
-				log.warn("No authentication available! No user logged in.");
-			}
+        /*
+         * Return null if there is no logged in user.
+         */
+        if (authentication == null) {
+            if (log.isWarnEnabled()) {
+                log.warn("No authentication available! No user logged in.");
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		final User principal = (User) authentication.getPrincipal();
-		final String username = principal.getUsername();
-		principal.getAuthorities();
+        final User principal = (User) authentication.getPrincipal();
+        final String username = principal.getUsername();
+        principal.getAuthorities();
 
-		final nl.tranquilizedquality.adm.commons.business.domain.User boaamUser = userDao.findActiveUserByUserName(username);
+        final nl.tranquilizedquality.adm.commons.business.domain.User boaamUser = userDao.findActiveUserByUserName(username);
 
-		return boaamUser;
-	}
+        return boaamUser;
+    }
 
-	@SuppressWarnings("rawtypes")
-	public void processDomainObject(final AbstractInsertableDomainObject object) {
-		if (log.isTraceEnabled()) {
-			log.trace("Processing domain object " + object.toString());
-		}
+    @SuppressWarnings("rawtypes")
+    public void processDomainObject(final AbstractInsertableDomainObject object) {
+        if (log.isTraceEnabled()) {
+            log.trace("Processing domain object " + object.toString());
+        }
 
-		final nl.tranquilizedquality.adm.commons.business.domain.User damUser = findLoggedInUser();
+        final nl.tranquilizedquality.adm.commons.business.domain.User damUser = findLoggedInUser();
 
-		/*
-		 * Return if there is no logged in user.
-		 */
-		if (damUser == null) {
-			return;
-		}
+        /*
+         * Return if there is no logged in user.
+         */
+        if (damUser == null) {
+            return;
+        }
 
-		object.setCreated(new Date());
+        object.setCreated(new Date());
 
-		final String createdBy = damUser.getUserName();
-		object.setCreatedBy(createdBy);
-	}
+        final String createdBy = damUser.getUserName();
+        object.setCreatedBy(createdBy);
+    }
 
-	@SuppressWarnings({ "rawtypes" })
-	public void processUpdateAbleObject(final AbstractUpdatableDomainObject object) {
-		/*
-		 * Only perform this if it's a newly created domain object.
-		 */
-		if (!object.isPersistent()) {
-			processDomainObject(object);
-		}
+    @SuppressWarnings({"rawtypes" })
+    public void processUpdateAbleObject(final AbstractUpdatableDomainObject object) {
+        /*
+         * Only perform this if it's a newly created domain object.
+         */
+        if (!object.isPersistent()) {
+            processDomainObject(object);
+        }
 
-		if (log.isTraceEnabled()) {
-			log.trace("Processing updatable object " + object.toString());
-		}
+        if (log.isTraceEnabled()) {
+            log.trace("Processing updatable object " + object.toString());
+        }
 
-		final nl.tranquilizedquality.adm.commons.business.domain.User damUser = findLoggedInUser();
+        final nl.tranquilizedquality.adm.commons.business.domain.User damUser = findLoggedInUser();
 
-		/*
-		 * Return if there is no logged in user or if the object is a new
-		 * object. The altered by stuff will only be filled in when updating a
-		 * user.
-		 */
-		if (damUser == null || !object.isPersistent()) {
-			return;
-		}
+        /*
+         * Return if there is no logged in user or if the object is a new
+         * object. The altered by stuff will only be filled in when updating a
+         * user.
+         */
+        if (damUser == null || !object.isPersistent()) {
+            return;
+        }
 
-		object.setAltered(new Date());
+        object.setAltered(new Date());
 
-		final String alteredBy = damUser.getUserName();
-		object.setAlteredBy(alteredBy);
-	}
+        final String alteredBy = damUser.getUserName();
+        object.setAlteredBy(alteredBy);
+    }
 
-	@SuppressWarnings("rawtypes")
-	public void processCollection(final Collection<AbstractInsertableDomainObject> collection) {
-		for (final AbstractInsertableDomainObject domainObject : collection) {
-			processDomainObject(domainObject);
-		}
-	}
+    @SuppressWarnings("rawtypes")
+    public void processCollection(final Collection<AbstractInsertableDomainObject> collection) {
+        for (final AbstractInsertableDomainObject domainObject : collection) {
+            processDomainObject(domainObject);
+        }
+    }
 
-	/**
-	 * @param userDao
-	 *            the userDao to set
-	 */
-	@Required
-	public void setUserDao(final UserDao userDao) {
-		this.userDao = userDao;
-	}
+    /**
+     * @param userDao
+     *            the userDao to set
+     */
+    @Required
+    public void setUserDao(final UserDao userDao) {
+        this.userDao = userDao;
+    }
 
 }

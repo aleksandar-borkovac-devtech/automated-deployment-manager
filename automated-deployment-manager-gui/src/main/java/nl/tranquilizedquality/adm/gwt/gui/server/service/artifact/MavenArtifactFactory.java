@@ -26,16 +26,16 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.artifact.ClientMavenArtif
  * @since 24 sep. 2011
  */
 class MavenArtifactFactory extends
-		AbstractFactory<ClientMavenArtifact, HibernateMavenArtifact, MavenArtifact> {
+        AbstractFactory<ClientMavenArtifact, HibernateMavenArtifact, MavenArtifact> {
 
-	@Override
-	protected ClientMavenArtifact createNewClientBean() {
-		return new ClientMavenArtifact();
-	}
+    @Override
+    protected ClientMavenArtifact createNewClientBean() {
+        return new ClientMavenArtifact();
+    }
 
-	@Override
-	protected HibernateMavenArtifact createNewPersistentBean() {
-		return new HibernateMavenArtifact();
-	}
+    @Override
+    protected HibernateMavenArtifact createNewPersistentBean() {
+        return new HibernateMavenArtifact();
+    }
 
 }

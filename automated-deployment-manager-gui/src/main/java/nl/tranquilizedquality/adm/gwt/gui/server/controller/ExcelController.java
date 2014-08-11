@@ -25,40 +25,41 @@ import org.springframework.web.servlet.mvc.Controller;
  */
 public class ExcelController extends AbstractController {
 
-	/** The manager that will be used to retrieve users. */
-	private UserManager userManager;
+    /** The manager that will be used to retrieve users. */
+    private UserManager userManager;
 
-	/** Data bean to retrieve user specific data. */
-	private UserDataBean userDataBean;
+    /** Data bean to retrieve user specific data. */
+    private UserDataBean userDataBean;
 
-	@Override
-	protected ModelAndView handleRequestInternal(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+    @Override
+    protected ModelAndView handleRequestInternal(final HttpServletRequest request, final HttpServletResponse response)
+            throws Exception {
 
-		final UserSearchCommand sc = userDataBean.getData("sc");
+        final UserSearchCommand sc = userDataBean.getData("sc");
 
-		final List<User> users = userManager.findUsers(sc);
+        final List<User> users = userManager.findUsers(sc);
 
-		final ModelAndView mav = new ModelAndView("xl", "userlist", users);
+        final ModelAndView mav = new ModelAndView("xl", "userlist", users);
 
-		return mav;
-	}
+        return mav;
+    }
 
-	/**
-	 * @param userManager
-	 *            the userManager to set
-	 */
-	@Required
-	public void setUserManager(final UserManager userManager) {
-		this.userManager = userManager;
-	}
+    /**
+     * @param userManager
+     *            the userManager to set
+     */
+    @Required
+    public void setUserManager(final UserManager userManager) {
+        this.userManager = userManager;
+    }
 
-	/**
-	 * @param userDataBean
-	 *            the userDataBean to set
-	 */
-	@Required
-	public void setUserDataBean(final UserDataBean userDataBean) {
-		this.userDataBean = userDataBean;
-	}
+    /**
+     * @param userDataBean
+     *            the userDataBean to set
+     */
+    @Required
+    public void setUserDataBean(final UserDataBean userDataBean) {
+        this.userDataBean = userDataBean;
+    }
 
 }

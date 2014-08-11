@@ -21,7 +21,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * {@link InjectableEmbedder} that runs the add destination host story test scenarios.
+ * {@link InjectableEmbedder} that runs the add destination host story test
+ * scenarios.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 8 mrt. 2013
@@ -29,7 +30,7 @@ import org.junit.runner.RunWith;
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure()
 @UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false)
-@UsingSpring(resources = { "classpath:itest-destination-host-context.xml" })
+@UsingSpring(resources = {"classpath:itest-destination-host-context.xml" })
 public class AdmAddDestinationHostStory extends InjectableEmbedder {
 
     @Test
@@ -39,7 +40,8 @@ public class AdmAddDestinationHostStory extends InjectableEmbedder {
     }
 
     protected List<String> storyPaths() {
-        return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/add-destination-host.story", "");
+        return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"),
+                "**/add-destination-host.story", "");
     }
 
 }

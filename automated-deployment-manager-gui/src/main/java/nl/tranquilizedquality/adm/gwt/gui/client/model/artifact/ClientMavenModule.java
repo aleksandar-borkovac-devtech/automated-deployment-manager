@@ -96,7 +96,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -112,7 +112,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final ArtifactType type) {
         this.type = type;
@@ -128,7 +128,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param group
-     *        the group to set
+     *            the group to set
      */
     public void setGroup(final String group) {
         this.group = group;
@@ -144,7 +144,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param artifactId
-     *        the artifactId to set
+     *            the artifactId to set
      */
     public void setArtifactId(final String artifactId) {
         this.artifactId = artifactId;
@@ -160,7 +160,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param targetSystemShutdown
-     *        the targetSystemShutdown to set
+     *            the targetSystemShutdown to set
      */
     public void setTargetSystemShutdown(final Boolean targetSystemShutdown) {
         this.targetSystemShutdown = targetSystemShutdown;
@@ -176,7 +176,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param targetSystemStartup
-     *        the targetSystemStartup to set
+     *            the targetSystemStartup to set
      */
     public void setTargetSystemStartup(final Boolean targetSystemStartup) {
         this.targetSystemStartup = targetSystemStartup;
@@ -192,7 +192,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param destination
-     *        the destination to set
+     *            the destination to set
      */
     @Override
     public void setDestinations(final List<Destination> destinations) {
@@ -206,7 +206,7 @@ public class ClientMavenModule extends AbstractUpdatableBeanModel<Long> implemen
 
     /**
      * @param identifier
-     *        the identifier to set
+     *            the identifier to set
      */
     public void setIdentifier(final String identifier) {
         this.identifier = identifier;

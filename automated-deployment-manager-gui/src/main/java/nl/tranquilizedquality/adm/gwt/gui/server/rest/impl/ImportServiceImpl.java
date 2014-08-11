@@ -23,74 +23,74 @@ import org.springframework.validation.Errors;
  */
 public class ImportServiceImpl implements ImportService {
 
-	/** logger for this class */
-	private static final Log LOGGER = LogFactory.getLog(ImportServiceImpl.class);
+    /** logger for this class */
+    private static final Log LOGGER = LogFactory.getLog(ImportServiceImpl.class);
 
-	/** The manager used to store the imported scope. */
-	private ScopeManager scopeManager;
+    /** The manager used to store the imported scope. */
+    private ScopeManager scopeManager;
 
-	/** The session object that keeps state of the imported scope data. */
-	private ImportedScope importedScope;
+    /** The session object that keeps state of the imported scope data. */
+    private ImportedScope importedScope;
 
-	@Override
-	public Response importScope(final Scope scope) {
-		/*
-		 * Check the input.
-		 */
-		if (scope == null) {
-			final String message = "Invalid scope provided: " + scope;
-			if (LOGGER.isErrorEnabled()) {
-				LOGGER.error(message);
-			}
+    @Override
+    public Response importScope(final Scope scope) {
+        /*
+         * Check the input.
+         */
+        if (scope == null) {
+            final String message = "Invalid scope provided: " + scope;
+            if (LOGGER.isErrorEnabled()) {
+                LOGGER.error(message);
+            }
 
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("<html><body>" + message + "</body></html>").build();
-		}
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity("<html><body>" + message + "</body></html>").build();
+        }
 
-		/*
-		 * Set the session scope.
-		 */
-		this.importedScope.setScope(scope);
+        /*
+         * Set the session scope.
+         */
+        this.importedScope.setScope(scope);
 
-		/*
-		 * Store the scope.
-		 */
-		final Errors errors = new BindException(scope, scope.getClass().getName());
+        /*
+         * Store the scope.
+         */
+        final Errors errors = new BindException(scope, scope.getClass().getName());
 
-		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info("About to import -> " + scope);
-		}
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info("About to import -> " + scope);
+        }
 
-		final Scope importedScope = scopeManager.importScope(scope, errors);
+        final Scope importedScope = scopeManager.importScope(scope, errors);
 
-		/*
-		 * Reset the session scope.
-		 */
-		this.importedScope.setScope(null);
-		this.importedScope.setErrorMessage("Imported scope successfully");
+        /*
+         * Reset the session scope.
+         */
+        this.importedScope.setScope(null);
+        this.importedScope.setErrorMessage("Imported scope successfully");
 
-		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info("Imported -> " + importedScope);
-		}
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info("Imported -> " + importedScope);
+        }
 
-		return Response.ok().entity("<html><body>Imported scope successfully!</body></html>").build();
-	}
+        return Response.ok().entity("<html><body>Imported scope successfully!</body></html>").build();
+    }
 
-	/**
-	 * @param scopeManager
-	 *            the scopeManager to set
-	 */
-	@Required
-	public void setScopeManager(final ScopeManager scopeManager) {
-		this.scopeManager = scopeManager;
-	}
+    /**
+     * @param scopeManager
+     *            the scopeManager to set
+     */
+    @Required
+    public void setScopeManager(final ScopeManager scopeManager) {
+        this.scopeManager = scopeManager;
+    }
 
-	/**
-	 * @param importedScope
-	 *            the importedScope to set
-	 */
-	@Required
-	public void setImportedScope(final ImportedScope importedScope) {
-		this.importedScope = importedScope;
-	}
+    /**
+     * @param importedScope
+     *            the importedScope to set
+     */
+    @Required
+    public void setImportedScope(final ImportedScope importedScope) {
+        this.importedScope = importedScope;
+    }
 
 }

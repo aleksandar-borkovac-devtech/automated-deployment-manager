@@ -32,7 +32,7 @@ public class PrivilegeSearchCommand extends PagingSearchCommand {
 
     /**
      * @param valid
-     *        the valid to set
+     *            the valid to set
      */
     public void setValid(final Boolean valid) {
         this.valid = valid;
@@ -47,7 +47,7 @@ public class PrivilegeSearchCommand extends PagingSearchCommand {
 
     /**
      * @param scope
-     *        the scope to set
+     *            the scope to set
      */
     public void setScope(final Scope scope) {
         this.scope = scope;

@@ -36,12 +36,12 @@ public class FileExtractorUtil {
      * directory.
      * 
      * @param tarGzipFile
-     *        The tar.gz file that will be extracted.
+     *            The tar.gz file that will be extracted.
      * @param destinationDirectory
-     *        The destination directory.
+     *            The destination directory.
      * @throws Exception
-     *         Is thrown when something goes wrong during extraction of the
-     *         file.
+     *             Is thrown when something goes wrong during extraction of the
+     *             file.
      */
     public static void extractTarGz(final File tarGzipFile, final File destinationDirectory) throws Exception {
         destinationDirectory.mkdirs();
@@ -53,7 +53,8 @@ public class FileExtractorUtil {
             final File destPath = new File(destinationFileName);
 
             /*
-             * FIXME: For some reason this returns true if we extract a *.rsh file on Linux.
+             * FIXME: For some reason this returns true if we extract a *.rsh
+             * file on Linux.
              */
             if (tarEntry.isDirectory() && !StringUtils.contains(tarEntry.getName(), ".rsh")) {
                 destPath.mkdirs();

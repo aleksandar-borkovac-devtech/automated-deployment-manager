@@ -60,8 +60,8 @@ public class HostManagementManagerImpl implements HostManagementManager {
     @Override
     public void cleanUp() {
         /*
-         * FIXME: Change other ITESTS to create a host within the story so they are not dependent on
-         * the initial data.
+         * FIXME: Change other ITESTS to create a host within the story so they
+         * are not dependent on the initial data.
          */
         final List<UserGroup> userGroups = userGroupDao.findAll();
         final List<DestinationHost> hosts = destinationHostDao.findAll();

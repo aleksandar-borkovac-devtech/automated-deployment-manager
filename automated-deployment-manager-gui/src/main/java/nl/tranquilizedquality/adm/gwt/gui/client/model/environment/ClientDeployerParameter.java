@@ -39,8 +39,8 @@ public class ClientDeployerParameter extends AbstractUpdatableBeanModel<Long> im
     private DeployerParameterType type;
 
     /**
-     * Determines the rank of the parameter. e.g. if you specify 2 it will be the second parameter
-     * passed to the script.
+     * Determines the rank of the parameter. e.g. if you specify 2 it will be
+     * the second parameter passed to the script.
      */
     private Integer rank;
 
@@ -63,7 +63,7 @@ public class ClientDeployerParameter extends AbstractUpdatableBeanModel<Long> im
 
     /**
      * @param path
-     *        the path to set
+     *            the path to set
      */
     public void setValue(final String path) {
         this.value = path;
@@ -76,7 +76,7 @@ public class ClientDeployerParameter extends AbstractUpdatableBeanModel<Long> im
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final DeployerParameterType type) {
         this.type = type;

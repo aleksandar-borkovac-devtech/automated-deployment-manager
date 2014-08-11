@@ -36,143 +36,143 @@ import com.google.code.simplestuff.annotation.BusinessField;
 @Entity
 @Table(name = "ADM_PRIVILEGES", schema = "SEC")
 public class HibernatePrivilege extends AbstractUpdatableDomainObject<Long> implements Privilege {
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = -2833572827686745304L;
+    private static final long serialVersionUID = -2833572827686745304L;
 
-	/** The name of the privilege. */
-	@BusinessField
-	private String name;
+    /** The name of the privilege. */
+    @BusinessField
+    private String name;
 
-	/** The description of this privilege. */
-	@BusinessField
-	private String description;
+    /** The description of this privilege. */
+    @BusinessField
+    private String description;
 
-	/** Deterimines if this privilege is still valid. */
-	@BusinessField
-	private Boolean valid;
+    /** Deterimines if this privilege is still valid. */
+    @BusinessField
+    private Boolean valid;
 
-	/** The scope this privilege is part of. */
-	@BusinessField
-	private Scope scope;
+    /** The scope this privilege is part of. */
+    @BusinessField
+    private Scope scope;
 
-	/** The roles where this privilege is used in. */
-	private Set<Role> roles;
+    /** The roles where this privilege is used in. */
+    private Set<Role> roles;
 
-	/**
-	 * @return the id
-	 */
-	@Override
-	@Id
-	@Column(name = "ID")
-	@SequenceGenerator(name = "PRIVILEGES_SEQUENCE_GEN", initialValue = 1, allocationSize = 1, sequenceName = "SEC.PRIVILEGES_SEQ")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "PRIVILEGES_SEQUENCE_GEN")
-	public Long getId() {
-		return id;
-	}
+    /**
+     * @return the id
+     */
+    @Override
+    @Id
+    @Column(name = "ID")
+    @SequenceGenerator(name = "PRIVILEGES_SEQUENCE_GEN", initialValue = 1, allocationSize = 1, sequenceName = "SEC.PRIVILEGES_SEQ")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "PRIVILEGES_SEQUENCE_GEN")
+    public Long getId() {
+        return id;
+    }
 
-	@Override
-	@Index(name = "IDX_PRIVILEGE_NAME")
-	@Column(name = "NAME", unique = false, nullable = false)
-	public String getName() {
-		return name;
-	}
+    @Override
+    @Index(name = "IDX_PRIVILEGE_NAME")
+    @Column(name = "NAME", unique = false, nullable = false)
+    public String getName() {
+        return name;
+    }
 
-	public void setName(final String name) {
-		this.name = name;
-	}
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	@Override
-	@Column(name = "DESCRIPTION", unique = false, nullable = true)
-	public String getDescription() {
-		return description;
-	}
+    @Override
+    @Column(name = "DESCRIPTION", unique = false, nullable = true)
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(final String description) {
-		this.description = description;
-	}
+    public void setDescription(final String description) {
+        this.description = description;
+    }
 
-	@Override
-	@Type(type = "yes_no")
-	@Index(name = "IDX_PRIVILEGE_VALID")
-	@Column(name = "VALID", unique = false, nullable = false)
-	public Boolean isValid() {
-		return valid;
-	}
+    @Override
+    @Type(type = "yes_no")
+    @Index(name = "IDX_PRIVILEGE_VALID")
+    @Column(name = "VALID", unique = false, nullable = false)
+    public Boolean isValid() {
+        return valid;
+    }
 
-	@Transient
-	// Used by equals()
-	public Boolean getValid() {
-		return valid;
-	}
+    @Transient
+    // Used by equals()
+    public Boolean getValid() {
+        return valid;
+    }
 
-	@Override
-	public void setValid(final Boolean valid) {
-		this.valid = valid;
-	}
+    @Override
+    public void setValid(final Boolean valid) {
+        this.valid = valid;
+    }
 
-	@Override
-	@ManyToOne(targetEntity = HibernateScope.class)
-	@JoinColumn(name = "SCP_ID", nullable = false)
-	@ForeignKey(name = "FK_SCOPE_PRIVILEGE")
-	public Scope getScope() {
-		return scope;
-	}
+    @Override
+    @ManyToOne(targetEntity = HibernateScope.class)
+    @JoinColumn(name = "SCP_ID", nullable = false)
+    @ForeignKey(name = "FK_SCOPE_PRIVILEGE")
+    public Scope getScope() {
+        return scope;
+    }
 
-	public void setScope(final Scope scope) {
-		this.scope = scope;
-	}
+    public void setScope(final Scope scope) {
+        this.scope = scope;
+    }
 
-	/**
-	 * @return the roles
-	 */
-	@Override
-	@ManyToMany(mappedBy = "privileges", targetEntity = HibernateRole.class)
-	@ForeignKey(name = "FK_PRIVILEGE_ROLE")
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    /**
+     * @return the roles
+     */
+    @Override
+    @ManyToMany(mappedBy = "privileges", targetEntity = HibernateRole.class)
+    @ForeignKey(name = "FK_PRIVILEGE_ROLE")
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	/**
-	 * @param roles
-	 *            the roles to set
-	 */
-	@Override
-	public void setRoles(final Set<Role> roles) {
-		this.roles = roles;
-	}
+    /**
+     * @param roles
+     *            the roles to set
+     */
+    @Override
+    public void setRoles(final Set<Role> roles) {
+        this.roles = roles;
+    }
 
-	@Override
-	public void copy(final DomainObject<Long> object) {
-		super.copy(object);
+    @Override
+    public void copy(final DomainObject<Long> object) {
+        super.copy(object);
 
-		if (object instanceof Privilege) {
-			final Privilege privilege = (Privilege) object;
-			this.name = privilege.getName();
-			this.description = privilege.getDescription();
-			this.valid = privilege.isValid();
+        if (object instanceof Privilege) {
+            final Privilege privilege = (Privilege) object;
+            this.name = privilege.getName();
+            this.description = privilege.getDescription();
+            this.valid = privilege.isValid();
 
-			final Scope originalScope = privilege.getScope();
-			if (originalScope != null) {
-				this.scope = new HibernateScope();
-				this.scope.copy(originalScope);
-			}
-			else {
-				this.scope = null;
-			}
+            final Scope originalScope = privilege.getScope();
+            if (originalScope != null) {
+                this.scope = new HibernateScope();
+                this.scope.copy(originalScope);
+            }
+            else {
+                this.scope = null;
+            }
 
-			final Set<Role> originalRoles = privilege.getRoles();
-			this.roles = new HashSet<Role>();
-			if (originalRoles != null) {
-				for (final Role role : originalRoles) {
-					final HibernateRole hibernateRole = new HibernateRole();
-					hibernateRole.copy(role);
+            final Set<Role> originalRoles = privilege.getRoles();
+            this.roles = new HashSet<Role>();
+            if (originalRoles != null) {
+                for (final Role role : originalRoles) {
+                    final HibernateRole hibernateRole = new HibernateRole();
+                    hibernateRole.copy(role);
 
-					this.roles.add(hibernateRole);
-				}
-			}
-		}
-	}
+                    this.roles.add(hibernateRole);
+                }
+            }
+        }
+    }
 
 }

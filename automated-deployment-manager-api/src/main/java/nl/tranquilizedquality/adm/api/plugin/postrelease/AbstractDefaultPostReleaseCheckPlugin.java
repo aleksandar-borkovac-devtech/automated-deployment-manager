@@ -12,7 +12,8 @@ import nl.tranquilizedquality.adm.api.plugin.PluginManager;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Abstract base class for a post release check plugin that registers itself to ADM.
+ * Abstract base class for a post release check plugin that registers itself to
+ * ADM.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 20 mrt. 2013

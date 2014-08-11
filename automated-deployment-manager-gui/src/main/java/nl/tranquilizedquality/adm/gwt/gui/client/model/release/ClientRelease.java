@@ -94,7 +94,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -110,7 +110,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param releaseDate
-     *        the releaseDate to set
+     *            the releaseDate to set
      */
     public void setReleaseDate(final Date releaseDate) {
         this.releaseDate = releaseDate;
@@ -126,7 +126,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param artifacts
-     *        the artifacts to set
+     *            the artifacts to set
      */
     @Override
     public void setArtifacts(final List<MavenArtifact> artifacts) {
@@ -143,7 +143,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param status
-     *        the status to set
+     *            the status to set
      */
     @Override
     public void setStatus(final ReleaseStatus status) {
@@ -160,7 +160,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param releaseCount
-     *        the releaseCount to set
+     *            the releaseCount to set
      */
     public void setReleaseCount(final Integer releaseCount) {
         this.releaseCount = releaseCount;
@@ -176,7 +176,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param releaseFailureCount
-     *        the releaseFailureCount to set
+     *            the releaseFailureCount to set
      */
     public void setReleaseFailureCount(final Integer releaseFailureCount) {
         this.releaseFailureCount = releaseFailureCount;
@@ -228,7 +228,7 @@ public class ClientRelease extends AbstractUpdatableBeanModel<Long> implements R
 
     /**
      * @param lastReleasedDate
-     *        the lastReleasedDate to set
+     *            the lastReleasedDate to set
      */
     @Override
     public void setLastReleasedDate(final Date lastReleasedDate) {

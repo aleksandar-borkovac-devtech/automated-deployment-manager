@@ -82,7 +82,8 @@ public class DistributionPackageDeployer implements Deployer<MavenArtifact> {
             final File destinationDirectory = new File(destinationPath);
             FileExtractorUtil.extractTarGz(artifactFile, destinationDirectory);
         } catch (final Exception e) {
-            final String msg = "Failed to extract distribution package! -> " + artifactFile.getAbsolutePath() + " to " + destinationPath;
+            final String msg = "Failed to extract distribution package! -> " + artifactFile.getAbsolutePath() + " to "
+                    + destinationPath;
 
             if (LOGGER.isErrorEnabled()) {
                 LOGGER.error(msg);
@@ -195,18 +196,18 @@ public class DistributionPackageDeployer implements Deployer<MavenArtifact> {
      * Deploys the WAR file within the archive if it exists.
      * 
      * @param artifactFile
-     *        The actual archive.
+     *            The actual archive.
      * @param artifact
-     *        Artifact information.
+     *            Artifact information.
      * @param destination
-     *        The destination information.
+     *            The destination information.
      * @param artifactBackupDirectory
-     *        The directory where to put the previous installed WAR file.
+     *            The directory where to put the previous installed WAR file.
      * @param destinationPath
-     *        The unique work directory for this distribution where files
-     *        can be transfered from to the destination host.
+     *            The unique work directory for this distribution where files
+     *            can be transfered from to the destination host.
      * @param connector
-     *        Connector to execute remote commands.
+     *            Connector to execute remote commands.
      */
     private void deployWarFileInArchive(final File artifactFile, final MavenArtifact artifact, final Destination destination,
             final String artifactBackupDirectory, final ProtocolConnector connector, final String destinationPath) {
@@ -251,7 +252,8 @@ public class DistributionPackageDeployer implements Deployer<MavenArtifact> {
         /*
          * Check if the configuration is done properly.
          */
-        if (StringUtils.isEmpty(artifactBackupDirectory) || StringUtils.isEmpty(webAppsDirectory) || StringUtils.isEmpty(appServerHome)) {
+        if (StringUtils.isEmpty(artifactBackupDirectory) || StringUtils.isEmpty(webAppsDirectory)
+                || StringUtils.isEmpty(appServerHome)) {
             final String msg = "Destination locations not configured!";
 
             if (LOGGER.isErrorEnabled()) {
@@ -305,7 +307,7 @@ public class DistributionPackageDeployer implements Deployer<MavenArtifact> {
      * through all entries looking for a WAR file.
      * 
      * @param artifactFile
-     *        The archive.
+     *            The archive.
      * @return Returns the WAR name if there is one otherwise it will return an
      *         empty string.
      */
@@ -408,7 +410,7 @@ public class DistributionPackageDeployer implements Deployer<MavenArtifact> {
 
     /**
      * @param workDirectory
-     *        the workDirectory to set
+     *            the workDirectory to set
      */
     @Required
     public void setWorkDirectory(final String workDirectory) {

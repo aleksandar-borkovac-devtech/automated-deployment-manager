@@ -43,7 +43,7 @@ public class RepositorySearchCommand extends PagingSearchCommand {
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -58,7 +58,7 @@ public class RepositorySearchCommand extends PagingSearchCommand {
 
     /**
      * @param enabled
-     *        the enabled to set
+     *            the enabled to set
      */
     public void setEnabled(final Boolean enabled) {
         this.enabled = enabled;

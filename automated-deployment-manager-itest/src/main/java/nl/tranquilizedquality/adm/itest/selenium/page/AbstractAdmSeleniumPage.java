@@ -23,13 +23,13 @@ import com.thoughtworks.selenium.condition.ConditionRunner;
 public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     public AbstractAdmSeleniumPage(final Selenium selenium, final ConditionRunner conditionRunner) {
         super(selenium, conditionRunner);
@@ -39,7 +39,7 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
      * Pauses for the specified number of miliseconds.
      * 
      * @param miliseconds
-     *        The miliseconds the current thread will wait.
+     *            The miliseconds the current thread will wait.
      */
     protected void pause(final long miliseconds) {
         try {
@@ -49,14 +49,16 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
     }
 
     /**
-     * Wait for a specific element to become present on a page, before continuing.
+     * Wait for a specific element to become present on a page, before
+     * continuing.
      * 
      * @param messageToShowIfTimeOut
-     *        The message that should be shown when a time out occurs.
+     *            The message that should be shown when a time out occurs.
      * @param elementLocator
-     *        The locator id used by selenium to see if a specific element is present.
+     *            The locator id used by selenium to see if a specific element
+     *            is present.
      * @throws InterruptedException
-     *         Is thrown when something goes wrong.
+     *             Is thrown when something goes wrong.
      */
     protected void waitForElementToBePresent(final String messageToShowIfTimeOut, final String elementLocator) {
 
@@ -69,13 +71,15 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
                 }
             };
         } catch (final WaitTimedOutException e) {
-            // Wait for 5 additional seconds, to be certain everything gets loaded.
+            // Wait for 5 additional seconds, to be certain everything gets
+            // loaded.
             try {
                 Thread.sleep(5000);
             } catch (final InterruptedException e1) {
             }
         }
-        // Always wait 2 additional seconds, to be certain everything gets loaded.
+        // Always wait 2 additional seconds, to be certain everything gets
+        // loaded.
         try {
             Thread.sleep(2000);
         } catch (final InterruptedException e) {
@@ -86,9 +90,9 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
      * Types text in a GXT text field.
      * 
      * @param fieldIdentifier
-     *        The identifier of the field.
+     *            The identifier of the field.
      * @param value
-     *        The value that will be typed.
+     *            The value that will be typed.
      */
     protected void typeTextInTextField(final String fieldIdentifier, final String value) {
         selenium.focus(fieldIdentifier);
@@ -97,10 +101,11 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
     }
 
     /**
-     * Clicks on the combo arrow button to expand the values you can choose from.
+     * Clicks on the combo arrow button to expand the values you can choose
+     * from.
      * 
      * @param comboArrowLocator
-     *        The locator that points to the combo arrow button.
+     *            The locator that points to the combo arrow button.
      */
     protected void expandComboBoxItemList(final String comboArrowLocator) {
         waitForElementToBePresent("Dropdown not found!", comboArrowLocator);
@@ -111,9 +116,9 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
      * Selects an item from an expanded combo box.
      * 
      * @param comboArrowLocator
-     *        The locator that points to the combo arrow button.
+     *            The locator that points to the combo arrow button.
      * @param comboListItemToSelect
-     *        The locator id of the list item that should be selected.
+     *            The locator id of the list item that should be selected.
      */
     protected void selectItemFromCombo(final String comboArrowLocator, final String comboListItemToSelect) {
         waitForElementToBePresent("Item not found in combo list!", comboListItemToSelect);
@@ -124,9 +129,9 @@ public abstract class AbstractAdmSeleniumPage extends SeleniumPage {
      * Selects an item from a combo list.
      * 
      * @param comboArrowLocator
-     *        The locator id of the arrow button in the combo list.
+     *            The locator id of the arrow button in the combo list.
      * @param comboListItemToSelect
-     *        The locator id of the list item that should be selected.
+     *            The locator id of the list item that should be selected.
      */
     protected void expandAndselectItemFromCombo(final String comboArrowLocator, final String comboListItemToSelect) {
         expandComboBoxItemList(comboArrowLocator);

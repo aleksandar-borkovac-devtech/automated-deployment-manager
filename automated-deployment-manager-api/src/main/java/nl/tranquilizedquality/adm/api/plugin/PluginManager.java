@@ -21,15 +21,16 @@ public interface PluginManager {
      * Registers a plugin so it can be used by ADM.
      * 
      * @param plugin
-     *        The plugin that will be registered.
+     *            The plugin that will be registered.
      */
     void registerPlugin(Plugin plugin);
 
     /**
-     * Removes the plugin from the plugin manager registry so it cannot be used anymore within ADM.
+     * Removes the plugin from the plugin manager registry so it cannot be used
+     * anymore within ADM.
      * 
      * @param plugin
-     *        The plugin that will be removed from the registry.
+     *            The plugin that will be removed from the registry.
      */
     void unregisterPlugin(Plugin plugin);
 
@@ -41,8 +42,8 @@ public interface PluginManager {
     /**
      * Retrieves all registered plugins.
      * 
-     * @return Returns a {@link List} containing all the registered plugins or an empty one if none
-     *         are registered.
+     * @return Returns a {@link List} containing all the registered plugins or
+     *         an empty one if none are registered.
      */
     List<Plugin> findRegisteredPlugins();
 
@@ -50,7 +51,7 @@ public interface PluginManager {
      * Retrieves a plugin with the specified name.
      * 
      * @param name
-     *        The name of the plugin that needs to be retrieved.
+     *            The name of the plugin that needs to be retrieved.
      * @return Returns a {@link Plugin}.
      */
     Plugin findPluginByName(String name);

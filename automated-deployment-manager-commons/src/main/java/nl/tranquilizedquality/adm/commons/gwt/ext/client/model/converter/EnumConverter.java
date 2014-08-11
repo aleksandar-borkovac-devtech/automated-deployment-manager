@@ -15,23 +15,23 @@ import com.extjs.gxt.ui.client.binding.Converter;
  */
 public class EnumConverter<E extends Enum<E>> extends Converter {
 
-	@SuppressWarnings("rawtypes")
-	@Override
-	public Object convertFieldValue(final Object value) {
-		if (value == null) {
-			return null;
-		}
+    @SuppressWarnings("rawtypes")
+    @Override
+    public Object convertFieldValue(final Object value) {
+        if (value == null) {
+            return null;
+        }
 
-		return ((EnumWrapper) value).get("enum");
-	}
+        return ((EnumWrapper) value).get("enum");
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object convertModelValue(final Object value) {
-		if (value == null) {
-			return null;
-		}
+    @Override
+    @SuppressWarnings("unchecked")
+    public Object convertModelValue(final Object value) {
+        if (value == null) {
+            return null;
+        }
 
-		return new EnumWrapper<E>((E) value);
-	}
+        return new EnumWrapper<E>((E) value);
+    }
 }

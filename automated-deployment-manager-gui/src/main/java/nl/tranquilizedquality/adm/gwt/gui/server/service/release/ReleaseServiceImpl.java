@@ -113,7 +113,8 @@ public class ReleaseServiceImpl extends AbstractService implements ReleaseServic
     }
 
     @Override
-    public PagingLoadResult<ClientMavenArtifact> findReleasesAndArtifacts(final PagingLoadConfig config, final ClientReleaseSearchCommand sc) {
+    public PagingLoadResult<ClientMavenArtifact> findReleasesAndArtifacts(final PagingLoadConfig config,
+            final ClientReleaseSearchCommand sc) {
         /*
          * Setup search command.
          */
@@ -334,7 +335,7 @@ public class ReleaseServiceImpl extends AbstractService implements ReleaseServic
      * infinite loop trygin to copy the persisten bean values to a client bean.
      * 
      * @param userGroup
-     *        The user group users list will be set to an empty array.
+     *            The user group users list will be set to an empty array.
      */
     private void initializeUserGroup(final UserGroup userGroup) {
         userGroup.setUsers(new ArrayList<User>());
@@ -342,7 +343,7 @@ public class ReleaseServiceImpl extends AbstractService implements ReleaseServic
 
     /**
      * @param releaseManager
-     *        the releaseManager to set
+     *            the releaseManager to set
      */
     @Required
     public void setReleaseManager(final ReleaseManager releaseManager) {
@@ -351,7 +352,7 @@ public class ReleaseServiceImpl extends AbstractService implements ReleaseServic
 
     /**
      * @param releaseHistoryManager
-     *        the releaseHistoryManager to set
+     *            the releaseHistoryManager to set
      */
     @Required
     public void setReleaseHistoryManager(final ReleaseHistoryManager releaseHistoryManager) {

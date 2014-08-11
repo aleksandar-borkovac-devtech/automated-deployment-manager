@@ -70,14 +70,16 @@ public class DestinationManagementManagerImpl implements DestinationManagementMa
 
     @Override
     public void addNewShellScriptBasedDestination(final String destinationName) {
-        final DestinationDetailsPage destinationDetailsPage = (DestinationDetailsPage) admPages.get(PageType.DESTINATION_DETAILS_TAB);
+        final DestinationDetailsPage destinationDetailsPage = (DestinationDetailsPage) admPages
+                .get(PageType.DESTINATION_DETAILS_TAB);
 
         destinationDetailsPage.addDefaultShellScriptDesitnation(destinationName);
     }
 
     @Override
     public void addDeployerParameter(final String parameterValue) {
-        final DestinationDetailsPage destinationDetailsPage = (DestinationDetailsPage) admPages.get(PageType.DESTINATION_DETAILS_TAB);
+        final DestinationDetailsPage destinationDetailsPage = (DestinationDetailsPage) admPages
+                .get(PageType.DESTINATION_DETAILS_TAB);
 
         destinationDetailsPage.addParameter(parameterValue);
     }

@@ -16,8 +16,8 @@ import nl.tranquilizedquality.adm.commons.domain.DomainObject;
 import nl.tranquilizedquality.adm.commons.gwt.ext.client.model.AbstractUpdatableBeanModel;
 
 /**
- * Client representation of a deployer that can be chosen to deploy an artifact to a specific
- * destination.
+ * Client representation of a deployer that can be chosen to deploy an artifact
+ * to a specific destination.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 9 nov. 2012

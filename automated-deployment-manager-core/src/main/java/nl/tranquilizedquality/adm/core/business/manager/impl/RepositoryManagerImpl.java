@@ -37,99 +37,99 @@ import org.springframework.validation.Validator;
  */
 public class RepositoryManagerImpl implements RepositoryManager {
 
-	/** Logger for this class. */
-	private static final Log LOGGER = LogFactory.getLog(ReleaseHistoryManagerImpl.class);
+    /** Logger for this class. */
+    private static final Log LOGGER = LogFactory.getLog(ReleaseHistoryManagerImpl.class);
 
-	/** DAO that manages repositories. */
-	private RepositoryDao<Repository> repositoryDao;
+    /** DAO that manages repositories. */
+    private RepositoryDao<Repository> repositoryDao;
 
-	/** Validator that validates a {@link Repository}. */
-	private Validator repositoryValidator;
+    /** Validator that validates a {@link Repository}. */
+    private Validator repositoryValidator;
 
-	@Override
-	public Repository storeRepository(final Repository repository, final Errors errors) {
+    @Override
+    public Repository storeRepository(final Repository repository, final Errors errors) {
 
-		if (repository == null) {
-			final String msg = "No repository specified!";
-			if (LOGGER.isErrorEnabled()) {
-				LOGGER.error(msg);
-			}
+        if (repository == null) {
+            final String msg = "No repository specified!";
+            if (LOGGER.isErrorEnabled()) {
+                LOGGER.error(msg);
+            }
 
-			throw new InvalidRepositoryException(msg);
-		}
+            throw new InvalidRepositoryException(msg);
+        }
 
-		/*
-		 * Validate the repository.
-		 */
-		repositoryValidator.validate(repository, errors);
+        /*
+         * Validate the repository.
+         */
+        repositoryValidator.validate(repository, errors);
 
-		/*
-		 * Check for errors.
-		 */
-		if (errors.hasErrors()) {
-			final String msg = "Invalid repository.. " + repository.getName();
+        /*
+         * Check for errors.
+         */
+        if (errors.hasErrors()) {
+            final String msg = "Invalid repository.. " + repository.getName();
 
-			if (LOGGER.isDebugEnabled()) {
-				final List<ObjectError> allErrors = errors.getAllErrors();
-				for (final ObjectError objectError : allErrors) {
-					LOGGER.debug(objectError.getDefaultMessage());
-				}
-			}
+            if (LOGGER.isDebugEnabled()) {
+                final List<ObjectError> allErrors = errors.getAllErrors();
+                for (final ObjectError objectError : allErrors) {
+                    LOGGER.debug(objectError.getDefaultMessage());
+                }
+            }
 
-			throw new InvalidRepositoryException(msg);
-		}
+            throw new InvalidRepositoryException(msg);
+        }
 
-		/*
-		 * Check if we are doing an insert or an update.
-		 */
-		if (repository.isPersistent()) {
-			/*
-			 * Create supported domain object
-			 */
-			final Repository original = repositoryDao.findById(repository.getId());
-			original.copy(repository);
+        /*
+         * Check if we are doing an insert or an update.
+         */
+        if (repository.isPersistent()) {
+            /*
+             * Create supported domain object
+             */
+            final Repository original = repositoryDao.findById(repository.getId());
+            original.copy(repository);
 
-			return repositoryDao.save(original);
-		}
-		else {
-			final Repository newRepository = repositoryDao.newDomainObject();
-			newRepository.copy(repository);
+            return repositoryDao.save(original);
+        }
+        else {
+            final Repository newRepository = repositoryDao.newDomainObject();
+            newRepository.copy(repository);
 
-			return repositoryDao.save(newRepository);
-		}
-	}
+            return repositoryDao.save(newRepository);
+        }
+    }
 
-	@Override
-	public int findNumberOfRepositories(final RepositorySearchCommand sc) {
-		return repositoryDao.findNumberOfRepositories(sc);
-	}
+    @Override
+    public int findNumberOfRepositories(final RepositorySearchCommand sc) {
+        return repositoryDao.findNumberOfRepositories(sc);
+    }
 
-	@Override
-	public List<Repository> findRepositories(final RepositorySearchCommand sc) {
-		return repositoryDao.findBySearchCommand(sc);
-	}
+    @Override
+    public List<Repository> findRepositories(final RepositorySearchCommand sc) {
+        return repositoryDao.findBySearchCommand(sc);
+    }
 
-	@Override
-	public Repository findRepositoryById(final Long id) {
-		return repositoryDao.findById(id);
-	}
+    @Override
+    public Repository findRepositoryById(final Long id) {
+        return repositoryDao.findById(id);
+    }
 
-	/**
-	 * @param repositoryDao
-	 *            the repositoryDao to set
-	 */
-	@Required
-	public void setRepositoryDao(final RepositoryDao<Repository> repositoryDao) {
-		this.repositoryDao = repositoryDao;
-	}
+    /**
+     * @param repositoryDao
+     *            the repositoryDao to set
+     */
+    @Required
+    public void setRepositoryDao(final RepositoryDao<Repository> repositoryDao) {
+        this.repositoryDao = repositoryDao;
+    }
 
-	/**
-	 * @param repositoryValidator
-	 *            the repositoryValidator to set
-	 */
-	@Required
-	public void setRepositoryValidator(final Validator repositoryValidator) {
-		this.repositoryValidator = repositoryValidator;
-	}
+    /**
+     * @param repositoryValidator
+     *            the repositoryValidator to set
+     */
+    @Required
+    public void setRepositoryValidator(final Validator repositoryValidator) {
+        this.repositoryValidator = repositoryValidator;
+    }
 
 }

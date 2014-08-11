@@ -81,7 +81,7 @@ public class DeployerParametersTable extends AbstractRelationListTable<DeployerP
      * on.
      * 
      * @param detailsPanel
-     *        The parent panel.
+     *            The parent panel.
      */
     public DeployerParametersTable(final DestinationDetailsPanel detailsPanel) {
         setHeading("Deployer Parameters");
@@ -247,7 +247,7 @@ public class DeployerParametersTable extends AbstractRelationListTable<DeployerP
      * Saves the parameters ranking order.
      * 
      * @param parameters
-     *        The parameters that will be updated.
+     *            The parameters that will be updated.
      */
     private void saveDestination(final List<DeployerParameter> parameters) {
         destination.setDeployerParameters(parameters);
@@ -447,7 +447,7 @@ public class DeployerParametersTable extends AbstractRelationListTable<DeployerP
 
     /**
      * @param destination
-     *        the destination to set
+     *            the destination to set
      */
     public void setDestination(final ClientDestination destination) {
         this.destination = destination;

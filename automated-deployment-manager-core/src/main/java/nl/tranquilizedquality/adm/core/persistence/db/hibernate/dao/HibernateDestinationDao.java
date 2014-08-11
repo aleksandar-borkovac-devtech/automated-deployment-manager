@@ -76,9 +76,9 @@ public class HibernateDestinationDao extends AbstractHibernateBaseDao<HibernateD
      * criteria.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param session
-     *        The session to use for doing the query.
+     *            The session to use for doing the query.
      * @return Returns a {@link Criteria}.
      */
     private Criteria getDestinationCriteria(final DestinationSearchCommand sc, final Session session) {

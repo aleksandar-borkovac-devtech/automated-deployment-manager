@@ -26,16 +26,16 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.environment.ClientDestina
  * @since 11 sep. 2011
  */
 public class DestinationFactory extends
-		AbstractFactory<ClientDestination, HibernateDestination, Destination> {
+        AbstractFactory<ClientDestination, HibernateDestination, Destination> {
 
-	@Override
-	protected ClientDestination createNewClientBean() {
-		return new ClientDestination();
-	}
+    @Override
+    protected ClientDestination createNewClientBean() {
+        return new ClientDestination();
+    }
 
-	@Override
-	protected HibernateDestination createNewPersistentBean() {
-		return new HibernateDestination();
-	}
+    @Override
+    protected HibernateDestination createNewPersistentBean() {
+        return new HibernateDestination();
+    }
 
 }

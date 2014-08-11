@@ -14,7 +14,8 @@ import nl.tranquilizedquality.adm.api.plugin.RemotePluginService;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Implementation of the REST service that allows you to register and unregister plugins.
+ * Implementation of the REST service that allows you to register and unregister
+ * plugins.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 29 mrt. 2013

@@ -22,19 +22,19 @@ package nl.tranquilizedquality.adm.commons.business.domain;
  */
 public enum ReleaseStatus {
 
-	/** Release was successfully performed. */
-	SUCCESS,
+    /** Release was successfully performed. */
+    SUCCESS,
 
-	/** Errors occurred during the release. */
-	FAILED,
+    /** Errors occurred during the release. */
+    FAILED,
 
-	/** Release is in the process of releasing. */
-	RELEASING,
+    /** Release is in the process of releasing. */
+    RELEASING,
 
-	/** Release is still to be fully configured so it can't be released yet. */
-	DRAFT,
+    /** Release is still to be fully configured so it can't be released yet. */
+    DRAFT,
 
-	/** Ready to be released. */
-	READY;
+    /** Ready to be released. */
+    READY;
 
 }

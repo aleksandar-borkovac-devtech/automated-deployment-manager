@@ -77,10 +77,11 @@ public class ArtifactsTable extends AbstractRelationListTable<MavenArtifact, Cli
     private final ReleaseDetailsPanel detailPanel;
 
     /**
-     * Constructor taking the detail panel where the release details are displayed on.
+     * Constructor taking the detail panel where the release details are
+     * displayed on.
      * 
      * @param detailPanel
-     *        The detail panel where the release details are displayed on.
+     *            The detail panel where the release details are displayed on.
      */
     public ArtifactsTable(final ReleaseDetailsPanel detailPanel) {
         setHeading("Artifacts");
@@ -101,8 +102,8 @@ public class ArtifactsTable extends AbstractRelationListTable<MavenArtifact, Cli
     }
 
     /**
-     * Performs some checks if the logged in user is allowed to perform certain actions within the
-     * application.
+     * Performs some checks if the logged in user is allowed to perform certain
+     * actions within the application.
      */
     private void performPrivilegeCheck() {
         final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
@@ -328,7 +329,7 @@ public class ArtifactsTable extends AbstractRelationListTable<MavenArtifact, Cli
      * Stores the specified artifact by calling the GWT rpc service.
      * 
      * @param artifact
-     *        The artifact that will be saved.
+     *            The artifact that will be saved.
      */
     private void saveArtifact(final ClientMavenArtifact artifact) {
         final ArtifactServiceAsync artifactService = Registry.get(AdmModule.ARTIFACT_SERVICE);
@@ -423,7 +424,7 @@ public class ArtifactsTable extends AbstractRelationListTable<MavenArtifact, Cli
      * Sets the release where the artifacts are displayed for.
      * 
      * @param release
-     *        the release to set
+     *            the release to set
      */
     public void setRelease(final ClientRelease release) {
         this.release = release;
@@ -432,8 +433,8 @@ public class ArtifactsTable extends AbstractRelationListTable<MavenArtifact, Cli
     /**
      * Retrieves the selected artifacts in the grid.
      * 
-     * @return Returns a {@link List} containing {@link ClientMavenArtifact} objects or an empty one
-     *         if none are selected.
+     * @return Returns a {@link List} containing {@link ClientMavenArtifact}
+     *         objects or an empty one if none are selected.
      */
     public List<ClientMavenArtifact> getSelectedArtifacts() {
         final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
@@ -450,7 +451,8 @@ public class ArtifactsTable extends AbstractRelationListTable<MavenArtifact, Cli
     }
 
     /**
-     * Enables the add and delete buttons so you can modify the release artifacts.
+     * Enables the add and delete buttons so you can modify the release
+     * artifacts.
      */
     public void enableButtons() {
         addArtifactButton.enable();

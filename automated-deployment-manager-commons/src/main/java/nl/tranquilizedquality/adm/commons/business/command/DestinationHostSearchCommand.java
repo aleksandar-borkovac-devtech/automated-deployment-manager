@@ -45,7 +45,7 @@ public class DestinationHostSearchCommand extends AbstractPagingUserGroupSearchC
 
     /**
      * @param hostName
-     *        the hostName to set
+     *            the hostName to set
      */
     public void setHostName(final String hostName) {
         this.hostName = hostName;
@@ -60,7 +60,7 @@ public class DestinationHostSearchCommand extends AbstractPagingUserGroupSearchC
 
     /**
      * @param protocol
-     *        the protocol to set
+     *            the protocol to set
      */
     public void setProtocol(final Protocol protocol) {
         this.protocol = protocol;

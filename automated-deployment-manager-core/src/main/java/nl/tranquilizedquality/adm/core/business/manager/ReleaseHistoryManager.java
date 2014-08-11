@@ -37,11 +37,11 @@ public interface ReleaseHistoryManager {
      * Creates a history record for the specified {@link Release}.
      * 
      * @param release
-     *        The release where history will be created for.
+     *            The release where history will be created for.
      * @param environment
-     *        The environment where the release will be deployed to.
+     *            The environment where the release will be deployed to.
      * @param artifacts
-     *        Artifacts that are going to be deployed from this release.
+     *            Artifacts that are going to be deployed from this release.
      * @return Returns a {@link ReleaseExecution} which holds the release
      *         history.
      */
@@ -51,9 +51,9 @@ public interface ReleaseHistoryManager {
      * Registers an activity for the specified release.
      * 
      * @param release
-     *        The release execution where an activity will be logged for.
+     *            The release execution where an activity will be logged for.
      * @param description
-     *        The description of the activity that will be logged.
+     *            The description of the activity that will be logged.
      */
     void registerActivity(ReleaseExecution release, String description);
 
@@ -61,11 +61,11 @@ public interface ReleaseHistoryManager {
      * Registers an activity for the specified release.
      * 
      * @param release
-     *        The release execution where an activity will be logged for.
+     *            The release execution where an activity will be logged for.
      * @param description
-     *        The description of the activity that will be logged.
+     *            The description of the activity that will be logged.
      * @param errorMessage
-     *        The error message when something went wrong.
+     *            The error message when something went wrong.
      */
     void registerActivity(ReleaseExecution release, String description, String errorMessage);
 
@@ -73,11 +73,11 @@ public interface ReleaseHistoryManager {
      * Registers an activity changing the status of the release execution.
      * 
      * @param release
-     *        The release execution where an activity will be logged for.
+     *            The release execution where an activity will be logged for.
      * @param description
-     *        The description of the activity that will be logged.
+     *            The description of the activity that will be logged.
      * @param deployStatus
-     *        The status that will be set.
+     *            The status that will be set.
      */
     void registerActivity(ReleaseExecution release, String description, DeployStatus deployStatus);
 
@@ -85,10 +85,10 @@ public interface ReleaseHistoryManager {
      * Retrieves the release history from the specified release.
      * 
      * @param sc
-     *        The search criteria to use for searching for release
-     *        executions.
-     * @return Returns a {@link List} containing {@link ReleaseExecution} objects or an empty one if
-     *         none could be found.
+     *            The search criteria to use for searching for release
+     *            executions.
+     * @return Returns a {@link List} containing {@link ReleaseExecution}
+     *         objects or an empty one if none could be found.
      */
     List<ReleaseExecution> findReleaseHistory(ReleaseExecutionSearchCommand sc);
 
@@ -96,7 +96,7 @@ public interface ReleaseHistoryManager {
      * Searches for release history with the specified unique identifier.
      * 
      * @param id
-     *        The unique identifier of the {@link ReleaseExecution}.
+     *            The unique identifier of the {@link ReleaseExecution}.
      * @return Returns a {@link ReleaseExecution} or null if none could be
      *         found.
      */
@@ -106,11 +106,11 @@ public interface ReleaseHistoryManager {
      * Stores the logs of a {@link ReleaseExecution}.
      * 
      * @param execution
-     *        The {@link ReleaseExecution}.
+     *            The {@link ReleaseExecution}.
      * @param artifact
-     *        The artifact where the logs will be registered for.
+     *            The artifact where the logs will be registered for.
      * @param logs
-     *        The logs that will be stored.
+     *            The logs that will be stored.
      */
     void registerLogs(ReleaseExecution execution, MavenArtifactSnapshot artifact, String logs);
 
@@ -119,7 +119,8 @@ public interface ReleaseHistoryManager {
      * identifier.
      * 
      * @param id
-     *        The unique identifier used to retrieve the {@link ReleaseExecutionLog}.
+     *            The unique identifier used to retrieve the
+     *            {@link ReleaseExecutionLog}.
      * @return Returns a {@link ReleaseExecutionLog} or null if none could be
      *         found.
      */
@@ -130,8 +131,8 @@ public interface ReleaseHistoryManager {
      * criteria.
      * 
      * @param sc
-     *        The search criteria that will be used to count the number of
-     *        release executions.
+     *            The search criteria that will be used to count the number of
+     *            release executions.
      * @return Return an integer value of 0 or greater.
      */
     int findNumberOfReleaseExecutions(ReleaseExecutionSearchCommand sc);

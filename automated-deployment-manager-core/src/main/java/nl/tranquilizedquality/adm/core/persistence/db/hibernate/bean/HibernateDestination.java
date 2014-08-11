@@ -77,7 +77,10 @@ public class HibernateDestination extends AbstractUpdatableDomainObject<Long> im
     @BusinessField
     private String prefix;
 
-    /** Parameters that should be used for the deployer that is configured for this destination. */
+    /**
+     * Parameters that should be used for the deployer that is configured for
+     * this destination.
+     */
     private List<DeployerParameter> deployerParameters;
 
     /**
@@ -120,7 +123,7 @@ public class HibernateDestination extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param deployerId
-     *        the deployerId to set
+     *            the deployerId to set
      */
     public void setDeployer(final Deployer deployer) {
         this.deployer = deployer;
@@ -139,7 +142,7 @@ public class HibernateDestination extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param environment
-     *        the environment to set
+     *            the environment to set
      */
     public void setEnvironment(final Environment environment) {
         this.environment = environment;
@@ -159,7 +162,7 @@ public class HibernateDestination extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param parameters
-     *        the locations to set
+     *            the locations to set
      */
     @Override
     public void setDeployerParameters(final List<DeployerParameter> parameters) {
@@ -179,7 +182,7 @@ public class HibernateDestination extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param destinationHost
-     *        the destinationHost to set
+     *            the destinationHost to set
      */
     public void setDestinationHost(final DestinationHost destinationHost) {
         this.destinationHost = destinationHost;
@@ -204,7 +207,7 @@ public class HibernateDestination extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param prefix
-     *        the prefix to set
+     *            the prefix to set
      */
     public void setPrefix(final String prefix) {
         this.prefix = prefix;

@@ -61,7 +61,7 @@ public interface UserGroupService extends RemoteService {
      * Searches for a user group with the specified unique identifier.
      * 
      * @param id
-     *        The unique identifier of the user.
+     *            The unique identifier of the user.
      * @return Returns a {@link ClientUserGroup} or null if none could be found.
      */
     ClientUserGroup findUserGroupById(Long id);
@@ -70,10 +70,10 @@ public interface UserGroupService extends RemoteService {
      * Stores the specified user group.
      * 
      * @param userGroup
-     *        The user group that will be stored.
+     *            The user group that will be stored.
      * @return Returns the saved user group.
      * @throws UserGroupServiceException
-     *         Is thrown when something goes wrong during storage.
+     *             Is thrown when something goes wrong during storage.
      */
     ClientUserGroup saveUserGroup(ClientUserGroup userGroup) throws UserGroupServiceException;
 
@@ -81,9 +81,9 @@ public interface UserGroupService extends RemoteService {
      * Searches for user groups based on the search criteria.
      * 
      * @param config
-     *        The paging load configuration.
+     *            The paging load configuration.
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns a {@link PagingLoadResult} containing the user groups or
      *         an empty one if none could be found.
      */
@@ -93,9 +93,9 @@ public interface UserGroupService extends RemoteService {
      * Searches for users based on the passed in search criteria.
      * 
      * @param loadConfig
-     *        The paging load configuration.
+     *            The paging load configuration.
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @return Returns the search results.
      */
     PagingLoadResult<ClientUser> findUsers(PagingLoadConfig loadConfig, ClientUserSearchCommand sc);

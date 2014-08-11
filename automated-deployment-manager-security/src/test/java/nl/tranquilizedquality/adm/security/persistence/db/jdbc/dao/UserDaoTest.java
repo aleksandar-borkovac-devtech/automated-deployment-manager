@@ -24,66 +24,66 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class UserDaoTest extends AbstractDaoTest {
 
-	/** DAO that will be tested. */
-	@Autowired
-	private UserDao<User> apiUserDao;
+    /** DAO that will be tested. */
+    @Autowired
+    private UserDao<User> apiUserDao;
 
-	/**
-	 * Cleans up the database and sets up the test data.
-	 */
-	@Before
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void setUp() {
-		executeSqlScript("adm-test-data-cleanup.sql", false);
-		executeSqlScript("adm-test-data.sql", false);
-		
-//		final HibernateUser user = new HibernateUser();
-//		user.setActive(true);
-//		user.setActiveFrom(new Date());
-//		user.setCreated(new Date());
-//		user.setCreatedBy("s-petrus");
-//		user.setName("Salomo Petrus");
-//		user.setPassword("asfdasdfas");
-//		user.setUserName("s-petrus");
-//
-//		apiUserDao.save(user);
-//		apiUserDao.flush();
-	}
+    /**
+     * Cleans up the database and sets up the test data.
+     */
+    @Before
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void setUp() {
+        executeSqlScript("adm-test-data-cleanup.sql", false);
+        executeSqlScript("adm-test-data.sql", false);
 
-	/**
-	 * Cleans up the database after the test.
-	 */
-	@After
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void cleanUp() {
-		executeSqlScript("adm-test-data-cleanup.sql", false);
-	}
+        // final HibernateUser user = new HibernateUser();
+        // user.setActive(true);
+        // user.setActiveFrom(new Date());
+        // user.setCreated(new Date());
+        // user.setCreatedBy("s-petrus");
+        // user.setName("Salomo Petrus");
+        // user.setPassword("asfdasdfas");
+        // user.setUserName("s-petrus");
+        //
+        // apiUserDao.save(user);
+        // apiUserDao.flush();
+    }
 
-	@Test
-	public void testFindActiveUserByUserName() {
-		User user = apiUserDao.findActiveUserByUserName("s-petrus");
+    /**
+     * Cleans up the database after the test.
+     */
+    @After
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void cleanUp() {
+        executeSqlScript("adm-test-data-cleanup.sql", false);
+    }
 
-		assertNotNull("No user found!", user);
+    @Test
+    public void testFindActiveUserByUserName() {
+        User user = apiUserDao.findActiveUserByUserName("s-petrus");
 
-		user = apiUserDao.findActiveUserByUserName("apinonuser");
+        assertNotNull("No user found!", user);
 
-		assertNull("User found!", user);
-	}
+        user = apiUserDao.findActiveUserByUserName("apinonuser");
 
-	@Test
-	public void testUpdateLastLoginDate() {
-		User user = apiUserDao.findActiveUserByUserName("s-petrus");
+        assertNull("User found!", user);
+    }
 
-		assertNotNull("No user found!", user);
-		assertNull("User was already logged in!", user.getLastLoginDate());
+    @Test
+    public void testUpdateLastLoginDate() {
+        User user = apiUserDao.findActiveUserByUserName("s-petrus");
 
-		apiUserDao.updateLastLoginDate(user);
-		apiUserDao.flush();
+        assertNotNull("No user found!", user);
+        assertNull("User was already logged in!", user.getLastLoginDate());
 
-		user = apiUserDao.findActiveUserByUserName("s-petrus");
-		apiUserDao.refresh(user);
+        apiUserDao.updateLastLoginDate(user);
+        apiUserDao.flush();
 
-		assertNotNull("No login date!", user.getLastLoginDate());
-	}
+        user = apiUserDao.findActiveUserByUserName("s-petrus");
+        apiUserDao.refresh(user);
+
+        assertNotNull("No login date!", user.getLastLoginDate());
+    }
 
 }

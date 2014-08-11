@@ -94,8 +94,8 @@ public class ArtifactServiceImpl extends AbstractService implements ArtifactServ
         final List<MavenModule> deploymentDependencies = module.getDeploymentDependencies();
         for (final MavenModule mavenModule : deploymentDependencies) {
             /*
-             * We are not interested in the dependencies of our children so we set it as empty for
-             * the GUI.
+             * We are not interested in the dependencies of our children so we
+             * set it as empty for the GUI.
              */
             mavenModule.setDeploymentDependencies(new ArrayList<MavenModule>());
         }
@@ -138,7 +138,8 @@ public class ArtifactServiceImpl extends AbstractService implements ArtifactServ
     }
 
     @Override
-    public PagingLoadResult<ClientMavenModule> findMavenModules(final PagingLoadConfig config, final ClientMavenModuleSearchCommand sc) {
+    public PagingLoadResult<ClientMavenModule> findMavenModules(final PagingLoadConfig config,
+            final ClientMavenModuleSearchCommand sc) {
         /*
          * Setup search command.
          */
@@ -190,7 +191,8 @@ public class ArtifactServiceImpl extends AbstractService implements ArtifactServ
     }
 
     @Override
-    public PagingLoadResult<ClientMavenArtifact> findMavenArtifacts(final PagingLoadConfig config, final ClientMavenArtifactSearchCommand sc) {
+    public PagingLoadResult<ClientMavenArtifact> findMavenArtifacts(final PagingLoadConfig config,
+            final ClientMavenArtifactSearchCommand sc) {
         /*
          * Setup search command.
          */
@@ -328,11 +330,11 @@ public class ArtifactServiceImpl extends AbstractService implements ArtifactServ
     }
 
     /**
-     * Initializes a {@link MavenArtifact} object so it doesn't contain data that isn't needed in
-     * the GUI.
+     * Initializes a {@link MavenArtifact} object so it doesn't contain data
+     * that isn't needed in the GUI.
      * 
      * @param artifact
-     *        The artifact that will be initialized.
+     *            The artifact that will be initialized.
      */
     private void initializeMavenArtifact(final MavenArtifact artifact) {
         final UserGroup userGroup = artifact.getUserGroup();
@@ -353,7 +355,7 @@ public class ArtifactServiceImpl extends AbstractService implements ArtifactServ
 
     /**
      * @param artifactManager
-     *        the artifactManager to set
+     *            the artifactManager to set
      */
     @Required
     public void setArtifactManager(final MavenArtifactManager artifactManager) {

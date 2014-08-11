@@ -16,34 +16,34 @@ import org.junit.Test;
  */
 public class EnumConverterTest {
 
-	/** Converter that will be tested. */
-	private EnumConverter<Action> converter;
+    /** Converter that will be tested. */
+    private EnumConverter<Action> converter;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		converter = new EnumConverter<Action>();
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        converter = new EnumConverter<Action>();
+    }
 
-	@Test
-	public void testConvertFieldValueObject() {
-		final EnumWrapper<Action> wrapper = new EnumWrapper<Action>(Action.BLAAT);
+    @Test
+    public void testConvertFieldValueObject() {
+        final EnumWrapper<Action> wrapper = new EnumWrapper<Action>(Action.BLAAT);
 
-		final Action value = (Action) converter.convertFieldValue(wrapper);
+        final Action value = (Action) converter.convertFieldValue(wrapper);
 
-		assertEquals(Action.BLAAT, value);
-	}
+        assertEquals(Action.BLAAT, value);
+    }
 
-	@SuppressWarnings("unchecked")
-	@Test
-	public void testConvertModelValueObject() {
-		final EnumWrapper<Action> wrapper = (EnumWrapper<Action>) converter.convertModelValue(Action.BLAAT);
+    @SuppressWarnings("unchecked")
+    @Test
+    public void testConvertModelValueObject() {
+        final EnumWrapper<Action> wrapper = (EnumWrapper<Action>) converter.convertModelValue(Action.BLAAT);
 
-		final Action testEnum = wrapper.get("enum");
+        final Action testEnum = wrapper.get("enum");
 
-		assertEquals(Action.BLAAT, testEnum);
-	}
+        assertEquals(Action.BLAAT, testEnum);
+    }
 
 }

@@ -35,7 +35,8 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Hibernate implementation of a DAO that manages {@link HibernateMavenArtifact} beans.
+ * Hibernate implementation of a DAO that manages {@link HibernateMavenArtifact}
+ * beans.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
@@ -88,9 +89,9 @@ public class HibernateMavenArtifactDao extends AbstractHibernateBaseDao<Hibernat
      * criteria.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param session
-     *        The session to use for doing the query.
+     *            The session to use for doing the query.
      * @return Returns a {@link Criteria}.
      */
     private Criteria getMavenArtifactCriteria(final MavenArtifactSearchCommand sc, final Session session) {

@@ -15,23 +15,23 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class AdmDashBoard extends AbstractDashBoard {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/**
-	 * Default constructor.
-	 */
-	public AdmDashBoard() {
-		/*
-		 * Set the heading.
-		 */
-		setHeading("ADM Dashboard");
+    /**
+     * Default constructor.
+     */
+    public AdmDashBoard() {
+        /*
+         * Set the heading.
+         */
+        setHeading("ADM Dashboard");
 
-		/*
-		 * Set the dashboard icon.
-		 */
-		this.icons = Registry.get(AdmModule.ICONS);
-		setIcon(AbstractImagePrototype.create(icons.dashboard()));
-	}
+        /*
+         * Set the dashboard icon.
+         */
+        this.icons = Registry.get(AdmModule.ICONS);
+        setIcon(AbstractImagePrototype.create(icons.dashboard()));
+    }
 
 }

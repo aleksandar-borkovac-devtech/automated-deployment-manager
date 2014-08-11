@@ -27,16 +27,17 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.release.ClientReleaseExec
  * @since Aug 3, 2012
  * 
  */
-class ReleaseExecutionLogFactory extends AbstractFactory<ClientReleaseExecutionLog, HibernateReleaseExecutionLog, ReleaseExecutionLog> {
+class ReleaseExecutionLogFactory extends
+        AbstractFactory<ClientReleaseExecutionLog, HibernateReleaseExecutionLog, ReleaseExecutionLog> {
 
-	@Override
-	protected ClientReleaseExecutionLog createNewClientBean() {
-		return new ClientReleaseExecutionLog();
-	}
+    @Override
+    protected ClientReleaseExecutionLog createNewClientBean() {
+        return new ClientReleaseExecutionLog();
+    }
 
-	@Override
-	protected HibernateReleaseExecutionLog createNewPersistentBean() {
-		return new HibernateReleaseExecutionLog();
-	}
+    @Override
+    protected HibernateReleaseExecutionLog createNewPersistentBean() {
+        return new HibernateReleaseExecutionLog();
+    }
 
 }

@@ -46,7 +46,7 @@ public class EnvironmentSearchCommand extends PagingSearchCommand {
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -61,7 +61,7 @@ public class EnvironmentSearchCommand extends PagingSearchCommand {
 
     /**
      * @param prefix
-     *        the prefix to set
+     *            the prefix to set
      */
     public void setPrefix(final String prefix) {
         this.prefix = prefix;

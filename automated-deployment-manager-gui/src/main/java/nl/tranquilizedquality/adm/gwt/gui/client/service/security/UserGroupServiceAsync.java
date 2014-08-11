@@ -38,10 +38,10 @@ public interface UserGroupServiceAsync {
      * Searches for a user group with the specified unique identifier.
      * 
      * @param id
-     *        The unique identifier of the user.
+     *            The unique identifier of the user.
      * @param callback
-     *        Returns a {@link ClientUserGroup} or null if none could be
-     *        found.
+     *            Returns a {@link ClientUserGroup} or null if none could be
+     *            found.
      */
     void findUserGroupById(Long id, AsyncCallback<ClientUserGroup> callback);
 
@@ -49,9 +49,9 @@ public interface UserGroupServiceAsync {
      * Stores the specified user group.
      * 
      * @param userGroup
-     *        The user group that will be stored.
+     *            The user group that will be stored.
      * @param callback
-     *        Returns the saved user group.
+     *            Returns the saved user group.
      */
     void saveUserGroup(ClientUserGroup userGroup, AsyncCallback<ClientUserGroup> callback);
 
@@ -59,20 +59,21 @@ public interface UserGroupServiceAsync {
      * Searches for user groups based on the search criteria.
      * 
      * @param config
-     *        The paging load configuration.
+     *            The paging load configuration.
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @param callback
-     *        Returns a {@link PagingLoadResult} containing the user groups
-     *        or an empty one if none could be found.
+     *            Returns a {@link PagingLoadResult} containing the user groups
+     *            or an empty one if none could be found.
      */
-    void findUserGroups(PagingLoadConfig config, ClientUserGroupSearchCommand sc, AsyncCallback<PagingLoadResult<ClientUserGroup>> callback);
+    void findUserGroups(PagingLoadConfig config, ClientUserGroupSearchCommand sc,
+            AsyncCallback<PagingLoadResult<ClientUserGroup>> callback);
 
     /**
      * Retrieves all availalbe user groups.
      * 
      * @param callback
-     *        Returns a {@link List} containing user groups.
+     *            Returns a {@link List} containing user groups.
      */
     void findUserGroups(AsyncCallback<List<ClientUserGroup>> callback);
 
@@ -80,11 +81,11 @@ public interface UserGroupServiceAsync {
      * Searches for users based on the passed in search criteria.
      * 
      * @param loadConfig
-     *        The paging load configuration.
+     *            The paging load configuration.
      * @param sc
-     *        The search criteria that will be used.
+     *            The search criteria that will be used.
      * @param callback
-     *        Callback used to return the search results.
+     *            Callback used to return the search results.
      */
     void findUsers(PagingLoadConfig loadConfig, ClientUserSearchCommand sc, AsyncCallback<PagingLoadResult<ClientUser>> callback);
 

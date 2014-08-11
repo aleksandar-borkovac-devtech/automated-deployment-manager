@@ -22,65 +22,65 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class RolePrivilegeWindow extends Window {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The {@link ClientRole} where privileges will be added to. */
-	private ClientRole role;
+    /** The {@link ClientRole} where privileges will be added to. */
+    private ClientRole role;
 
-	/** The grid that initiated this window. */
-	private final RolePrivilegesTable table;
+    /** The grid that initiated this window. */
+    private final RolePrivilegesTable table;
 
-	/** The panel that contains the privilege add functionality. */
-	private final RolePrivilegePanel rolePrivilegePanel;
+    /** The panel that contains the privilege add functionality. */
+    private final RolePrivilegePanel rolePrivilegePanel;
 
-	/**
-	 * Constructor taking the {@link ClientRole} that is being altered and the
-	 * grid that initiated this window.
-	 * 
-	 * @param role
-	 *            The {@link ClientRole} that will be used.
-	 * @param table
-	 *            The grid that will be used.
-	 */
-	public RolePrivilegeWindow(final ClientRole role, final RolePrivilegesTable table) {
-		setLayout(new FitLayout());
-		setSize(400, 300);
+    /**
+     * Constructor taking the {@link ClientRole} that is being altered and the
+     * grid that initiated this window.
+     * 
+     * @param role
+     *            The {@link ClientRole} that will be used.
+     * @param table
+     *            The grid that will be used.
+     */
+    public RolePrivilegeWindow(final ClientRole role, final RolePrivilegesTable table) {
+        setLayout(new FitLayout());
+        setSize(400, 300);
 
-		this.table = table;
-		this.role = role;
-		this.icons = Registry.get(AdmModule.ICONS);
+        this.table = table;
+        this.role = role;
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.privilege()));
+        setIcon(AbstractImagePrototype.create(icons.privilege()));
 
-		final List<ClientPrivilege> privileges = this.table.getRolePrivileges();
-		rolePrivilegePanel = new RolePrivilegePanel(this.role, privileges);
-		rolePrivilegePanel.setWindow(this);
+        final List<ClientPrivilege> privileges = this.table.getRolePrivileges();
+        rolePrivilegePanel = new RolePrivilegePanel(this.role, privileges);
+        rolePrivilegePanel.setWindow(this);
 
-		add(rolePrivilegePanel);
-	}
+        add(rolePrivilegePanel);
+    }
 
-	@Override
-	public void hide() {
-		table.setModel(role.getPrivileges());
+    @Override
+    public void hide() {
+        table.setModel(role.getPrivileges());
 
-		final Viewport viewport = Registry.get(AdmModule.VIEW_PORT);
-		viewport.unmask();
+        final Viewport viewport = Registry.get(AdmModule.VIEW_PORT);
+        viewport.unmask();
 
-		super.hide();
-	}
+        super.hide();
+    }
 
-	/**
-	 * @param role
-	 *            the role to set
-	 */
-	public void setRole(final ClientRole role) {
-		this.role = role;
+    /**
+     * @param role
+     *            the role to set
+     */
+    public void setRole(final ClientRole role) {
+        this.role = role;
 
-		this.rolePrivilegePanel.setRole(role);
+        this.rolePrivilegePanel.setRole(role);
 
-		final List<ClientPrivilege> rolePrivileges = this.table.getRolePrivileges();
-		this.rolePrivilegePanel.setFilterPrivileges(rolePrivileges);
-	}
+        final List<ClientPrivilege> rolePrivileges = this.table.getRolePrivileges();
+        this.rolePrivilegePanel.setFilterPrivileges(rolePrivileges);
+    }
 
 }

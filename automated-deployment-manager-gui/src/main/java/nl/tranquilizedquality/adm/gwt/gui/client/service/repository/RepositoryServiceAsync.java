@@ -30,38 +30,38 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface RepositoryServiceAsync {
 
-	/**
-	 * Searches for a {@link Repository} with the specified unique identifier.
-	 * 
-	 * @param id
-	 *            The unique identifier to use.
-	 * @param callback
-	 *            Returns a {@link ClientRepository} or null if none could be
-	 *            found.
-	 */
-	void findRepositoryById(Long id, AsyncCallback<ClientRepository> callback);
+    /**
+     * Searches for a {@link Repository} with the specified unique identifier.
+     * 
+     * @param id
+     *            The unique identifier to use.
+     * @param callback
+     *            Returns a {@link ClientRepository} or null if none could be
+     *            found.
+     */
+    void findRepositoryById(Long id, AsyncCallback<ClientRepository> callback);
 
-	/**
-	 * Saves the specified repository.
-	 * 
-	 * @param repository
-	 *            The repository that will be saved.
-	 * @param callback
-	 *            Returns the saved {@link ClientRepository}.
-	 */
-	void saveRepository(ClientRepository repository, AsyncCallback<ClientRepository> callback);
+    /**
+     * Saves the specified repository.
+     * 
+     * @param repository
+     *            The repository that will be saved.
+     * @param callback
+     *            Returns the saved {@link ClientRepository}.
+     */
+    void saveRepository(ClientRepository repository, AsyncCallback<ClientRepository> callback);
 
-	/**
-	 * Finds repositories based on the passed in search criteria.
-	 * 
-	 * @param config
-	 *            The paging configuration.
-	 * @param sc
-	 *            The search criteria.
-	 * @param callback
-	 *            Returns a {@link PagingLoadResult}.
-	 */
-	void findRepositories(PagingLoadConfig config, ClientRepositorySearchCommand sc,
-			AsyncCallback<PagingLoadResult<ClientRepository>> callback);
+    /**
+     * Finds repositories based on the passed in search criteria.
+     * 
+     * @param config
+     *            The paging configuration.
+     * @param sc
+     *            The search criteria.
+     * @param callback
+     *            Returns a {@link PagingLoadResult}.
+     */
+    void findRepositories(PagingLoadConfig config, ClientRepositorySearchCommand sc,
+            AsyncCallback<PagingLoadResult<ClientRepository>> callback);
 
 }

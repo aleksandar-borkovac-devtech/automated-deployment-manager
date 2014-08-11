@@ -52,7 +52,7 @@ public class SchemaCreatorTest {
 
     /**
      * @param args
-     *        Arguments to pass
+     *            Arguments to pass
      */
     public static void main(final String[] args) {
         createSchema("org.hibernate.dialect.Oracle9iDialect", "true", "target/adm-oracle9i-schema.sql");

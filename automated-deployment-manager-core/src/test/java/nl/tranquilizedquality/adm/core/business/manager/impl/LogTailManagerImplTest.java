@@ -12,7 +12,8 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 /**
- * Creates a file and writes to it, and checks that the output written is also the output received.
+ * Creates a file and writes to it, and checks that the output written is also
+ * the output received.
  *
  * @author e-pragt (erik.pragt@Tranquilized Quality.com)
  * @since 10/29/12

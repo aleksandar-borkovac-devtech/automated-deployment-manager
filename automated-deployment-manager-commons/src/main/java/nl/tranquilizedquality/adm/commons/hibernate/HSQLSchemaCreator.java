@@ -14,43 +14,43 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class HSQLSchemaCreator implements InitializingBean {
 
-	/**
-	 * schema name.
-	 */
-	private String schema;
+    /**
+     * schema name.
+     */
+    private String schema;
 
-	/**
-	 * data source.
-	 */
-	private DataSource dataSource;
+    /**
+     * data source.
+     */
+    private DataSource dataSource;
 
-	// setters and getters
-	public String getSchema() {
-		return schema;
-	}
+    // setters and getters
+    public String getSchema() {
+        return schema;
+    }
 
-	public void setSchema(final String schema) {
-		this.schema = schema;
-	}
+    public void setSchema(final String schema) {
+        this.schema = schema;
+    }
 
-	public DataSource getDataSource() {
-		return dataSource;
-	}
+    public DataSource getDataSource() {
+        return dataSource;
+    }
 
-	public void setDataSource(final DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+    public void setDataSource(final DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
-	/**
-	 * Create schema.
-	 * 
-	 * @throws Exception
-	 *             any exception
-	 */
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		final JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.execute("DROP SCHEMA IF EXISTS " + schema + " CASCADE");
-		jdbcTemplate.execute("CREATE SCHEMA " + schema + " AUTHORIZATION DBA;");
-	}
+    /**
+     * Create schema.
+     * 
+     * @throws Exception
+     *             any exception
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        final JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.execute("DROP SCHEMA IF EXISTS " + schema + " CASCADE");
+        jdbcTemplate.execute("CREATE SCHEMA " + schema + " AUTHORIZATION DBA;");
+    }
 }

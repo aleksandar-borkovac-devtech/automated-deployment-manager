@@ -22,56 +22,56 @@ package nl.tranquilizedquality.adm.core.business.deployer.exception;
  */
 public class DeployException extends RuntimeException {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 5673147395824391665L;
+    private static final long serialVersionUID = 5673147395824391665L;
 
-	/** The logs. */
-	private String logs;
+    /** The logs. */
+    private String logs;
 
-	/**
-	 * Default constructor.
-	 */
-	public DeployException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public DeployException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public DeployException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public DeployException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public DeployException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public DeployException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
-	/**
-	 * @return the logs
-	 */
-	public String getLogs() {
-		return logs;
-	}
+    /**
+     * @return the logs
+     */
+    public String getLogs() {
+        return logs;
+    }
 
-	/**
-	 * @param logs
-	 *            the logs to set
-	 */
-	public void setLogs(final String logs) {
-		this.logs = logs;
-	}
+    /**
+     * @param logs
+     *            the logs to set
+     */
+    public void setLogs(final String logs) {
+        this.logs = logs;
+    }
 
 }

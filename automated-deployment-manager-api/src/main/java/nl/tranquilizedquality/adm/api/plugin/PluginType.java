@@ -15,7 +15,10 @@ package nl.tranquilizedquality.adm.api.plugin;
  */
 public enum PluginType {
 
-    /** Post release check plugin that performs validations to see if an application works properly. */
+    /**
+     * Post release check plugin that performs validations to see if an
+     * application works properly.
+     */
     POST_RELEASE_CHECK,
 
     /** A custom deployer that can be used to deploy artifacts. */

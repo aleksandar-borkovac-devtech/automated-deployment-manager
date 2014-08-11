@@ -30,7 +30,7 @@ import org.junit.runner.RunWith;
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure(parameterConverters = ParameterConverters.EnumConverter.class)
 @UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false)
-@UsingSpring(resources = { "classpath:itest-maven-module-context.xml" })
+@UsingSpring(resources = {"classpath:itest-maven-module-context.xml" })
 public class AdmAddMavenModuleStory extends InjectableEmbedder {
 
     @Test
@@ -40,7 +40,8 @@ public class AdmAddMavenModuleStory extends InjectableEmbedder {
     }
 
     protected List<String> storyPaths() {
-        return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/add-maven-module.story", "");
+        return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/add-maven-module.story",
+                "");
     }
 
 }

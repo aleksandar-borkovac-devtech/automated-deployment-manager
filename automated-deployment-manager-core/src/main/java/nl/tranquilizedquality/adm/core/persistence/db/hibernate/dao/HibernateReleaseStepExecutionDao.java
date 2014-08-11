@@ -25,17 +25,17 @@ import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateRe
  * @since 3 jun. 2011
  */
 public class HibernateReleaseStepExecutionDao extends
-		AbstractHibernateBaseDao<HibernateReleaseStepExecution, Long> implements
-		ReleaseStepExecutionDao<HibernateReleaseStepExecution> {
+        AbstractHibernateBaseDao<HibernateReleaseStepExecution, Long> implements
+        ReleaseStepExecutionDao<HibernateReleaseStepExecution> {
 
-	@Override
-	protected Class<HibernateReleaseStepExecution> getDomainClass() {
-		return HibernateReleaseStepExecution.class;
-	}
+    @Override
+    protected Class<HibernateReleaseStepExecution> getDomainClass() {
+        return HibernateReleaseStepExecution.class;
+    }
 
-	@Override
-	public HibernateReleaseStepExecution newDomainObject() {
-		return new HibernateReleaseStepExecution();
-	}
+    @Override
+    public HibernateReleaseStepExecution newDomainObject() {
+        return new HibernateReleaseStepExecution();
+    }
 
 }

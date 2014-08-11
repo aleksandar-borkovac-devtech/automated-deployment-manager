@@ -43,13 +43,14 @@ public class SshPowerShellProtocolConnectorTest {
         final File file = new File("src/test/resources/id_rsa");
         final byte[] privateKey = FileUtils.readFileToByteArray(file);
 
-        // connector.connectToHost("gogrid", "localhost", 22, "s-petrus", "nohode*12%", null);
-
+        // connector.connectToHost("gogrid", "localhost", 22, "s-petrus",
+        // "nohode*12%", null);
 
         connector.performCustomCommand("mkdir /Windows/Temp/2345235423");
         // connector.performCustomCommand("rc killprocesses excel");
 
-        // connector.performCommand(SshCommand.CHANGE_DIRECTORY, "/srv/tomcat/instances");
+        // connector.performCommand(SshCommand.CHANGE_DIRECTORY,
+        // "/srv/tomcat/instances");
         // connector.performCommand(SshCommand.LIST, "");
         // connector.performCustomCommand("mkdir -p /Temp/testdir");
 
@@ -75,7 +76,8 @@ public class SshPowerShellProtocolConnectorTest {
         // final Thread thread = new Thread(runnable);
         // thread.start();
 
-        // final List<String> lines = IOUtils.readLines(new StringReader(sessionOutput));
+        // final List<String> lines = IOUtils.readLines(new
+        // StringReader(sessionOutput));
         //
         // for (final String value : lines) {
         // System.out.println(value);

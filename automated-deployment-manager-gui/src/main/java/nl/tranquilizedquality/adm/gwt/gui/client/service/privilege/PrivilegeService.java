@@ -20,51 +20,51 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("PrivilegeService.rpc")
 public interface PrivilegeService extends RemoteService {
 
-	/**
-	 * Utility class for simplifying access to the instance of async service.
-	 */
-	public static class Util {
+    /**
+     * Utility class for simplifying access to the instance of async service.
+     */
+    public static class Util {
 
-		private static PrivilegeServiceAsync instance;
+        private static PrivilegeServiceAsync instance;
 
-		public static PrivilegeServiceAsync getInstance() {
-			if (instance == null) {
-				instance = GWT.create(PrivilegeService.class);
-			}
-			return instance;
-		}
-	}
+        public static PrivilegeServiceAsync getInstance() {
+            if (instance == null) {
+                instance = GWT.create(PrivilegeService.class);
+            }
+            return instance;
+        }
+    }
 
-	/**
-	 * Searches for {@link ClientPrivilege} objects.
-	 * 
-	 * @param config
-	 *            The {@link PagingLoadConfig} that contains the paging
-	 *            configuration.
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns a {@link PagingLoadResult} containing the search result.
-	 */
-	PagingLoadResult<ClientPrivilege> findPrivileges(PagingLoadConfig config, ClientPrivilegeSearchCommand sc);
+    /**
+     * Searches for {@link ClientPrivilege} objects.
+     * 
+     * @param config
+     *            The {@link PagingLoadConfig} that contains the paging
+     *            configuration.
+     * @param sc
+     *            The search criteria.
+     * @return Returns a {@link PagingLoadResult} containing the search result.
+     */
+    PagingLoadResult<ClientPrivilege> findPrivileges(PagingLoadConfig config, ClientPrivilegeSearchCommand sc);
 
-	/**
-	 * Retrieves a {@link ClientPrivilege} with the specified unique identifier.
-	 * 
-	 * @param id
-	 *            The unique identifier of the {@link ClientPrivilege}.
-	 * @return Returns a {@link ClientPrivilege}.
-	 */
-	ClientPrivilege findPrivilegeById(Long id);
+    /**
+     * Retrieves a {@link ClientPrivilege} with the specified unique identifier.
+     * 
+     * @param id
+     *            The unique identifier of the {@link ClientPrivilege}.
+     * @return Returns a {@link ClientPrivilege}.
+     */
+    ClientPrivilege findPrivilegeById(Long id);
 
-	/**
-	 * Saves the passed in {@link ClientPrivilege}.
-	 * 
-	 * @param privilege
-	 *            The {@link ClientPrivilege} that will be saved.
-	 * @return Returns the saved {@link ClientPrivilege}.
-	 * @throws PrivilegeServiceException
-	 *             Is thrown when something goes wrong during privilege saving.
-	 */
-	ClientPrivilege savePrivilege(ClientPrivilege privilege) throws PrivilegeServiceException;
+    /**
+     * Saves the passed in {@link ClientPrivilege}.
+     * 
+     * @param privilege
+     *            The {@link ClientPrivilege} that will be saved.
+     * @return Returns the saved {@link ClientPrivilege}.
+     * @throws PrivilegeServiceException
+     *             Is thrown when something goes wrong during privilege saving.
+     */
+    ClientPrivilege savePrivilege(ClientPrivilege privilege) throws PrivilegeServiceException;
 
 }

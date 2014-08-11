@@ -15,15 +15,17 @@ import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
 
 /**
- * An abstract panel that can be used to create a form panel binded to a {@link DomainObject}.
+ * An abstract panel that can be used to create a form panel binded to a
+ * {@link DomainObject}.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 28 aug. 2011
  * @param <ModelType>
- *        The domain object that this detail panel is displaying.
+ *            The domain object that this detail panel is displaying.
  */
-@SuppressWarnings({ "rawtypes" })
-public abstract class AbstractDetailPanel<ModelType extends DomainObject> extends LayoutContainer implements NavigationalItem<ModelType> {
+@SuppressWarnings({"rawtypes" })
+public abstract class AbstractDetailPanel<ModelType extends DomainObject> extends LayoutContainer implements
+        NavigationalItem<ModelType> {
 
     /** The {@link FormPanel} that is used to put all the editable fields on. */
     protected FormPanel formPanel;
@@ -48,7 +50,7 @@ public abstract class AbstractDetailPanel<ModelType extends DomainObject> extend
      * Sets the model object.
      * 
      * @param model
-     *        The model that will be set.
+     *            The model that will be set.
      */
     @Override
     public abstract void setModel(ModelType model);
@@ -70,7 +72,8 @@ public abstract class AbstractDetailPanel<ModelType extends DomainObject> extend
     protected abstract void performPrivilegeCheck();
 
     /**
-     * Creates the details panel where the details of the {@link Organization} are displayed in.
+     * Creates the details panel where the details of the {@link Organization}
+     * are displayed in.
      * 
      * @return Returns a {@link FormPanel} with all the appropriate controls on
      *         it.
@@ -119,7 +122,7 @@ public abstract class AbstractDetailPanel<ModelType extends DomainObject> extend
      * Create the {@link BeanModel} of the {@link ModelType} object.
      * 
      * @param model
-     *        the model that will be transformed into a {@link BeanModel}.
+     *            the model that will be transformed into a {@link BeanModel}.
      * @return the resulting model object.
      */
     private BeanModel createBindModel(final ModelType model) {

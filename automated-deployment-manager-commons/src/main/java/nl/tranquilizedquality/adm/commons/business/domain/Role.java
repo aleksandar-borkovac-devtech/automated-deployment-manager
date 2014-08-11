@@ -20,7 +20,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     void setName(String name);
 
@@ -31,7 +31,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param description
-     *        the description to set
+     *            the description to set
      */
     void setDescription(String description);
 
@@ -42,7 +42,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param valid
-     *        the valid to set
+     *            the valid to set
      */
     void setValid(Boolean valid);
 
@@ -53,7 +53,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param scope
-     *        the scope to set
+     *            the scope to set
      */
     void setScope(Scope scope);
 
@@ -69,7 +69,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param userRoles
-     *        the user roles to set
+     *            the user roles to set
      */
     void setUserRoles(List<UserRole> userRoles);
 
@@ -80,7 +80,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param privileges
-     *        the privileges to set
+     *            the privileges to set
      */
     void setPrivileges(Set<Privilege> privileges);
 
@@ -91,7 +91,7 @@ public interface Role extends UpdatableDomainObject<Long> {
 
     /**
      * @param frozen
-     *        the frozen to set
+     *            the frozen to set
      */
     void setFrozen(Boolean frozen);
 

@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        Implementation type.
+ *            Implementation type.
  */
 public abstract class AbstractInsertableModel<T> extends AbstractModel<T> implements InsertableDomainObject<T> {
     private static final long serialVersionUID = -2834176286351239723L;
@@ -36,7 +36,7 @@ public abstract class AbstractInsertableModel<T> extends AbstractModel<T> implem
 
     /**
      * @param created
-     *        the creation date and time to set.
+     *            the creation date and time to set.
      */
     public void setCreated(final Date created) {
         this.created = created;
@@ -52,7 +52,7 @@ public abstract class AbstractInsertableModel<T> extends AbstractModel<T> implem
 
     /**
      * @param createdBy
-     *        the name of the user that creates this instance.
+     *            the name of the user that creates this instance.
      */
     public void setCreatedBy(final String createdBy) {
         this.createdBy = createdBy;
@@ -64,7 +64,7 @@ public abstract class AbstractInsertableModel<T> extends AbstractModel<T> implem
      * to copy the inherited properties.
      * 
      * @param object
-     *        the object to copy.
+     *            the object to copy.
      */
     @Override
     public void copy(final DomainObject<T> object) {

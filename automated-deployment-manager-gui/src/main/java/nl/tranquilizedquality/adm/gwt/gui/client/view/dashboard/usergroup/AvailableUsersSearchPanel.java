@@ -44,137 +44,137 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 class AvailableUsersSearchPanel extends AbstractSearchPanel<ClientUserSearchCommand> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The name to search on. */
-	private TextField<String> name;
+    /** The name to search on. */
+    private TextField<String> name;
 
-	/** The username to search on. */
-	private TextField<String> userName;
+    /** The username to search on. */
+    private TextField<String> userName;
 
-	/** Panel where the user group details are displayed on. */
-	private final UserGroupDetailsPanel detailsPanel;
+    /** Panel where the user group details are displayed on. */
+    private final UserGroupDetailsPanel detailsPanel;
 
-	/**
-	 * Default constructor.
-	 */
-	public AvailableUsersSearchPanel(final UserGroupDetailsPanel detailsPanel) {
-		icons = Registry.get(AdmModule.ICONS);
-		sc = new ClientUserSearchCommand();
-		this.detailsPanel = detailsPanel;
-		initializeWidgets();
-	}
+    /**
+     * Default constructor.
+     */
+    public AvailableUsersSearchPanel(final UserGroupDetailsPanel detailsPanel) {
+        icons = Registry.get(AdmModule.ICONS);
+        sc = new ClientUserSearchCommand();
+        this.detailsPanel = detailsPanel;
+        initializeWidgets();
+    }
 
-	@Override
-	protected AbstractGridPanel createGridPanel() {
-		return new AvailableUsersTable(sc, detailsPanel);
-	}
+    @Override
+    protected AbstractGridPanel createGridPanel() {
+        return new AvailableUsersTable(sc, detailsPanel);
+    }
 
-	@Override
-	protected FormPanel createFilterPanel() {
-		final FormPanel formPanel = new FormPanel();
-		formPanel.setHeading("Search criteria");
-		formPanel.setFrame(true);
-		formPanel.setLabelWidth(200);
-		formPanel.setButtonAlign(HorizontalAlignment.LEFT);
-		formPanel.setIcon(AbstractImagePrototype.create(icons.funnel()));
-		formPanel.setHeight(160);
+    @Override
+    protected FormPanel createFilterPanel() {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setHeading("Search criteria");
+        formPanel.setFrame(true);
+        formPanel.setLabelWidth(200);
+        formPanel.setButtonAlign(HorizontalAlignment.LEFT);
+        formPanel.setIcon(AbstractImagePrototype.create(icons.funnel()));
+        formPanel.setHeight(160);
 
-		/*
-		 * Add name.
-		 */
-		name = new TextField<String>();
-		name.setId("users-search-name");
-		name.setName("name");
-		name.setFieldLabel("Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add name.
+         */
+        name = new TextField<String>();
+        name.setId("users-search-name");
+        name.setName("name");
+        name.setFieldLabel("Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add user name.
-		 */
-		userName = new TextField<String>();
-		userName.setId("users-search-user-name");
-		userName.setName("userName");
-		userName.setFieldLabel("Username");
-		userName.setAllowBlank(true);
-		formPanel.add(userName);
+        /*
+         * Add user name.
+         */
+        userName = new TextField<String>();
+        userName.setId("users-search-user-name");
+        userName.setName("userName");
+        userName.setFieldLabel("Username");
+        userName.setAllowBlank(true);
+        formPanel.add(userName);
 
-		/*
-		 * Add search button.
-		 */
-		final Button search = new Button("Search");
-		search.setIcon(AbstractImagePrototype.create(icons.find()));
+        /*
+         * Add search button.
+         */
+        final Button search = new Button("Search");
+        search.setIcon(AbstractImagePrototype.create(icons.find()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				for (final FieldBinding fieldBinding : fieldBindings) {
-					fieldBinding.updateModel();
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                for (final FieldBinding fieldBinding : fieldBindings) {
+                    fieldBinding.updateModel();
+                }
 
-				search();
-			}
+                search();
+            }
 
-		};
-		search.addSelectionListener(listener);
+        };
+        search.addSelectionListener(listener);
 
-		formPanel.addButton(search);
+        formPanel.addButton(search);
 
-		return formPanel;
-	}
+        return formPanel;
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Setup layout.
+         */
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		/*
-		 * Create the filter panel.
-		 */
-		formPanel = createFilterPanel();
+        /*
+         * Create the filter panel.
+         */
+        formPanel = createFilterPanel();
 
-		/*
-		 * Create grid panel.
-		 */
-		gridPanel = createGridPanel();
+        /*
+         * Create grid panel.
+         */
+        gridPanel = createGridPanel();
 
-		/*
-		 * Bind model.
-		 */
-		bindModel(this.sc);
+        /*
+         * Bind model.
+         */
+        bindModel(this.sc);
 
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
-		northData.setCollapsible(true);
-		northData.setFloatable(true);
-		northData.setSplit(true);
-		northData.setMaxSize(200);
-		northData.setSize(150);
-		northData.setSplit(true);
-		northData.setMargins(new Margins(1, 1, 1, 1));
+        /*
+         * Setup layout.
+         */
+        final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
+        northData.setCollapsible(true);
+        northData.setFloatable(true);
+        northData.setSplit(true);
+        northData.setMaxSize(200);
+        northData.setSize(150);
+        northData.setSplit(true);
+        northData.setMargins(new Margins(1, 1, 1, 1));
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
-		centerData.setMargins(new Margins(0, 1, 1, 1));
-		centerData.setSplit(true);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        centerData.setMargins(new Margins(0, 1, 1, 1));
+        centerData.setSplit(true);
 
-		add(formPanel, northData);
-		add(gridPanel, centerData);
-	}
+        add(formPanel, northData);
+        add(gridPanel, centerData);
+    }
 
-	/**
-	 * Initializes the panel.
-	 */
-	public void initialize() {
-		final AvailableUsersTable usersTable = (AvailableUsersTable) gridPanel;
-		usersTable.initialize();
-	}
+    /**
+     * Initializes the panel.
+     */
+    public void initialize() {
+        final AvailableUsersTable usersTable = (AvailableUsersTable) gridPanel;
+        usersTable.initialize();
+    }
 
 }

@@ -51,7 +51,7 @@ public class AvailableDependenciesTable extends AbstractRelationListTable<MavenM
      * Constructor taking the panel where this table is displayed on.
      * 
      * @param detailsPanel
-     *        The details panel where this panel is displayed on.
+     *            The details panel where this panel is displayed on.
      */
     public AvailableDependenciesTable(final MavenModuleDetailsPanel detailsPanel) {
         setHeading("Available Dependencies");

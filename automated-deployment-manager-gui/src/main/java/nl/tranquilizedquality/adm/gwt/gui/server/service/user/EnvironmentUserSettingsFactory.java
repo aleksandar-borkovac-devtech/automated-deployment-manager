@@ -18,7 +18,8 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.settings.ClientEnvironmen
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 23 okt. 2012
  */
-class EnvironmentUserSettingsFactory extends
+class EnvironmentUserSettingsFactory
+        extends
         AbstractFactory<ClientEnvironmentNotificationSetting, HibernateEnvironmentNotificationSetting, EnvironmentNotificationSetting> {
 
     @Override

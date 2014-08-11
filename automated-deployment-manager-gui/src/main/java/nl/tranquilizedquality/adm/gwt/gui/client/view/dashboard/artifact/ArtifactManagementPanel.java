@@ -48,177 +48,177 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class ArtifactManagementPanel extends AbstractSearchPanel<ClientMavenArtifactSearchCommand> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The name to search on. */
-	private TextField<String> name;
+    /** The name to search on. */
+    private TextField<String> name;
 
-	/** The group to search on. */
-	private TextField<String> group;
+    /** The group to search on. */
+    private TextField<String> group;
 
-	/** The artifact id to search on. */
-	private TextField<String> artifactId;
+    /** The artifact id to search on. */
+    private TextField<String> artifactId;
 
-	/** The {@link ComboBox} containing a list of artifact types. */
-	private ComboBox<EnumWrapper<ArtifactType>> artifactType;
+    /** The {@link ComboBox} containing a list of artifact types. */
+    private ComboBox<EnumWrapper<ArtifactType>> artifactType;
 
-	/**
-	 * Default constructor.
-	 */
-	public ArtifactManagementPanel() {
-		icons = Registry.get(AdmModule.ICONS);
+    /**
+     * Default constructor.
+     */
+    public ArtifactManagementPanel() {
+        icons = Registry.get(AdmModule.ICONS);
 
-		sc = new ClientMavenArtifactSearchCommand();
+        sc = new ClientMavenArtifactSearchCommand();
 
-		northHeight = 200;
+        northHeight = 200;
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Setup layout.
+         */
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		/*
-		 * Create the filter panel.
-		 */
-		formPanel = createFilterPanel();
+        /*
+         * Create the filter panel.
+         */
+        formPanel = createFilterPanel();
 
-		/*
-		 * Create grid panel.
-		 */
-		gridPanel = createGridPanel();
+        /*
+         * Create grid panel.
+         */
+        gridPanel = createGridPanel();
 
-		final FieldBinding binding = new FieldBinding(this.artifactType, "type");
-		binding.setConverter(new EnumConverter<ArtifactType>());
-		fieldBindings.add(binding);
+        final FieldBinding binding = new FieldBinding(this.artifactType, "type");
+        binding.setConverter(new EnumConverter<ArtifactType>());
+        fieldBindings.add(binding);
 
-		/*
-		 * Bind model.
-		 */
-		bindModel(this.sc);
+        /*
+         * Bind model.
+         */
+        bindModel(this.sc);
 
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
-		northData.setCollapsible(true);
-		northData.setFloatable(true);
-		northData.setSplit(true);
-		northData.setMaxSize(northMaxHeight);
-		northData.setSize(northHeight);
-		northData.setSplit(true);
-		northData.setMargins(new Margins(1, 1, 1, 1));
+        /*
+         * Setup layout.
+         */
+        final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
+        northData.setCollapsible(true);
+        northData.setFloatable(true);
+        northData.setSplit(true);
+        northData.setMaxSize(northMaxHeight);
+        northData.setSize(northHeight);
+        northData.setSplit(true);
+        northData.setMargins(new Margins(1, 1, 1, 1));
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
-		centerData.setMargins(new Margins(0, 1, 1, 1));
-		centerData.setSplit(true);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        centerData.setMargins(new Margins(0, 1, 1, 1));
+        centerData.setSplit(true);
 
-		add(formPanel, northData);
-		add(gridPanel, centerData);
-	}
+        add(formPanel, northData);
+        add(gridPanel, centerData);
+    }
 
-	@Override
-	protected AbstractGridPanel createGridPanel() {
-		return new ArtifactTable(sc);
-	}
+    @Override
+    protected AbstractGridPanel createGridPanel() {
+        return new ArtifactTable(sc);
+    }
 
-	@Override
-	protected FormPanel createFilterPanel() {
-		final FormPanel formPanel = new FormPanel();
-		formPanel.setHeading("Search criteria");
-		formPanel.setFrame(true);
-		formPanel.setLabelWidth(200);
-		formPanel.setButtonAlign(HorizontalAlignment.LEFT);
-		formPanel.setIcon(AbstractImagePrototype.create(icons.findArtifacts()));
-		formPanel.setHeight(160);
+    @Override
+    protected FormPanel createFilterPanel() {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setHeading("Search criteria");
+        formPanel.setFrame(true);
+        formPanel.setLabelWidth(200);
+        formPanel.setButtonAlign(HorizontalAlignment.LEFT);
+        formPanel.setIcon(AbstractImagePrototype.create(icons.findArtifacts()));
+        formPanel.setHeight(160);
 
-		/*
-		 * Add group.
-		 */
-		group = new TextField<String>();
-		group.setId("artifact-management-artifact-group");
-		group.setName("group");
-		group.setFieldLabel("Artifact Group");
-		group.setAllowBlank(true);
-		formPanel.add(group);
+        /*
+         * Add group.
+         */
+        group = new TextField<String>();
+        group.setId("artifact-management-artifact-group");
+        group.setName("group");
+        group.setFieldLabel("Artifact Group");
+        group.setAllowBlank(true);
+        formPanel.add(group);
 
-		/*
-		 * Add artifact id.
-		 */
-		artifactId = new TextField<String>();
-		artifactId.setId("artifact-management-artifact-artifact-id");
-		artifactId.setName("artifactId");
-		artifactId.setFieldLabel("Artifact Id");
-		artifactId.setAllowBlank(true);
-		formPanel.add(artifactId);
+        /*
+         * Add artifact id.
+         */
+        artifactId = new TextField<String>();
+        artifactId.setId("artifact-management-artifact-artifact-id");
+        artifactId.setName("artifactId");
+        artifactId.setFieldLabel("Artifact Id");
+        artifactId.setAllowBlank(true);
+        formPanel.add(artifactId);
 
-		/*
-		 * Add artifact name.
-		 */
-		name = new TextField<String>();
-		name.setId("artifact-management-artifact-name");
-		name.setName("name");
-		name.setFieldLabel("Artifact Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add artifact name.
+         */
+        name = new TextField<String>();
+        name.setId("artifact-management-artifact-name");
+        name.setName("name");
+        name.setFieldLabel("Artifact Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add protocol.
-		 */
-		artifactType = new ComboBox<EnumWrapper<ArtifactType>>();
-		artifactType.setId("artifact-management-type");
-		artifactType.setName("type");
-		artifactType.setFieldLabel("Artifact Type");
-		artifactType.setDisplayField("value");
-		artifactType.setEmptyText("Select type..");
-		artifactType.setTriggerAction(TriggerAction.ALL);
-		artifactType.setForceSelection(true);
-		artifactType.setEditable(false);
+        /*
+         * Add protocol.
+         */
+        artifactType = new ComboBox<EnumWrapper<ArtifactType>>();
+        artifactType.setId("artifact-management-type");
+        artifactType.setName("type");
+        artifactType.setFieldLabel("Artifact Type");
+        artifactType.setDisplayField("value");
+        artifactType.setEmptyText("Select type..");
+        artifactType.setTriggerAction(TriggerAction.ALL);
+        artifactType.setForceSelection(true);
+        artifactType.setEditable(false);
 
-		/*
-		 * Add enums.
-		 */
-		final ListStore<EnumWrapper<ArtifactType>> store = new ListStore<EnumWrapper<ArtifactType>>();
-		final ArtifactType[] values = ArtifactType.values();
-		store.add(new EnumWrapper<ArtifactType>(null));
-		for (final ArtifactType artifactType : values) {
-			final EnumWrapper<ArtifactType> wrapper = new EnumWrapper<ArtifactType>(artifactType);
-			store.add(wrapper);
-		}
+        /*
+         * Add enums.
+         */
+        final ListStore<EnumWrapper<ArtifactType>> store = new ListStore<EnumWrapper<ArtifactType>>();
+        final ArtifactType[] values = ArtifactType.values();
+        store.add(new EnumWrapper<ArtifactType>(null));
+        for (final ArtifactType artifactType : values) {
+            final EnumWrapper<ArtifactType> wrapper = new EnumWrapper<ArtifactType>(artifactType);
+            store.add(wrapper);
+        }
 
-		artifactType.setStore(store);
+        artifactType.setStore(store);
 
-		formPanel.add(artifactType);
+        formPanel.add(artifactType);
 
-		/*
-		 * Add search button.
-		 */
-		final Button search = new Button("Search");
-		search.setIcon(AbstractImagePrototype.create(icons.find()));
+        /*
+         * Add search button.
+         */
+        final Button search = new Button("Search");
+        search.setIcon(AbstractImagePrototype.create(icons.find()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				for (final FieldBinding fieldBinding : fieldBindings) {
-					fieldBinding.updateModel();
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                for (final FieldBinding fieldBinding : fieldBindings) {
+                    fieldBinding.updateModel();
+                }
 
-				search();
-			}
+                search();
+            }
 
-		};
-		search.addSelectionListener(listener);
+        };
+        search.addSelectionListener(listener);
 
-		formPanel.addButton(search);
+        formPanel.addButton(search);
 
-		return formPanel;
-	}
+        return formPanel;
+    }
 
 }

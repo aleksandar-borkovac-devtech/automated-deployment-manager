@@ -15,14 +15,14 @@ import nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.Hiberna
  */
 public class PrivilegeFactory extends AbstractFactory<ClientPrivilege, HibernatePrivilege, Privilege> {
 
-	@Override
-	protected ClientPrivilege createNewClientBean() {
-		return new ClientPrivilege();
-	}
+    @Override
+    protected ClientPrivilege createNewClientBean() {
+        return new ClientPrivilege();
+    }
 
-	@Override
-	protected HibernatePrivilege createNewPersistentBean() {
-		return new HibernatePrivilege();
-	}
+    @Override
+    protected HibernatePrivilege createNewPersistentBean() {
+        return new HibernatePrivilege();
+    }
 
 }

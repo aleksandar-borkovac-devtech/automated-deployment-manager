@@ -39,7 +39,8 @@ public class DestinationHostSteps extends LoginSteps {
     }
 
     @When("the user adds a host with the name $hostName on port $port using $protocol protocol logging in with $username and a private key $privateKey")
-    public void addHostWithPrivateKeyAuthentication(@Named("hostName") final String hostName, @Named("protocol") final String protocol,
+    public void addHostWithPrivateKeyAuthentication(@Named("hostName") final String hostName,
+            @Named("protocol") final String protocol,
             @Named("port") final int port, @Named("username") final String username, @Named("privateKey") final String privateKey) {
 
         dashboardManager.openAddNewDestinationHostTab();

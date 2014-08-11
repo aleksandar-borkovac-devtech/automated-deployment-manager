@@ -22,7 +22,8 @@ public interface Deployer extends UpdatableDomainObject<Long> {
     /**
      * Retrieves the parameters that are part of this deployer.
      * 
-     * @return Returns a {@link List} of parameters or an empty one if no parameters are needed.
+     * @return Returns a {@link List} of parameters or an empty one if no
+     *         parameters are needed.
      */
     List<DeployerParameterTemplate> getParameters();
 
@@ -30,7 +31,7 @@ public interface Deployer extends UpdatableDomainObject<Long> {
      * Sets the parameters for this deployer.
      * 
      * @param parameters
-     *        The parameters that should be set.
+     *            The parameters that should be set.
      */
     void setParameters(List<DeployerParameterTemplate> parameters);
 

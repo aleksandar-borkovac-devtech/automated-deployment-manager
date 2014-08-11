@@ -80,7 +80,8 @@ public class MavenModuleManagementManagerImpl implements MavenModuleManagementMa
 
     @Override
     public void addMavenModule(final MavenModuleDto mavenModule) {
-        final MavenModuleDetailsPage mavenModuleDetailsPage = (MavenModuleDetailsPage) admPages.get(PageType.MAVEN_MODULE_DETAILS_TAB);
+        final MavenModuleDetailsPage mavenModuleDetailsPage = (MavenModuleDetailsPage) admPages
+                .get(PageType.MAVEN_MODULE_DETAILS_TAB);
         mavenModuleDetailsPage.addMavenModule(mavenModule);
     }
 
@@ -106,7 +107,8 @@ public class MavenModuleManagementManagerImpl implements MavenModuleManagementMa
                 (MavenModuleMangementPage) admPages.get(PageType.MAVEN_MODULE_MANAGEMENT_TAB);
         mavenModuleManagementPage.openDetailsPanelForModule(module);
 
-        final MavenModuleDetailsPage mavenModuleDetailsPage = (MavenModuleDetailsPage) admPages.get(PageType.MAVEN_MODULE_DETAILS_TAB);
+        final MavenModuleDetailsPage mavenModuleDetailsPage = (MavenModuleDetailsPage) admPages
+                .get(PageType.MAVEN_MODULE_DETAILS_TAB);
         mavenModuleDetailsPage.addDependency(dependency);
     }
 

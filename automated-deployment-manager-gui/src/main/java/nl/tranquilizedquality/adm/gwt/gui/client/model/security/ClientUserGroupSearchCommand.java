@@ -28,9 +28,9 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  */
 public class ClientUserGroupSearchCommand extends UserGroupSearchCommand implements BeanModelTag {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = 2700885586470683336L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = 2700885586470683336L;
 
 }

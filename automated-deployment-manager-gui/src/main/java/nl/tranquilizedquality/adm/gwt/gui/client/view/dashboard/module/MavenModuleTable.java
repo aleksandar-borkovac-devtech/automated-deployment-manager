@@ -74,7 +74,7 @@ public class MavenModuleTable extends AbstractGroupingGridPanel {
      * Constructor that takes the search criteria to filter on.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      */
     public MavenModuleTable(final ClientMavenModuleSearchCommand sc) {
         setHeading("Maven Modules");

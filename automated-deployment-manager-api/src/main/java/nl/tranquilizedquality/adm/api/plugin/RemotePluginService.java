@@ -12,7 +12,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 /**
- * Plugin service that provides functionality to register and unregister plugins.
+ * Plugin service that provides functionality to register and unregister
+ * plugins.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 29 mrt. 2013
@@ -24,16 +25,17 @@ public interface RemotePluginService {
      * Registers a plugin so it can be used by ADM.
      * 
      * @param plugin
-     *        The plugin that will be registered.
+     *            The plugin that will be registered.
      */
     @POST
     void registerPlugin(Plugin plugin);
 
     /**
-     * Removes the plugin from the plugin manager registry so it cannot be used anymore within ADM.
+     * Removes the plugin from the plugin manager registry so it cannot be used
+     * anymore within ADM.
      * 
      * @param plugin
-     *        The plugin that will be removed from the registry.
+     *            The plugin that will be removed from the registry.
      */
     @DELETE
     void unregisterPlugin(Plugin plugin);

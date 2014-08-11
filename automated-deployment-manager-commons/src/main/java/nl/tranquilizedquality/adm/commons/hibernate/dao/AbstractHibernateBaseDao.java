@@ -30,162 +30,162 @@ import org.springframework.stereotype.Repository;
  *            The key type of this object.
  */
 @Repository
-public abstract class AbstractHibernateBaseDao<T extends DomainObject<KeyType>, KeyType extends Serializable> implements BaseDao<T, KeyType> {
+public abstract class AbstractHibernateBaseDao<T extends DomainObject<KeyType>, KeyType extends Serializable> implements
+        BaseDao<T, KeyType> {
 
-	/** The Hibernate session factory. */
-	private SessionFactory sessionFactory;
+    /** The Hibernate session factory. */
+    private SessionFactory sessionFactory;
 
-	/** The logger for this class. */
-	private static Log log = LogFactory.getLog(AbstractHibernateBaseDao.class);
+    /** The logger for this class. */
+    private static Log log = LogFactory.getLog(AbstractHibernateBaseDao.class);
 
-	/** The type of class the DAO is managing. */
-	protected Class<T> domainClass = getDomainClass();
+    /** The type of class the DAO is managing. */
+    protected Class<T> domainClass = getDomainClass();
 
-	/** The from clause for this DAO. */
-	protected String from = "from " + domainClass.getName();
+    /** The from clause for this DAO. */
+    protected String from = "from " + domainClass.getName();
 
-	/**
-	 * Method to return the class of the domain object.
-	 * 
-	 * @return Returns a new domain object of the specified class type.
-	 */
-	protected abstract Class<T> getDomainClass();
+    /**
+     * Method to return the class of the domain object.
+     * 
+     * @return Returns a new domain object of the specified class type.
+     */
+    protected abstract Class<T> getDomainClass();
 
-	protected Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
-	}
+    protected Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
 
-	protected Criteria getDefaultCriteria() {
-		final Session currentSession = getCurrentSession();
-		return currentSession.createCriteria(domainClass);
-	}
+    protected Criteria getDefaultCriteria() {
+        final Session currentSession = getCurrentSession();
+        return currentSession.createCriteria(domainClass);
+    }
 
-	@Override
-	public T save(final T object) {
-		final Session currentSession = getCurrentSession();
-		currentSession.saveOrUpdate(object);
-		return object;
-	}
+    @Override
+    public T save(final T object) {
+        final Session currentSession = getCurrentSession();
+        currentSession.saveOrUpdate(object);
+        return object;
+    }
 
-	@Override
-	public void delete(final T object) {
-		final Session currentSession = getCurrentSession();
+    @Override
+    public void delete(final T object) {
+        final Session currentSession = getCurrentSession();
 
-		try {
-			currentSession.delete(object);
-		}
-		catch (final RuntimeException e) {
-			log.error(e.getMessage());
-			currentSession.evict(object);
-			throw new RuntimeException(e);
-		}
-	}
+        try {
+            currentSession.delete(object);
+        } catch (final RuntimeException e) {
+            log.error(e.getMessage());
+            currentSession.evict(object);
+            throw new RuntimeException(e);
+        }
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public T findById(final KeyType id) {
-		final Session currentSession = getCurrentSession();
-		return (T) currentSession.get(domainClass, id);
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public T findById(final KeyType id) {
+        final Session currentSession = getCurrentSession();
+        return (T) currentSession.get(domainClass, id);
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<T> findAll() {
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = currentSession.createCriteria(domainClass);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<T> findAll() {
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = currentSession.createCriteria(domainClass);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<T> findBySearchCommand(final PagingSearchCommand sc) {
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = currentSession.createCriteria(domainClass);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<T> findBySearchCommand(final PagingSearchCommand sc) {
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = currentSession.createCriteria(domainClass);
 
-		criteria.setMaxResults(sc.getMaxResults());
-		criteria.setFirstResult(sc.getStart());
+        criteria.setMaxResults(sc.getMaxResults());
+        criteria.setFirstResult(sc.getStart());
 
-		if (sc.getOrderBy() != null) {
-			if (sc.isAsc()) {
-				final Order order = Order.asc(sc.getOrderBy());
-				criteria.addOrder(order);
-			}
-			else {
-				final Order order = Order.desc(sc.getOrderBy());
-				criteria.addOrder(order);
-			}
-		}
+        if (sc.getOrderBy() != null) {
+            if (sc.isAsc()) {
+                final Order order = Order.asc(sc.getOrderBy());
+                criteria.addOrder(order);
+            }
+            else {
+                final Order order = Order.desc(sc.getOrderBy());
+                criteria.addOrder(order);
+            }
+        }
 
-		final List<T> operators = criteria.list();
+        final List<T> operators = criteria.list();
 
-		return operators;
+        return operators;
 
-	}
+    }
 
-	@Override
-	public Integer getObjectCount() {
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = currentSession.createCriteria(domainClass);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public Integer getObjectCount() {
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = currentSession.createCriteria(domainClass);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	@Override
-	public void deleteAll() throws DataAccessException {
-		final Session currentSession = getCurrentSession();
-		final Query query = currentSession.createQuery("delete " + domainClass.getName());
-		query.executeUpdate();
-	}
+    @Override
+    public void deleteAll() throws DataAccessException {
+        final Session currentSession = getCurrentSession();
+        final Query query = currentSession.createQuery("delete " + domainClass.getName());
+        query.executeUpdate();
+    }
 
-	@Override
-	public void refresh(final T object) {
-		final Session currentSession = getCurrentSession();
-		currentSession.refresh(object);
-	}
+    @Override
+    public void refresh(final T object) {
+        final Session currentSession = getCurrentSession();
+        currentSession.refresh(object);
+    }
 
-	@Override
-	public void flush() {
-		final Session currentSession = getCurrentSession();
-		currentSession.flush();
-	}
+    @Override
+    public void flush() {
+        final Session currentSession = getCurrentSession();
+        currentSession.flush();
+    }
 
-	@Override
-	public void clear() {
-		final Session currentSession = getCurrentSession();
-		currentSession.clear();
-	}
-	
-	protected void configurePagingAndSorting(final PagingSearchCommand sc, final Criteria criteria) {
-		final Integer maxResults = sc.getMaxResults();
-		if (maxResults != null) {
-			criteria.setMaxResults(maxResults);
-		}
+    @Override
+    public void clear() {
+        final Session currentSession = getCurrentSession();
+        currentSession.clear();
+    }
 
-		final Integer start = sc.getStart();
-		if (start != null) {
-			criteria.setFirstResult(start);
-		}
+    protected void configurePagingAndSorting(final PagingSearchCommand sc, final Criteria criteria) {
+        final Integer maxResults = sc.getMaxResults();
+        if (maxResults != null) {
+            criteria.setMaxResults(maxResults);
+        }
 
-		final String orderBy = sc.getOrderBy();
-		if (StringUtils.isNotBlank(orderBy)) {
-			if (sc.isAsc()) {
-				criteria.addOrder(Order.asc(orderBy));
-			}
-			else {
-				criteria.addOrder(Order.desc(orderBy));
-			}
-		}
-	}	
+        final Integer start = sc.getStart();
+        if (start != null) {
+            criteria.setFirstResult(start);
+        }
 
-	@Override
-	public abstract T newDomainObject();
+        final String orderBy = sc.getOrderBy();
+        if (StringUtils.isNotBlank(orderBy)) {
+            if (sc.isAsc()) {
+                criteria.addOrder(Order.asc(orderBy));
+            }
+            else {
+                criteria.addOrder(Order.desc(orderBy));
+            }
+        }
+    }
 
-	@Required
-	public void setSessionFactory(final SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    @Override
+    public abstract T newDomainObject();
+
+    @Required
+    public void setSessionFactory(final SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
 }

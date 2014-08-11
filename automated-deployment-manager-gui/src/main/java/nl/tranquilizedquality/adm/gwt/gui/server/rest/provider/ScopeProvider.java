@@ -25,43 +25,43 @@ import com.thoughtworks.xstream.XStream;
 @Consumes(value = "*/*")
 public class ScopeProvider implements ParameterHandler<Scope> {
 
-	/** logger for this class */
-	private static final Log LOGGER = LogFactory.getLog(ScopeProvider.class);
+    /** logger for this class */
+    private static final Log LOGGER = LogFactory.getLog(ScopeProvider.class);
 
-	/** The XStream xml transformer. */
-	private final XStream xstream;
+    /** The XStream xml transformer. */
+    private final XStream xstream;
 
-	/**
-	 * Default constructor.
-	 */
-	public ScopeProvider() {
-		xstream = new XStream();
+    /**
+     * Default constructor.
+     */
+    public ScopeProvider() {
+        xstream = new XStream();
 
-		xstream.alias("scope", HibernateScope.class);
-		xstream.aliasField("id", HibernateScope.class, "id");
-		xstream.aliasField("name", HibernateScope.class, "name");
-		xstream.aliasField("description", HibernateScope.class, "description");
-		xstream.alias("privilege", HibernatePrivilege.class);
-		xstream.aliasField("id", HibernatePrivilege.class, "id");
-		xstream.aliasField("name", HibernatePrivilege.class, "name");
-		xstream.aliasField("valid", HibernatePrivilege.class, "valid");
-		xstream.aliasField("description", HibernateScope.class, "description");
-		xstream.alias("role", HibernateRole.class);
-		xstream.aliasField("id", HibernateRole.class, "id");
-		xstream.aliasField("name", HibernateRole.class, "name");
-		xstream.aliasField("valid", HibernateRole.class, "valid");
-		xstream.aliasField("frozen", HibernateRole.class, "frozen");
-		xstream.aliasField("description", HibernateRole.class, "description");
-		xstream.alias("user", HibernateUser.class);
-	}
+        xstream.alias("scope", HibernateScope.class);
+        xstream.aliasField("id", HibernateScope.class, "id");
+        xstream.aliasField("name", HibernateScope.class, "name");
+        xstream.aliasField("description", HibernateScope.class, "description");
+        xstream.alias("privilege", HibernatePrivilege.class);
+        xstream.aliasField("id", HibernatePrivilege.class, "id");
+        xstream.aliasField("name", HibernatePrivilege.class, "name");
+        xstream.aliasField("valid", HibernatePrivilege.class, "valid");
+        xstream.aliasField("description", HibernateScope.class, "description");
+        xstream.alias("role", HibernateRole.class);
+        xstream.aliasField("id", HibernateRole.class, "id");
+        xstream.aliasField("name", HibernateRole.class, "name");
+        xstream.aliasField("valid", HibernateRole.class, "valid");
+        xstream.aliasField("frozen", HibernateRole.class, "frozen");
+        xstream.aliasField("description", HibernateRole.class, "description");
+        xstream.alias("user", HibernateUser.class);
+    }
 
-	@Override
-	public Scope fromString(final String xml) {
-		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Reading from string....");
-		}
+    @Override
+    public Scope fromString(final String xml) {
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Reading from string....");
+        }
 
-		return (Scope) xstream.fromXML(xml);
-	}
+        return (Scope) xstream.fromXML(xml);
+    }
 
 }

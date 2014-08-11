@@ -52,197 +52,197 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class ArtifactTable extends AbstractGroupingGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The search criteria. */
-	private final ClientMavenArtifactSearchCommand sc;
+    /** The search criteria. */
+    private final ClientMavenArtifactSearchCommand sc;
 
-	/** The repository service. */
-	private ArtifactServiceAsync artifactService;
+    /** The repository service. */
+    private ArtifactServiceAsync artifactService;
 
-	/** The edit menu item. */
-	private MenuItem editMenuItem;
+    /** The edit menu item. */
+    private MenuItem editMenuItem;
 
-	/**
-	 * Constructor that takes the search criteria to filter on.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 */
-	public ArtifactTable(final ClientMavenArtifactSearchCommand sc) {
-		setHeading("Maven Artifacts");
-		this.sc = sc;
-		this.groupingField = "group";
-		this.icons = Registry.get(AdmModule.ICONS);
-		setIcon(AbstractImagePrototype.create(icons.artifacts()));
-		initializeWidgets();
-		performPrivilegeCheck();
-	}
+    /**
+     * Constructor that takes the search criteria to filter on.
+     * 
+     * @param sc
+     *            The search criteria.
+     */
+    public ArtifactTable(final ClientMavenArtifactSearchCommand sc) {
+        setHeading("Maven Artifacts");
+        this.sc = sc;
+        this.groupingField = "group";
+        this.icons = Registry.get(AdmModule.ICONS);
+        setIcon(AbstractImagePrototype.create(icons.artifacts()));
+        initializeWidgets();
+        performPrivilegeCheck();
+    }
 
-	private void performPrivilegeCheck() {
-		final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
-		final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
+    private void performPrivilegeCheck() {
+        final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
+        final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onFailure(final Throwable throwable) {
-				final MessageBox box = new MessageBox();
-				box.setIcon(MessageBox.ERROR);
-				box.setTitle("Create artifact check.");
-				box.setMessage(throwable.getMessage());
-				box.setButtons(MessageBox.OK);
-				box.show();
-			}
+            @Override
+            public void onFailure(final Throwable throwable) {
+                final MessageBox box = new MessageBox();
+                box.setIcon(MessageBox.ERROR);
+                box.setTitle("Create artifact check.");
+                box.setMessage(throwable.getMessage());
+                box.setButtons(MessageBox.OK);
+                box.show();
+            }
 
-			@Override
-			public void onSuccess(final Boolean authorized) {
-				if (authorized) {
-					editMenuItem.enable();
-				}
-				else {
-					editMenuItem.disable();
-				}
-			}
+            @Override
+            public void onSuccess(final Boolean authorized) {
+                if (authorized) {
+                    editMenuItem.enable();
+                }
+                else {
+                    editMenuItem.disable();
+                }
+            }
 
-		};
-		authorizationService.isLoggedInUserAuthorized("ADD_ARTIFACT", callback);
-	}
+        };
+        authorizationService.isLoggedInUserAuthorized("ADD_ARTIFACT", callback);
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		artifactService = Registry.get(AdmModule.ARTIFACT_SERVICE);
+    @Override
+    protected void initializeWidgets() {
+        artifactService = Registry.get(AdmModule.ARTIFACT_SERVICE);
 
-		proxy = new RpcProxy<PagingLoadResult<ClientMavenArtifact>>() {
+        proxy = new RpcProxy<PagingLoadResult<ClientMavenArtifact>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientMavenArtifact>> callback) {
-				artifactService.findMavenArtifacts((PagingLoadConfig) loadConfig, ArtifactTable.this.sc, callback);
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientMavenArtifact>> callback) {
+                artifactService.findMavenArtifacts((PagingLoadConfig) loadConfig, ArtifactTable.this.sc, callback);
+            }
+        };
 
-		this.panelStateId = RepositoryTable.class.getName();
+        this.panelStateId = RepositoryTable.class.getName();
 
-		editMenuItem = new MenuItem();
-		editMenuItem.setIcon(AbstractImagePrototype.create(icons.edit()));
-		editMenuItem.setText("Edit");
-		editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
+        editMenuItem = new MenuItem();
+        editMenuItem.setIcon(AbstractImagePrototype.create(icons.edit()));
+        editMenuItem.setText("Edit");
+        editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
 
-			@Override
-			public void componentSelected(final MenuEvent ce) {
-				view();
-			}
-		});
-		menuItems.add(editMenuItem);
+            @Override
+            public void componentSelected(final MenuEvent ce) {
+                view();
+            }
+        });
+        menuItems.add(editMenuItem);
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	/**
-	 * Refreshes the content of the table.
-	 */
-	public void refreshTable() {
-		super.refresh();
-	}
+    /**
+     * Refreshes the content of the table.
+     */
+    public void refreshTable() {
+        super.refresh();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
-		configs.add(new RowNumberer());
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+        configs.add(new RowNumberer());
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("group");
-		column.setHeader("Group");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("group");
+        column.setHeader("Group");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("artifactId");
-		column.setHeader("Artifact Id");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("artifactId");
+        column.setHeader("Artifact Id");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("type");
-		column.setHeader("Type");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("type");
+        column.setHeader("Type");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("version");
-		column.setHeader("Version");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("version");
+        column.setHeader("Version");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("releaseName");
-		column.setHeader("Release");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("releaseName");
+        column.setHeader("Release");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("moduleName");
-		column.setHeader("Module Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("moduleName");
+        column.setHeader("Module Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("created");
-		column.setHeader("Created");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("created");
+        column.setHeader("Created");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Created By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Created By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("altered");
-		column.setHeader("Altered");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("altered");
+        column.setHeader("Altered");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("alteredBy");
-		column.setHeader("Altered By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("alteredBy");
+        column.setHeader("Altered By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	/**
-	 * Retrieves the selected item and displays it in the repository details
-	 * screen.
-	 */
-	private void view() {
-		final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-		final BeanModel selectedItem = selectionModel.getSelectedItem();
+    /**
+     * Retrieves the selected item and displays it in the repository details
+     * screen.
+     */
+    private void view() {
+        final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+        final BeanModel selectedItem = selectionModel.getSelectedItem();
 
-		if (selectedItem != null) {
-			final ClientMavenArtifact artifact = selectedItem.getBean();
+        if (selectedItem != null) {
+            final ClientMavenArtifact artifact = selectedItem.getBean();
 
-			final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
-			controller.selectTab(AdmTabs.ARTIFACT_DETAILS_TAB, artifact);
-		}
-	}
+            final AdmNavigationController controller = Registry.get(AdmModule.NAVIGATION_CONTROLLER);
+            controller.selectTab(AdmTabs.ARTIFACT_DETAILS_TAB, artifact);
+        }
+    }
 
-	@Override
-	protected void handleDoubleClick() {
-		view();
-	}
+    @Override
+    protected void handleDoubleClick() {
+        view();
+    }
 
 }

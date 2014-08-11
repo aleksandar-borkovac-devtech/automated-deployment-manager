@@ -16,24 +16,24 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface RepositoryDao<T extends Repository> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for repositories based on the passed in search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns a {@link List} of repositories or an empty one if none
-	 *         could be found.
-	 */
-	List<Repository> findBySearchCommand(RepositorySearchCommand sc);
+    /**
+     * Searches for repositories based on the passed in search criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @return Returns a {@link List} of repositories or an empty one if none
+     *         could be found.
+     */
+    List<Repository> findBySearchCommand(RepositorySearchCommand sc);
 
-	/**
-	 * Counts the total number of records that would be returned based on the
-	 * passed in search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns an integer value of 0 or greater.
-	 */
-	int findNumberOfRepositories(RepositorySearchCommand sc);
+    /**
+     * Counts the total number of records that would be returned based on the
+     * passed in search criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @return Returns an integer value of 0 or greater.
+     */
+    int findNumberOfRepositories(RepositorySearchCommand sc);
 
 }

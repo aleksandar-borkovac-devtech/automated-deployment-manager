@@ -33,7 +33,7 @@ public interface DeployProgress {
      * Adds the specified progress to the current progress.
      * 
      * @param progress
-     *        The progress that will be added.
+     *            The progress that will be added.
      */
     void addProgress(Integer progress);
 
@@ -46,14 +46,15 @@ public interface DeployProgress {
      * Registers a new activity for the deployment progress.
      * 
      * @param activity
-     *        The activity that will be registered.
+     *            The activity that will be registered.
      */
     void registerActivity(String activity);
 
     /**
      * Retrieves the activity that is currently happening.
      * 
-     * @return Returns a {@link String} representation of the activity description.
+     * @return Returns a {@link String} representation of the activity
+     *         description.
      */
     String getActivityDescription();
 

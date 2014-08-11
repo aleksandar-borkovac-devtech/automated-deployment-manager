@@ -61,9 +61,9 @@ public interface ReleaseServiceAsync {
      * Searches for a {@link ClientRelease} with the specified id.
      * 
      * @param id
-     *        The unique identifier.
+     *            The unique identifier.
      * @param callback
-     *        Returns {@link ClientRelease} or null if none could be found.
+     *            Returns {@link ClientRelease} or null if none could be found.
      */
     void findReleaseById(Long id, AsyncCallback<ClientRelease> callback);
 
@@ -71,9 +71,9 @@ public interface ReleaseServiceAsync {
      * Stores the specified release.
      * 
      * @param release
-     *        The release that will be stored.
+     *            The release that will be stored.
      * @param callback
-     *        Returns the stored release.
+     *            Returns the stored release.
      */
     void saveRelease(ClientRelease release, AsyncCallback<ClientRelease> callback);
 
@@ -81,11 +81,11 @@ public interface ReleaseServiceAsync {
      * Searches for releases based on the specified search criteria.
      * 
      * @param config
-     *        The paging configuration.
+     *            The paging configuration.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        Returns a {@link PagingLoadResult} containing the results.
+     *            Returns a {@link PagingLoadResult} containing the results.
      */
     void findReleasesAndArtifacts(PagingLoadConfig config, ClientReleaseSearchCommand sc,
             AsyncCallback<PagingLoadResult<ClientMavenArtifact>> callback);
@@ -94,12 +94,13 @@ public interface ReleaseServiceAsync {
      * Finds the release history from the specified release.
      * 
      * @param config
-     *        Paging configuration.
+     *            Paging configuration.
      * @param sc
-     *        The search criteria to use for searching for {@link ClientReleaseExecution} objects.
+     *            The search criteria to use for searching for
+     *            {@link ClientReleaseExecution} objects.
      * @param callback
-     *        Returns a {@link List} containing the release history or an
-     *        empty one if there is no history.
+     *            Returns a {@link List} containing the release history or an
+     *            empty one if there is no history.
      */
     void findReleaseHistory(PagingLoadConfig config, ClientReleaseExecutionSearchCommand sc,
             AsyncCallback<PagingLoadResult<ClientReleaseExecution>> callback);
@@ -109,9 +110,10 @@ public interface ReleaseServiceAsync {
      * identifier.
      * 
      * @param id
-     *        The unique identifier of the {@link ClientReleaseExecution}.
+     *            The unique identifier of the {@link ClientReleaseExecution}.
      * @param callback
-     *        Callback function which returns the {@link ClientReleaseExecution}.
+     *            Callback function which returns the
+     *            {@link ClientReleaseExecution}.
      */
     void findReleaseExecutionById(Long id, AsyncCallback<ClientReleaseExecution> callback);
 
@@ -119,9 +121,9 @@ public interface ReleaseServiceAsync {
      * Removes the specified release if it's not in use yet.
      * 
      * @param release
-     *        The release that will be removed.
+     *            The release that will be removed.
      * @param callback
-     *        Callback function used to validate if removing went ok.
+     *            Callback function used to validate if removing went ok.
      */
     void removeRelease(ClientRelease release, AsyncCallback<Void> callback);
 
@@ -129,10 +131,11 @@ public interface ReleaseServiceAsync {
      * Retrieves the release execution log with the specified identifier.
      * 
      * @param id
-     *        The unique identifier of the release execution log that needs
-     *        to be retrieved.
+     *            The unique identifier of the release execution log that needs
+     *            to be retrieved.
      * @param callback
-     *        Callback function which returns the {@link ClientReleaseExecutionLog}
+     *            Callback function which returns the
+     *            {@link ClientReleaseExecutionLog}
      */
     void findReleaseExecutionLogById(Long id, AsyncCallback<ClientReleaseExecutionLog> callback);
 
@@ -140,9 +143,9 @@ public interface ReleaseServiceAsync {
      * Archives the specified release.
      * 
      * @param release
-     *        The release that is archived.
+     *            The release that is archived.
      * @param callback
-     *        Callback function used to validate if archiving went ok.
+     *            Callback function used to validate if archiving went ok.
      */
     void archiveRelease(ClientRelease release, AsyncCallback<Void> callback);
 
@@ -150,9 +153,9 @@ public interface ReleaseServiceAsync {
      * Unarchives the specified release.
      * 
      * @param release
-     *        The release that will be unarchived.
+     *            The release that will be unarchived.
      * @param callback
-     *        Callback function used to validate if archiving went ok.
+     *            Callback function used to validate if archiving went ok.
      */
     void unArchiveRelease(ClientRelease release, AsyncCallback<Void> callback);
 

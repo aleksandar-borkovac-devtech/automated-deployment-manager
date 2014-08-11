@@ -83,7 +83,7 @@ public class HibernateReleaseExecutionLog extends AbstractInsertableDomainObject
 
     /**
      * @param releaseExecution
-     *        the releaseExecution to set
+     *            the releaseExecution to set
      */
     public void setReleaseExecution(final ReleaseExecution releaseExecution) {
         this.releaseExecution = releaseExecution;
@@ -98,7 +98,7 @@ public class HibernateReleaseExecutionLog extends AbstractInsertableDomainObject
 
     /**
      * @param logs
-     *        the logs to set
+     *            the logs to set
      */
     public void setLogs(final String logs) {
         this.logs = logs;
@@ -114,7 +114,7 @@ public class HibernateReleaseExecutionLog extends AbstractInsertableDomainObject
 
     /**
      * @param mavenArtifact
-     *        the mavenArtifact to set
+     *            the mavenArtifact to set
      */
     public void setMavenArtifact(final MavenArtifactSnapshot mavenArtifact) {
         this.mavenArtifact = mavenArtifact;

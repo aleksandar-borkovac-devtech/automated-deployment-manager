@@ -23,31 +23,46 @@ public class DestinationDetailsPage extends AbstractAdmSeleniumPage {
     /** XPath definition for the menu item to logout with. */
     private static final String DESTINATION_NAME_FIELD = "destination-details-pnl-name-input";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String HOST_COMBO_ARROW = "//div[@id='destination-details-pnl-host']/img[1]";
 
     /** XPath definition for the first host combo list item. */
     private static final String HOST_COMBO_LIST_ITEM = "//html/body/div[6]/div[1]/div[1]";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String PROTOCOL_COMBO_ARROW = "//div[@id='destination-details-pnl-protocol']/img[1]";
 
     /** XPath definition for the SSH combo list item. */
     private static final String SSH_COMBO_LIST_ITEM = "//html/body/div[6]/div[1]/div[3]";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String GROUP_COMBO_ARROW = "//div[@id='destination-details-pnl-user-group']/img[1]";
 
     /** XPath definition for the first group combo list item. */
     private static final String GROUP_COMBO_LIST_ITEM = "//html/body/div[6]/div[1]/div[1]";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String DEPLOYER_COMBO_ARROW = "//div[@id='destination-details-pnl-deployer-id']/img[1]";
 
     /** XPath definition for the Shell script combo list item. */
     private static final String SHELL_SCRIPT_COMBO_LIST_ITEM = "//html/body/div[6]/div[1]/div[2]";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String ENVIRONMENT_COMBO_ARROW = "//div[@id='destination-details-pnl-environment']/img[1]";
 
     /** XPath definition for the Tomcat combo list item. */
@@ -69,7 +84,10 @@ public class DestinationDetailsPage extends AbstractAdmSeleniumPage {
     /** XPath definition for the deployer parameter value field. */
     private static final String DEPLOYER_PARAMETER_VALUE_FIELD = "deployer-parameter-details-pnl-value-input";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String DEPLOYER_PARAMETER_TYPE_COMBO_ARROW = "//div[@id='deployer-parameter-details-pnl-type']/img[1]";
 
     /** XPath definition for the first parameter type combo list item. */
@@ -82,13 +100,13 @@ public class DestinationDetailsPage extends AbstractAdmSeleniumPage {
             "//html/body/div[7]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[2]/td[2]/em/button";
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     public DestinationDetailsPage(final Selenium selenium, final ConditionRunner conditionRunner) {
         super(selenium, conditionRunner);
@@ -98,7 +116,7 @@ public class DestinationDetailsPage extends AbstractAdmSeleniumPage {
      * Adds a default shell script based destination.
      * 
      * @param destinationName
-     *        The name of the destination to use that will be created.
+     *            The name of the destination to use that will be created.
      */
     public void addDefaultShellScriptDesitnation(final String destinationName) {
 
@@ -119,11 +137,11 @@ public class DestinationDetailsPage extends AbstractAdmSeleniumPage {
     }
 
     /**
-     * Adds a deployer parameter to a destination. NOTE: Make sure you are already on the
-     * destination details panel.
+     * Adds a deployer parameter to a destination. NOTE: Make sure you are
+     * already on the destination details panel.
      * 
      * @param parameterValue
-     *        The value of the parameter that will be used.
+     *            The value of the parameter that will be used.
      */
     public void addParameter(final String parameterValue) {
         waitForElementToBePresent("No add deployer parameter button!", ADD_DEPLOYER_PARAMETER_BTN);

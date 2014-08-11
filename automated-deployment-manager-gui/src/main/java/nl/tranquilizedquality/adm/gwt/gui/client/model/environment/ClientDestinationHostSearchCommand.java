@@ -25,11 +25,11 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  * @since 30 okt. 2011
  */
 public class ClientDestinationHostSearchCommand extends DestinationHostSearchCommand implements
-		BeanModelTag {
+        BeanModelTag {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -461313762866444879L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -461313762866444879L;
 
 }

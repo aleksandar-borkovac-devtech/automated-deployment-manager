@@ -48,7 +48,8 @@ public class NotificationManagerImpl implements NotificationManager {
     private UserSettingsManager userSettingsManager;
 
     @Override
-    public void sendDeploymentNotification(final Release release, final List<MavenArtifact> deployedArtifacts, final Environment environment) {
+    public void sendDeploymentNotification(final Release release, final List<MavenArtifact> deployedArtifacts,
+            final Environment environment) {
 
         final User loggedInUser = securityContextManager.findLoggedInUser();
 

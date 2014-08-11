@@ -153,7 +153,7 @@ public class ClientRole extends AbstractUpdatableBeanModel<Long> implements Role
      * each collection field it will add an empty collection.
      * 
      * @param role
-     *        the origin object.
+     *            the origin object.
      */
     public void shallowCopy(final Role role) {
         super.copy(role);

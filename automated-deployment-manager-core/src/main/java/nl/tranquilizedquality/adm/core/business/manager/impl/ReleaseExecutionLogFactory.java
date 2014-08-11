@@ -34,11 +34,11 @@ abstract class ReleaseExecutionLogFactory {
      * Creates a {@link ReleaseExecutionLog} based on the passed in parameters.
      * 
      * @param releaseExecution
-     *        The {@link ReleaseExecution} where this log is for.
+     *            The {@link ReleaseExecution} where this log is for.
      * @param artifact
-     *        The {@link MavenArtifact} where this log is from.
+     *            The {@link MavenArtifact} where this log is from.
      * @param logs
-     *        The logs them selves.
+     *            The logs them selves.
      * @return Returns the {@link ReleaseExecutionLog}.
      */
     public static ReleaseExecutionLog createReleaseExecutionLog(final ReleaseExecution releaseExecution,

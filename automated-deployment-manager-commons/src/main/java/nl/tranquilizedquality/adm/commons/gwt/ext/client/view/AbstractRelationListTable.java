@@ -29,9 +29,9 @@ import com.extjs.gxt.ui.client.widget.toolbar.ToolBar;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 feb. 2011
  * @param <T>
- *        The interface of the bean that is being displayed.
+ *            The interface of the bean that is being displayed.
  * @param <C>
- *        The class of the bean that is being displayed.
+ *            The class of the bean that is being displayed.
  */
 public abstract class AbstractRelationListTable<T, C> extends ContentPanel implements NavigationalItem<Collection<T>> {
 

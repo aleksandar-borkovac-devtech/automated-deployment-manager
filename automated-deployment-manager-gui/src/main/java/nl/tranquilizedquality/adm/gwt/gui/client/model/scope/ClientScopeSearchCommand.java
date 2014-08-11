@@ -15,9 +15,9 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  */
 public class ClientScopeSearchCommand extends ScopeSearchCommand implements BeanModelTag {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = 5244810951894470432L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = 5244810951894470432L;
 
 }

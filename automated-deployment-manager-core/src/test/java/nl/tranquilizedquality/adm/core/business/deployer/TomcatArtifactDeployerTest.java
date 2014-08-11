@@ -83,7 +83,7 @@ public class TomcatArtifactDeployerTest extends EasyMockSupport {
     private HibernateDeployer tomcatDeployer;
 
     @Before
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked" })
     public void setUp() throws Exception {
         deployer = new TomcatArtifactDeployer();
 

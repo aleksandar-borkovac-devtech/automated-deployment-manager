@@ -68,7 +68,8 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.gwt.user.client.ui.Image;
 
 /**
- * Panel where the details of the logged in user are displayed on an can be managed on.
+ * Panel where the details of the logged in user are displayed on an can be
+ * managed on.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since Sep 1, 2012
@@ -159,7 +160,7 @@ public class PersonalDetailPanel extends AbstractDetailPanel<ClientUser> {
      * to be put in the model.
      * 
      * @param user
-     *        the user to display the details of.
+     *            the user to display the details of.
      */
     @Override
     public void setModel(final ClientUser user) {

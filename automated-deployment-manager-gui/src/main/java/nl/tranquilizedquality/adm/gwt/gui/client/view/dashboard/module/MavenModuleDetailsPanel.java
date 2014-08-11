@@ -129,7 +129,10 @@ public class MavenModuleDetailsPanel extends AbstractDetailPanel<ClientMavenModu
     /** Table where the dependencies of this module are displayed in. */
     private DependenciesTable dependenciesTable;
 
-    /** Table where all available modules are displayed in so you can select one as a dependency. */
+    /**
+     * Table where all available modules are displayed in so you can select one
+     * as a dependency.
+     */
     private AvailableDependenciesTable availableDependenciesTable;
 
     /**

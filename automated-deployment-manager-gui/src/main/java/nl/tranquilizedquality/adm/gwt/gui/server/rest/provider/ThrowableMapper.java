@@ -17,18 +17,18 @@ import org.apache.commons.logging.LogFactory;
  */
 public class ThrowableMapper implements ExceptionMapper<Throwable> {
 
-	/** logger for this class */
-	private static final Log LOGGER = LogFactory.getLog(ThrowableMapper.class);
+    /** logger for this class */
+    private static final Log LOGGER = LogFactory.getLog(ThrowableMapper.class);
 
-	@Override
-	public Response toResponse(final Throwable throwable) {
-		final String message = throwable.getMessage();
-		if (LOGGER.isErrorEnabled()) {
-			LOGGER.error(message);
-			throwable.printStackTrace();
-		}
+    @Override
+    public Response toResponse(final Throwable throwable) {
+        final String message = throwable.getMessage();
+        if (LOGGER.isErrorEnabled()) {
+            LOGGER.error(message);
+            throwable.printStackTrace();
+        }
 
-		return Response.status(Status.INTERNAL_SERVER_ERROR).entity("<html><body>" + message + "</body></html>").build();
-	}
+        return Response.status(Status.INTERNAL_SERVER_ERROR).entity("<html><body>" + message + "</body></html>").build();
+    }
 
 }

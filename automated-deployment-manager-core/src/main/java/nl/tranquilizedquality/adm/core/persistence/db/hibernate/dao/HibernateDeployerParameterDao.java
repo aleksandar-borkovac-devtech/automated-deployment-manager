@@ -26,17 +26,17 @@ import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDe
  * @since 17 sep. 2011
  */
 public class HibernateDeployerParameterDao extends
-		AbstractHibernateBaseDao<HibernateDeployerParameter, Long> implements
-		DeployerParameterDao<HibernateDeployerParameter> {
+        AbstractHibernateBaseDao<HibernateDeployerParameter, Long> implements
+        DeployerParameterDao<HibernateDeployerParameter> {
 
-	@Override
-	protected Class<HibernateDeployerParameter> getDomainClass() {
-		return HibernateDeployerParameter.class;
-	}
+    @Override
+    protected Class<HibernateDeployerParameter> getDomainClass() {
+        return HibernateDeployerParameter.class;
+    }
 
-	@Override
-	public HibernateDeployerParameter newDomainObject() {
-		return new HibernateDeployerParameter();
-	}
+    @Override
+    public HibernateDeployerParameter newDomainObject() {
+        return new HibernateDeployerParameter();
+    }
 
 }

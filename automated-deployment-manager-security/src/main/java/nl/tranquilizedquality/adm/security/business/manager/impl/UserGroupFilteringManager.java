@@ -33,29 +33,29 @@ import org.springframework.beans.factory.annotation.Required;
  */
 public class UserGroupFilteringManager {
 
-	/** DAO that manages user groups. */
-	protected UserGroupDao<UserGroup> userGroupDao;
+    /** DAO that manages user groups. */
+    protected UserGroupDao<UserGroup> userGroupDao;
 
-	/** Manager used to retrieve the logged in user so data can be filtered out. */
-	protected SecurityContextManager securityContextManager;
+    /** Manager used to retrieve the logged in user so data can be filtered out. */
+    protected SecurityContextManager securityContextManager;
 
-	/**
-	 * @param sc
-	 */
-	protected void addUserGroupsFromLoggedInUser(final AbstractPagingUserGroupSearchCommand sc) {
-		final User loggedInUser = securityContextManager.findLoggedInUser();
-		final List<UserGroup> userGroups = userGroupDao.findUserGroupsByUser(loggedInUser);
-		sc.setUserGroups(userGroups);
-	}
+    /**
+     * @param sc
+     */
+    protected void addUserGroupsFromLoggedInUser(final AbstractPagingUserGroupSearchCommand sc) {
+        final User loggedInUser = securityContextManager.findLoggedInUser();
+        final List<UserGroup> userGroups = userGroupDao.findUserGroupsByUser(loggedInUser);
+        sc.setUserGroups(userGroups);
+    }
 
-	@Required
-	public void setSecurityContextManager(final SecurityContextManager securityContextManager) {
-		this.securityContextManager = securityContextManager;
-	}
+    @Required
+    public void setSecurityContextManager(final SecurityContextManager securityContextManager) {
+        this.securityContextManager = securityContextManager;
+    }
 
-	@Required
-	public void setUserGroupDao(final UserGroupDao<UserGroup> userGroupDao) {
-		this.userGroupDao = userGroupDao;
-	}
+    @Required
+    public void setUserGroupDao(final UserGroupDao<UserGroup> userGroupDao) {
+        this.userGroupDao = userGroupDao;
+    }
 
 }

@@ -25,49 +25,49 @@ import nl.tranquilizedquality.adm.core.business.manager.DeployProgress;
  */
 public class DeployProgressImpl implements DeployProgress {
 
-	/** Indicates on a scale of 100 how far the deployment is. */
-	private Integer progress;
+    /** Indicates on a scale of 100 how far the deployment is. */
+    private Integer progress;
 
-	/** Description of the current activity of the deployment. */
-	private String activityDescription;
+    /** Description of the current activity of the deployment. */
+    private String activityDescription;
 
-	/**
-	 * Default constructor.
-	 */
-	public DeployProgressImpl() {
-		progress = 0;
-	}
+    /**
+     * Default constructor.
+     */
+    public DeployProgressImpl() {
+        progress = 0;
+    }
 
-	@Override
-	public Integer getProgress() {
-		if (progress >= 100) {
-			progress = 0;
-			return 100;
-		}
-		return progress;
-	}
+    @Override
+    public Integer getProgress() {
+        if (progress >= 100) {
+            progress = 0;
+            return 100;
+        }
+        return progress;
+    }
 
-	public void setProgress(final Integer progress) {
-		this.progress = progress;
-	}
+    public void setProgress(final Integer progress) {
+        this.progress = progress;
+    }
 
-	@Override
-	public void addProgress(final Integer progress) {
-		this.progress += progress;
-	}
+    @Override
+    public void addProgress(final Integer progress) {
+        this.progress += progress;
+    }
 
-	@Override
-	public void complete() {
-		this.progress = 100;
-	}
+    @Override
+    public void complete() {
+        this.progress = 100;
+    }
 
-	@Override
-	public void registerActivity(final String activity) {
-		this.activityDescription = activity;
-	}
+    @Override
+    public void registerActivity(final String activity) {
+        this.activityDescription = activity;
+    }
 
-	@Override
-	public String getActivityDescription() {
-		return activityDescription;
-	}
+    @Override
+    public String getActivityDescription() {
+        return activityDescription;
+    }
 }

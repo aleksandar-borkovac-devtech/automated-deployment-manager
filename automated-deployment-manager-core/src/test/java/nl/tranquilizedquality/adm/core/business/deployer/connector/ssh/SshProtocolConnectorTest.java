@@ -40,7 +40,8 @@ public class SshProtocolConnectorTest {
         // connector.connectToHost("t2nl-crmwebdev", 22, "s-petrus",
         // "", null);
 
-        // connector.performCommand(SshCommand.CHANGE_DIRECTORY, "/srv/tomcat/instances");
+        // connector.performCommand(SshCommand.CHANGE_DIRECTORY,
+        // "/srv/tomcat/instances");
         // connector.performCommand(SshCommand.LIST, "");
         connector.performCustomCommand("mkdir -p /Temp/testdir");
 
@@ -66,7 +67,8 @@ public class SshProtocolConnectorTest {
         // final Thread thread = new Thread(runnable);
         // thread.start();
 
-        // final List<String> lines = IOUtils.readLines(new StringReader(sessionOutput));
+        // final List<String> lines = IOUtils.readLines(new
+        // StringReader(sessionOutput));
         //
         // for (final String value : lines) {
         // System.out.println(value);

@@ -39,10 +39,10 @@ public interface ArtifactServiceAsync {
      * Retrieves the {@link ClientMavenModule} with the specified id.
      * 
      * @param id
-     *        The unique identifier.
+     *            The unique identifier.
      * @param callback
-     *        Returns a {@link ClientMavenModule} or null if none could be
-     *        found.
+     *            Returns a {@link ClientMavenModule} or null if none could be
+     *            found.
      */
     void findMavenModuleById(Long id, AsyncCallback<ClientMavenModule> callback);
 
@@ -50,7 +50,7 @@ public interface ArtifactServiceAsync {
      * Retrieves all available {@link MavenModule} objects.
      * 
      * @param callback
-     *        Returns a {@link List} of {@link ClientMavenModule} objects.
+     *            Returns a {@link List} of {@link ClientMavenModule} objects.
      */
     void findMavenModules(AsyncCallback<List<ClientMavenModule>> callback);
 
@@ -59,11 +59,11 @@ public interface ArtifactServiceAsync {
      * criteria.
      * 
      * @param config
-     *        The paging configuration.
+     *            The paging configuration.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        Returns a {@link PagingLoadResult} containing the results.
+     *            Returns a {@link PagingLoadResult} containing the results.
      */
     void findMavenModules(PagingLoadConfig config, ClientMavenModuleSearchCommand sc,
             AsyncCallback<PagingLoadResult<ClientMavenModule>> callback);
@@ -73,11 +73,11 @@ public interface ArtifactServiceAsync {
      * criteria.
      * 
      * @param config
-     *        The paging configuration.
+     *            The paging configuration.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        Returns a {@link PagingLoadResult} containing the results.
+     *            Returns a {@link PagingLoadResult} containing the results.
      */
     void findMavenArtifacts(PagingLoadConfig config, ClientMavenArtifactSearchCommand sc,
             AsyncCallback<PagingLoadResult<ClientMavenArtifact>> callback);
@@ -86,9 +86,9 @@ public interface ArtifactServiceAsync {
      * Saves the specified artifact.
      * 
      * @param artifact
-     *        The artifact that will be stored.
+     *            The artifact that will be stored.
      * @param callback
-     *        Returns the stored artifact.
+     *            Returns the stored artifact.
      */
     void saveMavenArtifact(ClientMavenArtifact artifact, AsyncCallback<ClientMavenArtifact> callback);
 
@@ -96,9 +96,9 @@ public interface ArtifactServiceAsync {
      * Saves the specified artifact.
      * 
      * @param module
-     *        The module that will be stored.
+     *            The module that will be stored.
      * @param callback
-     *        Returns the stored artifact.
+     *            Returns the stored artifact.
      */
     void saveMavenModule(ClientMavenModule module, AsyncCallback<ClientMavenModule> callback);
 
@@ -106,10 +106,10 @@ public interface ArtifactServiceAsync {
      * Retrieves the artifact with the specified id.
      * 
      * @param id
-     *        The unique identifier of the artifact.
+     *            The unique identifier of the artifact.
      * @param callback
-     *        Returns a {@link ClientMavenArtifact} or null if none could be
-     *        found.
+     *            Returns a {@link ClientMavenArtifact} or null if none could be
+     *            found.
      */
     void findMavenArtifactById(Long id, AsyncCallback<ClientMavenArtifact> callback);
 
@@ -117,21 +117,23 @@ public interface ArtifactServiceAsync {
      * Deletes the specified artifact.
      * 
      * @param artifact
-     *        The artifact that will be deleted.
+     *            The artifact that will be deleted.
      * @param callback
-     *        Call back method.
+     *            Call back method.
      */
     void deleteMavenArtifact(ClientMavenArtifact artifact, AsyncCallback<Void> callback);
 
     /**
-     * Searches for all available maven modules excluding the one that has the specified unique
-     * identifier since you cannot have a dependency on yourself.
+     * Searches for all available maven modules excluding the one that has the
+     * specified unique identifier since you cannot have a dependency on
+     * yourself.
      * 
      * @param excludeMavenModuleId
-     *        The unique identifier of the maven module that should not be included.
+     *            The unique identifier of the maven module that should not be
+     *            included.
      * @param callback
-     *        Callback that contains the {@link MavenModule} objects or an empty collection if
-     *        there are no dependencies available.
+     *            Callback that contains the {@link MavenModule} objects or an
+     *            empty collection if there are no dependencies available.
      */
     void findAvailableMavenModules(Long excludeMavenModuleId, AsyncCallback<List<ClientMavenModule>> callback);
 

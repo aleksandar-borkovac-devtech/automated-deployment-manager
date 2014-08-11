@@ -57,189 +57,189 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class EnvironmentTable extends AbstractGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The search criteria. */
-	private final ClientEnvironmentSearchCommand sc;
+    /** The search criteria. */
+    private final ClientEnvironmentSearchCommand sc;
 
-	/** The repository service. */
-	private EnvironmentServiceAsync environmentService;
+    /** The repository service. */
+    private EnvironmentServiceAsync environmentService;
 
-	/** The add button. */
-	private Button addButton;
+    /** The add button. */
+    private Button addButton;
 
-	/** The edit menu item. */
-	private MenuItem editMenuItem;
+    /** The edit menu item. */
+    private MenuItem editMenuItem;
 
-	/**
-	 * Constructor that takes the search criteria to filter on.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 */
-	public EnvironmentTable(final ClientEnvironmentSearchCommand sc) {
-		setHeading("Environments");
-		this.sc = sc;
-		icons = Registry.get(AbstractModule.ICONS);
-		initializeWidgets();
-		performPrivilegeCheck();
-	}
+    /**
+     * Constructor that takes the search criteria to filter on.
+     * 
+     * @param sc
+     *            The search criteria.
+     */
+    public EnvironmentTable(final ClientEnvironmentSearchCommand sc) {
+        setHeading("Environments");
+        this.sc = sc;
+        icons = Registry.get(AbstractModule.ICONS);
+        initializeWidgets();
+        performPrivilegeCheck();
+    }
 
-	private void performPrivilegeCheck() {
-		final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
-		final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
+    private void performPrivilegeCheck() {
+        final AuthorizationServiceAsync authorizationService = Registry.get(AdmModule.AUTHORIZATION_SERVICE);
+        final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onFailure(final Throwable throwable) {
-				final MessageBox box = new MessageBox();
-				box.setIcon(MessageBox.ERROR);
-				box.setTitle("Create environment check.");
-				box.setMessage(throwable.getMessage());
-				box.setButtons(MessageBox.OK);
-				box.show();
-			}
+            @Override
+            public void onFailure(final Throwable throwable) {
+                final MessageBox box = new MessageBox();
+                box.setIcon(MessageBox.ERROR);
+                box.setTitle("Create environment check.");
+                box.setMessage(throwable.getMessage());
+                box.setButtons(MessageBox.OK);
+                box.show();
+            }
 
-			@Override
-			public void onSuccess(final Boolean authorized) {
-				if (authorized) {
-					addButton.enable();
-					editMenuItem.enable();
-				}
-				else {
-					addButton.disable();
-					editMenuItem.disable();
-				}
-			}
+            @Override
+            public void onSuccess(final Boolean authorized) {
+                if (authorized) {
+                    addButton.enable();
+                    editMenuItem.enable();
+                }
+                else {
+                    addButton.disable();
+                    editMenuItem.disable();
+                }
+            }
 
-		};
-		authorizationService.isLoggedInUserAuthorized("ADD_ENVIRONMENT", callback);
-	}
+        };
+        authorizationService.isLoggedInUserAuthorized("ADD_ENVIRONMENT", callback);
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		environmentService = Registry.get(AdmModule.ENVIRONMENT_SERVICE);
+    @Override
+    protected void initializeWidgets() {
+        environmentService = Registry.get(AdmModule.ENVIRONMENT_SERVICE);
 
-		proxy = new RpcProxy<PagingLoadResult<ClientEnvironment>>() {
+        proxy = new RpcProxy<PagingLoadResult<ClientEnvironment>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientEnvironment>> callback) {
-				environmentService.findEnvironments((PagingLoadConfig) loadConfig, sc, callback);
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientEnvironment>> callback) {
+                environmentService.findEnvironments((PagingLoadConfig) loadConfig, sc, callback);
+            }
+        };
 
-		panelStateId = RepositoryTable.class.getName();
+        panelStateId = RepositoryTable.class.getName();
 
-		addButton = new Button("Add");
-		addButton.setIcon(AbstractImagePrototype.create(icons.addEnvironment()));
+        addButton = new Button("Add");
+        addButton.setIcon(AbstractImagePrototype.create(icons.addEnvironment()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				add();
-			}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                add();
+            }
 
-		};
-		addButton.addSelectionListener(listener);
+        };
+        addButton.addSelectionListener(listener);
 
-		menuBarButtons.add(addButton);
+        menuBarButtons.add(addButton);
 
-		editMenuItem = new MenuItem();
-		editMenuItem.setIcon(AbstractImagePrototype.create(icons.edit()));
-		editMenuItem.setText("Edit");
-		editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
+        editMenuItem = new MenuItem();
+        editMenuItem.setIcon(AbstractImagePrototype.create(icons.edit()));
+        editMenuItem.setText("Edit");
+        editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
 
-			@Override
-			public void componentSelected(final MenuEvent ce) {
-				view();
-			}
-		});
-		menuItems.add(editMenuItem);
+            @Override
+            public void componentSelected(final MenuEvent ce) {
+                view();
+            }
+        });
+        menuItems.add(editMenuItem);
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	/**
-	 * Refreshes the content of the table.
-	 */
-	public void refreshTable() {
-		super.refresh();
-	}
+    /**
+     * Refreshes the content of the table.
+     */
+    public void refreshTable() {
+        super.refresh();
+    }
 
-	/**
-	 * Creates a fresh {@link ClientEnvironment} and navigates to the details
-	 * panel.
-	 */
-	private void add() {
-		final ClientEnvironment environment = new ClientEnvironment();
-		final AdmNavigationController controller = Registry.get(AbstractModule.NAVIGATION_CONTROLLER);
-		controller.selectTab(AdmTabs.ENVIRONMENT_DETAILS_TAB, environment);
-	}
+    /**
+     * Creates a fresh {@link ClientEnvironment} and navigates to the details
+     * panel.
+     */
+    private void add() {
+        final ClientEnvironment environment = new ClientEnvironment();
+        final AdmNavigationController controller = Registry.get(AbstractModule.NAVIGATION_CONTROLLER);
+        controller.selectTab(AdmTabs.ENVIRONMENT_DETAILS_TAB, environment);
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
-		configs.add(new RowNumberer());
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+        configs.add(new RowNumberer());
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("created");
-		column.setHeader("Created");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("created");
+        column.setHeader("Created");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Created By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Created By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("altered");
-		column.setHeader("Altered");
-		column.setWidth(100);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("altered");
+        column.setHeader("Altered");
+        column.setWidth(100);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("alteredBy");
-		column.setHeader("Altered By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("alteredBy");
+        column.setHeader("Altered By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	/**
-	 * Retrieves the selected item and displays it in the repository details
-	 * screen.
-	 */
-	private void view() {
-		final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-		final BeanModel selectedItem = selectionModel.getSelectedItem();
+    /**
+     * Retrieves the selected item and displays it in the repository details
+     * screen.
+     */
+    private void view() {
+        final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+        final BeanModel selectedItem = selectionModel.getSelectedItem();
 
-		if (selectedItem != null) {
-			final ClientEnvironment environment = selectedItem.getBean();
-			final AdmNavigationController controller = Registry.get(AbstractModule.NAVIGATION_CONTROLLER);
-			controller.selectTab(AdmTabs.ENVIRONMENT_DETAILS_TAB, environment);
-		}
-	}
+        if (selectedItem != null) {
+            final ClientEnvironment environment = selectedItem.getBean();
+            final AdmNavigationController controller = Registry.get(AbstractModule.NAVIGATION_CONTROLLER);
+            controller.selectTab(AdmTabs.ENVIRONMENT_DETAILS_TAB, environment);
+        }
+    }
 
-	@Override
-	protected void handleDoubleClick() {
-		view();
-	}
+    @Override
+    protected void handleDoubleClick() {
+        view();
+    }
 
 }

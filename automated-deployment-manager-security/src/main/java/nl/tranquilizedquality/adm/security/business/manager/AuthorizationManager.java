@@ -16,7 +16,7 @@ public interface AuthorizationManager {
      * specified authority allows you to do.
      * 
      * @param authority
-     *        The authority which will be checked on the logged in user.
+     *            The authority which will be checked on the logged in user.
      * @return Returns true if the logged in user is authorized otherwise it
      *         will return false.
      */

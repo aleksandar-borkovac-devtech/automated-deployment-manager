@@ -28,90 +28,90 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public class UserRoleHistoryPanel extends AbstractGridPanel {
 
-	/** The model object. */
-	private ClientUser clientUser;
+    /** The model object. */
+    private ClientUser clientUser;
 
-	/** The asynchronous user service. */
-	private final UserServiceAsync userService;
+    /** The asynchronous user service. */
+    private final UserServiceAsync userService;
 
-	/**
-	 * Constructor that takes the {@link ClientUser} where the roles are being
-	 * displayed for.
-	 * 
-	 * @param clientUser
-	 *            The {@link ClientUser} where the roles are being displayed
-	 *            for.
-	 */
-	public UserRoleHistoryPanel(final ClientUser clientUser) {
-		setLayout(new FitLayout());
-		setHeading("Roles");
+    /**
+     * Constructor that takes the {@link ClientUser} where the roles are being
+     * displayed for.
+     * 
+     * @param clientUser
+     *            The {@link ClientUser} where the roles are being displayed
+     *            for.
+     */
+    public UserRoleHistoryPanel(final ClientUser clientUser) {
+        setLayout(new FitLayout());
+        setHeading("Roles");
 
-		this.clientUser = clientUser;
+        this.clientUser = clientUser;
 
-		this.userService = Registry.get(AdmModule.USER_SERVICE);
+        this.userService = Registry.get(AdmModule.USER_SERVICE);
 
-		this.proxy = new RpcProxy<PagingLoadResult<ClientUserRole>>() {
+        this.proxy = new RpcProxy<PagingLoadResult<ClientUserRole>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientUserRole>> callback) {
-				if (UserRoleHistoryPanel.this.clientUser != null && UserRoleHistoryPanel.this.clientUser.isPersistent()) {
-					userService.findUserRolesByUser(UserRoleHistoryPanel.this.clientUser, callback);
-				}
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientUserRole>> callback) {
+                if (UserRoleHistoryPanel.this.clientUser != null && UserRoleHistoryPanel.this.clientUser.isPersistent()) {
+                    userService.findUserRolesByUser(UserRoleHistoryPanel.this.clientUser, callback);
+                }
+            }
+        };
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("role");
-		column.setHeader("Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("role");
+        column.setHeader("Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("scopeName");
-		column.setHeader("Scope");
-		column.setWidth(100);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("scopeName");
+        column.setHeader("Scope");
+        column.setWidth(100);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("activeFrom");
-		column.setHeader("Active from");
-		column.setWidth(200);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("activeFrom");
+        column.setHeader("Active from");
+        column.setWidth(200);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("activeUntil");
-		column.setHeader("Active until");
-		column.setWidth(200);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("activeUntil");
+        column.setHeader("Active until");
+        column.setWidth(200);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new CheckColumnConfig();
-		column.setId("active");
-		column.setHeader("Active");
-		column.setWidth(200);
-		column.setSortable(false);
-		configs.add(column);
+        column = new CheckColumnConfig();
+        column.setId("active");
+        column.setHeader("Active");
+        column.setWidth(200);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	/**
-	 * @param clientUser
-	 *            the clientUser to set
-	 */
-	public void setClientUser(final ClientUser clientUser) {
-		this.clientUser = clientUser;
-		refresh();
-	}
+    /**
+     * @param clientUser
+     *            the clientUser to set
+     */
+    public void setClientUser(final ClientUser clientUser) {
+        this.clientUser = clientUser;
+        refresh();
+    }
 
 }

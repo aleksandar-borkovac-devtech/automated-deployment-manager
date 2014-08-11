@@ -10,15 +10,15 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface ApplicationServiceAsync {
 
-	/**
-	 * Retrieves the property value with the specified key.
-	 * 
-	 * @param key
-	 *            The key of the value that needs to be retrieved.
-	 * @param callback
-	 *            The {@link AsyncCallback} used to return a {@link String}
-	 *            value of the property.
-	 */
-	void getProperty(String key, AsyncCallback<String> callback);
+    /**
+     * Retrieves the property value with the specified key.
+     * 
+     * @param key
+     *            The key of the value that needs to be retrieved.
+     * @param callback
+     *            The {@link AsyncCallback} used to return a {@link String}
+     *            value of the property.
+     */
+    void getProperty(String key, AsyncCallback<String> callback);
 
 }

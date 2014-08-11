@@ -36,71 +36,72 @@ import org.hibernate.criterion.Restrictions;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 30 okt. 2011
  */
-public class HibernateDestinationHostDao extends AbstractHibernateBaseDao<HibernateDestinationHost, Long> implements DestinationHostDao<HibernateDestinationHost> {
+public class HibernateDestinationHostDao extends AbstractHibernateBaseDao<HibernateDestinationHost, Long> implements
+        DestinationHostDao<HibernateDestinationHost> {
 
-	@Override
-	protected Class<HibernateDestinationHost> getDomainClass() {
-		return HibernateDestinationHost.class;
-	}
+    @Override
+    protected Class<HibernateDestinationHost> getDomainClass() {
+        return HibernateDestinationHost.class;
+    }
 
-	@Override
-	public HibernateDestinationHost newDomainObject() {
-		return new HibernateDestinationHost();
-	}
+    @Override
+    public HibernateDestinationHost newDomainObject() {
+        return new HibernateDestinationHost();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<DestinationHost> findBySearchCommand(final DestinationHostSearchCommand sc) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = getDestinationHostCriteria(sc, session);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<DestinationHost> findBySearchCommand(final DestinationHostSearchCommand sc) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = getDestinationHostCriteria(sc, session);
 
-		configurePagingAndSorting(sc, criteria);
+        configurePagingAndSorting(sc, criteria);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	public int findNumberOfDestinationHosts(final DestinationHostSearchCommand sc) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = getDestinationHostCriteria(sc, session);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public int findNumberOfDestinationHosts(final DestinationHostSearchCommand sc) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = getDestinationHostCriteria(sc, session);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	/**
-	 * Creates a hibernate criteria object based on the passed in search
-	 * criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @param session
-	 *            The session to use for doing the query.
-	 * @return Returns a {@link Criteria}.
-	 */
-	private Criteria getDestinationHostCriteria(final DestinationHostSearchCommand sc, final Session session) {
-		final Criteria criteria = getDefaultCriteria();
+    /**
+     * Creates a hibernate criteria object based on the passed in search
+     * criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @param session
+     *            The session to use for doing the query.
+     * @return Returns a {@link Criteria}.
+     */
+    private Criteria getDestinationHostCriteria(final DestinationHostSearchCommand sc, final Session session) {
+        final Criteria criteria = getDefaultCriteria();
 
-		final String hostName = sc.getHostName();
-		if (!StringUtils.isEmpty(hostName)) {
-			criteria.add(Restrictions.eq("hostName", hostName));
-		}
+        final String hostName = sc.getHostName();
+        if (!StringUtils.isEmpty(hostName)) {
+            criteria.add(Restrictions.eq("hostName", hostName));
+        }
 
-		final Protocol protocol = sc.getProtocol();
-		if (protocol != null) {
-			criteria.add(Restrictions.eq("protocol", protocol));
-		}
+        final Protocol protocol = sc.getProtocol();
+        if (protocol != null) {
+            criteria.add(Restrictions.eq("protocol", protocol));
+        }
 
-		final List<UserGroup> userGroups = sc.getUserGroups();
-		if (userGroups != null && !userGroups.isEmpty()) {
-			criteria.add(Restrictions.in("userGroup", userGroups));
-		}
-		else {
-			criteria.add(Restrictions.isNull("userGroup"));
-		}
+        final List<UserGroup> userGroups = sc.getUserGroups();
+        if (userGroups != null && !userGroups.isEmpty()) {
+            criteria.add(Restrictions.in("userGroup", userGroups));
+        }
+        else {
+            criteria.add(Restrictions.isNull("userGroup"));
+        }
 
-		return criteria;
-	}
+        return criteria;
+    }
 
 }

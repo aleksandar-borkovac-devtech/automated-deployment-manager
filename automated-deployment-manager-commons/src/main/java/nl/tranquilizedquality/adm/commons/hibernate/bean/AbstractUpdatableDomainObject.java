@@ -19,10 +19,11 @@ import com.google.code.simplestuff.annotation.BusinessField;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        The key type.
+ *            The key type.
  */
 @MappedSuperclass
-public abstract class AbstractUpdatableDomainObject<T> extends AbstractInsertableDomainObject<T> implements UpdatableDomainObject<T> {
+public abstract class AbstractUpdatableDomainObject<T> extends AbstractInsertableDomainObject<T> implements
+        UpdatableDomainObject<T> {
     private static final long serialVersionUID = 2471426230030867891L;
 
     /** The date on which this object was altered the last time. */
@@ -45,7 +46,7 @@ public abstract class AbstractUpdatableDomainObject<T> extends AbstractInsertabl
 
     /**
      * @param altered
-     *        the alteration date and time to set.
+     *            the alteration date and time to set.
      */
     public void setAltered(final Date altered) {
         this.altered = altered;
@@ -62,19 +63,19 @@ public abstract class AbstractUpdatableDomainObject<T> extends AbstractInsertabl
 
     /**
      * @param alteredBy
-     *        the name of the user that last modified this instance.
+     *            the name of the user that last modified this instance.
      */
     public void setAlteredBy(final String alteredBy) {
         this.alteredBy = alteredBy;
     }
 
     /**
-     * Copies properties of the given object to this instance.
-     * Subclasses should override this method to copy their properties too
-     * and call super.copy() to copy the inherited properties.
+     * Copies properties of the given object to this instance. Subclasses should
+     * override this method to copy their properties too and call super.copy()
+     * to copy the inherited properties.
      * 
      * @param object
-     *        the object to copy.
+     *            the object to copy.
      */
     @Override
     public void copy(final DomainObject<T> object) {

@@ -272,8 +272,8 @@ public class ScopeDetailPanel extends AbstractDetailPanel<ClientScope> {
      * Sets the specified {@link ClientScope}.
      * 
      * @param scope
-     *        The {@link ClientScope} that will be binded to the details
-     *        form.
+     *            The {@link ClientScope} that will be binded to the details
+     *            form.
      */
     private void setScope(final ClientScope scope) {
         ScopeDetailPanel.this.scope = scope;

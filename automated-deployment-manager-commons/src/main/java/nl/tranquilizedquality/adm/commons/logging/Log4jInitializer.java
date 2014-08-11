@@ -41,51 +41,50 @@ import org.apache.log4j.xml.DOMConfigurator;
  */
 public class Log4jInitializer {
 
-	/**
-	 * Initialize log4j with the given file and reload check interval. It
-	 * accepts XML as well as property based configuration files located on the
-	 * class path. It will check at every <code>reloadCheckInterval</code> if
-	 * the file has changed. If changed it will be reloaded to configure log4j.
-	 * 
-	 * @param configFilePath
-	 *            - the path to the configuration file.
-	 * @param reloadCheckInterval
-	 *            - the reload check interval.
-	 */
-	public Log4jInitializer(final String configFilePath, final long reloadCheckInterval) {
-		final URL url = Thread.currentThread().getContextClassLoader().getResource(configFilePath);
+    /**
+     * Initialize log4j with the given file and reload check interval. It
+     * accepts XML as well as property based configuration files located on the
+     * class path. It will check at every <code>reloadCheckInterval</code> if
+     * the file has changed. If changed it will be reloaded to configure log4j.
+     * 
+     * @param configFilePath
+     *            - the path to the configuration file.
+     * @param reloadCheckInterval
+     *            - the reload check interval.
+     */
+    public Log4jInitializer(final String configFilePath, final long reloadCheckInterval) {
+        final URL url = Thread.currentThread().getContextClassLoader().getResource(configFilePath);
 
-		// If found, set the logging configuration.
-		if (url != null) {
-			try {
-				if (configFilePath.endsWith(".xml")) {
-					DOMConfigurator.configureAndWatch(url.toURI().getPath(), reloadCheckInterval);
-				}
-				else {
-					PropertyConfigurator.configureAndWatch(url.toURI().getPath(), reloadCheckInterval);
-				}
-			}
-			catch (final URISyntaxException e) {
-				throw new IllegalArgumentException("Could not locate configuration file "
-						+ configFilePath);
-			}
-		}
-		else {
-			throw new IllegalArgumentException("Configuration file (" + configFilePath
-					+ ") not found");
-		}
-	}
+        // If found, set the logging configuration.
+        if (url != null) {
+            try {
+                if (configFilePath.endsWith(".xml")) {
+                    DOMConfigurator.configureAndWatch(url.toURI().getPath(), reloadCheckInterval);
+                }
+                else {
+                    PropertyConfigurator.configureAndWatch(url.toURI().getPath(), reloadCheckInterval);
+                }
+            } catch (final URISyntaxException e) {
+                throw new IllegalArgumentException("Could not locate configuration file "
+                        + configFilePath);
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Configuration file (" + configFilePath
+                    + ") not found");
+        }
+    }
 
-	/**
-	 * Initialize log4j with the given file and reload check interval. It works
-	 * the same as {@link #Log4jInitializer(String, long)} except that it uses
-	 * {@link FileWatchdog.DEFAULT_DELAY} for the reload check interval.
-	 * 
-	 * @param configFilePath
-	 *            - the path to the configuration file.
-	 */
-	public Log4jInitializer(final String configFilePath) {
-		this(configFilePath, FileWatchdog.DEFAULT_DELAY);
-	}
+    /**
+     * Initialize log4j with the given file and reload check interval. It works
+     * the same as {@link #Log4jInitializer(String, long)} except that it uses
+     * {@link FileWatchdog.DEFAULT_DELAY} for the reload check interval.
+     * 
+     * @param configFilePath
+     *            - the path to the configuration file.
+     */
+    public Log4jInitializer(final String configFilePath) {
+        this(configFilePath, FileWatchdog.DEFAULT_DELAY);
+    }
 
 }

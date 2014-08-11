@@ -29,136 +29,136 @@ import nl.tranquilizedquality.adm.commons.gwt.ext.client.model.AbstractInsertabl
  * @since 8 okt. 2011
  */
 public class ClientReleaseStepExecution extends AbstractInsertableBeanModel<Long> implements
-		ReleaseStepExecution {
+        ReleaseStepExecution {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -1849505070926535054L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -1849505070926535054L;
 
-	/** The step name. */
-	private String name;
+    /** The step name. */
+    private String name;
 
-	/** The execution date. */
-	private Date executionDate;
+    /** The execution date. */
+    private Date executionDate;
 
-	/** The status of the execution step. */
-	private DeployStatus status;
+    /** The status of the execution step. */
+    private DeployStatus status;
 
-	/** The error message if the release failed. */
-	private String errorMessage;
+    /** The error message if the release failed. */
+    private String errorMessage;
 
-	/** The release history where this execution is from. */
-	private ReleaseExecution releaseExecution;
+    /** The release history where this execution is from. */
+    private ReleaseExecution releaseExecution;
 
-	/**
-	 * Default constructor.
-	 */
-	public ClientReleaseStepExecution() {
-		executionDate = new Date();
-	}
+    /**
+     * Default constructor.
+     */
+    public ClientReleaseStepExecution() {
+        executionDate = new Date();
+    }
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	/**
-	 * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getName()
-	 */
-	@Override
-	public String getName() {
-		return name;
-	}
+    /**
+     * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getName()
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(final String name) {
-		this.name = name;
-	}
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getExecutionDate()
-	 */
-	@Override
-	public Date getExecutionDate() {
-		return executionDate;
-	}
+    /**
+     * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getExecutionDate()
+     */
+    @Override
+    public Date getExecutionDate() {
+        return executionDate;
+    }
 
-	/**
-	 * @param executionDate
-	 *            the executionDate to set
-	 */
-	public void setExecutionDate(final Date executionDate) {
-		this.executionDate = executionDate;
-	}
+    /**
+     * @param executionDate
+     *            the executionDate to set
+     */
+    public void setExecutionDate(final Date executionDate) {
+        this.executionDate = executionDate;
+    }
 
-	/**
-	 * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getStatus()
-	 */
-	@Override
-	public DeployStatus getStatus() {
-		return status;
-	}
+    /**
+     * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getStatus()
+     */
+    @Override
+    public DeployStatus getStatus() {
+        return status;
+    }
 
-	/**
-	 * @param status
-	 *            the status to set
-	 */
-	public void setStatus(final DeployStatus status) {
-		this.status = status;
-	}
+    /**
+     * @param status
+     *            the status to set
+     */
+    public void setStatus(final DeployStatus status) {
+        this.status = status;
+    }
 
-	/**
-	 * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getErrorMessage()
-	 */
-	@Override
-	public String getErrorMessage() {
-		return errorMessage;
-	}
+    /**
+     * @see nl.tranquilizedquality.adm.commons.business.domain.ReleaseStepExecution#getErrorMessage()
+     */
+    @Override
+    public String getErrorMessage() {
+        return errorMessage;
+    }
 
-	/**
-	 * @param errorMessage
-	 *            the errorMessage to set
-	 */
-	public void setErrorMessage(final String errorMessage) {
-		this.errorMessage = errorMessage;
-		this.status = DeployStatus.FAILED;
-	}
+    /**
+     * @param errorMessage
+     *            the errorMessage to set
+     */
+    public void setErrorMessage(final String errorMessage) {
+        this.errorMessage = errorMessage;
+        this.status = DeployStatus.FAILED;
+    }
 
-	/**
-	 * @return the releaseExecution
-	 */
-	public ReleaseExecution getReleaseExecution() {
-		return releaseExecution;
-	}
+    /**
+     * @return the releaseExecution
+     */
+    public ReleaseExecution getReleaseExecution() {
+        return releaseExecution;
+    }
 
-	/**
-	 * @param releaseExecution
-	 *            the releaseExecution to set
-	 */
-	public void setReleaseExecution(final ReleaseExecution releaseExecution) {
-		this.releaseExecution = releaseExecution;
-	}
+    /**
+     * @param releaseExecution
+     *            the releaseExecution to set
+     */
+    public void setReleaseExecution(final ReleaseExecution releaseExecution) {
+        this.releaseExecution = releaseExecution;
+    }
 
-	@Override
-	public void copy(final DomainObject<Long> object) {
-		super.copy(object);
+    @Override
+    public void copy(final DomainObject<Long> object) {
+        super.copy(object);
 
-		if (object instanceof ReleaseStepExecution) {
-			final ReleaseStepExecution execution = (ReleaseStepExecution) object;
-			this.errorMessage = execution.getErrorMessage();
-			this.executionDate = execution.getExecutionDate();
-			this.name = execution.getName();
-			this.status = execution.getStatus();
+        if (object instanceof ReleaseStepExecution) {
+            final ReleaseStepExecution execution = (ReleaseStepExecution) object;
+            this.errorMessage = execution.getErrorMessage();
+            this.executionDate = execution.getExecutionDate();
+            this.name = execution.getName();
+            this.status = execution.getStatus();
 
-			final ClientReleaseExecution newReleaseExecution = new ClientReleaseExecution();
-			final ReleaseExecution releaseExecution = execution.getReleaseExecution();
-			newReleaseExecution.shallowCopy(releaseExecution);
-			this.releaseExecution = newReleaseExecution;
-		}
-	}
+            final ClientReleaseExecution newReleaseExecution = new ClientReleaseExecution();
+            final ReleaseExecution releaseExecution = execution.getReleaseExecution();
+            newReleaseExecution.shallowCopy(releaseExecution);
+            this.releaseExecution = newReleaseExecution;
+        }
+    }
 
 }

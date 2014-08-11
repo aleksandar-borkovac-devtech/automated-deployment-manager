@@ -415,7 +415,8 @@ public class UserServiceImpl extends AbstractService implements UserService {
             environment.setUsers(new ArrayList<User>());
         }
 
-        final List<ClientEnvironmentNotificationSetting> clientBeans = ENVIRONMENT_USER_SETTINGS_FACTORY.createClientBeans(settings);
+        final List<ClientEnvironmentNotificationSetting> clientBeans = ENVIRONMENT_USER_SETTINGS_FACTORY
+                .createClientBeans(settings);
         return clientBeans;
     }
 
@@ -424,7 +425,8 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
         final List<HibernateEnvironmentNotificationSetting> persistentBeans =
                 ENVIRONMENT_USER_SETTINGS_FACTORY.createPersistentBeans(settings);
-        final List<EnvironmentNotificationSetting> notificationSettings = new ArrayList<EnvironmentNotificationSetting>(persistentBeans);
+        final List<EnvironmentNotificationSetting> notificationSettings = new ArrayList<EnvironmentNotificationSetting>(
+                persistentBeans);
 
         userSettingsManager.storeSettings(notificationSettings);
     }
@@ -441,7 +443,7 @@ public class UserServiceImpl extends AbstractService implements UserService {
 
     /**
      * @param userDataBean
-     *        the userDataBean to set
+     *            the userDataBean to set
      */
     public void setUserDataBean(final UserDataBean userDataBean) {
         this.userDataBean = userDataBean;

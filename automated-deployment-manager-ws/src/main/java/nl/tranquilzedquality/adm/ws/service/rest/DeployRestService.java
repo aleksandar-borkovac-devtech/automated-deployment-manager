@@ -15,32 +15,34 @@ import javax.ws.rs.core.Response;
 public interface DeployRestService {
 
     /**
-     * Deploys an artifact using the passed in parameters to determine which one it needs to deploy.
+     * Deploys an artifact using the passed in parameters to determine which one
+     * it needs to deploy.
      * 
      * @param releaseName
-     *        The name of the release this artifact should be part of.
+     *            The name of the release this artifact should be part of.
      * @param groupId
-     *        The group identifier where this artifact is part of.
+     *            The group identifier where this artifact is part of.
      * @param artifactId
-     *        The artifact identifier used to retrieve the correct
+     *            The artifact identifier used to retrieve the correct
      * @param version
-     *        The specific version that needs to be deployed.
+     *            The specific version that needs to be deployed.
      * @param environment
-     *        The environment to deploy to.
+     *            The environment to deploy to.
      * @return Returns a {@link Response} object.
      */
     @POST
     @Path("/release/{releaseName}/artifact/{groupId}/{artifactId}/{version}/deploy/{environment}")
     Response deployArtifact(@PathParam("releaseName") String releaseName, @PathParam("groupId") String groupId,
-            @PathParam("artifactId") String artifactId, @PathParam("version") String version, @PathParam("environment") String environment);
+            @PathParam("artifactId") String artifactId, @PathParam("version") String version,
+            @PathParam("environment") String environment);
 
     /**
      * Deploy the release with the specified name to the specified environment.
      * 
      * @param releaseName
-     *        The name of the release.
+     *            The name of the release.
      * @param version
-     *        The specific version that needs to be deployed.
+     *            The specific version that needs to be deployed.
      * @return Returns a {@link Response} object.
      */
     @POST

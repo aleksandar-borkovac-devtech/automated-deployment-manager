@@ -49,20 +49,27 @@ public class ReleaseDetailsPage extends AbstractAdmSeleniumPage {
     /** Identifier for the release name input field. */
     private static final String RELEASE_DETAILS_PNL_NAME_INPUT = "release-details-pnl-name-input";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String GROUP_COMBO_ARROW = "//div[@id='release-details-pnl-user-group']/img[1]";
 
     /** XPath definition for the first group combo list item. */
     private static final String GROUP_COMBO_LIST_ITEM = "//html/body/div[7]/div[1]/div[1]";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String RELEASE_STATUS_COMBO_ARROW = "//div[@id='release-details-pnl-status']/img[1]";
 
     /** XPath definition for the first group combo list item. */
     private static final String RELEASE_STATUS_COMBO_LIST_ITEM = "//html/body/div[7]/div[1]/div[1]";
 
     /**
-     * XPath definition for the confirmation button on the pop-up window when saving a release.
+     * XPath definition for the confirmation button on the pop-up window when
+     * saving a release.
      */
     private static final String RELEASE_SAVE_CONFIRMATION_BTN =
             "//html/body/div[7]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[2]/td[2]/em/button";
@@ -74,23 +81,24 @@ public class ReleaseDetailsPage extends AbstractAdmSeleniumPage {
             "//html/body/div[7]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[2]/td[2]/em/button";
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     public ReleaseDetailsPage(final Selenium selenium, final ConditionRunner conditionRunner) {
         super(selenium, conditionRunner);
     }
 
     /**
-     * Fills in the details based on the passed in {@link ReleaseDto} and stores the release.
+     * Fills in the details based on the passed in {@link ReleaseDto} and stores
+     * the release.
      * 
      * @param release
-     *        The release that will be added.
+     *            The release that will be added.
      */
     public void addRelease(final ReleaseDto release) {
         final String releaseName = release.getName();
@@ -154,7 +162,7 @@ public class ReleaseDetailsPage extends AbstractAdmSeleniumPage {
         for (int i = 1; i < 5; i++) {
             final String locator =
                     "//div[@id='environment-selection-table']/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[" + i
-                        + "]/table[1]/tbody/tr/td[2]/div";
+                            + "]/table[1]/tbody/tr/td[2]/div";
             final String selectionEnvironmentName = getText(locator);
             if (StringUtils.equals(environmentName, selectionEnvironmentName)) {
                 mouseDown(locator);

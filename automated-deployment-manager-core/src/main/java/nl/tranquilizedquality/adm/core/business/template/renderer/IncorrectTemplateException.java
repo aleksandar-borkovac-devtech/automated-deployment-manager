@@ -14,7 +14,7 @@ public class IncorrectTemplateException extends RuntimeException {
      * Constructor taking only a message.
      * 
      * @param message
-     *        The error message.
+     *            The error message.
      */
     public IncorrectTemplateException(final String message) {
         super(message);
@@ -24,9 +24,9 @@ public class IncorrectTemplateException extends RuntimeException {
      * Constructor taking a message and the {@link Throwable} cause.
      * 
      * @param message
-     *        The error message.
+     *            The error message.
      * @param cause
-     *        The root cause of the exception.
+     *            The root cause of the exception.
      */
     public IncorrectTemplateException(final String message, final Throwable cause) {
         super(message, cause);
@@ -36,7 +36,7 @@ public class IncorrectTemplateException extends RuntimeException {
      * Constructor taking the {@link Throwable} cause.
      * 
      * @param cause
-     *        The rout cause of the exception.
+     *            The rout cause of the exception.
      */
     public IncorrectTemplateException(final Throwable cause) {
         super(cause);

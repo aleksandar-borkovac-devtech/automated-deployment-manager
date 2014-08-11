@@ -27,8 +27,9 @@ import org.springframework.transaction.annotation.Transactional;
  * @since 27 jul. 2011
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:adm-core-annotated-classes-context.xml", "classpath:adm-core-dao-context.xml", "classpath:adm-security-annotated-classes-context.xml",
-		"classpath:adm-security-dao-context.xml", "classpath:adm-core-db-context.xml" })
+@ContextConfiguration(locations = {"classpath:adm-core-annotated-classes-context.xml", "classpath:adm-core-dao-context.xml",
+        "classpath:adm-security-annotated-classes-context.xml",
+        "classpath:adm-security-dao-context.xml", "classpath:adm-core-db-context.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public abstract class AbstractDaoTest {

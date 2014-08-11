@@ -74,9 +74,9 @@ public class ScopeServiceImpl extends AbstractService implements ScopeService {
      * client side representation beans.
      * 
      * @param config
-     *        The {@link PagingLoadConfig}.
+     *            The {@link PagingLoadConfig}.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns a list of {@link ClientScope} objects.
      */
     private List<ClientScope> findClientScopes(final PagingLoadConfig config, final ClientScopeSearchCommand sc) {
@@ -150,7 +150,7 @@ public class ScopeServiceImpl extends AbstractService implements ScopeService {
 
     /**
      * @param scopeManager
-     *        the scopeManager to set
+     *            the scopeManager to set
      */
     @Required
     public void setScopeManager(final ScopeManager scopeManager) {
@@ -159,7 +159,7 @@ public class ScopeServiceImpl extends AbstractService implements ScopeService {
 
     /**
      * @param importedScope
-     *        the importedScope to set
+     *            the importedScope to set
      */
     public void setImportedScope(final ImportedScope importedScope) {
         this.importedScope = importedScope;

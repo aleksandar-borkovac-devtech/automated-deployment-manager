@@ -30,17 +30,17 @@ import org.springframework.validation.Validator;
  */
 public class ReleaseValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateRelease.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateRelease.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "release.name-empty", "No name filled in.");
-		AdmValidationUtils.rejectIfNull(errors, "releaseDate", "release.release-date-empty", "No release date specified.");
-		AdmValidationUtils.rejectIfNull(errors, "status", "release.status-empty", "No status specified.");
-	}
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "release.name-empty", "No name filled in.");
+        AdmValidationUtils.rejectIfNull(errors, "releaseDate", "release.release-date-empty", "No release date specified.");
+        AdmValidationUtils.rejectIfNull(errors, "status", "release.status-empty", "No status specified.");
+    }
 
 }

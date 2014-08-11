@@ -66,8 +66,8 @@ public class HibernateEnvironment extends AbstractUpdatableDomainObject<Long> im
     private String description;
 
     /**
-     * Determines if this environment is a production environment so alerts will be displayed when
-     * deploying to it.
+     * Determines if this environment is a production environment so alerts will
+     * be displayed when deploying to it.
      */
     @BusinessField
     private boolean production;
@@ -100,7 +100,7 @@ public class HibernateEnvironment extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -114,7 +114,7 @@ public class HibernateEnvironment extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param description
-     *        the description to set
+     *            the description to set
      */
     public void setDescription(final String description) {
         this.description = description;
@@ -124,7 +124,7 @@ public class HibernateEnvironment extends AbstractUpdatableDomainObject<Long> im
     @OrderBy(value = "id")
     @ManyToMany(targetEntity = HibernateUser.class, cascade = CascadeType.ALL)
     @ForeignKey(name = "FK_ENVIRONMENT_DEPLOYERS", inverseName = "FK_DEPLOYERS")
-    @JoinTable(name = "ENVIRONMENT_DEPLOYERS", schema = "ADM", joinColumns = { @JoinColumn(name = "ENVIRONMENT_ID") }, inverseJoinColumns = { @JoinColumn(name = "USER_ID") })
+    @JoinTable(name = "ENVIRONMENT_DEPLOYERS", schema = "ADM", joinColumns = {@JoinColumn(name = "ENVIRONMENT_ID") }, inverseJoinColumns = {@JoinColumn(name = "USER_ID") })
     public List<User> getUsers() {
         return users;
     }

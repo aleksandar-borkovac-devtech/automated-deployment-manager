@@ -17,30 +17,30 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  */
 public class ClientRoleSearchCommand extends RoleSearchCommand implements BeanModelTag {
 
-	/**
+    /**
      * 
      */
-	private static final long serialVersionUID = 3701103177600533437L;
+    private static final long serialVersionUID = 3701103177600533437L;
 
-	/**
-	 * List of {@link Role} object that will be excluded from the search
-	 * results.
-	 */
-	private List<Role> excludedRoles;
+    /**
+     * List of {@link Role} object that will be excluded from the search
+     * results.
+     */
+    private List<Role> excludedRoles;
 
-	/**
-	 * @return the excludedRoles
-	 */
-	public List<Role> getExcludedRoles() {
-		return excludedRoles;
-	}
+    /**
+     * @return the excludedRoles
+     */
+    public List<Role> getExcludedRoles() {
+        return excludedRoles;
+    }
 
-	/**
-	 * @param excludedRoles
-	 *            the excludedRoles to set
-	 */
-	public void setExcludedRoles(final List<Role> excludedRoles) {
-		this.excludedRoles = excludedRoles;
-	}
+    /**
+     * @param excludedRoles
+     *            the excludedRoles to set
+     */
+    public void setExcludedRoles(final List<Role> excludedRoles) {
+        this.excludedRoles = excludedRoles;
+    }
 
 }

@@ -16,25 +16,25 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface EnvironmentDao<T extends Environment> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for environments based on the passed in search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria that will be used to search for
-	 *            environments.
-	 * @return Returns a {@link List} containing {@link Environment}
-	 */
-	List<Environment> findEnvironmentsBySearchCommand(EnvironmentSearchCommand sc);
+    /**
+     * Searches for environments based on the passed in search criteria.
+     * 
+     * @param sc
+     *            The search criteria that will be used to search for
+     *            environments.
+     * @return Returns a {@link List} containing {@link Environment}
+     */
+    List<Environment> findEnvironmentsBySearchCommand(EnvironmentSearchCommand sc);
 
-	/**
-	 * Counts the number of environments that would be returned based on the
-	 * passed in search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria that will be used to search for
-	 *            environments.
-	 * @return Returns an integer value of 0 or greater.
-	 */
-	int findNumberOfEnvironmentsBySearchCommand(EnvironmentSearchCommand sc);
+    /**
+     * Counts the number of environments that would be returned based on the
+     * passed in search criteria.
+     * 
+     * @param sc
+     *            The search criteria that will be used to search for
+     *            environments.
+     * @return Returns an integer value of 0 or greater.
+     */
+    int findNumberOfEnvironmentsBySearchCommand(EnvironmentSearchCommand sc);
 
 }

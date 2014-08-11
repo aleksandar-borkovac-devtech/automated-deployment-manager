@@ -40,7 +40,7 @@ public class PagingSearchCommand implements Serializable {
 
     /**
      * @param maxResults
-     *        the maxResults to set
+     *            the maxResults to set
      */
     public void setMaxResults(final Integer maxResults) {
         this.maxResults = maxResults;
@@ -55,7 +55,7 @@ public class PagingSearchCommand implements Serializable {
 
     /**
      * @param start
-     *        the start to set
+     *            the start to set
      */
     public void setStart(final Integer start) {
         this.start = start;
@@ -70,7 +70,7 @@ public class PagingSearchCommand implements Serializable {
 
     /**
      * @param orderBy
-     *        the orderBy to set
+     *            the orderBy to set
      */
     public void setOrderBy(final String orderBy) {
         this.orderBy = orderBy;
@@ -85,7 +85,7 @@ public class PagingSearchCommand implements Serializable {
 
     /**
      * @param asc
-     *        the asc to set
+     *            the asc to set
      */
     public void setAsc(final boolean asc) {
         this.asc = asc;

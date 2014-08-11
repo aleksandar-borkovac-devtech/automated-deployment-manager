@@ -10,5 +10,5 @@ package nl.tranquilizedquality.adm.commons.gwt.ext.client.model;
  * 
  */
 public enum Action {
-	BLAAT, BOOOO
+    BLAAT, BOOOO
 }

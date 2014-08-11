@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.util.Date;
 import java.util.List;
 
-
 import nl.tranquilizedquality.adm.commons.business.deployer.Deployer;
 import nl.tranquilizedquality.adm.commons.business.deployer.connector.ProtocolConnector;
 import nl.tranquilizedquality.adm.commons.business.domain.ArtifactType;
@@ -24,10 +23,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Required;
 
 /**
- * Shell script deployer that executes shell commands on the remote machine based on a *.rsh script
- * which contains all the shell script commands that need to be executed on the remote service. The
- * distribution package should have a script called like
- * deploy_${environment.name}.rsh in it.
+ * Shell script deployer that executes shell commands on the remote machine
+ * based on a *.rsh script which contains all the shell script commands that
+ * need to be executed on the remote service. The distribution package should
+ * have a script called like deploy_${environment.name}.rsh in it.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 20 sep. 2012
@@ -67,7 +66,8 @@ public class RemoteShellCommandDistributionPackageDeployer implements Deployer<M
             final File destinationDirectory = new File(destinationPath);
             FileExtractorUtil.extractTarGz(artifactFile, destinationDirectory);
         } catch (final Exception e) {
-            final String msg = "Failed to extract distribution package! -> " + artifactFile.getAbsolutePath() + " to " + destinationPath;
+            final String msg = "Failed to extract distribution package! -> " + artifactFile.getAbsolutePath() + " to "
+                    + destinationPath;
 
             if (LOGGER.isErrorEnabled()) {
                 LOGGER.error(msg, e);

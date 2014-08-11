@@ -19,27 +19,28 @@ import org.hibernate.criterion.Restrictions;
  * @since Aug 26, 2012
  * 
  */
-public class HibernateUserRoleDao extends AbstractHibernateBaseDao<HibernateUserRole, Long> implements UserRoleDao<HibernateUserRole> {
+public class HibernateUserRoleDao extends AbstractHibernateBaseDao<HibernateUserRole, Long> implements
+        UserRoleDao<HibernateUserRole> {
 
-	@Override
-	protected Class<HibernateUserRole> getDomainClass() {
-		return HibernateUserRole.class;
-	}
+    @Override
+    protected Class<HibernateUserRole> getDomainClass() {
+        return HibernateUserRole.class;
+    }
 
-	@Override
-	public HibernateUserRole newDomainObject() {
-		return new HibernateUserRole();
-	}
+    @Override
+    public HibernateUserRole newDomainObject() {
+        return new HibernateUserRole();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<UserRole> findByUser(final User user) {
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = currentSession.createCriteria(domainClass);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<UserRole> findByUser(final User user) {
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = currentSession.createCriteria(domainClass);
 
-		criteria.add(Restrictions.eq("user", user));
+        criteria.add(Restrictions.eq("user", user));
 
-		return criteria.list();
+        return criteria.list();
 
-	}
+    }
 }

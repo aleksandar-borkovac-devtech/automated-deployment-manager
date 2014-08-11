@@ -15,17 +15,17 @@ import org.springframework.validation.Validator;
  */
 public class ScopeValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateScope.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateScope.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
+    @Override
+    public void validate(final Object target, final Errors errors) {
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "scope.name-empty", "No name filled in.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "scope.name-empty", "No name filled in.");
 
-	}
+    }
 
 }

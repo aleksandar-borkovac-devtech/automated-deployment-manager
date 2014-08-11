@@ -17,7 +17,8 @@ import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateDe
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 12 dec. 2012
  */
-public class HibernateDeployerDao extends AbstractHibernateBaseDao<HibernateDeployer, Long> implements DeployerDao<HibernateDeployer> {
+public class HibernateDeployerDao extends AbstractHibernateBaseDao<HibernateDeployer, Long> implements
+        DeployerDao<HibernateDeployer> {
 
     @Override
     protected Class<HibernateDeployer> getDomainClass() {

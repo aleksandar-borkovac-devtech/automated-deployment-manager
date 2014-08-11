@@ -25,20 +25,20 @@ import nl.tranquilizedquality.adm.commons.business.domain.UserGroup;
  */
 public class UserGroupSearchCommand extends AbstractPagingUserGroupSearchCommand {
 
-	/**
-	 * Unique identifier for serialization.
-	 */
-	private static final long serialVersionUID = 2599232055785547928L;
+    /**
+     * Unique identifier for serialization.
+     */
+    private static final long serialVersionUID = 2599232055785547928L;
 
-	/** The name of the user group. */
-	private String name;
+    /** The name of the user group. */
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(final String name) {
-		this.name = name;
-	}
+    public void setName(final String name) {
+        this.name = name;
+    }
 
 }

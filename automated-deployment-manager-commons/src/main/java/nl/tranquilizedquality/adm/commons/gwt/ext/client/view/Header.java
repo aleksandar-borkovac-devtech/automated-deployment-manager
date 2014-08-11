@@ -13,17 +13,17 @@ import com.extjs.gxt.ui.client.widget.ContentPanel;
  */
 public class Header extends ContentPanel {
 
-	/**
-	 * Default constructor.
-	 */
-	public Header(final String applicationName) {
-		setFrame(true);
-		setBorders(true);
-		setHeaderVisible(false);
-		setId("application-header");
-		final String version = Registry.get(AbstractModule.VERSION);
+    /**
+     * Default constructor.
+     */
+    public Header(final String applicationName) {
+        setFrame(true);
+        setBorders(true);
+        setHeaderVisible(false);
+        setId("application-header");
+        final String version = Registry.get(AbstractModule.VERSION);
 
-		addText("<b>" + applicationName + " - " + version + "</b>");
-	}
+        addText("<b>" + applicationName + " - " + version + "</b>");
+    }
 
 }

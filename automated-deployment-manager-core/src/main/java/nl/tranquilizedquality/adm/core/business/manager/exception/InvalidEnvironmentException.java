@@ -25,38 +25,38 @@ import nl.tranquilizedquality.adm.commons.business.domain.Environment;
  */
 public class InvalidEnvironmentException extends RuntimeException {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = 6420577417091423859L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = 6420577417091423859L;
 
-	/**
-	 * Default constructor.
-	 */
-	public InvalidEnvironmentException() {
-	}
+    /**
+     * Default constructor.
+     */
+    public InvalidEnvironmentException() {
+    }
 
-	/**
-	 * Constructor where you can specify the error message.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 */
-	public InvalidEnvironmentException(final String msg) {
-		super(msg);
-	}
+    /**
+     * Constructor where you can specify the error message.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     */
+    public InvalidEnvironmentException(final String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructor where you can specify the error message and the cause of this
-	 * exception.
-	 * 
-	 * @param msg
-	 *            The error message that will be used.
-	 * @param cause
-	 *            The {@link Throwable} that caused this exception.
-	 */
-	public InvalidEnvironmentException(final String msg, final Throwable cause) {
-		super(msg, cause);
-	}
+    /**
+     * Constructor where you can specify the error message and the cause of this
+     * exception.
+     * 
+     * @param msg
+     *            The error message that will be used.
+     * @param cause
+     *            The {@link Throwable} that caused this exception.
+     */
+    public InvalidEnvironmentException(final String msg, final Throwable cause) {
+        super(msg, cause);
+    }
 
 }

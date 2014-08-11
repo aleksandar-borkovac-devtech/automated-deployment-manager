@@ -19,13 +19,13 @@ public interface HostManagementManager {
     void cleanUp();
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     void setUpPages(Selenium selenium, ConditionRunner conditionRunner);
 
@@ -33,7 +33,8 @@ public interface HostManagementManager {
      * Adds a host using the values of the passed in {@link DestinationHostDto}.
      * 
      * @param host
-     *        The {@link DestinationHostDto} where the values will be used from.
+     *            The {@link DestinationHostDto} where the values will be used
+     *            from.
      */
     void addHost(DestinationHostDto host);
 
@@ -41,8 +42,9 @@ public interface HostManagementManager {
      * Validates if the private key is stored for the specified host.
      * 
      * @param host
-     *        The {@link DestinationHostDto} that will be used to validate.
-     * @return Returns true if the private key was stored otherwise it will return false.
+     *            The {@link DestinationHostDto} that will be used to validate.
+     * @return Returns true if the private key was stored otherwise it will
+     *         return false.
      */
     boolean isPrivateKeyStoredForHost(DestinationHostDto host);
 

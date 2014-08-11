@@ -67,9 +67,9 @@ public class EnvironmentSelectionTable extends AbstractGridPanel {
      * is displayed in.
      * 
      * @param detailsPanel
-     *        The details panel where the release is displayed in.
+     *            The details panel where the release is displayed in.
      * @param window
-     *        The window where this grid is displayed in.
+     *            The window where this grid is displayed in.
      */
     public EnvironmentSelectionTable(final ReleaseDetailsPanel detailsPanel, final EnvironmentSelectionWindow window) {
         this.detailsPanel = detailsPanel;

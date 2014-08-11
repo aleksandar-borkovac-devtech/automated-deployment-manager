@@ -25,69 +25,67 @@ import org.springframework.beans.factory.annotation.Required;
  */
 public class ImageServiceImpl implements ImageService {
 
-	/** Logger for this class. */
-	private static final Log LOG = LogFactory.getLog(ImageServiceImpl.class);
+    /** Logger for this class. */
+    private static final Log LOG = LogFactory.getLog(ImageServiceImpl.class);
 
-	/** Manager that manages users. */
-	private UserManager userManager;
+    /** Manager that manages users. */
+    private UserManager userManager;
 
-	@Override
-	public Response getUserPicture(final Long id) {
+    @Override
+    public Response getUserPicture(final Long id) {
 
-		try {
-			final File memberPicture = userManager.findUserPicture(id);
+        try {
+            final File memberPicture = userManager.findUserPicture(id);
 
-			final FileInputStream fis = new FileInputStream(memberPicture);
+            final FileInputStream fis = new FileInputStream(memberPicture);
 
-			final CacheControl control = new CacheControl();
-			control.setNoCache(true);
+            final CacheControl control = new CacheControl();
+            control.setNoCache(true);
 
-			return Response.ok(fis).cacheControl(control).build();
-		}
-		catch (final Exception e) {
-			if (LOG.isErrorEnabled()) {
-				LOG.error(e.getMessage(), e);
-			}
+            return Response.ok(fis).cacheControl(control).build();
+        } catch (final Exception e) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error(e.getMessage(), e);
+            }
 
-			final CacheControl control = new CacheControl();
-			control.setNoCache(true);
-			return Response.serverError().entity(e.getMessage()).cacheControl(control).build();
-		}
-	}
+            final CacheControl control = new CacheControl();
+            control.setNoCache(true);
+            return Response.serverError().entity(e.getMessage()).cacheControl(control).build();
+        }
+    }
 
-	@Override
-	public Response addUserPicture(final InputStream input, final Long id) {
+    @Override
+    public Response addUserPicture(final InputStream input, final Long id) {
 
-		try {
-			final byte[] image = IOUtils.toByteArray(input);
+        try {
+            final byte[] image = IOUtils.toByteArray(input);
 
-			userManager.storeUserPicture(id, image);
+            userManager.storeUserPicture(id, image);
 
-			final CacheControl control = new CacheControl();
-			control.setNoCache(true);
+            final CacheControl control = new CacheControl();
+            control.setNoCache(true);
 
-			return Response.ok().cacheControl(control).build();
-		}
-		catch (final Exception e) {
-			if (LOG.isErrorEnabled()) {
-				LOG.error(e.getMessage(), e);
-			}
+            return Response.ok().cacheControl(control).build();
+        } catch (final Exception e) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error(e.getMessage(), e);
+            }
 
-			final CacheControl control = new CacheControl();
-			control.setNoCache(true);
+            final CacheControl control = new CacheControl();
+            control.setNoCache(true);
 
-			return Response.serverError().entity(e.getMessage()).cacheControl(control).build();
-		}
+            return Response.serverError().entity(e.getMessage()).cacheControl(control).build();
+        }
 
-	}
+    }
 
-	/**
-	 * @param userManager
-	 *            the userManager to set
-	 */
-	@Required
-	public void setUserManager(final UserManager userManager) {
-		this.userManager = userManager;
-	}
+    /**
+     * @param userManager
+     *            the userManager to set
+     */
+    @Required
+    public void setUserManager(final UserManager userManager) {
+        this.userManager = userManager;
+    }
 
 }

@@ -306,7 +306,8 @@ public class DestinationHostDetailsPanel extends AbstractDetailPanel<ClientDesti
         userGroup.setTriggerAction(TriggerAction.ALL);
         userGroup.setForceSelection(true);
         userGroup.setEditable(false);
-        userGroup.setToolTip("The user group this host is part off. Only the users that are part of that group will see this host.");
+        userGroup
+                .setToolTip("The user group this host is part off. Only the users that are part of that group will see this host.");
         userGroup.setAllowBlank(false);
 
         /*

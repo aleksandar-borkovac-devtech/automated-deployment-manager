@@ -23,131 +23,131 @@ import org.hibernate.criterion.Restrictions;
  */
 public class HibernateScopeDao extends AbstractHibernateBaseDao<HibernateScope, Long> implements ScopeDao<HibernateScope> {
 
-	@Override
-	protected Class<HibernateScope> getDomainClass() {
-		return HibernateScope.class;
-	}
+    @Override
+    protected Class<HibernateScope> getDomainClass() {
+        return HibernateScope.class;
+    }
 
-	@Override
-	public HibernateScope newDomainObject() {
-		return new HibernateScope();
-	}
+    @Override
+    public HibernateScope newDomainObject() {
+        return new HibernateScope();
+    }
 
-	@Override
-	public Scope findByName(final String name) {
-		final Criteria criteria = getDefaultCriteria();
+    @Override
+    public Scope findByName(final String name) {
+        final Criteria criteria = getDefaultCriteria();
 
-		criteria.add(Restrictions.eq("name", name));
+        criteria.add(Restrictions.eq("name", name));
 
-		return (Scope) criteria.uniqueResult();
-	}
+        return (Scope) criteria.uniqueResult();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Scope> findScopesBySearchCommand(final ScopeSearchCommand sc) {
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Scope> findScopesBySearchCommand(final ScopeSearchCommand sc) {
 
-		final StringBuffer builder = new StringBuffer();
+        final StringBuffer builder = new StringBuffer();
 
-		final User user = sc.getUser();
+        final User user = sc.getUser();
 
-		/*
-		 * Create query.
-		 */
-		builder.append(from);
-		builder.append(" as scope where ");
-		builder.append(" scope.name like :name and ");
-		builder.append(" (scope.description is null or scope.description like :description) ");
+        /*
+         * Create query.
+         */
+        builder.append(from);
+        builder.append(" as scope where ");
+        builder.append(" scope.name like :name and ");
+        builder.append(" (scope.description is null or scope.description like :description) ");
 
-		if (user != null) {
-			builder.append(" and :userid in (select id from scope.scopeManagers) ");
-		}
+        if (user != null) {
+            builder.append(" and :userid in (select id from scope.scopeManagers) ");
+        }
 
-		final String orderBy = sc.getOrderBy();
-		if (orderBy != null && !"".equals(orderBy)) {
-			if (sc.isAsc()) {
-				builder.append(" order by " + orderBy + " asc");
-			}
-			else {
-				builder.append(" order by " + orderBy + " desc");
-			}
-		}
+        final String orderBy = sc.getOrderBy();
+        if (orderBy != null && !"".equals(orderBy)) {
+            if (sc.isAsc()) {
+                builder.append(" order by " + orderBy + " asc");
+            }
+            else {
+                builder.append(" order by " + orderBy + " desc");
+            }
+        }
 
-		final Session currentSession = getCurrentSession();
-		final Query query = currentSession.createQuery(builder.toString());
-		if (sc.getMaxResults() != null) {
-			query.setMaxResults(sc.getMaxResults());
-		}
+        final Session currentSession = getCurrentSession();
+        final Query query = currentSession.createQuery(builder.toString());
+        if (sc.getMaxResults() != null) {
+            query.setMaxResults(sc.getMaxResults());
+        }
 
-		if (sc.getStart() != null) {
-			query.setFirstResult(sc.getStart());
-		}
+        if (sc.getStart() != null) {
+            query.setFirstResult(sc.getStart());
+        }
 
-		String name = sc.getName();
-		if (name == null) {
-			name = "";
-		}
-		query.setParameter("name", name + "%");
+        String name = sc.getName();
+        if (name == null) {
+            name = "";
+        }
+        query.setParameter("name", name + "%");
 
-		String description = sc.getDescription();
-		if (description == null) {
-			description = "";
-		}
-		query.setParameter("description", description + "%");
+        String description = sc.getDescription();
+        if (description == null) {
+            description = "";
+        }
+        query.setParameter("description", description + "%");
 
-		if (user != null) {
-			final Long userId = user.getId();
-			query.setParameter("userid", userId);
-		}
+        if (user != null) {
+            final Long userId = user.getId();
+            query.setParameter("userid", userId);
+        }
 
-		return query.list();
-	}
+        return query.list();
+    }
 
-	@Override
-	public int findNumberOfScopesBySearchCommand(final ScopeSearchCommand sc) {
+    @Override
+    public int findNumberOfScopesBySearchCommand(final ScopeSearchCommand sc) {
 
-		final StringBuffer builder = new StringBuffer();
-		final User user = sc.getUser();
+        final StringBuffer builder = new StringBuffer();
+        final User user = sc.getUser();
 
-		/*
-		 * Create query.
-		 */
-		builder.append("select count(scope.id) ");
-		builder.append(from);
-		builder.append(" as scope where ");
-		builder.append(" scope.name like :name and ");
-		builder.append(" (scope.description is null or scope.description like :description) ");
+        /*
+         * Create query.
+         */
+        builder.append("select count(scope.id) ");
+        builder.append(from);
+        builder.append(" as scope where ");
+        builder.append(" scope.name like :name and ");
+        builder.append(" (scope.description is null or scope.description like :description) ");
 
-		if (user != null) {
-			builder.append(" and :userid in (select id from scope.scopeManagers)");
-		}
+        if (user != null) {
+            builder.append(" and :userid in (select id from scope.scopeManagers)");
+        }
 
-		final Session currentSession = getCurrentSession();
-		final Query query = currentSession.createQuery(builder.toString());
-		query.setMaxResults(1);
+        final Session currentSession = getCurrentSession();
+        final Query query = currentSession.createQuery(builder.toString());
+        query.setMaxResults(1);
 
-		if (sc.getStart() != null) {
-			query.setFirstResult(sc.getStart());
-		}
+        if (sc.getStart() != null) {
+            query.setFirstResult(sc.getStart());
+        }
 
-		String name = sc.getName();
-		if (name == null) {
-			name = "";
-		}
-		query.setParameter("name", name + "%");
+        String name = sc.getName();
+        if (name == null) {
+            name = "";
+        }
+        query.setParameter("name", name + "%");
 
-		String description = sc.getDescription();
-		if (description == null) {
-			description = "";
-		}
-		query.setParameter("description", description + "%");
+        String description = sc.getDescription();
+        if (description == null) {
+            description = "";
+        }
+        query.setParameter("description", description + "%");
 
-		if (user != null) {
-			final Long userId = user.getId();
-			query.setParameter("userid", userId);
-		}
+        if (user != null) {
+            final Long userId = user.getId();
+            query.setParameter("userid", userId);
+        }
 
-		final Long count = (Long) query.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) query.uniqueResult();
+        return count.intValue();
+    }
 
 }

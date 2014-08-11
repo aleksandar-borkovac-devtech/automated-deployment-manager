@@ -73,9 +73,11 @@ public class UserGroupManagerTest extends EasyMockSupport {
     }
 
     /**
-     * Test method for
-     * {@link nl.Tranquilized Quality.adm.security.business.exception.UserGroupManagerImpl#storeUserGroup(nl.tranquilizedquality.adm.commons.business.domain.UserGroup, org.springframework.validation.Errors)}
-     * .
+     * Test method for {@link nl.Tranquilized
+     * Quality.adm.security.business.exception.UserGroupManagerImpl#
+     * storeUserGroup
+     * (nl.tranquilizedquality.adm.commons.business.domain.UserGroup,
+     * org.springframework.validation.Errors)} .
      */
     @Test
     public void testStoreUserGroup() {
@@ -95,9 +97,11 @@ public class UserGroupManagerTest extends EasyMockSupport {
     }
 
     /**
-     * Test method for
-     * {@link nl.Tranquilized Quality.adm.security.business.exception.UserGroupManagerImpl#storeUserGroup(nl.tranquilizedquality.adm.commons.business.domain.UserGroup, org.springframework.validation.Errors)}
-     * .
+     * Test method for {@link nl.Tranquilized
+     * Quality.adm.security.business.exception.UserGroupManagerImpl#
+     * storeUserGroup
+     * (nl.tranquilizedquality.adm.commons.business.domain.UserGroup,
+     * org.springframework.validation.Errors)} .
      */
     @Test
     public void testStorePersistentUserGroup() {
@@ -121,9 +125,11 @@ public class UserGroupManagerTest extends EasyMockSupport {
     }
 
     /**
-     * Test method for
-     * {@link nl.Tranquilized Quality.adm.security.business.exception.UserGroupManagerImpl#findUserGroupsBySearchCommand(nl.tranquilizedquality.adm.commons.business.command.UserGroupSearchCommand)}
-     * .
+     * Test method for {@link nl.Tranquilized
+     * Quality.adm.security.business.exception.UserGroupManagerImpl#
+     * findUserGroupsBySearchCommand
+     * (nl.tranquilizedquality.adm.commons.business.
+     * command.UserGroupSearchCommand)} .
      */
     @Test
     public void testFindUserGroupsBySearchCommand() {
@@ -141,9 +147,11 @@ public class UserGroupManagerTest extends EasyMockSupport {
     }
 
     /**
-     * Test method for
-     * {@link nl.Tranquilized Quality.adm.security.business.exception.UserGroupManagerImpl#findNumberOfUserGroups(nl.tranquilizedquality.adm.commons.business.command.UserGroupSearchCommand)}
-     * .
+     * Test method for {@link nl.Tranquilized
+     * Quality.adm.security.business.exception.UserGroupManagerImpl#
+     * findNumberOfUserGroups
+     * (nl.tranquilizedquality.adm.commons.business.command
+     * .UserGroupSearchCommand)} .
      */
     @Test
     public void testFindNumberOfUserGroups() {

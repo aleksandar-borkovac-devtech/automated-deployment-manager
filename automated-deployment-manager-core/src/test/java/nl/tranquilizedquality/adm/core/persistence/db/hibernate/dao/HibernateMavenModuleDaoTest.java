@@ -43,67 +43,67 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class HibernateMavenModuleDaoTest extends AbstractDaoTest {
 
-	/** DAO that will be tested. */
-	@Autowired
-	private HibernateMavenModuleDao mavenModuleDao;
+    /** DAO that will be tested. */
+    @Autowired
+    private HibernateMavenModuleDao mavenModuleDao;
 
-	@Autowired
-	private UserDao<User> userDao;
+    @Autowired
+    private UserDao<User> userDao;
 
-	@Autowired
-	private UserGroupDao<UserGroup> userGroupDao;
+    @Autowired
+    private UserGroupDao<UserGroup> userGroupDao;
 
-	@Before
-	public void setUp() {
+    @Before
+    public void setUp() {
 
-		final HibernateUser user = new HibernateUser();
-		user.setActive(true);
-		user.setActiveFrom(new Date());
-		user.setCreated(new Date());
-		user.setCreatedBy("s-petrus");
-		user.setName("Salomo Petrus");
-		user.setPassword("asfdasdfas");
-		user.setUserName("s-petrus");
-		user.setPasswordSent(true);
-		user.setBlocked(false);
+        final HibernateUser user = new HibernateUser();
+        user.setActive(true);
+        user.setActiveFrom(new Date());
+        user.setCreated(new Date());
+        user.setCreatedBy("s-petrus");
+        user.setName("Salomo Petrus");
+        user.setPassword("asfdasdfas");
+        user.setUserName("s-petrus");
+        user.setPasswordSent(true);
+        user.setBlocked(false);
 
-		userDao.save(user);
-		userDao.flush();
+        userDao.save(user);
+        userDao.flush();
 
-		final List<User> users = new ArrayList<User>();
-		users.add(user);
+        final List<User> users = new ArrayList<User>();
+        users.add(user);
 
-		final HibernateUserGroup userGroup = new HibernateUserGroup();
-		userGroup.setCreated(new Date());
-		userGroup.setCreatedBy("s-petrus");
-		userGroup.setName("adminsitrators");
-		userGroup.setUsers(users);
+        final HibernateUserGroup userGroup = new HibernateUserGroup();
+        userGroup.setCreated(new Date());
+        userGroup.setCreatedBy("s-petrus");
+        userGroup.setName("adminsitrators");
+        userGroup.setUsers(users);
 
-		userGroupDao.save(userGroup);
-		userGroupDao.flush();
+        userGroupDao.save(userGroup);
+        userGroupDao.flush();
 
-		final HibernateMavenModule module = new HibernateMavenModule();
-		module.setName("adm-gwt-gui");
-		module.setType(ArtifactType.WAR);
-		module.setCreated(new Date());
-		module.setCreatedBy("s-petrus");
-		module.setGroup("nl.Tranquilized Quality");
-		module.setArtifactId("adm-gwt-gui");
-		module.setTargetSystemShutdown(true);
-		module.setTargetSystemStartup(true);
-		module.setUserGroup(userGroup);
+        final HibernateMavenModule module = new HibernateMavenModule();
+        module.setName("adm-gwt-gui");
+        module.setType(ArtifactType.WAR);
+        module.setCreated(new Date());
+        module.setCreatedBy("s-petrus");
+        module.setGroup("nl.Tranquilized Quality");
+        module.setArtifactId("adm-gwt-gui");
+        module.setTargetSystemShutdown(true);
+        module.setTargetSystemStartup(true);
+        module.setUserGroup(userGroup);
 
-		mavenModuleDao.save(module);
-		mavenModuleDao.flush();
-	}
+        mavenModuleDao.save(module);
+        mavenModuleDao.flush();
+    }
 
-	@Test
-	public void testFindAll() {
-		final List<HibernateMavenModule> modules = mavenModuleDao.findAll();
+    @Test
+    public void testFindAll() {
+        final List<HibernateMavenModule> modules = mavenModuleDao.findAll();
 
-		assertNotNull("No modules!", modules);
-		assertEquals("Invalid number of modules!", 1, modules.size());
+        assertNotNull("No modules!", modules);
+        assertEquals("Invalid number of modules!", 1, modules.size());
 
-	}
+    }
 
 }

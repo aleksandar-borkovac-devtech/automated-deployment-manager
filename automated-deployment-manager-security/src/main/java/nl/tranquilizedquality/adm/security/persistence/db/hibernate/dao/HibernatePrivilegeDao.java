@@ -40,84 +40,85 @@ import org.hibernate.criterion.Subqueries;
  * @since 24 nov. 2011
  * 
  */
-public class HibernatePrivilegeDao extends AbstractHibernateBaseDao<HibernatePrivilege, Long> implements PrivilegeDao<HibernatePrivilege> {
+public class HibernatePrivilegeDao extends AbstractHibernateBaseDao<HibernatePrivilege, Long> implements
+        PrivilegeDao<HibernatePrivilege> {
 
-	@Override
-	protected Class<HibernatePrivilege> getDomainClass() {
-		return HibernatePrivilege.class;
-	}
+    @Override
+    protected Class<HibernatePrivilege> getDomainClass() {
+        return HibernatePrivilege.class;
+    }
 
-	@Override
-	public HibernatePrivilege newDomainObject() {
-		return new HibernatePrivilege();
-	}
+    @Override
+    public HibernatePrivilege newDomainObject() {
+        return new HibernatePrivilege();
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Privilege> findByUserAndScope(final User user, final Scope scope) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = session.createCriteria(domainClass, "prv");
-		criteria.add(Restrictions.eq("scope", scope));
-		criteria.add(Restrictions.eq("valid", true));
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Privilege> findByUserAndScope(final User user, final Scope scope) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = session.createCriteria(domainClass, "prv");
+        criteria.add(Restrictions.eq("scope", scope));
+        criteria.add(Restrictions.eq("valid", true));
 
-		final DetachedCriteria dc = DetachedCriteria.forClass(HibernateUserRole.class, "url");
-		dc.add(Restrictions.eq("url.user", user));
-		dc.add(Restrictions.eq("url.active", true));
-		final DetachedCriteria roleCriteria = dc.createCriteria("role", "rol");
-		roleCriteria.add(Restrictions.eq("rol.valid", true));
-		roleCriteria.add(Restrictions.eq("rol.scope", scope));
+        final DetachedCriteria dc = DetachedCriteria.forClass(HibernateUserRole.class, "url");
+        dc.add(Restrictions.eq("url.user", user));
+        dc.add(Restrictions.eq("url.active", true));
+        final DetachedCriteria roleCriteria = dc.createCriteria("role", "rol");
+        roleCriteria.add(Restrictions.eq("rol.valid", true));
+        roleCriteria.add(Restrictions.eq("rol.scope", scope));
 
-		final DetachedCriteria privilegeCriteria = roleCriteria.createCriteria("privileges", "rpr");
-		privilegeCriteria.add(Property.forName("rpr.id").eqProperty("prv.id"));
+        final DetachedCriteria privilegeCriteria = roleCriteria.createCriteria("privileges", "rpr");
+        privilegeCriteria.add(Property.forName("rpr.id").eqProperty("prv.id"));
 
-		criteria.add(Subqueries.exists(dc.setProjection(Projections.property("url.id"))));
+        criteria.add(Subqueries.exists(dc.setProjection(Projections.property("url.id"))));
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	public int findNumberOfPrivileges(final PrivilegeSearchCommand searchCommand) {
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = getPrivilegeSearchCriteria(searchCommand, currentSession);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public int findNumberOfPrivileges(final PrivilegeSearchCommand searchCommand) {
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = getPrivilegeSearchCriteria(searchCommand, currentSession);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Privilege> findPrivileges(final PrivilegeSearchCommand sc) {
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Privilege> findPrivileges(final PrivilegeSearchCommand sc) {
 
-		final Session currentSession = getCurrentSession();
-		final Criteria criteria = getPrivilegeSearchCriteria(sc, currentSession);
+        final Session currentSession = getCurrentSession();
+        final Criteria criteria = getPrivilegeSearchCriteria(sc, currentSession);
 
-		configurePagingAndSorting(sc, criteria);
+        configurePagingAndSorting(sc, criteria);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	/**
-	 * Creates the {@link Criteria} from the passed in search command.
-	 * 
-	 * @param searchCommand
-	 *            The search criteria.
-	 * @return Returns the {@link Criteria}.
-	 */
-	private Criteria getPrivilegeSearchCriteria(final PrivilegeSearchCommand searchCommand, final Session session) {
-		final Criteria criteria = session.createCriteria(this.domainClass);
+    /**
+     * Creates the {@link Criteria} from the passed in search command.
+     * 
+     * @param searchCommand
+     *            The search criteria.
+     * @return Returns the {@link Criteria}.
+     */
+    private Criteria getPrivilegeSearchCriteria(final PrivilegeSearchCommand searchCommand, final Session session) {
+        final Criteria criteria = session.createCriteria(this.domainClass);
 
-		final Boolean valid = searchCommand.getValid();
-		if (valid != null) {
-			criteria.add(Restrictions.eq("valid", valid));
-		}
+        final Boolean valid = searchCommand.getValid();
+        if (valid != null) {
+            criteria.add(Restrictions.eq("valid", valid));
+        }
 
-		final Scope scope = searchCommand.getScope();
-		if (scope != null) {
-			criteria.add(Restrictions.eq("scope", scope));
-		}
+        final Scope scope = searchCommand.getScope();
+        if (scope != null) {
+            criteria.add(Restrictions.eq("scope", scope));
+        }
 
-		return criteria;
-	}
+        return criteria;
+    }
 
 }

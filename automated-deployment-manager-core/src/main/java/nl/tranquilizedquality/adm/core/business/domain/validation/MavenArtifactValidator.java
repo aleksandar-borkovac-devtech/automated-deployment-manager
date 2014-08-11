@@ -30,18 +30,19 @@ import org.springframework.validation.Validator;
  */
 public class MavenArtifactValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateMavenArtifact.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateMavenArtifact.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "version", "maven-artifact.version-empty", "No version filled in.");
-		AdmValidationUtils.rejectIfNull(errors, "parentModule", "maven-artifact.parent-module-empty", "No parent module specified.");
-		AdmValidationUtils.rejectIfNull(errors, "release", "maven-artifact.release-empty", "No release specified.");
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "version", "maven-artifact.version-empty", "No version filled in.");
+        AdmValidationUtils
+                .rejectIfNull(errors, "parentModule", "maven-artifact.parent-module-empty", "No parent module specified.");
+        AdmValidationUtils.rejectIfNull(errors, "release", "maven-artifact.release-empty", "No release specified.");
 
-	}
+    }
 
 }

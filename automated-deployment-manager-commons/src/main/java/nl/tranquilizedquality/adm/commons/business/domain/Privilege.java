@@ -12,41 +12,41 @@ import nl.tranquilizedquality.adm.commons.domain.UpdatableDomainObject;
  */
 public interface Privilege extends UpdatableDomainObject<Long> {
 
-	/**
-	 * @return the name
-	 */
-	String getName();
+    /**
+     * @return the name
+     */
+    String getName();
 
-	/**
-	 * @return the description
-	 */
-	String getDescription();
+    /**
+     * @return the description
+     */
+    String getDescription();
 
-	/**
-	 * @return the valid
-	 */
-	Boolean isValid();
+    /**
+     * @return the valid
+     */
+    Boolean isValid();
 
-	/**
-	 * @param valid
-	 *            the valid to set
-	 */
-	void setValid(Boolean valid);
+    /**
+     * @param valid
+     *            the valid to set
+     */
+    void setValid(Boolean valid);
 
-	/**
-	 * @return the scope
-	 */
-	Scope getScope();
+    /**
+     * @return the scope
+     */
+    Scope getScope();
 
-	/**
-	 * @return the roles
-	 */
-	Set<Role> getRoles();
+    /**
+     * @return the roles
+     */
+    Set<Role> getRoles();
 
-	/**
-	 * @param roles
-	 *            the roles to set
-	 */
-	void setRoles(Set<Role> roles);
+    /**
+     * @param roles
+     *            the roles to set
+     */
+    void setRoles(Set<Role> roles);
 
 }

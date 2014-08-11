@@ -37,7 +37,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since 21 mrt. 2013
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:plugin-test-application-context.xml" })
+@ContextConfiguration(locations = {"classpath:plugin-test-application-context.xml" })
 public class PluginManagerTest extends EasyMockSupport {
 
     /** Manager that will be tested. */
@@ -81,7 +81,9 @@ public class PluginManagerTest extends EasyMockSupport {
     }
 
     /**
-     * Test method for {@link nl.tranquilizedquality.adm.core.business.plugin.PluginManagerImpl#installPlugins()}.
+     * Test method for
+     * {@link nl.tranquilizedquality.adm.core.business.plugin.PluginManagerImpl#installPlugins()}
+     * .
      */
     @Test
     @Ignore

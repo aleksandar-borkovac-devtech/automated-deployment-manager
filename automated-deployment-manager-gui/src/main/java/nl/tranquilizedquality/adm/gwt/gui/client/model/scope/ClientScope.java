@@ -68,7 +68,7 @@ public class ClientScope extends AbstractUpdatableBeanModel<Long> implements Sco
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -76,7 +76,7 @@ public class ClientScope extends AbstractUpdatableBeanModel<Long> implements Sco
 
     /**
      * @param description
-     *        the description to set
+     *            the description to set
      */
     public void setDescription(final String description) {
         this.description = description;
@@ -84,7 +84,7 @@ public class ClientScope extends AbstractUpdatableBeanModel<Long> implements Sco
 
     /**
      * @param roles
-     *        the roles to set
+     *            the roles to set
      */
     public void setRoles(final Set<Role> roles) {
         this.roles = roles;
@@ -95,7 +95,7 @@ public class ClientScope extends AbstractUpdatableBeanModel<Long> implements Sco
      * each collection field it will add an empty collection.
      * 
      * @param scope
-     *        the origin object.
+     *            the origin object.
      */
     public void shallowCopy(final Scope scope) {
         super.copy(scope);

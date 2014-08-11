@@ -17,17 +17,18 @@ public interface ProtocolConnector {
      * Connects to a host using passed in information.
      * 
      * @param terminal
-     *        The terminal type to use when connecting to the host. e.g. "gogrid"
+     *            The terminal type to use when connecting to the host. e.g.
+     *            "gogrid"
      * @param host
-     *        The host to connect to.
+     *            The host to connect to.
      * @param port
-     *        The port to connect to on the host.
+     *            The port to connect to on the host.
      * @param username
-     *        The user name to use to connect.
+     *            The user name to use to connect.
      * @param password
-     *        The password to use to connect.
+     *            The password to use to connect.
      * @param privateKey
-     *        The private key to use for logging into the target host.
+     *            The private key to use for logging into the target host.
      */
     void connectToHost(String terminal, String host, int port, String username, String password, byte[] privateKey);
 
@@ -40,10 +41,10 @@ public interface ProtocolConnector {
      * Performs a command on the host.
      * 
      * @param Command
-     *        The {@link Command} that will be executed.
+     *            The {@link Command} that will be executed.
      * @param parameters
-     *        the parameters to use when executing the command if
-     *        applicable.
+     *            the parameters to use when executing the command if
+     *            applicable.
      */
     void performCommand(Command Command, String parameters);
 
@@ -51,7 +52,7 @@ public interface ProtocolConnector {
      * Performs a custom command on the host.
      * 
      * @param sshCommand
-     *        The SSH command to perform. This can be ls -all e.g.
+     *            The SSH command to perform. This can be ls -all e.g.
      */
     void performCustomCommand(String sshCommand);
 
@@ -66,9 +67,9 @@ public interface ProtocolConnector {
      * Transfers the specified file to the destination path.
      * 
      * @param file
-     *        The file that will be transferred.
+     *            The file that will be transferred.
      * @param destinationPath
-     *        The destination path the file will be transferred to.
+     *            The destination path the file will be transferred to.
      */
     void transferFileToHost(File file, String destinationPath);
 
@@ -80,7 +81,8 @@ public interface ProtocolConnector {
     String getOutputBuffer();
 
     /**
-     * Retrieves the output data as a {@link List} containing lines of {@link String} data.
+     * Retrieves the output data as a {@link List} containing lines of
+     * {@link String} data.
      * 
      * @return Returns a {@link List} containing the lines or an empty one if
      *         there are none.

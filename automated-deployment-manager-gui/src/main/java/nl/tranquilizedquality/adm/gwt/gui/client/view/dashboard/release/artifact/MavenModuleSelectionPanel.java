@@ -52,216 +52,216 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class MavenModuleSelectionPanel extends AbstractSearchPanel<ClientMavenModuleSearchCommand> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The name to search on. */
-	private TextField<String> name;
+    /** The name to search on. */
+    private TextField<String> name;
 
-	/** The group to search on. */
-	private TextField<String> group;
+    /** The group to search on. */
+    private TextField<String> group;
 
-	/** The artifact id to search on. */
-	private TextField<String> artifactId;
+    /** The artifact id to search on. */
+    private TextField<String> artifactId;
 
-	/** The {@link ComboBox} containing a list of artifact types. */
-	private ComboBox<EnumWrapper<ArtifactType>> artifactType;
+    /** The {@link ComboBox} containing a list of artifact types. */
+    private ComboBox<EnumWrapper<ArtifactType>> artifactType;
 
-	/** Window where this panel is displayed in. */
-	private final Window window;
+    /** Window where this panel is displayed in. */
+    private final Window window;
 
-	/**
-	 * Default constructor.
-	 */
-	public MavenModuleSelectionPanel(final Window window) {
-		icons = Registry.get(AdmModule.ICONS);
-		this.window = window;
+    /**
+     * Default constructor.
+     */
+    public MavenModuleSelectionPanel(final Window window) {
+        icons = Registry.get(AdmModule.ICONS);
+        this.window = window;
 
-		sc = new ClientMavenModuleSearchCommand();
+        sc = new ClientMavenModuleSearchCommand();
 
-		northHeight = 200;
+        northHeight = 200;
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Setup layout.
+         */
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		/*
-		 * Create the filter panel.
-		 */
-		formPanel = createFilterPanel();
+        /*
+         * Create the filter panel.
+         */
+        formPanel = createFilterPanel();
 
-		/*
-		 * Create grid panel.
-		 */
-		gridPanel = createGridPanel();
+        /*
+         * Create grid panel.
+         */
+        gridPanel = createGridPanel();
 
-		final FieldBinding binding = new FieldBinding(this.artifactType, "type");
-		binding.setConverter(new EnumConverter<ArtifactType>());
-		fieldBindings.add(binding);
+        final FieldBinding binding = new FieldBinding(this.artifactType, "type");
+        binding.setConverter(new EnumConverter<ArtifactType>());
+        fieldBindings.add(binding);
 
-		/*
-		 * Bind model.
-		 */
-		bindModel(this.sc);
+        /*
+         * Bind model.
+         */
+        bindModel(this.sc);
 
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
-		northData.setCollapsible(true);
-		northData.setFloatable(true);
-		northData.setSplit(true);
-		northData.setMaxSize(northMaxHeight);
-		northData.setSize(northHeight);
-		northData.setSplit(true);
-		northData.setMargins(new Margins(1, 1, 1, 1));
+        /*
+         * Setup layout.
+         */
+        final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
+        northData.setCollapsible(true);
+        northData.setFloatable(true);
+        northData.setSplit(true);
+        northData.setMaxSize(northMaxHeight);
+        northData.setSize(northHeight);
+        northData.setSplit(true);
+        northData.setMargins(new Margins(1, 1, 1, 1));
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
-		centerData.setMargins(new Margins(0, 1, 1, 1));
-		centerData.setSplit(true);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        centerData.setMargins(new Margins(0, 1, 1, 1));
+        centerData.setSplit(true);
 
-		add(formPanel, northData);
-		add(gridPanel, centerData);
-	}
+        add(formPanel, northData);
+        add(gridPanel, centerData);
+    }
 
-	@Override
-	protected AbstractGridPanel createGridPanel() {
-		return new MavenModuleSelectionTable(sc, window);
-	}
+    @Override
+    protected AbstractGridPanel createGridPanel() {
+        return new MavenModuleSelectionTable(sc, window);
+    }
 
-	@Override
-	protected FormPanel createFilterPanel() {
-		final FormPanel formPanel = new FormPanel();
-		formPanel.setHeading("Search criteria");
-		formPanel.setFrame(true);
-		formPanel.setHeaderVisible(false);
-		formPanel.setLabelWidth(200);
-		formPanel.setButtonAlign(HorizontalAlignment.LEFT);
-		formPanel.setIcon(AbstractImagePrototype.create(icons.funnel()));
-		formPanel.setHeight(160);
+    @Override
+    protected FormPanel createFilterPanel() {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setHeading("Search criteria");
+        formPanel.setFrame(true);
+        formPanel.setHeaderVisible(false);
+        formPanel.setLabelWidth(200);
+        formPanel.setButtonAlign(HorizontalAlignment.LEFT);
+        formPanel.setIcon(AbstractImagePrototype.create(icons.funnel()));
+        formPanel.setHeight(160);
 
-		/*
-		 * Add group.
-		 */
-		group = new TextField<String>();
-		group.setId("maven-module-selection-artifact-group");
-		group.setName("group");
-		group.setFieldLabel("Artifact Group");
-		group.setAllowBlank(true);
-		formPanel.add(group);
+        /*
+         * Add group.
+         */
+        group = new TextField<String>();
+        group.setId("maven-module-selection-artifact-group");
+        group.setName("group");
+        group.setFieldLabel("Artifact Group");
+        group.setAllowBlank(true);
+        formPanel.add(group);
 
-		/*
-		 * Add artifact id.
-		 */
-		artifactId = new TextField<String>();
-		artifactId.setId("maven-module-selection-artifact-artifact-id");
-		artifactId.setName("artifactId");
-		artifactId.setFieldLabel("Artifact Id");
-		artifactId.setAllowBlank(true);
-		formPanel.add(artifactId);
+        /*
+         * Add artifact id.
+         */
+        artifactId = new TextField<String>();
+        artifactId.setId("maven-module-selection-artifact-artifact-id");
+        artifactId.setName("artifactId");
+        artifactId.setFieldLabel("Artifact Id");
+        artifactId.setAllowBlank(true);
+        formPanel.add(artifactId);
 
-		/*
-		 * Add artifact name.
-		 */
-		name = new TextField<String>();
-		name.setId("maven-module-selection-artifact-name");
-		name.setName("name");
-		name.setFieldLabel("Artifact Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add artifact name.
+         */
+        name = new TextField<String>();
+        name.setId("maven-module-selection-artifact-name");
+        name.setName("name");
+        name.setFieldLabel("Artifact Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add protocol.
-		 */
-		artifactType = new ComboBox<EnumWrapper<ArtifactType>>();
-		artifactType.setId("maven-module-selection-type");
-		artifactType.setName("type");
-		artifactType.setFieldLabel("Artifact Type");
-		artifactType.setDisplayField("value");
-		artifactType.setEmptyText("Select type..");
-		artifactType.setTriggerAction(TriggerAction.ALL);
-		artifactType.setForceSelection(true);
-		artifactType.setEditable(false);
+        /*
+         * Add protocol.
+         */
+        artifactType = new ComboBox<EnumWrapper<ArtifactType>>();
+        artifactType.setId("maven-module-selection-type");
+        artifactType.setName("type");
+        artifactType.setFieldLabel("Artifact Type");
+        artifactType.setDisplayField("value");
+        artifactType.setEmptyText("Select type..");
+        artifactType.setTriggerAction(TriggerAction.ALL);
+        artifactType.setForceSelection(true);
+        artifactType.setEditable(false);
 
-		/*
-		 * Add enums.
-		 */
-		final ListStore<EnumWrapper<ArtifactType>> store = new ListStore<EnumWrapper<ArtifactType>>();
-		final ArtifactType[] values = ArtifactType.values();
-		store.add(new EnumWrapper<ArtifactType>(null));
-		for (final ArtifactType artifactType : values) {
-			final EnumWrapper<ArtifactType> wrapper = new EnumWrapper<ArtifactType>(artifactType);
-			store.add(wrapper);
-		}
+        /*
+         * Add enums.
+         */
+        final ListStore<EnumWrapper<ArtifactType>> store = new ListStore<EnumWrapper<ArtifactType>>();
+        final ArtifactType[] values = ArtifactType.values();
+        store.add(new EnumWrapper<ArtifactType>(null));
+        for (final ArtifactType artifactType : values) {
+            final EnumWrapper<ArtifactType> wrapper = new EnumWrapper<ArtifactType>(artifactType);
+            store.add(wrapper);
+        }
 
-		artifactType.setStore(store);
+        artifactType.setStore(store);
 
-		formPanel.add(artifactType);
+        formPanel.add(artifactType);
 
-		/*
-		 * Add search button.
-		 */
-		final Button search = new Button("Search");
-		search.setId("maven-module-selection-search-btn");
-		search.setIcon(AbstractImagePrototype.create(icons.find()));
+        /*
+         * Add search button.
+         */
+        final Button search = new Button("Search");
+        search.setId("maven-module-selection-search-btn");
+        search.setIcon(AbstractImagePrototype.create(icons.find()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				for (final FieldBinding fieldBinding : fieldBindings) {
-					fieldBinding.updateModel();
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                for (final FieldBinding fieldBinding : fieldBindings) {
+                    fieldBinding.updateModel();
+                }
 
-				search();
-			}
+                search();
+            }
 
-		};
-		search.addSelectionListener(listener);
+        };
+        search.addSelectionListener(listener);
 
-		formPanel.addButton(search);
+        formPanel.addButton(search);
 
-		/*
-		 * Add cancel button.
-		 */
-		final Button cancel = new Button("Cancel");
-		cancel.setId("maven-module-selection-cancel-btn");
-		cancel.setIcon(AbstractImagePrototype.create(icons.delete()));
+        /*
+         * Add cancel button.
+         */
+        final Button cancel = new Button("Cancel");
+        cancel.setId("maven-module-selection-cancel-btn");
+        cancel.setIcon(AbstractImagePrototype.create(icons.delete()));
 
-		final SelectionListener<ButtonEvent> cancelListener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> cancelListener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				final AdmViewPort viewPort = Registry.get(AdmModule.VIEW_PORT);
-				viewPort.unmask();
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                final AdmViewPort viewPort = Registry.get(AdmModule.VIEW_PORT);
+                viewPort.unmask();
 
-				window.hide();
-			}
+                window.hide();
+            }
 
-		};
-		cancel.addSelectionListener(cancelListener);
+        };
+        cancel.addSelectionListener(cancelListener);
 
-		formPanel.addButton(cancel);
+        formPanel.addButton(cancel);
 
-		return formPanel;
-	}
+        return formPanel;
+    }
 
-	/**
-	 * Sets the release that is currently being edited.
-	 * 
-	 * @param release
-	 *            The release that will be set.
-	 */
-	public void setRelease(final ClientRelease release) {
-		final MavenModuleSelectionTable selectionTable = (MavenModuleSelectionTable) gridPanel;
-		selectionTable.setRelease(release);
-	}
+    /**
+     * Sets the release that is currently being edited.
+     * 
+     * @param release
+     *            The release that will be set.
+     */
+    public void setRelease(final ClientRelease release) {
+        final MavenModuleSelectionTable selectionTable = (MavenModuleSelectionTable) gridPanel;
+        selectionTable.setRelease(release);
+    }
 
 }

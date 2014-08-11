@@ -13,14 +13,14 @@ import nl.tranquilizedquality.adm.security.persistence.db.hibernate.bean.Hiberna
  */
 public class RoleFactory extends AbstractFactory<ClientRole, HibernateRole, Role> {
 
-	@Override
-	protected ClientRole createNewClientBean() {
-		return new ClientRole();
-	}
+    @Override
+    protected ClientRole createNewClientBean() {
+        return new ClientRole();
+    }
 
-	@Override
-	protected HibernateRole createNewPersistentBean() {
-		return new HibernateRole();
-	}
+    @Override
+    protected HibernateRole createNewPersistentBean() {
+        return new HibernateRole();
+    }
 
 }

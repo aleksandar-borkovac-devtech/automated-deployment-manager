@@ -13,8 +13,10 @@ public interface LogTailServiceAsync {
     /**
      * Start tailing the log file.
      *
-     * @param logFile The log file to tail
-     * @param async The async callback listener
+     * @param logFile
+     *            The log file to tail
+     * @param async
+     *            The async callback listener
      */
     void startTailing(String logFile, AsyncCallback<Void> async);
 
@@ -26,14 +28,16 @@ public interface LogTailServiceAsync {
     /**
      * Get the content of the read file.
      *
-     * @param async The async callback listener
+     * @param async
+     *            The async callback listener
      */
     void getContent(AsyncCallback<String> async);
 
     /**
      * Stop tailing the current file.
      *
-     * @param async The async callback listener
+     * @param async
+     *            The async callback listener
      */
     void stopTailing(AsyncCallback<Void> async);
 }

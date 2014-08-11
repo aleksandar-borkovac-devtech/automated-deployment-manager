@@ -26,20 +26,20 @@ import nl.tranquilizedquality.adm.commons.domain.PagingSearchCommand;
  */
 public class ReleaseExecutionSearchCommand extends PagingSearchCommand {
 
-	/**
-	 * Unique identifier for serialization.
-	 */
-	private static final long serialVersionUID = 5983076911681716640L;
+    /**
+     * Unique identifier for serialization.
+     */
+    private static final long serialVersionUID = 5983076911681716640L;
 
-	/** The release to retrieve the release executions for. */
-	private Release release;
+    /** The release to retrieve the release executions for. */
+    private Release release;
 
-	public Release getRelease() {
-		return release;
-	}
+    public Release getRelease() {
+        return release;
+    }
 
-	public void setRelease(final Release release) {
-		this.release = release;
-	}
+    public void setRelease(final Release release) {
+        this.release = release;
+    }
 
 }

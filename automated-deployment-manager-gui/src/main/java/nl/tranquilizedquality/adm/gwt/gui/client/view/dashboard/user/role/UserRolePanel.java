@@ -60,284 +60,284 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class UserRolePanel extends AbstractGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** Panel where the scope filter will be put on. */
-	private FormPanel formPanel;
+    /** Panel where the scope filter will be put on. */
+    private FormPanel formPanel;
 
-	/** The model object. */
-	private ClientUser clientUser;
+    /** The model object. */
+    private ClientUser clientUser;
 
-	/** Filter list. */
-	private List<ClientScope> filterScopes;
+    /** Filter list. */
+    private List<ClientScope> filterScopes;
 
-	/** A {@link Window} where this panel is displayed in if applicable. */
-	private Window window;
+    /** A {@link Window} where this panel is displayed in if applicable. */
+    private Window window;
 
-	/** The asynchronous user service. */
-	private final UserServiceAsync userService;
+    /** The asynchronous user service. */
+    private final UserServiceAsync userService;
 
-	/** The asynchronous role service. */
-	private final RoleServiceAsync roleService;
+    /** The asynchronous role service. */
+    private final RoleServiceAsync roleService;
 
-	/** The search criteria used to search for roles. */
-	private final ClientRoleSearchCommand sc;
+    /** The search criteria used to search for roles. */
+    private final ClientRoleSearchCommand sc;
 
-	/** {@link FormBinding} object used to bind a form to a bean. */
-	private FormBinding binding;
+    /** {@link FormBinding} object used to bind a form to a bean. */
+    private FormBinding binding;
 
-	/** {@link ComboBox} containing a list of scopes. */
-	private ComboBox<ModelData> scopes;
+    /** {@link ComboBox} containing a list of scopes. */
+    private ComboBox<ModelData> scopes;
 
-	/**
-	 * Constructor that takes the {@link ClientUser} where the roles are being
-	 * managed for and a list of {@link ClientScope} objects where the user is
-	 * scope manager from.
-	 * 
-	 * @param clientUser
-	 *            The {@link ClientUser} where the roles are being managed.
-	 * @param filterScopes
-	 *            The filter list.
-	 */
-	public UserRolePanel(final ClientUser clientUser, final List<ClientScope> filterScopes) {
-		setLayout(new BorderLayout());
-		setHeading("Roles");
+    /**
+     * Constructor that takes the {@link ClientUser} where the roles are being
+     * managed for and a list of {@link ClientScope} objects where the user is
+     * scope manager from.
+     * 
+     * @param clientUser
+     *            The {@link ClientUser} where the roles are being managed.
+     * @param filterScopes
+     *            The filter list.
+     */
+    public UserRolePanel(final ClientUser clientUser, final List<ClientScope> filterScopes) {
+        setLayout(new BorderLayout());
+        setHeading("Roles");
 
-		this.clientUser = clientUser;
-		this.filterScopes = filterScopes;
+        this.clientUser = clientUser;
+        this.filterScopes = filterScopes;
 
-		this.userService = Registry.get(AdmModule.USER_SERVICE);
-		this.roleService = Registry.get(AdmModule.ROLE_SERVICE);
-		this.icons = Registry.get(AdmModule.ICONS);
+        this.userService = Registry.get(AdmModule.USER_SERVICE);
+        this.roleService = Registry.get(AdmModule.ROLE_SERVICE);
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		sc = new ClientRoleSearchCommand();
-		sc.setUser(clientUser);
+        sc = new ClientRoleSearchCommand();
+        sc.setUser(clientUser);
 
-		if (!filterScopes.isEmpty()) {
-			sc.setScope(this.filterScopes.get(0));
-		}
+        if (!filterScopes.isEmpty()) {
+            sc.setScope(this.filterScopes.get(0));
+        }
 
-		this.proxy = new RpcProxy<PagingLoadResult<ClientRole>>() {
+        this.proxy = new RpcProxy<PagingLoadResult<ClientRole>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientRole>> callback) {
-				if (sc.getScope() != null) {
-					roleService.findGrantableRoles((PagingLoadConfig) loadConfig, sc, callback);
-				}
-			}
-		};
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientRole>> callback) {
+                if (sc.getScope() != null) {
+                    roleService.findGrantableRoles((PagingLoadConfig) loadConfig, sc, callback);
+                }
+            }
+        };
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Add add button.
-		 */
-		final Button addUserRoleButton = new Button("Add role to user");
-		addUserRoleButton.setIcon(AbstractImagePrototype.create(icons.add()));
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Add add button.
+         */
+        final Button addUserRoleButton = new Button("Add role to user");
+        addUserRoleButton.setIcon(AbstractImagePrototype.create(icons.add()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-				final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+                final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
 
-				for (final BeanModel beanModel : selectedItems) {
-					final ClientRole role = beanModel.getBean();
+                for (final BeanModel beanModel : selectedItems) {
+                    final ClientRole role = beanModel.getBean();
 
-					final ClientUserRole userRole = new ClientUserRole();
-					userRole.setActive(true);
-					userRole.setActiveFrom(new Date());
-					userRole.setCreated(new Date());
-					userRole.setUser(clientUser);
-					userRole.setRole(role);
+                    final ClientUserRole userRole = new ClientUserRole();
+                    userRole.setActive(true);
+                    userRole.setActiveFrom(new Date());
+                    userRole.setCreated(new Date());
+                    userRole.setUser(clientUser);
+                    userRole.setRole(role);
 
-					final AsyncCallback<ClientUserRole> callback = new AsyncCallback<ClientUserRole>() {
+                    final AsyncCallback<ClientUserRole> callback = new AsyncCallback<ClientUserRole>() {
 
-						@Override
-						public void onFailure(final Throwable throwable) {
-							final StringBuilder builder = new StringBuilder();
+                        @Override
+                        public void onFailure(final Throwable throwable) {
+                            final StringBuilder builder = new StringBuilder();
 
-							if (throwable instanceof UserServiceException) {
-								final AbstractServiceException ex = (AbstractServiceException) throwable;
-								final List<String> errors = ex.getErrors();
+                            if (throwable instanceof UserServiceException) {
+                                final AbstractServiceException ex = (AbstractServiceException) throwable;
+                                final List<String> errors = ex.getErrors();
 
-								for (final String string : errors) {
-									builder.append(string);
-									builder.append("<br>");
-								}
-							}
-							else {
-								builder.append(throwable.getMessage());
-							}
+                                for (final String string : errors) {
+                                    builder.append(string);
+                                    builder.append("<br>");
+                                }
+                            }
+                            else {
+                                builder.append(throwable.getMessage());
+                            }
 
-							final MessageBox box = new MessageBox();
-							box.setIcon(MessageBox.ERROR);
-							box.setTitle("User role management.");
-							box.setMessage(builder.toString());
-							box.setButtons(MessageBox.OK);
-							box.show();
-						}
+                            final MessageBox box = new MessageBox();
+                            box.setIcon(MessageBox.ERROR);
+                            box.setTitle("User role management.");
+                            box.setMessage(builder.toString());
+                            box.setButtons(MessageBox.OK);
+                            box.show();
+                        }
 
-						@Override
-						public void onSuccess(final ClientUserRole clientUserRole) {
-							clientUser.getUserRoles().add(clientUserRole);
+                        @Override
+                        public void onSuccess(final ClientUserRole clientUserRole) {
+                            clientUser.getUserRoles().add(clientUserRole);
 
-							final MessageBox box = new MessageBox();
-							box.setIcon(MessageBox.INFO);
-							box.setTitle("User role management.");
-							box.setMessage("Successfully added a user role.");
-							box.setButtons(MessageBox.OK);
-							box.show();
+                            final MessageBox box = new MessageBox();
+                            box.setIcon(MessageBox.INFO);
+                            box.setTitle("User role management.");
+                            box.setMessage("Successfully added a user role.");
+                            box.setButtons(MessageBox.OK);
+                            box.show();
 
-							if (window != null) {
-								final Listener<MessageBoxEvent> messageBoxListener = new Listener<MessageBoxEvent>() {
+                            if (window != null) {
+                                final Listener<MessageBoxEvent> messageBoxListener = new Listener<MessageBoxEvent>() {
 
-									@Override
-									public void handleEvent(final MessageBoxEvent be) {
-										window.hide();
-									}
+                                    @Override
+                                    public void handleEvent(final MessageBoxEvent be) {
+                                        window.hide();
+                                    }
 
-								};
-								box.addCallback(messageBoxListener);
-							}
-						}
+                                };
+                                box.addCallback(messageBoxListener);
+                            }
+                        }
 
-					};
+                    };
 
-					// save the user role.
-					userService.saveUserRole(userRole, callback);
-				}
+                    // save the user role.
+                    userService.saveUserRole(userRole, callback);
+                }
 
-			}
+            }
 
-		};
-		addUserRoleButton.addSelectionListener(listener);
+        };
+        addUserRoleButton.addSelectionListener(listener);
 
-		menuBarButtons.add(addUserRoleButton);
+        menuBarButtons.add(addUserRoleButton);
 
-		super.initializeWidgets();
+        super.initializeWidgets();
 
-		/*
-		 * Since there is another kind of layout we need to remove the grid and
-		 * add it again with some layout data.
-		 */
-		remove(grid);
+        /*
+         * Since there is another kind of layout we need to remove the grid and
+         * add it again with some layout data.
+         */
+        remove(grid);
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
 
-		add(grid, centerData);
-	}
+        add(grid, centerData);
+    }
 
-	/**
-	 * Binds the bean model to the form.
-	 * 
-	 * @param sc
-	 *            The {@link ClientRoleSearchCommand} object to bind to.
-	 */
-	protected void bindModel(final ClientRoleSearchCommand sc) {
-		if (binding == null) {
-			binding = new FormBinding(this.formPanel);
-		}
-		else {
-			binding.unbind();
-		}
+    /**
+     * Binds the bean model to the form.
+     * 
+     * @param sc
+     *            The {@link ClientRoleSearchCommand} object to bind to.
+     */
+    protected void bindModel(final ClientRoleSearchCommand sc) {
+        if (binding == null) {
+            binding = new FormBinding(this.formPanel);
+        }
+        else {
+            binding.unbind();
+        }
 
-		/*
-		 * Create the BeanModel.
-		 */
-		final BeanModel model = createBindModel(sc);
+        /*
+         * Create the BeanModel.
+         */
+        final BeanModel model = createBindModel(sc);
 
-		/*
-		 * Add binding for Scope using a bean model converter.
-		 */
-		final FieldBinding fieldBinding = new FieldBinding(this.scopes, "scope");
-		fieldBinding.setConverter(new BeanModelConverter());
+        /*
+         * Add binding for Scope using a bean model converter.
+         */
+        final FieldBinding fieldBinding = new FieldBinding(this.scopes, "scope");
+        fieldBinding.setConverter(new BeanModelConverter());
 
-		binding.addFieldBinding(fieldBinding);
+        binding.addFieldBinding(fieldBinding);
 
-		binding.bind(model);
+        binding.bind(model);
 
-		binding.autoBind();
-	}
+        binding.autoBind();
+    }
 
-	/**
-	 * Create the {@link BeanModel} of the {@link User} object.
-	 * 
-	 * @param user
-	 *            the user object.
-	 * @return the resulting model object.
-	 */
-	protected BeanModel createBindModel(final ClientRoleSearchCommand sc) {
-		final BeanModelFactory factory = BeanModelLookup.get().getFactory(ClientRoleSearchCommand.class);
-		final BeanModel model = factory.createModel(sc);
+    /**
+     * Create the {@link BeanModel} of the {@link User} object.
+     * 
+     * @param user
+     *            the user object.
+     * @return the resulting model object.
+     */
+    protected BeanModel createBindModel(final ClientRoleSearchCommand sc) {
+        final BeanModelFactory factory = BeanModelLookup.get().getFactory(ClientRoleSearchCommand.class);
+        final BeanModel model = factory.createModel(sc);
 
-		return model;
-	}
+        return model;
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("description");
-		column.setHeader("Description");
-		column.setWidth(200);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("description");
+        column.setHeader("Description");
+        column.setWidth(200);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	@Override
-	protected void handleDoubleClick() {
+    @Override
+    protected void handleDoubleClick() {
 
-	}
+    }
 
-	/**
-	 * @param clientUser
-	 *            the clientUser to set
-	 */
-	public void setClientUser(final ClientUser clientUser) {
-		this.clientUser = clientUser;
-	}
+    /**
+     * @param clientUser
+     *            the clientUser to set
+     */
+    public void setClientUser(final ClientUser clientUser) {
+        this.clientUser = clientUser;
+    }
 
-	/**
-	 * @param window
-	 *            the window to set
-	 */
-	public void setWindow(final Window window) {
-		this.window = window;
-	}
+    /**
+     * @param window
+     *            the window to set
+     */
+    public void setWindow(final Window window) {
+        this.window = window;
+    }
 
-	/**
-	 * @param filterScopes
-	 *            the filterScopes to set
-	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void setFilterScopes(final List<ClientScope> filterScopes) {
-		this.filterScopes = filterScopes;
+    /**
+     * @param filterScopes
+     *            the filterScopes to set
+     */
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public void setFilterScopes(final List<ClientScope> filterScopes) {
+        this.filterScopes = filterScopes;
 
-		if (clientUser != null && sc != null) {
-			final Set<UserRole> userRoles = clientUser.getUserRoles();
-			final List<Scope> scopeList = ScopeListUtil.createScopeList(userRoles);
-			for (final Scope updatedScope : scopeList) {
-				if (updatedScope.equals(sc.getScope())) {
-					sc.setExcludedRoles(new ArrayList(updatedScope.getRoles()));
-					break;
-				}
-			}
-		}
-	}
+        if (clientUser != null && sc != null) {
+            final Set<UserRole> userRoles = clientUser.getUserRoles();
+            final List<Scope> scopeList = ScopeListUtil.createScopeList(userRoles);
+            for (final Scope updatedScope : scopeList) {
+                if (updatedScope.equals(sc.getScope())) {
+                    sc.setExcludedRoles(new ArrayList(updatedScope.getRoles()));
+                    break;
+                }
+            }
+        }
+    }
 }

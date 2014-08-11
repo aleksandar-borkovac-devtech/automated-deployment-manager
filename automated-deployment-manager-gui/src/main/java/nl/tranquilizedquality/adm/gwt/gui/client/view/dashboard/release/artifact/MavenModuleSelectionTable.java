@@ -75,7 +75,7 @@ public class MavenModuleSelectionTable extends AbstractGroupingGridPanel {
      * Constructor that takes the search criteria to filter on.
      * 
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      */
     public MavenModuleSelectionTable(final ClientMavenModuleSearchCommand sc, final Window window) {
         setHeading("Maven Modules");
@@ -216,7 +216,7 @@ public class MavenModuleSelectionTable extends AbstractGroupingGridPanel {
      * Sets the release that is currently being edited.
      * 
      * @param release
-     *        The release that will be set.
+     *            The release that will be set.
      */
     public void setRelease(final ClientRelease release) {
         this.release = release;

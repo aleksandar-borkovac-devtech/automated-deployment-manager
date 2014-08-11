@@ -17,22 +17,22 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface RoleDao<T extends Role> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for users who match the search criteria
-	 * 
-	 * @param searchCommand
-	 *            criteria
-	 * @return List of roles matching the criteria
-	 */
-	List<Role> findRoles(RoleSearchCommand searchCommand);
+    /**
+     * Searches for users who match the search criteria
+     * 
+     * @param searchCommand
+     *            criteria
+     * @return List of roles matching the criteria
+     */
+    List<Role> findRoles(RoleSearchCommand searchCommand);
 
-	/**
-	 * Finds the number of roles based on the specified search criteria.
-	 * 
-	 * @param searchCommand
-	 *            The search criteria to search on.
-	 * @return Returns a value of 0 or higher.
-	 */
-	int findNumberOfRoles(RoleSearchCommand searchCommand);
+    /**
+     * Finds the number of roles based on the specified search criteria.
+     * 
+     * @param searchCommand
+     *            The search criteria to search on.
+     * @return Returns a value of 0 or higher.
+     */
+    int findNumberOfRoles(RoleSearchCommand searchCommand);
 
 }

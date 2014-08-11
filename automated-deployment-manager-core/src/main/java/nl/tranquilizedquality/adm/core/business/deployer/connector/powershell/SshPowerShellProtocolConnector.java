@@ -44,8 +44,8 @@ import com.sshtools.j2ssh.transport.publickey.SshPrivateKey;
 import com.sshtools.j2ssh.transport.publickey.SshPrivateKeyFile;
 
 /**
- * Protocol connector that can connect through SSH and perform power shell commands on a remote
- * Windows server.
+ * Protocol connector that can connect through SSH and perform power shell
+ * commands on a remote Windows server.
  * 
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 5 mrt. 2013

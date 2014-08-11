@@ -17,13 +17,13 @@ public interface DestinationManagementManager {
     void cleanUp();
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     void setUpPages(Selenium selenium, ConditionRunner conditionRunner);
 
@@ -31,7 +31,7 @@ public interface DestinationManagementManager {
      * Creates a destination which is shell script based.
      * 
      * @param destinationName
-     *        The name of the destination.
+     *            The name of the destination.
      */
     void addNewShellScriptBasedDestination(String destinationName);
 
@@ -39,20 +39,20 @@ public interface DestinationManagementManager {
      * Adds a deployer parameter.
      * 
      * @param parameterValue
-     *        The value that will be used for the parameter.
+     *            The value that will be used for the parameter.
      */
     void addDeployerParameter(String parameterValue);
 
     /**
-     * Determines if the expected number of parameters are created for the desintation with the
-     * specified name.
+     * Determines if the expected number of parameters are created for the
+     * desintation with the specified name.
      * 
      * @param expectedNumberOfParameters
-     *        The number of parameters that are expected.
+     *            The number of parameters that are expected.
      * @param destinationName
-     *        The name of the destination.
-     * @return Returns true if the expected number of parameters are created otherwise it returns
-     *         false.
+     *            The name of the destination.
+     * @return Returns true if the expected number of parameters are created
+     *         otherwise it returns false.
      */
     boolean areExpectedNumberOfParametersCreated(int expectedNumberOfParameters, String destinationName);
 

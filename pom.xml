@@ -76,9 +76,9 @@
 
 	<!-- Source control configuration -->
 	<scm>
-		<connection>scm:svn:https://cybertron/repos/automated-deployment-manager/trunk</connection>
-		<developerConnection>scm:svn:https://cybertron/repos/automated-deployment-manager/trunk</developerConnection>
-		<url>https://cybertron/repos/automated-deployment-manager/trunk</url>
+		<connection>scm:git:https://github.com/snkpetrus/automated-deployment-manager.git</connection>
+		<developerConnection>scm:git:https://github.com/snkpetrus/automated-deployment-manager.git</developerConnection>
+		<url>https://github.com/snkpetrus/automated-deployment-manager.git</url>
 	</scm>
 
 	<modules>

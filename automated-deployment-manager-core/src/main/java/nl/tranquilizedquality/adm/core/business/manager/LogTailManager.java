@@ -13,7 +13,7 @@ public interface LogTailManager extends Serializable {
      * Start monitoring a specific log file to get feedback.
      * 
      * @param logFile
-     *        The log file to watch
+     *            The log file to watch
      */
     void startLogTailing(File logFile);
 

@@ -44,13 +44,13 @@ public class AdmDashboard extends AbstractAdmSeleniumPage {
     private static final String ADD_HOST_MANAGEMENT_MENU_ITEM = "//div[@id='navigation-tree-panel']/div[2]/div[2]/div[2]";
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     public AdmDashboard(final Selenium selenium, final ConditionRunner conditionRunner) {
         super(selenium, conditionRunner);
@@ -59,7 +59,8 @@ public class AdmDashboard extends AbstractAdmSeleniumPage {
     /**
      * Determines if the dashboard is displayed or not.
      * 
-     * @return Returns true if the dashboard is visible otherwise it will return false.
+     * @return Returns true if the dashboard is visible otherwise it will return
+     *         false.
      */
     public boolean isDashboardVisible() {
         return isTextPresent("ADM Dashboard");

@@ -32,50 +32,50 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class EnvironmentSelectionWindow extends Window {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The selection panel. */
-	private final EnvironmentSelectionPanel selectionPanel;
+    /** The selection panel. */
+    private final EnvironmentSelectionPanel selectionPanel;
 
-	/** Determines if it should unmask the view. */
-	private boolean unmask = true;
+    /** Determines if it should unmask the view. */
+    private boolean unmask = true;
 
-	public void setUnmask(boolean unmask) {
-		this.unmask = unmask;
-	}
+    public void setUnmask(boolean unmask) {
+        this.unmask = unmask;
+    }
 
-	/**
-	 * Default constructor.
-	 * 
-	 * @param detailsPanel
-	 *            Panel where the release is displayed on.
-	 */
-	public EnvironmentSelectionWindow(final ReleaseDetailsPanel detailsPanel) {
-		setHeading("Environment Selection");
-		setClosable(true);
-		setLayout(new FitLayout());
-		setSize(500, 600);
+    /**
+     * Default constructor.
+     * 
+     * @param detailsPanel
+     *            Panel where the release is displayed on.
+     */
+    public EnvironmentSelectionWindow(final ReleaseDetailsPanel detailsPanel) {
+        setHeading("Environment Selection");
+        setClosable(true);
+        setLayout(new FitLayout());
+        setSize(500, 600);
 
-		this.icons = Registry.get(AdmModule.ICONS);
+        this.icons = Registry.get(AdmModule.ICONS);
 
-		setIcon(AbstractImagePrototype.create(icons.destination()));
+        setIcon(AbstractImagePrototype.create(icons.destination()));
 
-		this.selectionPanel = new EnvironmentSelectionPanel(detailsPanel, this);
+        this.selectionPanel = new EnvironmentSelectionPanel(detailsPanel, this);
 
-		add(selectionPanel);
-	}
+        add(selectionPanel);
+    }
 
-	@Override
-	public void hide() {
-		super.hide();
+    @Override
+    public void hide() {
+        super.hide();
 
-		if (unmask) {
-			final AdmViewPort viewPort = Registry.get(AdmModule.VIEW_PORT);
-			viewPort.unmask();
-		}
+        if (unmask) {
+            final AdmViewPort viewPort = Registry.get(AdmModule.VIEW_PORT);
+            viewPort.unmask();
+        }
 
-		unmask = true;
-	}
+        unmask = true;
+    }
 
 }

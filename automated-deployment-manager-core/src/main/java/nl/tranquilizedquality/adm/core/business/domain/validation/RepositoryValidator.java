@@ -29,17 +29,17 @@ import org.springframework.validation.Validator;
  */
 public class RepositoryValidator implements Validator {
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean supports(final Class clazz) {
-		return clazz.isAssignableFrom(HibernateRepository.class);
-	}
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes" })
+    public boolean supports(final Class clazz) {
+        return clazz.isAssignableFrom(HibernateRepository.class);
+    }
 
-	@Override
-	public void validate(final Object target, final Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "repository.name-empty", "No name filled in.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "repositoryUrl", "repository.url-empty", "No URL specified.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "enabled", "repository.enabled-empty", "No enabled value specified.");
-	}
+    @Override
+    public void validate(final Object target, final Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "repository.name-empty", "No name filled in.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "repositoryUrl", "repository.url-empty", "No URL specified.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "enabled", "repository.enabled-empty", "No enabled value specified.");
+    }
 
 }

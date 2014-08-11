@@ -26,16 +26,16 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.artifact.ClientMavenModul
  * @since 17 sep. 2011
  */
 public class MavenModuleFactory extends
-		AbstractFactory<ClientMavenModule, HibernateMavenModule, MavenModule> {
+        AbstractFactory<ClientMavenModule, HibernateMavenModule, MavenModule> {
 
-	@Override
-	protected ClientMavenModule createNewClientBean() {
-		return new ClientMavenModule();
-	}
+    @Override
+    protected ClientMavenModule createNewClientBean() {
+        return new ClientMavenModule();
+    }
 
-	@Override
-	protected HibernateMavenModule createNewPersistentBean() {
-		return new HibernateMavenModule();
-	}
+    @Override
+    protected HibernateMavenModule createNewPersistentBean() {
+        return new HibernateMavenModule();
+    }
 
 }

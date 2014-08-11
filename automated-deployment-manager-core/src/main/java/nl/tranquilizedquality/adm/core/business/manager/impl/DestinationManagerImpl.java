@@ -415,7 +415,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param destinationDao
-     *        the destinationDao to set
+     *            the destinationDao to set
      */
     @Required
     public void setDestinationDao(final DestinationDao<Destination> destinationDao) {
@@ -424,7 +424,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param environmentDao
-     *        the environmentDao to set
+     *            the environmentDao to set
      */
     @Required
     public void setEnvironmentDao(final EnvironmentDao<Environment> environmentDao) {
@@ -433,7 +433,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param destinationValidator
-     *        the destinationValidator to set
+     *            the destinationValidator to set
      */
     @Required
     public void setDestinationValidator(final Validator destinationValidator) {
@@ -442,7 +442,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param environmentValidator
-     *        the environmentValidator to set
+     *            the environmentValidator to set
      */
     @Required
     public void setEnvironmentValidator(final Validator environmentValidator) {
@@ -451,7 +451,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param destinationLocationDao
-     *        the destinationLocationDao to set
+     *            the destinationLocationDao to set
      */
     @Required
     public void setDeployerParameterDao(final DeployerParameterDao<DeployerParameter> deployerParameterDao) {
@@ -460,7 +460,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param destinationHostDao
-     *        the destinationHostDao to set
+     *            the destinationHostDao to set
      */
     @Required
     public void setDestinationHostDao(final DestinationHostDao<DestinationHost> destinationHostDao) {
@@ -469,7 +469,7 @@ public class DestinationManagerImpl extends UserGroupFilteringManager implements
 
     /**
      * @param destinationHostValidator
-     *        the destinationHostValidator to set
+     *            the destinationHostValidator to set
      */
     @Required
     public void setDestinationHostValidator(final Validator destinationHostValidator) {

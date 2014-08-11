@@ -45,140 +45,140 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 public class RepositoryManagementPanel extends AbstractSearchPanel<ClientRepositorySearchCommand> {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The name to search on. */
-	private TextField<String> name;
+    /** The name to search on. */
+    private TextField<String> name;
 
-	/** The {@link SimpleComboBox} containing a list of enabled statuses. */
-	private SimpleComboBox<String> enabled;
+    /** The {@link SimpleComboBox} containing a list of enabled statuses. */
+    private SimpleComboBox<String> enabled;
 
-	/**
-	 * Default constructor.
-	 */
-	public RepositoryManagementPanel() {
-		icons = Registry.get(AdmModule.ICONS);
+    /**
+     * Default constructor.
+     */
+    public RepositoryManagementPanel() {
+        icons = Registry.get(AdmModule.ICONS);
 
-		sc = new ClientRepositorySearchCommand();
+        sc = new ClientRepositorySearchCommand();
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	@Override
-	protected AbstractGridPanel createGridPanel() {
-		return new RepositoryTable(sc);
-	}
+    @Override
+    protected AbstractGridPanel createGridPanel() {
+        return new RepositoryTable(sc);
+    }
 
-	@Override
-	protected FormPanel createFilterPanel() {
-		final FormPanel formPanel = new FormPanel();
-		formPanel.setHeading("Search criteria");
-		formPanel.setFrame(true);
-		formPanel.setLabelWidth(200);
-		formPanel.setButtonAlign(HorizontalAlignment.LEFT);
-		formPanel.setIcon(AbstractImagePrototype.create(icons.funnel()));
-		formPanel.setHeight(160);
+    @Override
+    protected FormPanel createFilterPanel() {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setHeading("Search criteria");
+        formPanel.setFrame(true);
+        formPanel.setLabelWidth(200);
+        formPanel.setButtonAlign(HorizontalAlignment.LEFT);
+        formPanel.setIcon(AbstractImagePrototype.create(icons.funnel()));
+        formPanel.setHeight(160);
 
-		/*
-		 * Add name.
-		 */
-		name = new TextField<String>();
-		name.setId("repository-management-name");
-		name.setName("name");
-		name.setFieldLabel("Name");
-		name.setAllowBlank(true);
-		formPanel.add(name);
+        /*
+         * Add name.
+         */
+        name = new TextField<String>();
+        name.setId("repository-management-name");
+        name.setName("name");
+        name.setFieldLabel("Name");
+        name.setAllowBlank(true);
+        formPanel.add(name);
 
-		/*
-		 * Add enabled.
-		 */
-		enabled = new SimpleComboBox<String>();
-		enabled.setId("repository-management-enabled");
-		enabled.setName("enabledValue");
-		enabled.setFieldLabel("Enabled");
-		enabled.setEmptyText("Select enabled state..");
-		enabled.add("Any...");
-		enabled.add("Enabled");
-		enabled.add("Disabled");
-		enabled.setTriggerAction(TriggerAction.ALL);
-		enabled.setForceSelection(true);
-		enabled.setEditable(false);
-		formPanel.add(enabled);
+        /*
+         * Add enabled.
+         */
+        enabled = new SimpleComboBox<String>();
+        enabled.setId("repository-management-enabled");
+        enabled.setName("enabledValue");
+        enabled.setFieldLabel("Enabled");
+        enabled.setEmptyText("Select enabled state..");
+        enabled.add("Any...");
+        enabled.add("Enabled");
+        enabled.add("Disabled");
+        enabled.setTriggerAction(TriggerAction.ALL);
+        enabled.setForceSelection(true);
+        enabled.setEditable(false);
+        formPanel.add(enabled);
 
-		/*
-		 * Add search button.
-		 */
-		final Button search = new Button("Search");
-		search.setIcon(AbstractImagePrototype.create(icons.find()));
+        /*
+         * Add search button.
+         */
+        final Button search = new Button("Search");
+        search.setIcon(AbstractImagePrototype.create(icons.find()));
 
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				for (final FieldBinding fieldBinding : fieldBindings) {
-					fieldBinding.updateModel();
-				}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                for (final FieldBinding fieldBinding : fieldBindings) {
+                    fieldBinding.updateModel();
+                }
 
-				search();
-			}
+                search();
+            }
 
-		};
-		search.addSelectionListener(listener);
+        };
+        search.addSelectionListener(listener);
 
-		formPanel.addButton(search);
+        formPanel.addButton(search);
 
-		return formPanel;
-	}
+        return formPanel;
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayout layout = new BorderLayout();
-		setLayout(layout);
+    @Override
+    protected void initializeWidgets() {
+        /*
+         * Setup layout.
+         */
+        final BorderLayout layout = new BorderLayout();
+        setLayout(layout);
 
-		/*
-		 * Create the filter panel.
-		 */
-		formPanel = createFilterPanel();
+        /*
+         * Create the filter panel.
+         */
+        formPanel = createFilterPanel();
 
-		/*
-		 * Create grid panel.
-		 */
-		gridPanel = createGridPanel();
+        /*
+         * Create grid panel.
+         */
+        gridPanel = createGridPanel();
 
-		/*
-		 * Add binding for Active state using a simple combo value converter.
-		 */
-		final FieldBinding fieldBinding = new FieldBinding(this.enabled, "enabledValue");
-		fieldBinding.setConverter(new SimpleComboValueConverter<String>());
-		fieldBindings.add(fieldBinding);
+        /*
+         * Add binding for Active state using a simple combo value converter.
+         */
+        final FieldBinding fieldBinding = new FieldBinding(this.enabled, "enabledValue");
+        fieldBinding.setConverter(new SimpleComboValueConverter<String>());
+        fieldBindings.add(fieldBinding);
 
-		/*
-		 * Bind model.
-		 */
-		bindModel(this.sc);
+        /*
+         * Bind model.
+         */
+        bindModel(this.sc);
 
-		/*
-		 * Setup layout.
-		 */
-		final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
-		northData.setCollapsible(true);
-		northData.setFloatable(true);
-		northData.setSplit(true);
-		northData.setMaxSize(200);
-		northData.setSize(150);
-		northData.setSplit(true);
-		northData.setMargins(new Margins(1, 1, 1, 1));
+        /*
+         * Setup layout.
+         */
+        final BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH);
+        northData.setCollapsible(true);
+        northData.setFloatable(true);
+        northData.setSplit(true);
+        northData.setMaxSize(200);
+        northData.setSize(150);
+        northData.setSplit(true);
+        northData.setMargins(new Margins(1, 1, 1, 1));
 
-		final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
-		centerData.setMargins(new Margins(0, 1, 1, 1));
-		centerData.setSplit(true);
+        final BorderLayoutData centerData = new BorderLayoutData(LayoutRegion.CENTER);
+        centerData.setMargins(new Margins(0, 1, 1, 1));
+        centerData.setSplit(true);
 
-		add(formPanel, northData);
-		add(gridPanel, centerData);
-	}
+        add(formPanel, northData);
+        add(gridPanel, centerData);
+    }
 
 }

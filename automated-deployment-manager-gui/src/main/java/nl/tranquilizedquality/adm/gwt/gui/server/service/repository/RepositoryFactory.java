@@ -26,16 +26,16 @@ import nl.tranquilizedquality.adm.gwt.gui.client.model.repository.ClientReposito
  * @since 30 aug. 2011
  */
 public class RepositoryFactory extends
-		AbstractFactory<ClientRepository, HibernateRepository, Repository> {
+        AbstractFactory<ClientRepository, HibernateRepository, Repository> {
 
-	@Override
-	protected ClientRepository createNewClientBean() {
-		return new ClientRepository();
-	}
+    @Override
+    protected ClientRepository createNewClientBean() {
+        return new ClientRepository();
+    }
 
-	@Override
-	protected HibernateRepository createNewPersistentBean() {
-		return new HibernateRepository();
-	}
+    @Override
+    protected HibernateRepository createNewPersistentBean() {
+        return new HibernateRepository();
+    }
 
 }

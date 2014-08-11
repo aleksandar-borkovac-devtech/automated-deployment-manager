@@ -13,35 +13,35 @@ import com.extjs.gxt.ui.client.widget.layout.FitLayout;
  */
 public abstract class AbstractDashBoard extends ContentPanel {
 
-	/** The key used to retrieve the tab panel from the {@link Registry}. */
-	public static final String TAB_PANEL = "TAB_PANEL";
+    /** The key used to retrieve the tab panel from the {@link Registry}. */
+    public static final String TAB_PANEL = "TAB_PANEL";
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractDashBoard() {
-		setLayout(new FitLayout());
-		setBorders(false);
-		setEnabled(true);
+    /**
+     * Default constructor.
+     */
+    public AbstractDashBoard() {
+        setLayout(new FitLayout());
+        setBorders(false);
+        setEnabled(true);
 
-		initializeWidgets();
+        initializeWidgets();
 
-		Registry.register("DASH_BOARD", this);
-	}
+        Registry.register("DASH_BOARD", this);
+    }
 
-	/**
-	 * Initializes widgets.
-	 */
-	protected void initializeWidgets() {
-		final TabPanel tabPanel = new TabPanel();
-		tabPanel.setBorders(false);
-		tabPanel.setTabScroll(true);
-		tabPanel.setResizeTabs(false);
-		tabPanel.setAnimScroll(true);
-		tabPanel.setCloseContextMenu(true);
+    /**
+     * Initializes widgets.
+     */
+    protected void initializeWidgets() {
+        final TabPanel tabPanel = new TabPanel();
+        tabPanel.setBorders(false);
+        tabPanel.setTabScroll(true);
+        tabPanel.setResizeTabs(false);
+        tabPanel.setAnimScroll(true);
+        tabPanel.setCloseContextMenu(true);
 
-		Registry.register(TAB_PANEL, tabPanel);
+        Registry.register(TAB_PANEL, tabPanel);
 
-		add(tabPanel);
-	}
+        add(tabPanel);
+    }
 }

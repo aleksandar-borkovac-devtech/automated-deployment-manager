@@ -13,63 +13,63 @@ import nl.tranquilizedquality.adm.commons.domain.PagingSearchCommand;
  */
 public class ScopeSearchCommand extends PagingSearchCommand {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -235661329947437334L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -235661329947437334L;
 
-	/** The name of the scope. */
-	private String name;
+    /** The name of the scope. */
+    private String name;
 
-	/** Part of the description. */
-	private String description;
+    /** Part of the description. */
+    private String description;
 
-	/** The user that manages the scope. */
-	private User user;
+    /** The user that manages the scope. */
+    private User user;
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(final String name) {
-		this.name = name;
-	}
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
 
-	/**
-	 * @param description
-	 *            the description to set
-	 */
-	public void setDescription(final String description) {
-		this.description = description;
-	}
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(final String description) {
+        this.description = description;
+    }
 
-	/**
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
 
-	/**
-	 * @param user
-	 *            the user to set
-	 */
-	public void setUser(final User user) {
-		this.user = user;
-	}
+    /**
+     * @param user
+     *            the user to set
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
 
 }

@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure()
 @UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false)
-@UsingSpring(resources = { "classpath:itest-destination-context.xml" })
+@UsingSpring(resources = {"classpath:itest-destination-context.xml" })
 public class AdmAddDestinationStory extends InjectableEmbedder {
 
     @Test
@@ -39,7 +39,8 @@ public class AdmAddDestinationStory extends InjectableEmbedder {
     }
 
     protected List<String> storyPaths() {
-        return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/add-destination.story", "");
+        return new StoryFinder()
+                .findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/add-destination.story", "");
     }
 
 }

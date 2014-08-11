@@ -14,6 +14,7 @@ import static org.junit.Assert.assertThat;
 public class LogTailerListenerTest {
 
     private static final String line1 = "line1";
+
     private static final String line2 = "line2";
 
     @Test

@@ -47,7 +47,6 @@ import nl.tranquilizedquality.adm.gwt.gui.client.view.AdmViewPort;
 
 import java.util.List;
 
-
 /**
  * The {@link EntryPoint} of the ADM application.
  *
@@ -62,16 +61,24 @@ public class AdmModule extends AbstractModule {
     /** The key used to retrieve the role service from the {@link Registry}. */
     public static final String ROLE_SERVICE = "role_service";
 
-    /** The key used to retrieve the privilege service from the {@link Registry}. */
+    /**
+     * The key used to retrieve the privilege service from the {@link Registry}.
+     */
     public static final String PRIVILEGE_SERVICE = "privilege_service";
 
-    /** The key used to retrieve the repository service from the {@link Registry} . */
+    /**
+     * The key used to retrieve the repository service from the {@link Registry}
+     * .
+     */
     public static final String REPOSITORY_SERVICE = "repository_service";
 
     /** The key used to retrieve the session service from the {@link Registry} . */
     public static final String SESSION_SERVICE = "session_service";
 
-    /** The key used to retrieve the environment service from the {@link Registry}. */
+    /**
+     * The key used to retrieve the environment service from the
+     * {@link Registry}.
+     */
     public static final String ENVIRONMENT_SERVICE = "environment_service";
 
     /** The key used to retrieve the artifact service from the {@link Registry}. */
@@ -80,16 +87,24 @@ public class AdmModule extends AbstractModule {
     /** The key used to retrieve the release service from the {@link Registry}. */
     public static final String RELEASE_SERVICE = "release_service";
 
-    /** The key used to retrieve the deployment service from the {@link Registry} . */
+    /**
+     * The key used to retrieve the deployment service from the {@link Registry}
+     * .
+     */
     public static final String DEPLOYMENT_SERVICE = "deployment_service";
 
-    /** The key used to retrieve the user group service from the {@link Registry} . */
+    /**
+     * The key used to retrieve the user group service from the {@link Registry}
+     * .
+     */
     public static final String USER_GROUP_SERVICE = "user_group_service";
 
     /** The key used to retrieve the user service from the {@link Registry} . */
     public static final String USER_SERVICE = "user_service";
 
-    /** The key used to retrieve the log tail service from the {@link Registry} . */
+    /**
+     * The key used to retrieve the log tail service from the {@link Registry} .
+     */
     public static final String LOG_TAIL_SERVICE = "log_tail_service";
 
     /** The key used to retrieve the user privileges from the {@link Registry}. */
@@ -178,8 +193,9 @@ public class AdmModule extends AbstractModule {
                 Registry.register(VERSION, value);
 
                 /*
-                 * Retrieve privilege information for the logged in user so it can be used to
-                 * configure the menu to show only items that are allowed for the logged in user.
+                 * Retrieve privilege information for the logged in user so it
+                 * can be used to configure the menu to show only items that are
+                 * allowed for the logged in user.
                  */
                 authorizationService.findLoggedInUserPrivileges(new AsyncCallback<List<String>>() {
 
@@ -196,9 +212,9 @@ public class AdmModule extends AbstractModule {
                         rootPanel.add(viewport);
 
                         /*
-                         * Register the navigation controller. This needs to be done
-                         * after the GUI initialization since it needs to be aware of
-                         * the GUI.
+                         * Register the navigation controller. This needs to be
+                         * done after the GUI initialization since it needs to
+                         * be aware of the GUI.
                          */
                         Registry.register(NAVIGATION_CONTROLLER, new AdmNavigationController());
 

@@ -13,32 +13,32 @@ import com.extjs.gxt.ui.client.widget.layout.FitLayout;
  */
 public class ScopeImportWindow extends Window {
 
-	/** The import panel itself. */
-	private final ScopeImportPanel importPanel;
+    /** The import panel itself. */
+    private final ScopeImportPanel importPanel;
 
-	/** The grid where the scopes are displayed in. */
-	private final ScopeTable scopeTable;
+    /** The grid where the scopes are displayed in. */
+    private final ScopeTable scopeTable;
 
-	/**
-	 * Default constructor.
-	 */
-	public ScopeImportWindow(final ScopeTable scopeTable) {
-		setLayout(new FitLayout());
-		setSize(350, 150);
+    /**
+     * Default constructor.
+     */
+    public ScopeImportWindow(final ScopeTable scopeTable) {
+        setLayout(new FitLayout());
+        setSize(350, 150);
 
-		this.scopeTable = scopeTable;
+        this.scopeTable = scopeTable;
 
-		importPanel = new ScopeImportPanel();
-		importPanel.setWindow(this);
+        importPanel = new ScopeImportPanel();
+        importPanel.setWindow(this);
 
-		add(importPanel);
-	}
+        add(importPanel);
+    }
 
-	@Override
-	public void hide() {
-		this.scopeTable.refresh();
+    @Override
+    public void hide() {
+        this.scopeTable.refresh();
 
-		super.hide();
-	}
+        super.hide();
+    }
 
 }

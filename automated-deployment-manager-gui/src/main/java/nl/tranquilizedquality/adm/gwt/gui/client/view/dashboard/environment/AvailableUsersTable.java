@@ -50,161 +50,161 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  */
 class AvailableUsersTable extends AbstractGridPanel {
 
-	/** The icons of the application. */
-	private final AdmIcons icons;
+    /** The icons of the application. */
+    private final AdmIcons icons;
 
-	/** The search criteria. */
-	private final ClientUserSearchCommand sc;
+    /** The search criteria. */
+    private final ClientUserSearchCommand sc;
 
-	/** The repository service. */
-	private UserServiceAsync userService;
+    /** The repository service. */
+    private UserServiceAsync userService;
 
-	/** Button to add the selected user to a {@link Environment}. */
-	private Button addButton;
+    /** Button to add the selected user to a {@link Environment}. */
+    private Button addButton;
 
-	/** Panel where the environment details are displayed on. */
-	private final EnvironmentDetailsPanel detailsPanel;
+    /** Panel where the environment details are displayed on. */
+    private final EnvironmentDetailsPanel detailsPanel;
 
-	/**
-	 * Constructor that takes the search criteria to filter on.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 */
-	public AvailableUsersTable(final ClientUserSearchCommand sc, final EnvironmentDetailsPanel detailsPanel) {
-		setHeading("Available Users");
-		this.icons = Registry.get(AdmModule.ICONS);
-		this.sc = sc;
-		this.detailsPanel = detailsPanel;
-		setIcon(AbstractImagePrototype.create(icons.userGroup()));
-		initializeWidgets();
-	}
+    /**
+     * Constructor that takes the search criteria to filter on.
+     * 
+     * @param sc
+     *            The search criteria.
+     */
+    public AvailableUsersTable(final ClientUserSearchCommand sc, final EnvironmentDetailsPanel detailsPanel) {
+        setHeading("Available Users");
+        this.icons = Registry.get(AdmModule.ICONS);
+        this.sc = sc;
+        this.detailsPanel = detailsPanel;
+        setIcon(AbstractImagePrototype.create(icons.userGroup()));
+        initializeWidgets();
+    }
 
-	@Override
-	protected void initializeWidgets() {
-		userService = Registry.get(AdmModule.USER_SERVICE);
+    @Override
+    protected void initializeWidgets() {
+        userService = Registry.get(AdmModule.USER_SERVICE);
 
-		proxy = new RpcProxy<PagingLoadResult<ClientUser>>() {
+        proxy = new RpcProxy<PagingLoadResult<ClientUser>>() {
 
-			@Override
-			public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientUser>> callback) {
-				if (AvailableUsersTable.this.sc != null) {
-					final ClientEnvironment environment = detailsPanel.getEnvironment();
-					final List<ClientUser> filter = new ArrayList<ClientUser>();
-					if (environment != null) {
-						final List<User> users = environment.getUsers();
-						for (final User user : users) {
-							filter.add((ClientUser) user);
-						}
-					}
+            @Override
+            public void load(final Object loadConfig, final AsyncCallback<PagingLoadResult<ClientUser>> callback) {
+                if (AvailableUsersTable.this.sc != null) {
+                    final ClientEnvironment environment = detailsPanel.getEnvironment();
+                    final List<ClientUser> filter = new ArrayList<ClientUser>();
+                    if (environment != null) {
+                        final List<User> users = environment.getUsers();
+                        for (final User user : users) {
+                            filter.add((ClientUser) user);
+                        }
+                    }
 
-					userService.findUsers((PagingLoadConfig) loadConfig, AvailableUsersTable.this.sc, filter, callback);
+                    userService.findUsers((PagingLoadConfig) loadConfig, AvailableUsersTable.this.sc, filter, callback);
 
-					sc.setInitSearch(false);
-				}
-			}
-		};
+                    sc.setInitSearch(false);
+                }
+            }
+        };
 
-		this.panelStateId = UserGroupTable.class.getName();
+        this.panelStateId = UserGroupTable.class.getName();
 
-		addButton = new Button("Add User as deployer");
-		addButton.setIcon(AbstractImagePrototype.create(icons.addUserToGroup()));
-		final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
+        addButton = new Button("Add User as deployer");
+        addButton.setIcon(AbstractImagePrototype.create(icons.addUserToGroup()));
+        final SelectionListener<ButtonEvent> listener = new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				final ClientEnvironment environment = detailsPanel.getEnvironment();
-				final List<User> users = environment.getUsers();
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                final ClientEnvironment environment = detailsPanel.getEnvironment();
+                final List<User> users = environment.getUsers();
 
-				final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
-				final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
+                final GridSelectionModel<BeanModel> selectionModel = grid.getSelectionModel();
+                final List<BeanModel> selectedItems = selectionModel.getSelectedItems();
 
-				if (!selectedItems.isEmpty()) {
-					for (final BeanModel beanModel : selectedItems) {
-						final ClientUser user = beanModel.getBean();
-						users.add(user);
-					}
+                if (!selectedItems.isEmpty()) {
+                    for (final BeanModel beanModel : selectedItems) {
+                        final ClientUser user = beanModel.getBean();
+                        users.add(user);
+                    }
 
-					detailsPanel.saveEnvironment();
+                    detailsPanel.saveEnvironment();
 
-					refresh();
-				}
-			}
-		};
-		addButton.addSelectionListener(listener);
+                    refresh();
+                }
+            }
+        };
+        addButton.addSelectionListener(listener);
 
-		menuBarButtons.add(addButton);
+        menuBarButtons.add(addButton);
 
-		super.initializeWidgets();
-	}
+        super.initializeWidgets();
+    }
 
-	/**
-	 * Refreshes the content of the table.
-	 */
-	public void refreshTable() {
-		super.refresh();
-	}
+    /**
+     * Refreshes the content of the table.
+     */
+    public void refreshTable() {
+        super.refresh();
+    }
 
-	@Override
-	protected List<ColumnConfig> createColumns() {
-		final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
-		configs.add(new RowNumberer());
+    @Override
+    protected List<ColumnConfig> createColumns() {
+        final List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+        configs.add(new RowNumberer());
 
-		ColumnConfig column = new ColumnConfig();
-		column.setId("name");
-		column.setHeader("Name");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        ColumnConfig column = new ColumnConfig();
+        column.setId("name");
+        column.setHeader("Name");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("userName");
-		column.setHeader("Username");
-		column.setWidth(100);
-		column.setSortable(true);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("userName");
+        column.setHeader("Username");
+        column.setWidth(100);
+        column.setSortable(true);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("created");
-		column.setHeader("Created");
-		column.setWidth(60);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("created");
+        column.setHeader("Created");
+        column.setWidth(60);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("createdBy");
-		column.setHeader("Created By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("createdBy");
+        column.setHeader("Created By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("altered");
-		column.setHeader("Altered");
-		column.setWidth(60);
-		column.setSortable(true);
-		column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("altered");
+        column.setHeader("Altered");
+        column.setWidth(60);
+        column.setSortable(true);
+        column.setDateTimeFormat(DateTimeFormat.getShortDateTimeFormat());
+        configs.add(column);
 
-		column = new ColumnConfig();
-		column.setId("alteredBy");
-		column.setHeader("Altered By");
-		column.setWidth(60);
-		column.setSortable(false);
-		configs.add(column);
+        column = new ColumnConfig();
+        column.setId("alteredBy");
+        column.setHeader("Altered By");
+        column.setWidth(60);
+        column.setSortable(false);
+        configs.add(column);
 
-		return configs;
-	}
+        return configs;
+    }
 
-	public void initialize() {
-		final ClientEnvironment environment = detailsPanel.getEnvironment();
-		if (environment.isPersistent()) {
-			addButton.enable();
-		}
-		else {
-			addButton.disable();
-		}
-	}
+    public void initialize() {
+        final ClientEnvironment environment = detailsPanel.getEnvironment();
+        if (environment.isPersistent()) {
+            addButton.enable();
+        }
+        else {
+            addButton.disable();
+        }
+    }
 
 }

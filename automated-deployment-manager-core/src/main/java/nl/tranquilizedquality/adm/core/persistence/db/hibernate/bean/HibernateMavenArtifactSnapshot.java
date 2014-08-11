@@ -106,7 +106,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -124,7 +124,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final ArtifactType type) {
         this.type = type;
@@ -141,7 +141,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param group
-     *        the group to set
+     *            the group to set
      */
     public void setGroup(final String group) {
         this.group = group;
@@ -158,7 +158,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param artifactId
-     *        the artifactId to set
+     *            the artifactId to set
      */
     public void setArtifactId(final String artifactId) {
         this.artifactId = artifactId;
@@ -175,7 +175,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param version
-     *        the version to set
+     *            the version to set
      */
     public void setVersion(final String version) {
         this.version = version;
@@ -194,7 +194,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param release
-     *        the release to set
+     *            the release to set
      */
     public void setReleaseExecution(final ReleaseExecution release) {
         this.releaseExecution = release;
@@ -211,7 +211,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param rank
-     *        the rank to set
+     *            the rank to set
      */
     public void setRank(final Integer rank) {
         this.rank = rank;
@@ -228,7 +228,7 @@ public class HibernateMavenArtifactSnapshot extends AbstractInsertableDomainObje
 
     /**
      * @param identifier
-     *        the identifier to set
+     *            the identifier to set
      */
     public void setIdentifier(final String identifier) {
         this.identifier = identifier;

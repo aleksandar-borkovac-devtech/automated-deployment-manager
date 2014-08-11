@@ -81,7 +81,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param version
-     *        the version to set
+     *            the version to set
      */
     public void setVersion(final String version) {
         this.version = version;
@@ -97,7 +97,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param parentModule
-     *        the parentModule to set
+     *            the parentModule to set
      */
     public void setParentModule(final MavenModule parentModule) {
         this.parentModule = parentModule;
@@ -113,7 +113,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param release
-     *        the release to set
+     *            the release to set
      */
     public void setRelease(final Release release) {
         this.release = release;
@@ -130,7 +130,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param file
-     *        the file to set
+     *            the file to set
      */
     @Override
     public void setFile(final String file) {
@@ -228,7 +228,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param targetSystemShutdown
-     *        the targetSystemShutdown to set
+     *            the targetSystemShutdown to set
      */
     public void setTargetSystemShutdown(final Boolean targetSystemShutdown) {
         this.targetSystemShutdown = targetSystemShutdown;
@@ -244,7 +244,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param targetSystemStartup
-     *        the targetSystemStartup to set
+     *            the targetSystemStartup to set
      */
     public void setTargetSystemStartup(final Boolean targetSystemStartup) {
         this.targetSystemStartup = targetSystemStartup;
@@ -260,7 +260,7 @@ public class ClientMavenArtifact extends AbstractUpdatableBeanModel<Long> implem
 
     /**
      * @param rank
-     *        the rank to set
+     *            the rank to set
      */
     @Override
     public void setRank(final Integer rank) {

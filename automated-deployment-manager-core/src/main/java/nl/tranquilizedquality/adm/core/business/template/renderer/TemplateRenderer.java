@@ -11,13 +11,13 @@ import java.util.Map;
 public interface TemplateRenderer {
 
     /**
-     * Renders the template with the specified id to a {@link String} value using the specified
-     * properties that will be used within the template.
+     * Renders the template with the specified id to a {@link String} value
+     * using the specified properties that will be used within the template.
      * 
      * @param id
-     *        The template id.
+     *            The template id.
      * @param properties
-     *        The properties that will be used in the template.
+     *            The properties that will be used in the template.
      * @return Returns a {@link String} value of the rendered content.
      */
     String merge(String id, Map<String, Object> properties);

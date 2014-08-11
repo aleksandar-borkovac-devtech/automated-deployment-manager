@@ -7,7 +7,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * This class assists in validating arguments, and wraps any exceptions into DeployExceptions.
+ * This class assists in validating arguments, and wraps any exceptions into
+ * DeployExceptions.
  *
  * @author e-pragt (erik.pragt@Tranquilized Quality.com)
  * @since 10/23/12
@@ -20,13 +21,15 @@ public abstract class AdmValidate {
     /**
      * Wrapper for Validate.isTrue.
      *
-     * @param expression the boolean expression to check
-     * @param message the exception message if invalid
+     * @param expression
+     *            the boolean expression to check
+     * @param message
+     *            the exception message if invalid
      */
     public static void isTrue(boolean expression, String message) {
         try {
             Validate.isTrue(expression, message);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             handleException(message);
         }
     }
@@ -34,13 +37,15 @@ public abstract class AdmValidate {
     /**
      * Wrapper for Validate.notNull
      *
-     * @param object the object to check
-     * @param message the exception message if invalid
+     * @param object
+     *            the object to check
+     * @param message
+     *            the exception message if invalid
      */
     public static void notNull(Object object, String message) {
         try {
             Validate.notNull(object, message);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             handleException(message);
         }
     }
@@ -48,8 +53,10 @@ public abstract class AdmValidate {
     /**
      * Wrapper for Validate.notEmpty
      *
-     * @param string the string to check
-     * @param message the exception message if invalid
+     * @param string
+     *            the string to check
+     * @param message
+     *            the exception message if invalid
      */
     public static void notEmpty(String string, String message) {
         try {
@@ -62,7 +69,8 @@ public abstract class AdmValidate {
     /**
      * Logs and rethrows the exception.
      *
-     * @param message The message to log and rethrow.
+     * @param message
+     *            The message to log and rethrow.
      */
     private static void handleException(String message) {
         if (LOGGER.isErrorEnabled()) {

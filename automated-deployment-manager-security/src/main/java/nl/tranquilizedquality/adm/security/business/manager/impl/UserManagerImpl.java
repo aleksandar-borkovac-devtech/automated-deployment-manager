@@ -428,7 +428,7 @@ public class UserManagerImpl implements UserManager {
      * Generates a password and sets the encoded password on the user.
      * 
      * @param user
-     *        The user where the password will be generated for.
+     *            The user where the password will be generated for.
      * @return Returns the plain generated password.
      */
     private String generatePassword(final User user) {
@@ -462,12 +462,12 @@ public class UserManagerImpl implements UserManager {
      * Sends an email containing the login credentials to the specified user.
      * 
      * @param user
-     *        The {@link User} that will be email with his/hers credentials.
+     *            The {@link User} that will be email with his/hers credentials.
      * @param plainPassword
-     *        The plain password to be sent to the user.
+     *            The plain password to be sent to the user.
      * @throws UserManagerException
-     *         Exception thrown when something fails during sending of an
-     *         email.
+     *             Exception thrown when something fails during sending of an
+     *             email.
      */
     private void sendMail(final User user, final String plainPassword) throws UserManagerException {
         if (LOGGER.isDebugEnabled()) {
@@ -525,9 +525,9 @@ public class UserManagerImpl implements UserManager {
      * Creates the password email to be sent to the specified user.
      * 
      * @param user
-     *        The user where the email will be sent to.
+     *            The user where the email will be sent to.
      * @param plainPassword
-     *        The plain password sent in the email.
+     *            The plain password sent in the email.
      * @return Returns the email message that will be sent to the user.
      */
     private String createEmailMessage(final User user, final String plainPassword) {
@@ -725,7 +725,7 @@ public class UserManagerImpl implements UserManager {
      * Does lazy initialization of certain collections.
      * 
      * @param user
-     *        The user that will be initialized.
+     *            The user that will be initialized.
      */
     public void initialize(final User user) {
 
@@ -768,7 +768,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param userValidator
-     *        the userValidator to set
+     *            the userValidator to set
      */
     @Required
     public void setUserValidator(final Validator userValidator) {
@@ -777,7 +777,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param userRoleDao
-     *        the userRoleDao to set
+     *            the userRoleDao to set
      */
     @Required
     public void setUserRoleDao(final UserRoleDao<UserRole> userRoleDao) {
@@ -786,7 +786,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param userRoleValidator
-     *        the userRoleValidator to set
+     *            the userRoleValidator to set
      */
     @Required
     public void setUserRoleValidator(final Validator userRoleValidator) {
@@ -795,7 +795,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param scopeDao
-     *        the scopeDao to set
+     *            the scopeDao to set
      */
     @Required
     public void setScopeDao(final ScopeDao<Scope> scopeDao) {
@@ -804,7 +804,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param roleDao
-     *        the roleDao to set
+     *            the roleDao to set
      */
     @Required
     public void setRoleDao(final RoleDao<Role> roleDao) {
@@ -813,7 +813,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param passwordGenerator
-     *        the passwordGenerator to set
+     *            the passwordGenerator to set
      */
     @Required
     public void setPasswordGenerator(final PasswordGenerator passwordGenerator) {
@@ -822,7 +822,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param emailManager
-     *        the emailManager to set
+     *            the emailManager to set
      */
     @Required
     public void setEmailManager(final EmailManager emailManager) {
@@ -831,7 +831,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * @param imageFileRepositoryManager
-     *        the imageFileRepositoryManager to set
+     *            the imageFileRepositoryManager to set
      */
     @Required
     public void setImageFileRepositoryManager(final ImageFileRepositoryManager imageFileRepositoryManager) {

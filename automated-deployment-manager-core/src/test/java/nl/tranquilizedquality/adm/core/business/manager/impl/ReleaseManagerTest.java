@@ -30,68 +30,67 @@ import org.springframework.validation.Validator;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class ReleaseManagerTest extends EasyMockSupport {
 
-	/** Manager that will be tested */
-	private ReleaseManagerImpl releaseManager;
+    /** Manager that will be tested */
+    private ReleaseManagerImpl releaseManager;
 
-	/** Mocked DAO */
-	private ReleaseDao<Release> releaseDao;
+    /** Mocked DAO */
+    private ReleaseDao<Release> releaseDao;
 
-	/** Mocked DAO */
-	private Validator releaseValidator;
+    /** Mocked DAO */
+    private Validator releaseValidator;
 
-	@SuppressWarnings("unchecked")
-	@Before
-	public void setUp() {
-		releaseManager = new ReleaseManagerImpl();
+    @SuppressWarnings("unchecked")
+    @Before
+    public void setUp() {
+        releaseManager = new ReleaseManagerImpl();
 
-		releaseDao = createMock(ReleaseDao.class);
-		releaseValidator = createMock(Validator.class);
+        releaseDao = createMock(ReleaseDao.class);
+        releaseValidator = createMock(Validator.class);
 
-		releaseManager.setReleaseDao(releaseDao);
-		releaseManager.setReleaseValidator(releaseValidator);
-	}
+        releaseManager.setReleaseDao(releaseDao);
+        releaseManager.setReleaseValidator(releaseValidator);
+    }
 
-	@Test
-	public void testRemoveRelease() {
-		final Long releaseId = 1L;
+    @Test
+    public void testRemoveRelease() {
+        final Long releaseId = 1L;
 
-		final HibernateRelease release = new HibernateRelease();
-		release.setId(releaseId);
-		release.setStatus(ReleaseStatus.DRAFT);
+        final HibernateRelease release = new HibernateRelease();
+        release.setId(releaseId);
+        release.setStatus(ReleaseStatus.DRAFT);
 
-		expect(releaseDao.findById(releaseId)).andReturn(release);
-		releaseDao.delete(release);
-		expectLastCall().once();
+        expect(releaseDao.findById(releaseId)).andReturn(release);
+        releaseDao.delete(release);
+        expectLastCall().once();
 
-		replayAll();
+        replayAll();
 
-		releaseManager.removeRelease(release);
+        releaseManager.removeRelease(release);
 
-		verifyAll();
-	}
+        verifyAll();
+    }
 
-	@Test
-	public void testRemoveReleaseFailed() {
-		final Long releaseId = 1L;
+    @Test
+    public void testRemoveReleaseFailed() {
+        final Long releaseId = 1L;
 
-		final HibernateRelease release = new HibernateRelease();
-		release.setId(releaseId);
-		release.setStatus(ReleaseStatus.DRAFT);
-		release.setReleaseCount(22);
+        final HibernateRelease release = new HibernateRelease();
+        release.setId(releaseId);
+        release.setStatus(ReleaseStatus.DRAFT);
+        release.setReleaseCount(22);
 
-		expect(releaseDao.findById(releaseId)).andReturn(release);
+        expect(releaseDao.findById(releaseId)).andReturn(release);
 
-		replayAll();
+        replayAll();
 
-		try {
-			releaseManager.removeRelease(release);
-			fail("Exception should have been thrown!");
-		}
-		catch (final Exception e) {
-			assertTrue("Invalid exception thrown!", e instanceof ReleaseAlreadyInUseException);
-		}
+        try {
+            releaseManager.removeRelease(release);
+            fail("Exception should have been thrown!");
+        } catch (final Exception e) {
+            assertTrue("Invalid exception thrown!", e instanceof ReleaseAlreadyInUseException);
+        }
 
-		verifyAll();
-	}
+        verifyAll();
+    }
 
 }

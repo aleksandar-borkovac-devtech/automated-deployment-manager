@@ -36,82 +36,83 @@ import org.hibernate.criterion.Restrictions;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since Aug 23, 2012
  */
-public class HibernateUserGroupDao extends AbstractHibernateBaseDao<HibernateUserGroup, Long> implements UserGroupDao<HibernateUserGroup> {
+public class HibernateUserGroupDao extends AbstractHibernateBaseDao<HibernateUserGroup, Long> implements
+        UserGroupDao<HibernateUserGroup> {
 
-	@Override
-	protected Class<HibernateUserGroup> getDomainClass() {
-		return HibernateUserGroup.class;
-	}
+    @Override
+    protected Class<HibernateUserGroup> getDomainClass() {
+        return HibernateUserGroup.class;
+    }
 
-	@Override
-	public HibernateUserGroup newDomainObject() {
-		return new HibernateUserGroup();
-	}
+    @Override
+    public HibernateUserGroup newDomainObject() {
+        return new HibernateUserGroup();
+    }
 
-	@SuppressWarnings("unchecked")
-	public List<UserGroup> findFilteredUserGroups(final UserGroupSearchCommand sc) {
-		final Criteria criteria = getDefaultCriteria();
+    @SuppressWarnings("unchecked")
+    public List<UserGroup> findFilteredUserGroups(final UserGroupSearchCommand sc) {
+        final Criteria criteria = getDefaultCriteria();
 
-		final List<UserGroup> userGroups = sc.getUserGroups();
-		if (userGroups != null && !userGroups.isEmpty()) {
-			final List<Long> userGroupIds = new ArrayList<Long>();
-			for (final UserGroup userGroup : userGroups) {
-				final Long userGroupId = userGroup.getId();
-				userGroupIds.add(userGroupId);
-			}
-			criteria.add(Restrictions.in("id", userGroupIds));
-		}
-		else {
-			criteria.add(Restrictions.isNull("id"));
-		}
+        final List<UserGroup> userGroups = sc.getUserGroups();
+        if (userGroups != null && !userGroups.isEmpty()) {
+            final List<Long> userGroupIds = new ArrayList<Long>();
+            for (final UserGroup userGroup : userGroups) {
+                final Long userGroupId = userGroup.getId();
+                userGroupIds.add(userGroupId);
+            }
+            criteria.add(Restrictions.in("id", userGroupIds));
+        }
+        else {
+            criteria.add(Restrictions.isNull("id"));
+        }
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<UserGroup> findUserGroupsBySearchCommand(final UserGroupSearchCommand sc) {
-		final Criteria criteria = getUserGroupCriteria(sc);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<UserGroup> findUserGroupsBySearchCommand(final UserGroupSearchCommand sc) {
+        final Criteria criteria = getUserGroupCriteria(sc);
 
-		configurePagingAndSorting(sc, criteria);
+        configurePagingAndSorting(sc, criteria);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<UserGroup> findUserGroupsByUser(final User user) {
-		final Criteria criteria = getDefaultCriteria();
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<UserGroup> findUserGroupsByUser(final User user) {
+        final Criteria criteria = getDefaultCriteria();
 
-		final Criteria usersCriteria = criteria.createCriteria("users");
-		usersCriteria.add(Restrictions.eq("id", user.getId()));
+        final Criteria usersCriteria = criteria.createCriteria("users");
+        usersCriteria.add(Restrictions.eq("id", user.getId()));
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	public int findNumberUserGroups(final UserGroupSearchCommand sc) {
-		final Criteria criteria = getUserGroupCriteria(sc);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public int findNumberUserGroups(final UserGroupSearchCommand sc) {
+        final Criteria criteria = getUserGroupCriteria(sc);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	/**
-	 * Retrieves the hibernate criteria based on the passed in search criteria.
-	 * 
-	 * @return Returns a {@link Criteria}.
-	 */
-	private Criteria getUserGroupCriteria(final UserGroupSearchCommand sc) {
-		final Criteria criteria = getDefaultCriteria();
+    /**
+     * Retrieves the hibernate criteria based on the passed in search criteria.
+     * 
+     * @return Returns a {@link Criteria}.
+     */
+    private Criteria getUserGroupCriteria(final UserGroupSearchCommand sc) {
+        final Criteria criteria = getDefaultCriteria();
 
-		final String name = sc.getName();
-		if (StringUtils.isNotBlank(name)) {
-			criteria.add(Restrictions.ilike("name", name, MatchMode.START));
-		}
+        final String name = sc.getName();
+        if (StringUtils.isNotBlank(name)) {
+            criteria.add(Restrictions.ilike("name", name, MatchMode.START));
+        }
 
-		return criteria;
-	}
+        return criteria;
+    }
 
 }

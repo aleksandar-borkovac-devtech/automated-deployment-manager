@@ -17,7 +17,7 @@ public interface UserSettingsManager {
      * Stores all the settings for a user.
      * 
      * @param settings
-     *        The list of settings that will be stored.
+     *            The list of settings that will be stored.
      */
     void storeSettings(List<EnvironmentNotificationSetting> settings);
 
@@ -25,7 +25,7 @@ public interface UserSettingsManager {
      * Searches for all the settings for a user.
      * 
      * @param user
-     *        The user where the settings will be retrieved for.
+     *            The user where the settings will be retrieved for.
      * @return Returns a {@link List} containing the settings of a user.
      */
     List<EnvironmentNotificationSetting> findSettingsForUser(User user);
@@ -34,8 +34,9 @@ public interface UserSettingsManager {
      * Creates the default settings for a user.
      * 
      * @param user
-     *        The user where the settings will be created for.
-     * @return Returns a {@link List} containing the default settings of the user.
+     *            The user where the settings will be created for.
+     * @return Returns a {@link List} containing the default settings of the
+     *         user.
      */
     List<EnvironmentNotificationSetting> createDefaultNotificationSettingsForUser(User user);
 

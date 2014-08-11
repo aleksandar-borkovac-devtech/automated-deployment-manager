@@ -49,7 +49,7 @@ public interface ArtifactService extends RemoteService {
      * Retrieves the {@link ClientMavenModule} with the specified id.
      * 
      * @param id
-     *        The unique identifier.
+     *            The unique identifier.
      * @return Returns a {@link ClientMavenModule} or null if none could be
      *         found.
      */
@@ -67,9 +67,9 @@ public interface ArtifactService extends RemoteService {
      * criteria.
      * 
      * @param config
-     *        The paging configuration.
+     *            The paging configuration.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns a {@link PagingLoadResult} containing the results.
      */
     PagingLoadResult<ClientMavenModule> findMavenModules(PagingLoadConfig config, ClientMavenModuleSearchCommand sc);
@@ -79,9 +79,9 @@ public interface ArtifactService extends RemoteService {
      * criteria.
      * 
      * @param config
-     *        The paging configuration.
+     *            The paging configuration.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns a {@link PagingLoadResult} containing the results.
      */
     PagingLoadResult<ClientMavenArtifact> findMavenArtifacts(PagingLoadConfig config, ClientMavenArtifactSearchCommand sc);
@@ -90,10 +90,10 @@ public interface ArtifactService extends RemoteService {
      * Saves the specified artifact.
      * 
      * @param artifact
-     *        The artifact that will be stored.
+     *            The artifact that will be stored.
      * @return Returns the stored artifact.
      * @throws ArtifactServiceException
-     *         Will be thrown when someting goes wrong during storage.
+     *             Will be thrown when someting goes wrong during storage.
      */
     ClientMavenArtifact saveMavenArtifact(ClientMavenArtifact artifact) throws ArtifactServiceException;
 
@@ -101,10 +101,10 @@ public interface ArtifactService extends RemoteService {
      * Saves the specified module.
      * 
      * @param module
-     *        The module that will be stored.
+     *            The module that will be stored.
      * @return Returns the stored artifact.
      * @throws ArtifactServiceException
-     *         Will be thrown when something goes wrong during storage.
+     *             Will be thrown when something goes wrong during storage.
      */
     ClientMavenModule saveMavenModule(ClientMavenModule module) throws ArtifactServiceException;
 
@@ -112,7 +112,7 @@ public interface ArtifactService extends RemoteService {
      * Retrieves the artifact with the specified id.
      * 
      * @param id
-     *        The unique identifier of the artifact.
+     *            The unique identifier of the artifact.
      * @return Returns a {@link ClientMavenArtifact} or null if none could be
      *         found.
      */
@@ -122,20 +122,22 @@ public interface ArtifactService extends RemoteService {
      * Deletes the specified artifact.
      * 
      * @param artifact
-     *        The artifact that will be deleted.
+     *            The artifact that will be deleted.
      * @throws ArtifactServiceException
-     *         Is thrown when something goes wrong during deletion.
+     *             Is thrown when something goes wrong during deletion.
      */
     void deleteMavenArtifact(ClientMavenArtifact artifact) throws ArtifactServiceException;
 
     /**
-     * Searches for all available maven modules excluding the one that has the specified unique
-     * identifier since you cannot have a dependency on yourself.
+     * Searches for all available maven modules excluding the one that has the
+     * specified unique identifier since you cannot have a dependency on
+     * yourself.
      * 
      * @param excludeMavenModuleId
-     *        The unique identifier of the maven module that should not be included.
-     * @return Returns a {@link List} containing {@link MavenModule} objects or an empty one if
-     *         there are no dependencies available.
+     *            The unique identifier of the maven module that should not be
+     *            included.
+     * @return Returns a {@link List} containing {@link MavenModule} objects or
+     *         an empty one if there are no dependencies available.
      */
     List<ClientMavenModule> findAvailableMavenModules(Long excludeMavenModuleId);
 

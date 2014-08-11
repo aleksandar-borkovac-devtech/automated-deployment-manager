@@ -26,16 +26,17 @@ import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateRe
  * @since Aug 3, 2012
  * 
  */
-public class HibernateReleaseExecutionLogDao extends AbstractHibernateBaseDao<HibernateReleaseExecutionLog, Long> implements ReleaseExecutionLogDao<HibernateReleaseExecutionLog> {
+public class HibernateReleaseExecutionLogDao extends AbstractHibernateBaseDao<HibernateReleaseExecutionLog, Long> implements
+        ReleaseExecutionLogDao<HibernateReleaseExecutionLog> {
 
-	@Override
-	protected Class<HibernateReleaseExecutionLog> getDomainClass() {
-		return HibernateReleaseExecutionLog.class;
-	}
+    @Override
+    protected Class<HibernateReleaseExecutionLog> getDomainClass() {
+        return HibernateReleaseExecutionLog.class;
+    }
 
-	@Override
-	public HibernateReleaseExecutionLog newDomainObject() {
-		return new HibernateReleaseExecutionLog();
-	}
+    @Override
+    public HibernateReleaseExecutionLog newDomainObject() {
+        return new HibernateReleaseExecutionLog();
+    }
 
 }

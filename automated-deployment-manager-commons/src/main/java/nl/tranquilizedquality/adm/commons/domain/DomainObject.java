@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  * @param <T>
- *        Primary key type.
+ *            Primary key type.
  */
 public interface DomainObject<T> extends Serializable {
 
@@ -30,7 +30,7 @@ public interface DomainObject<T> extends Serializable {
      * Copies the values of the passed in object to the current object.
      * 
      * @param object
-     *        The object where the values will be copied from.
+     *            The object where the values will be copied from.
      */
     void copy(DomainObject<T> object);
 

@@ -36,63 +36,64 @@ import org.hibernate.criterion.Restrictions;
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 3 jun. 2011
  */
-public class HibernateRepositoryDao extends AbstractHibernateBaseDao<HibernateRepository, Long> implements RepositoryDao<HibernateRepository> {
+public class HibernateRepositoryDao extends AbstractHibernateBaseDao<HibernateRepository, Long> implements
+        RepositoryDao<HibernateRepository> {
 
-	@Override
-	protected Class<HibernateRepository> getDomainClass() {
-		return HibernateRepository.class;
-	}
+    @Override
+    protected Class<HibernateRepository> getDomainClass() {
+        return HibernateRepository.class;
+    }
 
-	@Override
-	public HibernateRepository newDomainObject() {
-		return new HibernateRepository();
-	}
+    @Override
+    public HibernateRepository newDomainObject() {
+        return new HibernateRepository();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Repository> findBySearchCommand(final RepositorySearchCommand sc) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = getRepositoryCriteria(sc, session);
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Repository> findBySearchCommand(final RepositorySearchCommand sc) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = getRepositoryCriteria(sc, session);
 
-		configurePagingAndSorting(sc, criteria);
+        configurePagingAndSorting(sc, criteria);
 
-		return criteria.list();
-	}
+        return criteria.list();
+    }
 
-	@Override
-	public int findNumberOfRepositories(final RepositorySearchCommand sc) {
-		final Session session = getCurrentSession();
-		final Criteria criteria = getRepositoryCriteria(sc, session);
-		criteria.setProjection(Projections.rowCount());
+    @Override
+    public int findNumberOfRepositories(final RepositorySearchCommand sc) {
+        final Session session = getCurrentSession();
+        final Criteria criteria = getRepositoryCriteria(sc, session);
+        criteria.setProjection(Projections.rowCount());
 
-		final Long count = (Long) criteria.uniqueResult();
-		return count.intValue();
-	}
+        final Long count = (Long) criteria.uniqueResult();
+        return count.intValue();
+    }
 
-	/**
-	 * Creates a hibernate criteria object based on the passed in search
-	 * criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @param session
-	 *            The session to use for doing the query.
-	 * @return Returns a {@link Criteria}.
-	 */
-	private Criteria getRepositoryCriteria(final RepositorySearchCommand sc, final Session session) {
-		final Criteria criteria = session.createCriteria(this.domainClass);
+    /**
+     * Creates a hibernate criteria object based on the passed in search
+     * criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @param session
+     *            The session to use for doing the query.
+     * @return Returns a {@link Criteria}.
+     */
+    private Criteria getRepositoryCriteria(final RepositorySearchCommand sc, final Session session) {
+        final Criteria criteria = session.createCriteria(this.domainClass);
 
-		final String name = sc.getName();
-		if (!StringUtils.isEmpty(name)) {
-			criteria.add(Restrictions.ilike("name", name.trim(), MatchMode.START));
-		}
+        final String name = sc.getName();
+        if (!StringUtils.isEmpty(name)) {
+            criteria.add(Restrictions.ilike("name", name.trim(), MatchMode.START));
+        }
 
-		final Boolean enabled = sc.getEnabled();
-		if (enabled != null) {
-			criteria.add(Restrictions.eq("enabled", enabled));
-		}
+        final Boolean enabled = sc.getEnabled();
+        if (enabled != null) {
+            criteria.add(Restrictions.eq("enabled", enabled));
+        }
 
-		return criteria;
-	}
+        return criteria;
+    }
 
 }

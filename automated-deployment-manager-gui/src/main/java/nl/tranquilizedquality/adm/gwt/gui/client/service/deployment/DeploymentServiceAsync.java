@@ -36,9 +36,9 @@ public interface DeploymentServiceAsync {
      * Deploys the specified release to the specified environment.
      * 
      * @param release
-     *        The release that will be deployed.
+     *            The release that will be deployed.
      * @param environment
-     *        The environment where the release will be deployed to.
+     *            The environment where the release will be deployed to.
      * @return Returns the released release.
      */
     void deployRelease(ClientRelease release, ClientEnvironment environment, AsyncCallback<ClientRelease> callback);
@@ -48,11 +48,11 @@ public interface DeploymentServiceAsync {
      * environment.
      * 
      * @param artifacts
-     *        The artifacts that will be deployed.
+     *            The artifacts that will be deployed.
      * @param release
-     *        The release where the artifacts are part off.
+     *            The release where the artifacts are part off.
      * @param environment
-     *        The environment where the artifacts will be deployed to.
+     *            The environment where the artifacts will be deployed to.
      * @return Returns the released release.
      */
     void deployArtifacts(List<ClientMavenArtifact> artifacts, ClientRelease release, ClientEnvironment environment,

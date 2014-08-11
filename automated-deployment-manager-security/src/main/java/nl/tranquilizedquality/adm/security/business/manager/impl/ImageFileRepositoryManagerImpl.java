@@ -20,62 +20,62 @@ import org.springframework.beans.factory.annotation.Required;
  */
 public class ImageFileRepositoryManagerImpl implements ImageFileRepositoryManager {
 
-	private static final String JPG = ".jpg";
+    private static final String JPG = ".jpg";
 
-	/** Path on the server where member images are stored. */
-	private String imageLocation;
+    /** Path on the server where member images are stored. */
+    private String imageLocation;
 
-	@Override
-	public File findImageById(final Long id) throws IOException {
+    @Override
+    public File findImageById(final Long id) throws IOException {
 
-		File imageFile = null;
-		String location = null;
+        File imageFile = null;
+        String location = null;
 
-		location = imageLocation + id + JPG;
+        location = imageLocation + id + JPG;
 
-		imageFile = new File(location);
-		final boolean exists = imageFile.exists();
+        imageFile = new File(location);
+        final boolean exists = imageFile.exists();
 
-		if (exists) {
-			return imageFile;
-		}
-		else {
-			return findUnknownUserImage();
-		}
-	}
+        if (exists) {
+            return imageFile;
+        }
+        else {
+            return findUnknownUserImage();
+        }
+    }
 
-	@Override
-	public File findUnknownUserImage() throws FileNotFoundException {
-		boolean exists = false;
-		final String location = imageLocation + "unknown-user.png";
-		final File imageFile = new File(location);
-		exists = imageFile.exists();
+    @Override
+    public File findUnknownUserImage() throws FileNotFoundException {
+        boolean exists = false;
+        final String location = imageLocation + "unknown-user.png";
+        final File imageFile = new File(location);
+        exists = imageFile.exists();
 
-		if (!exists) {
-			throw new FileNotFoundException("Couldn't find file: " + location);
-		}
+        if (!exists) {
+            throw new FileNotFoundException("Couldn't find file: " + location);
+        }
 
-		return imageFile;
-	}
+        return imageFile;
+    }
 
-	@Override
-	public void storeImage(final Long id, final byte[] image) throws IOException {
-		File imageFile = null;
-		String location = null;
+    @Override
+    public void storeImage(final Long id, final byte[] image) throws IOException {
+        File imageFile = null;
+        String location = null;
 
-		location = imageLocation + id + JPG;
+        location = imageLocation + id + JPG;
 
-		imageFile = new File(location);
+        imageFile = new File(location);
 
-		final OutputStream output = new FileOutputStream(imageFile);
-		IOUtils.write(image, output);
+        final OutputStream output = new FileOutputStream(imageFile);
+        IOUtils.write(image, output);
 
-		output.close();
-	}
+        output.close();
+    }
 
-	@Required
-	public void setImageLocation(final String imageLocation) {
-		this.imageLocation = imageLocation;
-	}
+    @Required
+    public void setImageLocation(final String imageLocation) {
+        this.imageLocation = imageLocation;
+    }
 
 }

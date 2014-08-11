@@ -41,8 +41,8 @@ public class HibernateRepository extends AbstractUpdatableDomainObject<Long> imp
     private String repositoryUrl;
 
     /**
-     * The unique name that is used in Sonatype Nexus to identify a repository e.g. publi-snapshots,
-     * releases, snapshots etc.
+     * The unique name that is used in Sonatype Nexus to identify a repository
+     * e.g. publi-snapshots, releases, snapshots etc.
      */
     @BusinessField
     private String repositoryId;
@@ -72,7 +72,7 @@ public class HibernateRepository extends AbstractUpdatableDomainObject<Long> imp
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -108,7 +108,7 @@ public class HibernateRepository extends AbstractUpdatableDomainObject<Long> imp
 
     /**
      * @param enabled
-     *        the enabled to set
+     *            the enabled to set
      */
     public void setEnabled(final Boolean enabled) {
         this.enabled = enabled;

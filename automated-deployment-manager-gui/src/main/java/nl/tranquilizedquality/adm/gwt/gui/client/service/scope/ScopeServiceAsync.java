@@ -22,13 +22,14 @@ public interface ScopeServiceAsync {
      * Retrieves scopes that match the search criteria.
      * 
      * @param config
-     *        The {@link PagingLoadConfig} that determines which page to
-     *        show etc.
+     *            The {@link PagingLoadConfig} that determines which page to
+     *            show etc.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the {@link PagingLoadResult}
-     *        containing {@link ClientScope} objects that matched the search criteria.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            {@link PagingLoadResult} containing {@link ClientScope}
+     *            objects that matched the search criteria.
      */
     void findScopes(PagingLoadConfig config, ClientScopeSearchCommand sc, AsyncCallback<PagingLoadResult<ClientScope>> callback);
 
@@ -50,10 +51,11 @@ public interface ScopeServiceAsync {
      * identifier.
      * 
      * @param id
-     *        The unique identifier of the {@link ClientScope} that needs to
-     *        be retrieved.
+     *            The unique identifier of the {@link ClientScope} that needs to
+     *            be retrieved.
      * @param callback
-     *        the {@link AsyncCallback} that will be used to return the {@link ClientScope} object.
+     *            the {@link AsyncCallback} that will be used to return the
+     *            {@link ClientScope} object.
      */
     void findScopeById(Long id, AsyncCallback<ClientScope> callback);
 
@@ -61,23 +63,24 @@ public interface ScopeServiceAsync {
      * Saves the specified {@link ClientScope}.
      * 
      * @param scope
-     *        The {@link ClientScope} that will be saved.
+     *            The {@link ClientScope} that will be saved.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the
-     *        saved {@link ClientScope}.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            saved {@link ClientScope}.
      */
     void saveScope(ClientScope scope, AsyncCallback<ClientScope> callback);
 
     /**
-     * Retrieves all managed scopes with grantable roles for the specified {@link ClientUser}.
+     * Retrieves all managed scopes with grantable roles for the specified
+     * {@link ClientUser}.
      * 
      * @param user
-     *        The {@link ClientUser} where the {@link ClientScope} objects
-     *        will be retrieved for.
+     *            The {@link ClientUser} where the {@link ClientScope} objects
+     *            will be retrieved for.
      * @param callback
-     *        The {@link AsyncCallback} that will be used to return the {@link List} containing
-     *        {@link ClientScope} objects or an
-     *        empty one if none could be found.
+     *            The {@link AsyncCallback} that will be used to return the
+     *            {@link List} containing {@link ClientScope} objects or an
+     *            empty one if none could be found.
      */
     void findManagedScopesWithGrantableRoles(ClientUser user, AsyncCallback<List<ClientScope>> callback);
 
@@ -85,7 +88,7 @@ public interface ScopeServiceAsync {
      * Retrieves the feedback message from the scope import.
      * 
      * @param callback
-     *        Returns the success or error message.
+     *            Returns the success or error message.
      */
     void getScopeImportFeedback(AsyncCallback<String> callback);
 }

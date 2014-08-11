@@ -23,7 +23,7 @@ public class LoginException extends RuntimeException {
      * Constructor where you can specify the error message.
      * 
      * @param msg
-     *        The error message that will be used.
+     *            The error message that will be used.
      */
     public LoginException(final String msg) {
         super(msg);
@@ -34,9 +34,9 @@ public class LoginException extends RuntimeException {
      * exception.
      * 
      * @param msg
-     *        The error message that will be used.
+     *            The error message that will be used.
      * @param cause
-     *        The {@link Throwable} that caused this exception.
+     *            The {@link Throwable} that caused this exception.
      */
     public LoginException(final String msg, final Throwable cause) {
         super(msg, cause);

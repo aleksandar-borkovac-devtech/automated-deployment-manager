@@ -33,43 +33,44 @@ import org.apache.commons.io.IOUtils;
  */
 public class HttpUtilImpl implements HttpUtil {
 
-	@Override
-	public File downloadFile(final String sourceUrl, final String destinationPath, final String destinationFileName) throws IOException {
-		final HttpClient client = new HttpClient();
-		final GetMethod getMethod = new GetMethod();
-		final URI uri = new URI(sourceUrl, false);
-		getMethod.setURI(uri);
+    @Override
+    public File downloadFile(final String sourceUrl, final String destinationPath, final String destinationFileName)
+            throws IOException {
+        final HttpClient client = new HttpClient();
+        final GetMethod getMethod = new GetMethod();
+        final URI uri = new URI(sourceUrl, false);
+        getMethod.setURI(uri);
 
-		final int result = client.executeMethod(getMethod);
+        final int result = client.executeMethod(getMethod);
 
-		if (result != 200) {
-			final String msg = "Failed to download file! -> " + sourceUrl;
+        if (result != 200) {
+            final String msg = "Failed to download file! -> " + sourceUrl;
 
-			throw new RuntimeException(msg);
-		}
+            throw new RuntimeException(msg);
+        }
 
-		/*
-		 * Download the file.
-		 */
-		final InputStream inputStream = getMethod.getResponseBodyAsStream();
-		final byte[] rawBytes = IOUtils.toByteArray(inputStream);
+        /*
+         * Download the file.
+         */
+        final InputStream inputStream = getMethod.getResponseBodyAsStream();
+        final byte[] rawBytes = IOUtils.toByteArray(inputStream);
 
-		/*
-		 * Write the file to disk.
-		 */
-		final File destinationDirectory = new File(destinationPath);
-		FileUtils.forceMkdir(destinationDirectory);
+        /*
+         * Write the file to disk.
+         */
+        final File destinationDirectory = new File(destinationPath);
+        FileUtils.forceMkdir(destinationDirectory);
 
-		final File destination = new File(destinationDirectory + "/" + destinationFileName);
-		final FileOutputStream fileOutputStream = new FileOutputStream(destination);
-		IOUtils.write(rawBytes, fileOutputStream);
+        final File destination = new File(destinationDirectory + "/" + destinationFileName);
+        final FileOutputStream fileOutputStream = new FileOutputStream(destination);
+        IOUtils.write(rawBytes, fileOutputStream);
 
-		/*
-		 * Release the HTTP connection.
-		 */
-		getMethod.releaseConnection();
+        /*
+         * Release the HTTP connection.
+         */
+        getMethod.releaseConnection();
 
-		return destination;
-	}
+        return destination;
+    }
 
 }

@@ -29,34 +29,34 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface UserGroupDao<T extends UserGroup> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for {@link UserGroup} objects based on the passed in search
-	 * criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria to search on.
-	 * @return Returns a {@link List} containing {@link UserGroup} objects or an
-	 *         empty one if none could be found.
-	 */
-	List<UserGroup> findUserGroupsBySearchCommand(UserGroupSearchCommand sc);
+    /**
+     * Searches for {@link UserGroup} objects based on the passed in search
+     * criteria.
+     * 
+     * @param sc
+     *            The search criteria to search on.
+     * @return Returns a {@link List} containing {@link UserGroup} objects or an
+     *         empty one if none could be found.
+     */
+    List<UserGroup> findUserGroupsBySearchCommand(UserGroupSearchCommand sc);
 
-	/**
-	 * Counts the number of user groups based on the passed in search criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria to search on.
-	 * @return Returns an integer value of 0 or greater.
-	 */
-	int findNumberUserGroups(UserGroupSearchCommand sc);
+    /**
+     * Counts the number of user groups based on the passed in search criteria.
+     * 
+     * @param sc
+     *            The search criteria to search on.
+     * @return Returns an integer value of 0 or greater.
+     */
+    int findNumberUserGroups(UserGroupSearchCommand sc);
 
-	/**
-	 * Searches for user groups that the user is part of.
-	 * 
-	 * @param user
-	 *            The user where the user groups will be looked up for.
-	 * @return Returns a {@link List} containing all the groups the user is part
-	 *         of or an empty one if the user is not part of a group.
-	 */
-	List<UserGroup> findUserGroupsByUser(User user);
+    /**
+     * Searches for user groups that the user is part of.
+     * 
+     * @param user
+     *            The user where the user groups will be looked up for.
+     * @return Returns a {@link List} containing all the groups the user is part
+     *         of or an empty one if the user is not part of a group.
+     */
+    List<UserGroup> findUserGroupsByUser(User user);
 
 }

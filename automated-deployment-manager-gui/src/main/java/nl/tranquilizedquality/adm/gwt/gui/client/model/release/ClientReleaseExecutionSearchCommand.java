@@ -29,9 +29,9 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  */
 public class ClientReleaseExecutionSearchCommand extends ReleaseExecutionSearchCommand implements BeanModelTag {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = 5203284778323880841L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = 5203284778323880841L;
 
 }

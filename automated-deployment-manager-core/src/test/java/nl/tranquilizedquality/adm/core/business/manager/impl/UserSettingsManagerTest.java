@@ -125,7 +125,8 @@ public class UserSettingsManagerTest extends EasyMockSupport {
         environment.setName("INT");
         environments.add(environment);
 
-        expect(environmentNotificationSettingDao.findSettingsForUser(user)).andReturn(new ArrayList<EnvironmentNotificationSetting>());
+        expect(environmentNotificationSettingDao.findSettingsForUser(user)).andReturn(
+                new ArrayList<EnvironmentNotificationSetting>());
         expect(environmentDao.findAll()).andReturn(environments);
         expect(environmentNotificationSettingDao.save(isA(EnvironmentNotificationSetting.class))).andReturn(
                 new HibernateEnvironmentNotificationSetting());

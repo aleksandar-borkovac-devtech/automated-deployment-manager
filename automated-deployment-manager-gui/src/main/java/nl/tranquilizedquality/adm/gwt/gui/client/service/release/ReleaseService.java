@@ -49,7 +49,7 @@ public interface ReleaseService extends RemoteService {
      * Searches for a {@link ClientRelease} with the specified id.
      * 
      * @param id
-     *        The unique identifier.
+     *            The unique identifier.
      * @return Returns {@link ClientRelease} or null if none could be found.
      */
     ClientRelease findReleaseById(Long id);
@@ -58,10 +58,10 @@ public interface ReleaseService extends RemoteService {
      * Stores the specified release.
      * 
      * @param release
-     *        The release that will be stored.
+     *            The release that will be stored.
      * @return Returns the stored release.
      * @throws ReleaseServiceException
-     *         Is thrown when something goes wrong.
+     *             Is thrown when something goes wrong.
      */
     ClientRelease saveRelease(ClientRelease release) throws ReleaseServiceException;
 
@@ -69,9 +69,9 @@ public interface ReleaseService extends RemoteService {
      * Searches for releases based on the specified search criteria.
      * 
      * @param config
-     *        The paging configuration.
+     *            The paging configuration.
      * @param sc
-     *        The search criteria.
+     *            The search criteria.
      * @return Returns a {@link PagingLoadResult} containing the results.
      */
     PagingLoadResult<ClientMavenArtifact> findReleasesAndArtifacts(PagingLoadConfig config, ClientReleaseSearchCommand sc);
@@ -80,9 +80,10 @@ public interface ReleaseService extends RemoteService {
      * Finds the release history from the specified release.
      * 
      * @param config
-     *        Paging configuration.
+     *            Paging configuration.
      * @param sc
-     *        The search criteria to use for searching for {@link ClientReleaseExecution} objects.
+     *            The search criteria to use for searching for
+     *            {@link ClientReleaseExecution} objects.
      * @return Returns a {@link List} containing the release history or an empty
      *         one if there is no history.
      */
@@ -93,7 +94,7 @@ public interface ReleaseService extends RemoteService {
      * identifier.
      * 
      * @param id
-     *        The unique identifier of the {@link ClientReleaseExecution}.
+     *            The unique identifier of the {@link ClientReleaseExecution}.
      * @return Returns a {@link ClientReleaseExecution}.
      */
     ClientReleaseExecution findReleaseExecutionById(Long id);
@@ -102,9 +103,9 @@ public interface ReleaseService extends RemoteService {
      * Removes the specified release if it's not in use yet.
      * 
      * @param release
-     *        The release that will be removed.
+     *            The release that will be removed.
      * @throws ReleaseServiceException
-     *         Throws exception when removing a release fails.
+     *             Throws exception when removing a release fails.
      */
     void removeRelease(ClientRelease release) throws ReleaseServiceException;
 
@@ -112,8 +113,8 @@ public interface ReleaseService extends RemoteService {
      * Retrieves the release execution log with the specified identifier.
      * 
      * @param id
-     *        The unique identifier of the release execution log that needs
-     *        to be retrieved.
+     *            The unique identifier of the release execution log that needs
+     *            to be retrieved.
      * @return Returns a {@link ClientReleaseExecutionLog} or null if none could
      *         be found.
      */
@@ -123,9 +124,9 @@ public interface ReleaseService extends RemoteService {
      * Archives the specified release.
      * 
      * @param release
-     *        The release that is archived.
+     *            The release that is archived.
      * @throws ReleaseServiceException
-     *         Exception thrown when something goes wrong during archiving.
+     *             Exception thrown when something goes wrong during archiving.
      */
     void archiveRelease(ClientRelease release) throws ReleaseServiceException;
 
@@ -133,9 +134,10 @@ public interface ReleaseService extends RemoteService {
      * Unarchives the specified release.
      * 
      * @param release
-     *        The release that will be unarchived.
+     *            The release that will be unarchived.
      * @throws ReleaseServiceException
-     *         Exception thrown when something goes wrong during unarchiving.
+     *             Exception thrown when something goes wrong during
+     *             unarchiving.
      */
     void unArchiveRelease(ClientRelease release) throws ReleaseServiceException;
 

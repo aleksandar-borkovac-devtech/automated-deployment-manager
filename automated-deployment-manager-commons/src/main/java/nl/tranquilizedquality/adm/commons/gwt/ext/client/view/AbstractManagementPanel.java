@@ -44,243 +44,243 @@ import com.extjs.gxt.ui.client.widget.toolbar.ToolBar;
  */
 public abstract class AbstractManagementPanel extends ContentPanel {
 
-	/** The {@link Grid} containing all the records. */
-	protected Grid<BeanModel> grid;
+    /** The {@link Grid} containing all the records. */
+    protected Grid<BeanModel> grid;
 
-	/** The {@link PagingLoader} used to load data per page. */
-	protected PagingLoader<PagingLoadResult<ModelData>> loader;
+    /** The {@link PagingLoader} used to load data per page. */
+    protected PagingLoader<PagingLoadResult<ModelData>> loader;
 
-	/**
-	 * The {@link RpcProxy} used to retrieve the data for the
-	 * {@link PagingLoader}.
-	 */
-	@SuppressWarnings("rawtypes")
-	protected RpcProxy proxy;
+    /**
+     * The {@link RpcProxy} used to retrieve the data for the
+     * {@link PagingLoader}.
+     */
+    @SuppressWarnings("rawtypes")
+    protected RpcProxy proxy;
 
-	/** The state ID to use for this panel. */
-	protected String panelStateId;
+    /** The state ID to use for this panel. */
+    protected String panelStateId;
 
-	/** The {@link ToolBar} that will be shown on the bottom of the panel. */
-	protected PagingToolBar bottomToolbar;
+    /** The {@link ToolBar} that will be shown on the bottom of the panel. */
+    protected PagingToolBar bottomToolbar;
 
-	/** Add button that will be placed on the toolbar. */
-	protected Button addButton;
+    /** Add button that will be placed on the toolbar. */
+    protected Button addButton;
 
-	/** Edit button that will be placed on the toolbar. */
-	protected Button editButton;
+    /** Edit button that will be placed on the toolbar. */
+    protected Button editButton;
 
-	/** Delete button that will be placed on the toolbar. */
-	protected Button deleteButton;
+    /** Delete button that will be placed on the toolbar. */
+    protected Button deleteButton;
 
-	/** Remove {@link MenuItem} that will be placed in the context menu. */
-	protected MenuItem removeMenuItem;
+    /** Remove {@link MenuItem} that will be placed in the context menu. */
+    protected MenuItem removeMenuItem;
 
-	/** Edit {@link MenuItem} that will be placed in the context menu. */
-	protected MenuItem editMenuItem;
+    /** Edit {@link MenuItem} that will be placed in the context menu. */
+    protected MenuItem editMenuItem;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractManagementPanel() {
-		setBodyBorder(false);
-		setHeading("Records");
-		setButtonAlign(HorizontalAlignment.CENTER);
-		setLayout(new FitLayout());
+    /**
+     * Default constructor.
+     */
+    public AbstractManagementPanel() {
+        setBodyBorder(false);
+        setHeading("Records");
+        setButtonAlign(HorizontalAlignment.CENTER);
+        setLayout(new FitLayout());
 
-		initializeWidgets();
-	}
+        initializeWidgets();
+    }
 
-	/**
-	 * Creates all widgets on the {@link ContentPanel}.
-	 */
-	protected void initializeWidgets() {
-		grid = createTable();
-		final ToolBar topToolbar = createTopToolbar();
-		bottomToolbar = createBottomToolbar();
+    /**
+     * Creates all widgets on the {@link ContentPanel}.
+     */
+    protected void initializeWidgets() {
+        grid = createTable();
+        final ToolBar topToolbar = createTopToolbar();
+        bottomToolbar = createBottomToolbar();
 
-		setTopComponent(topToolbar);
-		setBottomComponent(bottomToolbar);
-		add(grid);
-	}
+        setTopComponent(topToolbar);
+        setBottomComponent(bottomToolbar);
+        add(grid);
+    }
 
-	/**
-	 * Creates the {@link ToolBar} that will be placed on the top of the
-	 * {@link Grid}.
-	 * 
-	 * @return Returns a {@link ToolBar} with its components.
-	 */
-	private ToolBar createTopToolbar() {
-		/*
-		 * Create the toolbar itself.
-		 */
-		final ToolBar toolBar = new ToolBar();
+    /**
+     * Creates the {@link ToolBar} that will be placed on the top of the
+     * {@link Grid}.
+     * 
+     * @return Returns a {@link ToolBar} with its components.
+     */
+    private ToolBar createTopToolbar() {
+        /*
+         * Create the toolbar itself.
+         */
+        final ToolBar toolBar = new ToolBar();
 
-		addButton = new Button("Add new");
-		toolBar.add(addButton);
-		toolBar.add(new SeparatorToolItem());
+        addButton = new Button("Add new");
+        toolBar.add(addButton);
+        toolBar.add(new SeparatorToolItem());
 
-		addButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+        addButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				add();
-			}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                add();
+            }
 
-		});
+        });
 
-		editButton = new Button("Edit selected");
-		toolBar.add(editButton);
-		toolBar.add(new SeparatorToolItem());
+        editButton = new Button("Edit selected");
+        toolBar.add(editButton);
+        toolBar.add(new SeparatorToolItem());
 
-		editButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+        editButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				edit();
-			}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                edit();
+            }
 
-		});
+        });
 
-		deleteButton = new Button("Delete selected");
-		toolBar.add(deleteButton);
-		toolBar.add(new SeparatorToolItem());
+        deleteButton = new Button("Delete selected");
+        toolBar.add(deleteButton);
+        toolBar.add(new SeparatorToolItem());
 
-		deleteButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+        deleteButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
 
-			@Override
-			public void componentSelected(final ButtonEvent ce) {
-				deleteSelected();
-			}
+            @Override
+            public void componentSelected(final ButtonEvent ce) {
+                deleteSelected();
+            }
 
-		});
+        });
 
-		return toolBar;
-	}
+        return toolBar;
+    }
 
-	/**
-	 * Logic that will be executed on an add action.
-	 */
-	protected abstract void add();
+    /**
+     * Logic that will be executed on an add action.
+     */
+    protected abstract void add();
 
-	/**
-	 * Logic that will be executed on an edit action.
-	 */
-	protected abstract void edit();
+    /**
+     * Logic that will be executed on an edit action.
+     */
+    protected abstract void edit();
 
-	/**
-	 * Logic that will be executed on a delete action.
-	 */
-	protected abstract void deleteSelected();
+    /**
+     * Logic that will be executed on a delete action.
+     */
+    protected abstract void deleteSelected();
 
-	/**
-	 * Refreshes the data in the grid by using the paging toolbar refresh
-	 * method.
-	 */
-	protected void refresh() {
-		this.bottomToolbar.refresh();
-	}
+    /**
+     * Refreshes the data in the grid by using the paging toolbar refresh
+     * method.
+     */
+    protected void refresh() {
+        this.bottomToolbar.refresh();
+    }
 
-	/**
-	 * Creates the {@link ToolBar} that will be placed on the bottom of the
-	 * {@link Grid}.
-	 * 
-	 * @return Returns a {@link ToolBar} with its components.
-	 */
-	protected PagingToolBar createBottomToolbar() {
-		/*
-		 * Setup the toolbar.
-		 */
-		final PagingToolBar toolBar = new PagingToolBar(50);
-		toolBar.bind(loader);
+    /**
+     * Creates the {@link ToolBar} that will be placed on the bottom of the
+     * {@link Grid}.
+     * 
+     * @return Returns a {@link ToolBar} with its components.
+     */
+    protected PagingToolBar createBottomToolbar() {
+        /*
+         * Setup the toolbar.
+         */
+        final PagingToolBar toolBar = new PagingToolBar(50);
+        toolBar.bind(loader);
 
-		return toolBar;
-	}
+        return toolBar;
+    }
 
-	/**
-	 * Create the columns of the {@link Grid}.
-	 * 
-	 * @return Returns a {@link List} containing {@link ColumnConfig} objects
-	 *         representing the configuration of the columns.
-	 */
-	protected abstract List<ColumnConfig> createColumns();
+    /**
+     * Create the columns of the {@link Grid}.
+     * 
+     * @return Returns a {@link List} containing {@link ColumnConfig} objects
+     *         representing the configuration of the columns.
+     */
+    protected abstract List<ColumnConfig> createColumns();
 
-	/**
-	 * Creates the table on a {@link ContentPanel}.
-	 * 
-	 * @return Returns the {@link ContentPanel} containing the grid.
-	 */
-	protected Grid<BeanModel> createTable() {
-		final List<ColumnConfig> configs = createColumns();
-		final ColumnModel cm = new ColumnModel(configs);
-		final Menu menu = createContextMenu();
+    /**
+     * Creates the table on a {@link ContentPanel}.
+     * 
+     * @return Returns the {@link ContentPanel} containing the grid.
+     */
+    protected Grid<BeanModel> createTable() {
+        final List<ColumnConfig> configs = createColumns();
+        final ColumnModel cm = new ColumnModel(configs);
+        final Menu menu = createContextMenu();
 
-		loader = new BasePagingLoader<PagingLoadResult<ModelData>>(proxy, new BeanModelReader());
-		loader.setRemoteSort(true);
+        loader = new BasePagingLoader<PagingLoadResult<ModelData>>(proxy, new BeanModelReader());
+        loader.setRemoteSort(true);
 
-		final ListStore<BeanModel> store = new ListStore<BeanModel>(loader);
+        final ListStore<BeanModel> store = new ListStore<BeanModel>(loader);
 
-		final Grid<BeanModel> grid = new Grid<BeanModel>(store, cm);
-		grid.setStyleAttribute("borderTop", "none");
-		grid.setBorders(true);
-		grid.setContextMenu(menu);
-		grid.setLoadMask(true);
-		grid.setStateId(panelStateId);
-		grid.setStateful(true);
-		grid.addListener(Events.Attach, new Listener<GridEvent<BeanModel>>() {
+        final Grid<BeanModel> grid = new Grid<BeanModel>(store, cm);
+        grid.setStyleAttribute("borderTop", "none");
+        grid.setBorders(true);
+        grid.setContextMenu(menu);
+        grid.setLoadMask(true);
+        grid.setStateId(panelStateId);
+        grid.setStateful(true);
+        grid.addListener(Events.Attach, new Listener<GridEvent<BeanModel>>() {
 
-			public void handleEvent(final GridEvent<BeanModel> be) {
-				final PagingLoadConfig config = new BasePagingLoadConfig();
-				config.setOffset(0);
-				config.setLimit(50);
+            public void handleEvent(final GridEvent<BeanModel> be) {
+                final PagingLoadConfig config = new BasePagingLoadConfig();
+                config.setOffset(0);
+                config.setLimit(50);
 
-				final Map<String, Object> state = grid.getState();
-				if (state.containsKey("offset")) {
-					final int offset = (Integer) state.get("offset");
-					final int limit = (Integer) state.get("limit");
-					config.setOffset(offset);
-					config.setLimit(limit);
-				}
-				if (state.containsKey("sortField")) {
-					config.setSortField((String) state.get("sortField"));
-					config.setSortDir(SortDir.valueOf((String) state.get("sortDir")));
-				}
-				loader.load(config);
-			}
-		});
+                final Map<String, Object> state = grid.getState();
+                if (state.containsKey("offset")) {
+                    final int offset = (Integer) state.get("offset");
+                    final int limit = (Integer) state.get("limit");
+                    config.setOffset(offset);
+                    config.setLimit(limit);
+                }
+                if (state.containsKey("sortField")) {
+                    config.setSortField((String) state.get("sortField"));
+                    config.setSortDir(SortDir.valueOf((String) state.get("sortDir")));
+                }
+                loader.load(config);
+            }
+        });
 
-		return grid;
-	}
+        return grid;
+    }
 
-	/**
-	 * Creates a context menu.
-	 * 
-	 * @return Returns a {@link Menu}.
-	 */
-	protected Menu createContextMenu() {
-		final Menu menu = new Menu();
+    /**
+     * Creates a context menu.
+     * 
+     * @return Returns a {@link Menu}.
+     */
+    protected Menu createContextMenu() {
+        final Menu menu = new Menu();
 
-		editMenuItem = new MenuItem();
-		editMenuItem.setText("Edit");
-		editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
+        editMenuItem = new MenuItem();
+        editMenuItem.setText("Edit");
+        editMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
 
-			@Override
-			public void componentSelected(final MenuEvent ce) {
-				edit();
-			}
-		});
-		menu.add(editMenuItem);
+            @Override
+            public void componentSelected(final MenuEvent ce) {
+                edit();
+            }
+        });
+        menu.add(editMenuItem);
 
-		removeMenuItem = new MenuItem();
-		removeMenuItem.setText("Delete");
-		removeMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
+        removeMenuItem = new MenuItem();
+        removeMenuItem.setText("Delete");
+        removeMenuItem.addSelectionListener(new SelectionListener<MenuEvent>() {
 
-			@Override
-			public void componentSelected(final MenuEvent ce) {
-				deleteSelected();
-			}
-		});
-		menu.add(removeMenuItem);
+            @Override
+            public void componentSelected(final MenuEvent ce) {
+                deleteSelected();
+            }
+        });
+        menu.add(removeMenuItem);
 
-		return menu;
-	}
+        return menu;
+    }
 }

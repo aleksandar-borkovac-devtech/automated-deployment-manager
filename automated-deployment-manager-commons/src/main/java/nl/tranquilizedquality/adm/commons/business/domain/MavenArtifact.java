@@ -42,7 +42,7 @@ public interface MavenArtifact extends UpdatableDomainObject<Long> {
      * Sets the file.
      * 
      * @param file
-     *        The file that will be set.
+     *            The file that will be set.
      */
     void setFile(String file);
 
@@ -76,7 +76,7 @@ public interface MavenArtifact extends UpdatableDomainObject<Long> {
      * Sets the rank of an artifact.
      * 
      * @param rank
-     *        The rank that will be given to this artifact.
+     *            The rank that will be given to this artifact.
      */
     void setRank(Integer rank);
 
@@ -91,7 +91,7 @@ public interface MavenArtifact extends UpdatableDomainObject<Long> {
      * Sets the user group this artifact belongs to.
      * 
      * @param userGroup
-     *        The user group that will be set.
+     *            The user group that will be set.
      */
     void setUserGroup(UserGroup userGroup);
 

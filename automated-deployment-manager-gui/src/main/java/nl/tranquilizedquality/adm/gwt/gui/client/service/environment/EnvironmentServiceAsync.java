@@ -37,166 +37,166 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface EnvironmentServiceAsync {
 
-	/**
-	 * Retrieves a {@link ClientDestination} with the specified unique
-	 * identifier.
-	 * 
-	 * @param id
-	 *            The unique identifier of the destination.
-	 * @param callback
-	 *            Returns a {@link ClientDestination} or null if none could be
-	 *            found.
-	 */
-	void findDestinationById(Long id, AsyncCallback<ClientDestination> callback);
+    /**
+     * Retrieves a {@link ClientDestination} with the specified unique
+     * identifier.
+     * 
+     * @param id
+     *            The unique identifier of the destination.
+     * @param callback
+     *            Returns a {@link ClientDestination} or null if none could be
+     *            found.
+     */
+    void findDestinationById(Long id, AsyncCallback<ClientDestination> callback);
 
-	/**
-	 * Saves the specified destination.
-	 * 
-	 * @param destination
-	 *            The destination that will be saved.
-	 * @param callback
-	 *            Returns the saved {@link ClientDestination}.
-	 */
-	void saveDestination(ClientDestination destination, AsyncCallback<ClientDestination> callback);
+    /**
+     * Saves the specified destination.
+     * 
+     * @param destination
+     *            The destination that will be saved.
+     * @param callback
+     *            Returns the saved {@link ClientDestination}.
+     */
+    void saveDestination(ClientDestination destination, AsyncCallback<ClientDestination> callback);
 
-	/**
-	 * Searches for destinations based on the specified search criteria.
-	 * 
-	 * @param config
-	 *            The paging configuration.
-	 * @param sc
-	 *            The search criteria.
-	 * @param callback
-	 *            Returns a {@link PagingLoadResult} containing the search
-	 *            results.
-	 */
-	void findDestinations(PagingLoadConfig config, ClientDestinationSearchCommand sc,
-			AsyncCallback<PagingLoadResult<ClientDestination>> callback);
+    /**
+     * Searches for destinations based on the specified search criteria.
+     * 
+     * @param config
+     *            The paging configuration.
+     * @param sc
+     *            The search criteria.
+     * @param callback
+     *            Returns a {@link PagingLoadResult} containing the search
+     *            results.
+     */
+    void findDestinations(PagingLoadConfig config, ClientDestinationSearchCommand sc,
+            AsyncCallback<PagingLoadResult<ClientDestination>> callback);
 
-	/**
-	 * Retrieves a {@link ClientEnvironment} with the specified unique
-	 * identifier.
-	 * 
-	 * @param id
-	 *            The unique identifier of the environment.
-	 * @param callback
-	 *            Returns a {@link ClientEnvironment} or null if none could be
-	 *            found.
-	 */
-	void findEnvironmentById(Long id, AsyncCallback<ClientEnvironment> callback);
+    /**
+     * Retrieves a {@link ClientEnvironment} with the specified unique
+     * identifier.
+     * 
+     * @param id
+     *            The unique identifier of the environment.
+     * @param callback
+     *            Returns a {@link ClientEnvironment} or null if none could be
+     *            found.
+     */
+    void findEnvironmentById(Long id, AsyncCallback<ClientEnvironment> callback);
 
-	/**
-	 * Retrieves all available environments.
-	 * 
-	 * @param callback
-	 *            Returns a {@link List} containing {@link ClientEnvironment}
-	 *            objects.
-	 */
-	void findEnvironments(AsyncCallback<List<ClientEnvironment>> callback);
+    /**
+     * Retrieves all available environments.
+     * 
+     * @param callback
+     *            Returns a {@link List} containing {@link ClientEnvironment}
+     *            objects.
+     */
+    void findEnvironments(AsyncCallback<List<ClientEnvironment>> callback);
 
-	/**
-	 * Retrieves all available environments as a paging result.
-	 * 
-	 * @param config
-	 *            The paging configuration.
-	 * @param callback
-	 *            Returns the environments.
-	 */
-	void findAvailableEnvironments(PagingLoadConfig config,
-			AsyncCallback<PagingLoadResult<ClientEnvironment>> callback);
+    /**
+     * Retrieves all available environments as a paging result.
+     * 
+     * @param config
+     *            The paging configuration.
+     * @param callback
+     *            Returns the environments.
+     */
+    void findAvailableEnvironments(PagingLoadConfig config,
+            AsyncCallback<PagingLoadResult<ClientEnvironment>> callback);
 
-	/**
-	 * Saves the specified environment.
-	 * 
-	 * @param environment
-	 *            The environment that will be saved.
-	 * @param callback
-	 *            Returns the saved {@link ClientEnvironment}.
-	 */
-	void saveEnvironment(ClientEnvironment environment, AsyncCallback<ClientEnvironment> callback);
+    /**
+     * Saves the specified environment.
+     * 
+     * @param environment
+     *            The environment that will be saved.
+     * @param callback
+     *            Returns the saved {@link ClientEnvironment}.
+     */
+    void saveEnvironment(ClientEnvironment environment, AsyncCallback<ClientEnvironment> callback);
 
-	/**
-	 * Deletes the specified {@link ClientDeployerParameter}.
-	 * 
-	 * @param location
-	 *            The location that will be deleted.
-	 * @param callback
-	 *            Callback to return result.
-	 */
-	void deleteDestinationLocation(ClientDeployerParameter location, AsyncCallback<Void> callback);
+    /**
+     * Deletes the specified {@link ClientDeployerParameter}.
+     * 
+     * @param location
+     *            The location that will be deleted.
+     * @param callback
+     *            Callback to return result.
+     */
+    void deleteDestinationLocation(ClientDeployerParameter location, AsyncCallback<Void> callback);
 
-	/**
-	 * Retrieves a {@link DeployerParameter} with the specified identifier.
-	 * 
-	 * @param id
-	 *            The unique identifier.
-	 * @param callback
-	 *            Returns a {@link ClientDeployerParameter} or null if none is
-	 *            found.
-	 */
-	void findLocationById(Long id, AsyncCallback<ClientDeployerParameter> callback);
+    /**
+     * Retrieves a {@link DeployerParameter} with the specified identifier.
+     * 
+     * @param id
+     *            The unique identifier.
+     * @param callback
+     *            Returns a {@link ClientDeployerParameter} or null if none is
+     *            found.
+     */
+    void findLocationById(Long id, AsyncCallback<ClientDeployerParameter> callback);
 
-	/**
-	 * Retrieves all available destinations.
-	 * 
-	 * @param callback
-	 *            Returns a {@link List} of destinations or an empty one if none
-	 *            could be found.
-	 */
-	void findAvailableDestinations(AsyncCallback<List<ClientDestination>> callback);
+    /**
+     * Retrieves all available destinations.
+     * 
+     * @param callback
+     *            Returns a {@link List} of destinations or an empty one if none
+     *            could be found.
+     */
+    void findAvailableDestinations(AsyncCallback<List<ClientDestination>> callback);
 
-	/**
-	 * Retrieves the {@link ClientDestinationHost} with the specified id.
-	 * 
-	 * @param id
-	 *            The unique identifier of the host.
-	 * @param callback
-	 *            Returns a {@link ClientDestinationHost} or null if none could
-	 *            be found.
-	 */
-	void findDestinationHostById(Long id, AsyncCallback<ClientDestinationHost> callback);
+    /**
+     * Retrieves the {@link ClientDestinationHost} with the specified id.
+     * 
+     * @param id
+     *            The unique identifier of the host.
+     * @param callback
+     *            Returns a {@link ClientDestinationHost} or null if none could
+     *            be found.
+     */
+    void findDestinationHostById(Long id, AsyncCallback<ClientDestinationHost> callback);
 
-	/**
-	 * Stores the specified host.
-	 * 
-	 * @param host
-	 *            The host that will be saved.
-	 * @param callback
-	 *            Returns the stored {@link ClientDestinationHost}.
-	 */
-	void saveDestinationHost(ClientDestinationHost host,
-			AsyncCallback<ClientDestinationHost> callback);
+    /**
+     * Stores the specified host.
+     * 
+     * @param host
+     *            The host that will be saved.
+     * @param callback
+     *            Returns the stored {@link ClientDestinationHost}.
+     */
+    void saveDestinationHost(ClientDestinationHost host,
+            AsyncCallback<ClientDestinationHost> callback);
 
-	/**
-	 * Searches for hosts on the specified search criteria.
-	 * 
-	 * @param loadConfig
-	 *            The paging configuration.
-	 * @param sc
-	 *            The search criteria.
-	 * @param callback
-	 *            Returns the {@link ClientDestinationHost} objects.
-	 */
-	void findDestinationHosts(PagingLoadConfig loadConfig, ClientDestinationHostSearchCommand sc,
-			AsyncCallback<PagingLoadResult<ClientDestinationHost>> callback);
+    /**
+     * Searches for hosts on the specified search criteria.
+     * 
+     * @param loadConfig
+     *            The paging configuration.
+     * @param sc
+     *            The search criteria.
+     * @param callback
+     *            Returns the {@link ClientDestinationHost} objects.
+     */
+    void findDestinationHosts(PagingLoadConfig loadConfig, ClientDestinationHostSearchCommand sc,
+            AsyncCallback<PagingLoadResult<ClientDestinationHost>> callback);
 
-	/**
-	 * Retrieves all available hosts.
-	 * 
-	 * @param hosts
-	 *            The available hosts.
-	 */
-	void findDestinationHosts(AsyncCallback<List<ClientDestinationHost>> hosts);
+    /**
+     * Retrieves all available hosts.
+     * 
+     * @param hosts
+     *            The available hosts.
+     */
+    void findDestinationHosts(AsyncCallback<List<ClientDestinationHost>> hosts);
 
-	/**
-	 * Searches for environments based on the search criteria passed in.
-	 * 
-	 * @param sc
-	 *            The search criteria used for searching for environments.
-	 * @return Returns a {@link List} containing {@link ClientEnvironment}
-	 *         objects or an empty one if none could be found.
-	 */
-	void findEnvironments(PagingLoadConfig loadConfig, ClientEnvironmentSearchCommand sc,
-			AsyncCallback<PagingLoadResult<ClientEnvironment>> callback);
+    /**
+     * Searches for environments based on the search criteria passed in.
+     * 
+     * @param sc
+     *            The search criteria used for searching for environments.
+     * @return Returns a {@link List} containing {@link ClientEnvironment}
+     *         objects or an empty one if none could be found.
+     */
+    void findEnvironments(PagingLoadConfig loadConfig, ClientEnvironmentSearchCommand sc,
+            AsyncCallback<PagingLoadResult<ClientEnvironment>> callback);
 
 }

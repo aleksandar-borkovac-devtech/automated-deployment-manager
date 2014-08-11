@@ -27,31 +27,31 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  */
 public class ClientProgress implements Serializable, BeanModelTag {
 
-	/**
-	 * Unique identifier used for serialization.
-	 */
-	private static final long serialVersionUID = -7493284599761012903L;
+    /**
+     * Unique identifier used for serialization.
+     */
+    private static final long serialVersionUID = -7493284599761012903L;
 
-	/** The current progress. */
-	private int progress;
+    /** The current progress. */
+    private int progress;
 
-	/** The description of the current activity. */
-	private String description;
+    /** The description of the current activity. */
+    private String description;
 
-	public int getProgress() {
-		return progress;
-	}
+    public int getProgress() {
+        return progress;
+    }
 
-	public void setProgress(final int progress) {
-		this.progress = progress;
-	}
+    public void setProgress(final int progress) {
+        this.progress = progress;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(final String description) {
-		this.description = description;
-	}
+    public void setDescription(final String description) {
+        this.description = description;
+    }
 
 }

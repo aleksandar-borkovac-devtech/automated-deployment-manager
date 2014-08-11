@@ -77,7 +77,8 @@ public class WarDeployer implements Deployer<MavenArtifact> {
         /*
          * Check if the configuration is done properly.
          */
-        if (StringUtils.isEmpty(artifactBackupDirectory) || StringUtils.isEmpty(webAppsDirectory) || StringUtils.isEmpty(appServerHome)) {
+        if (StringUtils.isEmpty(artifactBackupDirectory) || StringUtils.isEmpty(webAppsDirectory)
+                || StringUtils.isEmpty(appServerHome)) {
             final String msg = "Destination locations not configured properly!";
 
             if (LOGGER.isErrorEnabled()) {
@@ -96,7 +97,8 @@ public class WarDeployer implements Deployer<MavenArtifact> {
         final File artifactFile = new File(fileName);
 
         /*
-         * Rename war file to have no trailing version or use the specified context path.
+         * Rename war file to have no trailing version or use the specified
+         * context path.
          */
         final String version = artifact.getVersion();
         File renamedFile = null;

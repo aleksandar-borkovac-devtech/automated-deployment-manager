@@ -15,35 +15,35 @@ import com.extjs.gxt.ui.client.widget.form.SimpleComboValue;
  */
 public class SimpleComboValueConverter<T> extends Converter {
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public Object convertFieldValue(final Object value) {
-		if (value == null) {
-			return value;
-		}
+    @SuppressWarnings("unchecked")
+    @Override
+    public Object convertFieldValue(final Object value) {
+        if (value == null) {
+            return value;
+        }
 
-		final SimpleComboValue<T> comboValue = (SimpleComboValue<T>) value;
+        final SimpleComboValue<T> comboValue = (SimpleComboValue<T>) value;
 
-		return comboValue.getValue();
-	}
+        return comboValue.getValue();
+    }
 
-	@Override
-	public Object convertModelValue(final Object value) {
-		if (value == null) {
-			return value;
-		}
+    @Override
+    public Object convertModelValue(final Object value) {
+        if (value == null) {
+            return value;
+        }
 
-		final SimpleComboValue<String> comboValue = new SimpleComboValue<String>() {
+        final SimpleComboValue<String> comboValue = new SimpleComboValue<String>() {
 
-			/**
+            /**
              * 
              */
-			private static final long serialVersionUID = -2024505771795986397L;
-		};
+            private static final long serialVersionUID = -2024505771795986397L;
+        };
 
-		comboValue.setValue(value.toString());
+        comboValue.setValue(value.toString());
 
-		return comboValue;
-	}
+        return comboValue;
+    }
 
 }

@@ -30,7 +30,10 @@ public class MavenModuleDetailsPage extends AbstractAdmSeleniumPage {
     private static final String FIRST_AVAILABLE_DEPENDENCY =
             "//div[@id='maven-module-available-dependencies-tbl']/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/table/tbody/tr/td[3]/div";
 
-    /** Locator that identifies the button that can be used to save a maven module. */
+    /**
+     * Locator that identifies the button that can be used to save a maven
+     * module.
+     */
     private static final String SAVE_ARTIFACT_BTN = "save-artifact-btn";
 
     /** XPath definition for the maven module identifier text field. */
@@ -45,35 +48,43 @@ public class MavenModuleDetailsPage extends AbstractAdmSeleniumPage {
     /** XPath definition for the maven module name text field. */
     private static final String MAVEN_MODULE_DETAILS_PNL_NAME_INPUT = "maven-module-details-pnl-name-input";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String MAVEN_MODULE_TYPE_COMBO_ARROW = "//div[@id='maven-module-details-pnl-type']/img[1]";
 
-    /** XPath definition for the combobox arrow button to show the items you can select from. */
+    /**
+     * XPath definition for the combobox arrow button to show the items you can
+     * select from.
+     */
     private static final String MAVEN_MODULE_GROUP_COMBO_ARROW = "//div[@id='maven-module-details-pnl-user-group']/img[1]";
 
     /** XPath definition for the first group combo list item. */
     private static final String MAVEN_MODULE_GROUP_COMBO_LIST_ITEM = "//html/body/div[6]/div[1]/div[1]";
 
     /**
-     * XPath definition for the confirmation button on the pop-up window when saving a maven module.
+     * XPath definition for the confirmation button on the pop-up window when
+     * saving a maven module.
      */
     private static final String MAVEN_MODULE_SAVE_CONFIRMATION_BTN =
             "//html/body/div[6]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[2]/td[2]/em/button";
 
     /**
-     * XPath definition for the confirmation button on the pop-up window when saving a maven module.
+     * XPath definition for the confirmation button on the pop-up window when
+     * saving a maven module.
      */
     private static final String MAVEN_MODULE_SAVE_CONFIRMATION_ADD_DEPENDENCY_BTN =
             "//html/body/div[7]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[1]/td[1]/table[1]/tbody/tr[2]/td[2]/em/button";
 
     /**
-     * Constructor taking the selenium object so we can perform actions on the page and the
-     * condition runner that drives the test case.
+     * Constructor taking the selenium object so we can perform actions on the
+     * page and the condition runner that drives the test case.
      * 
      * @param selenium
-     *        The selenium object used to perform action on the login page.
+     *            The selenium object used to perform action on the login page.
      * @param conditionRunner
-     *        The condition runner used to run the test case.
+     *            The condition runner used to run the test case.
      */
     public MavenModuleDetailsPage(final Selenium selenium, final ConditionRunner conditionRunner) {
         super(selenium, conditionRunner);
@@ -83,7 +94,7 @@ public class MavenModuleDetailsPage extends AbstractAdmSeleniumPage {
      * Adds a maven module with the specified input data.
      * 
      * @param mavenModule
-     *        The input data that will be used.
+     *            The input data that will be used.
      */
     public void addMavenModule(final MavenModuleDto mavenModule) {
         final String name = mavenModule.getName();
@@ -121,11 +132,11 @@ public class MavenModuleDetailsPage extends AbstractAdmSeleniumPage {
     }
 
     /**
-     * Adds a dependency to the maven module with the name that is specified in the
-     * {@link MavenModuleDto}.
+     * Adds a dependency to the maven module with the name that is specified in
+     * the {@link MavenModuleDto}.
      * 
      * @param dependency
-     *        The module that should be selected as dependency.
+     *            The module that should be selected as dependency.
      */
     public void addDependency(final MavenModuleDto dependency) {
         pause(1000);

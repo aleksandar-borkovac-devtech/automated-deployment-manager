@@ -122,7 +122,8 @@ public class DestinationManagerTest extends EasyMockSupport {
         final HibernateUser user = new HibernateUser();
         expect(securityContextManager.findLoggedInUser()).andReturn(user);
         expect(userGroupDao.findUserGroupsByUser(user)).andReturn(new ArrayList<UserGroup>());
-        expect(destinationHostDao.findBySearchCommand(isA(DestinationHostSearchCommand.class))).andReturn(new ArrayList<DestinationHost>());
+        expect(destinationHostDao.findBySearchCommand(isA(DestinationHostSearchCommand.class))).andReturn(
+                new ArrayList<DestinationHost>());
 
         replayAll();
 

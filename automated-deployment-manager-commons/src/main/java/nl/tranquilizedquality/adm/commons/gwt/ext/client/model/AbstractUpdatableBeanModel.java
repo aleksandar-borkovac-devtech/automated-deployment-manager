@@ -13,9 +13,9 @@ import com.extjs.gxt.ui.client.data.BeanModelTag;
  *            The implementaiton type.
  */
 public abstract class AbstractUpdatableBeanModel<T> extends AbstractUpdatableModel<T> implements
-		BeanModelTag {
+        BeanModelTag {
 
-	/** Unique identifier. */
-	private static final long serialVersionUID = 704572028962551430L;
+    /** Unique identifier. */
+    private static final long serialVersionUID = 704572028962551430L;
 
 }

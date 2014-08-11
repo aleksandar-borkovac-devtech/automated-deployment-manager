@@ -29,75 +29,74 @@ import com.extjs.gxt.ui.client.data.PagingLoadResult;
  */
 public class PrivilegeServiceImpl extends AbstractService implements PrivilegeService {
 
-	/**
-	 * The factory that transforms the client side models into domain objects
-	 * and visa versa.
-	 */
-	private static final PrivilegeFactory PRIVILEGE_FACTORY = new PrivilegeFactory();
+    /**
+     * The factory that transforms the client side models into domain objects
+     * and visa versa.
+     */
+    private static final PrivilegeFactory PRIVILEGE_FACTORY = new PrivilegeFactory();
 
-	/** Manager that manages {@link Privilege} objects. */
-	private PrivilegeManager privilegeManager;
+    /** Manager that manages {@link Privilege} objects. */
+    private PrivilegeManager privilegeManager;
 
-	@Override
-	public PagingLoadResult<ClientPrivilege> findPrivileges(final PagingLoadConfig config, final ClientPrivilegeSearchCommand sc) {
+    @Override
+    public PagingLoadResult<ClientPrivilege> findPrivileges(final PagingLoadConfig config, final ClientPrivilegeSearchCommand sc) {
 
-		/*
-		 * Search for privileges.
-		 */
-		final List<Privilege> privileges = privilegeManager.findPrivileges(sc);
+        /*
+         * Search for privileges.
+         */
+        final List<Privilege> privileges = privilegeManager.findPrivileges(sc);
 
-		/*
-		 * Create the client beans.
-		 */
-		final List<ClientPrivilege> clientBeans = PRIVILEGE_FACTORY.createClientBeans(privileges);
+        /*
+         * Create the client beans.
+         */
+        final List<ClientPrivilege> clientBeans = PRIVILEGE_FACTORY.createClientBeans(privileges);
 
-		int count = privilegeManager.findNumberOfPrivileges(sc);
+        int count = privilegeManager.findNumberOfPrivileges(sc);
 
-		/*
-		 * Filter the list if there is a filter defined.
-		 */
-		final List<? extends Privilege> excludedPrivileges = sc.getExcludedPrivileges();
-		if (excludedPrivileges != null) {
-			clientBeans.removeAll(excludedPrivileges);
-			count -= excludedPrivileges.size();
-		}
+        /*
+         * Filter the list if there is a filter defined.
+         */
+        final List<? extends Privilege> excludedPrivileges = sc.getExcludedPrivileges();
+        if (excludedPrivileges != null) {
+            clientBeans.removeAll(excludedPrivileges);
+            count -= excludedPrivileges.size();
+        }
 
-		return new BasePagingLoadResult<ClientPrivilege>(clientBeans, config.getOffset(), count);
-	}
+        return new BasePagingLoadResult<ClientPrivilege>(clientBeans, config.getOffset(), count);
+    }
 
-	@Override
-	public ClientPrivilege findPrivilegeById(final Long id) {
-		final Privilege privilege = privilegeManager.findPrivilegeById(id);
+    @Override
+    public ClientPrivilege findPrivilegeById(final Long id) {
+        final Privilege privilege = privilegeManager.findPrivilegeById(id);
 
-		final ClientPrivilege clientPrivilege = PRIVILEGE_FACTORY.createClientBean(privilege);
+        final ClientPrivilege clientPrivilege = PRIVILEGE_FACTORY.createClientBean(privilege);
 
-		return clientPrivilege;
-	}
+        return clientPrivilege;
+    }
 
-	@Override
-	public ClientPrivilege savePrivilege(final ClientPrivilege privilege) throws PrivilegeServiceException {
+    @Override
+    public ClientPrivilege savePrivilege(final ClientPrivilege privilege) throws PrivilegeServiceException {
 
-		final HibernatePrivilege hibernatePrivilege = PRIVILEGE_FACTORY.createPersistentBean(privilege);
+        final HibernatePrivilege hibernatePrivilege = PRIVILEGE_FACTORY.createPersistentBean(privilege);
 
-		final Errors errors = new BindException(hibernatePrivilege, hibernatePrivilege.getClass().getName());
+        final Errors errors = new BindException(hibernatePrivilege, hibernatePrivilege.getClass().getName());
 
-		try {
-			final Privilege storedPrivilege = privilegeManager.storePrivilege(hibernatePrivilege, errors);
+        try {
+            final Privilege storedPrivilege = privilegeManager.storePrivilege(hibernatePrivilege, errors);
 
-			return PRIVILEGE_FACTORY.createClientBean(storedPrivilege);
-		}
-		catch (final PrivilegeManagerException e) {
-			final List<String> errorList = createErrorList(errors);
-			throw new PrivilegeServiceException("Failed to store privilege!", e, errorList);
-		}
-	}
+            return PRIVILEGE_FACTORY.createClientBean(storedPrivilege);
+        } catch (final PrivilegeManagerException e) {
+            final List<String> errorList = createErrorList(errors);
+            throw new PrivilegeServiceException("Failed to store privilege!", e, errorList);
+        }
+    }
 
-	/**
-	 * @param privilegeManager
-	 *            the privilegeManager to set
-	 */
-	@Required
-	public void setPrivilegeManager(final PrivilegeManager privilegeManager) {
-		this.privilegeManager = privilegeManager;
-	}
+    /**
+     * @param privilegeManager
+     *            the privilegeManager to set
+     */
+    @Required
+    public void setPrivilegeManager(final PrivilegeManager privilegeManager) {
+        this.privilegeManager = privilegeManager;
+    }
 }

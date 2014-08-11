@@ -118,7 +118,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param name
-     *        the name to set
+     *            the name to set
      */
     public void setName(final String name) {
         this.name = name;
@@ -137,7 +137,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param type
-     *        the type to set
+     *            the type to set
      */
     public void setType(final ArtifactType type) {
         this.type = type;
@@ -155,7 +155,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param group
-     *        the group to set
+     *            the group to set
      */
     public void setGroup(final String group) {
         this.group = group;
@@ -173,7 +173,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param artifactId
-     *        the artifactId to set
+     *            the artifactId to set
      */
     public void setArtifactId(final String artifactId) {
         this.artifactId = artifactId;
@@ -184,9 +184,9 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
      */
     @Override
     @ForeignKey(name = "FK_MAVEN_MODULE_DESTINATIONS", inverseName = "FK_DESTINATION_MODULES")
-    @JoinTable(name = "ADM.MAVEN_MODULE_DESTINATIONS", joinColumns = { @JoinColumn(referencedColumnName = "ID") }, inverseJoinColumns = { @JoinColumn(referencedColumnName = "ID") }, uniqueConstraints = { @UniqueConstraint(columnNames = {
-                                                                                                                                                                                                                                             "DESTINATIONS_ID",
-                                                                                                                                                                                                                                             "MAVEN_MODULES_ID" }) })
+    @JoinTable(name = "ADM.MAVEN_MODULE_DESTINATIONS", joinColumns = {@JoinColumn(referencedColumnName = "ID") }, inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID") }, uniqueConstraints = {@UniqueConstraint(columnNames = {
+            "DESTINATIONS_ID",
+            "MAVEN_MODULES_ID" }) })
     @ManyToMany(targetEntity = HibernateDestination.class, cascade = CascadeType.ALL)
     public List<Destination> getDestinations() {
         return destinations;
@@ -194,7 +194,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param destination
-     *        the destination to set
+     *            the destination to set
      */
     @Override
     public void setDestinations(final List<Destination> destinations) {
@@ -212,7 +212,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param targetSystemShutdown
-     *        the targetSystemShutdown to set
+     *            the targetSystemShutdown to set
      */
     public void setTargetSystemShutdown(final Boolean targetSystemShutdown) {
         this.targetSystemShutdown = targetSystemShutdown;
@@ -229,7 +229,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param targetSystemStartup
-     *        the targetSystemStartup to set
+     *            the targetSystemStartup to set
      */
     public void setTargetSystemStartup(final Boolean targetSystemStartup) {
         this.targetSystemStartup = targetSystemStartup;
@@ -246,7 +246,7 @@ public class HibernateMavenModule extends AbstractUpdatableDomainObject<Long> im
 
     /**
      * @param identifier
-     *        the identifier to set
+     *            the identifier to set
      */
     public void setIdentifier(final String identifier) {
         this.identifier = identifier;

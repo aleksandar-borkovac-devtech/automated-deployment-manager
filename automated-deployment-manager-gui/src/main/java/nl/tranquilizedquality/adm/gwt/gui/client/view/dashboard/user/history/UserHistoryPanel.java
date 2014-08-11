@@ -16,29 +16,29 @@ import com.extjs.gxt.ui.client.widget.layout.FitLayout;
  */
 public class UserHistoryPanel extends LayoutContainer implements NavigationalItem<ClientUser> {
 
-	/** The {@link User} where the history is shown from. */
-	private ClientUser clientUser;
+    /** The {@link User} where the history is shown from. */
+    private ClientUser clientUser;
 
-	/** The panel where the user roles are displayed in. */
-	private final UserRoleHistoryPanel userRoleHistoryPanel;
+    /** The panel where the user roles are displayed in. */
+    private final UserRoleHistoryPanel userRoleHistoryPanel;
 
-	/**
-	 * Default constructor.
-	 */
-	public UserHistoryPanel(final ClientUser clientUser) {
-		setLayout(new FitLayout());
+    /**
+     * Default constructor.
+     */
+    public UserHistoryPanel(final ClientUser clientUser) {
+        setLayout(new FitLayout());
 
-		this.clientUser = clientUser;
+        this.clientUser = clientUser;
 
-		userRoleHistoryPanel = new UserRoleHistoryPanel(this.clientUser);
+        userRoleHistoryPanel = new UserRoleHistoryPanel(this.clientUser);
 
-		add(userRoleHistoryPanel);
-	}
+        add(userRoleHistoryPanel);
+    }
 
-	@Override
-	public void setModel(final ClientUser model) {
-		this.clientUser = model;
-		userRoleHistoryPanel.setClientUser(clientUser);
-	}
+    @Override
+    public void setModel(final ClientUser model) {
+        this.clientUser = model;
+        userRoleHistoryPanel.setClientUser(clientUser);
+    }
 
 }

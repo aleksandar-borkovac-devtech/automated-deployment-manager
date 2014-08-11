@@ -17,34 +17,34 @@ import nl.tranquilizedquality.adm.commons.hibernate.dao.BaseDao;
  */
 public interface MavenArtifactDao<T extends MavenArtifact> extends BaseDao<T, Long> {
 
-	/**
-	 * Searches for {@link MavenArtifact} objects based on the specified search
-	 * criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns a {@link List} of {@link MavenArtifact} objects or an
-	 *         empty one if none could be found.
-	 */
-	List<MavenArtifact> findBySearchCommand(MavenArtifactSearchCommand sc);
+    /**
+     * Searches for {@link MavenArtifact} objects based on the specified search
+     * criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @return Returns a {@link List} of {@link MavenArtifact} objects or an
+     *         empty one if none could be found.
+     */
+    List<MavenArtifact> findBySearchCommand(MavenArtifactSearchCommand sc);
 
-	/**
-	 * Counts the number of Maven artifacts based on the specified search
-	 * criteria.
-	 * 
-	 * @param sc
-	 *            The search criteria.
-	 * @return Returns a value of 0 or greater.
-	 */
-	int findNumberOfMavenArtifacts(MavenArtifactSearchCommand sc);
+    /**
+     * Counts the number of Maven artifacts based on the specified search
+     * criteria.
+     * 
+     * @param sc
+     *            The search criteria.
+     * @return Returns a value of 0 or greater.
+     */
+    int findNumberOfMavenArtifacts(MavenArtifactSearchCommand sc);
 
-	/**
-	 * Retrieves the current maximum rank in the specified release.
-	 * 
-	 * @param release
-	 *            The release where the maximum rank should be calculated for.
-	 * @return Returns an integer value of 0 or greater.
-	 */
-	int findMaximumRankInRelease(Release release);
+    /**
+     * Retrieves the current maximum rank in the specified release.
+     * 
+     * @param release
+     *            The release where the maximum rank should be calculated for.
+     * @return Returns an integer value of 0 or greater.
+     */
+    int findMaximumRankInRelease(Release release);
 
 }

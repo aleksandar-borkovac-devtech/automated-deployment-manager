@@ -19,71 +19,71 @@ import com.extjs.gxt.ui.client.data.BeanModel;
  */
 public class BeanModelConverterTest {
 
-	/** {@link Converter} that will be tested. */
-	private BeanModelConverter converter;
+    /** {@link Converter} that will be tested. */
+    private BeanModelConverter converter;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		converter = new BeanModelConverter();
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        converter = new BeanModelConverter();
+    }
 
-	@Test
-	public void testConvertFieldValueObject() {
-		class BeanModelTest extends BeanModel {
+    @Test
+    public void testConvertFieldValueObject() {
+        class BeanModelTest extends BeanModel {
 
-			/**
+            /**
              * 
              */
-			private static final long serialVersionUID = 3292292434901788352L;
+            private static final long serialVersionUID = 3292292434901788352L;
 
-			public BeanModelTest() {
-				setBean("SALOMO");
-			}
-		}
+            public BeanModelTest() {
+                setBean("SALOMO");
+            }
+        }
 
-		final BeanModel beanModel = new BeanModelTest();
+        final BeanModel beanModel = new BeanModelTest();
 
-		final Object value = converter.convertFieldValue(beanModel);
+        final Object value = converter.convertFieldValue(beanModel);
 
-		assertNotNull(value);
-		assertEquals("SALOMO", value.toString());
-	}
+        assertNotNull(value);
+        assertEquals("SALOMO", value.toString());
+    }
 
-	@Test
-	public void testConvertModelValueObject() {
-		// class Person implements BeanModelTag {
-		//
-		// private String name;
-		//
-		// /**
-		// * @return the name
-		// */
-		// public String getName() {
-		// return name;
-		// }
-		//
-		// /**
-		// * @param name
-		// * the name to set
-		// */
-		// public void setName(String name) {
-		// this.name = name;
-		// }
-		//
-		// }
-		// ;
+    @Test
+    public void testConvertModelValueObject() {
+        // class Person implements BeanModelTag {
+        //
+        // private String name;
+        //
+        // /**
+        // * @return the name
+        // */
+        // public String getName() {
+        // return name;
+        // }
+        //
+        // /**
+        // * @param name
+        // * the name to set
+        // */
+        // public void setName(String name) {
+        // this.name = name;
+        // }
+        //
+        // }
+        // ;
 
-		// TODO: Fix the test by using a GWT test.
-		// Person person = new Person();
-		//
-		// Object modelValue = converter.convertModelValue(person);
-		//
-		// if (!(modelValue instanceof BeanModel)) {
-		// fail("Invalid object created: " + modelValue);
-		// }
-	}
+        // TODO: Fix the test by using a GWT test.
+        // Person person = new Person();
+        //
+        // Object modelValue = converter.convertModelValue(person);
+        //
+        // if (!(modelValue instanceof BeanModel)) {
+        // fail("Invalid object created: " + modelValue);
+        // }
+    }
 
 }
