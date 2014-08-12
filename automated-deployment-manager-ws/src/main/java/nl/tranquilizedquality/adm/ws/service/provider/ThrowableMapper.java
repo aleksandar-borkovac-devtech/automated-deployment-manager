@@ -1,4 +1,4 @@
-package nl.tranquilzedquality.adm.ws.service.provider;
+package nl.tranquilizedquality.adm.ws.service.provider;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;

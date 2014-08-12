@@ -11,9 +11,17 @@
 	<security:authentication-manager>
 		<security:authentication-provider
 			user-service-ref="userDetailService">
-			<security:password-encoder hash="sha" />
+			<security:password-encoder ref="shaPasswordEncoder" >
+				<security:salt-source user-property="username" />
+			</security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<bean id="shaPasswordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" >
+		<constructor-arg>
+			<value type="java.lang.Integer">512</value>
+		</constructor-arg>
+	</bean>
 
 	<bean id="loggedInUserInterceptor" class="nl.tranquilizedquality.adm.security.audit.LoggedInUserAspect">
 		<property name="userDao" ref="userDao" />

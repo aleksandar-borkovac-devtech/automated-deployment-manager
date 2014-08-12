@@ -13,6 +13,8 @@
 	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.1.0.xml" />
 	<include relativeToChangelogFile="true" file="changes/adm-init-changelog-1.2.0.xml" />
 	
+	<include relativeToChangelogFile="true" file="itest/adm-itest-changelog.xml" />
+	
 	<include relativeToChangelogFile="true" file="grants/adm-revokes-changelog.xml" />
 	<include relativeToChangelogFile="true" file="users/adm-users-changelog.xml" />
 	<include relativeToChangelogFile="true" file="roles/adm-roles-changelog.xml" />	

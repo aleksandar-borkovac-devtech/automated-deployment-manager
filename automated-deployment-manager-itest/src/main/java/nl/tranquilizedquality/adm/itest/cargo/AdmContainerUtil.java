@@ -1,6 +1,6 @@
 /*
  * @(#)AdmContainerUtil.java 24 jan. 2013
- * 
+ *
  * Copyright (c) 2009 Tranquilized Quality All rights reserved.
  * Tranquilized Quality PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  *
@@ -17,7 +17,7 @@ import org.apache.commons.io.FileUtils;
  * Implementation of the {@link AbstractTomcatContainerUtil} that makes sure all
  * configuration files are copied to the correct location before tomcat is
  * started.
- * 
+ *
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 24 jan. 2013
  */
@@ -40,10 +40,17 @@ public class AdmContainerUtil extends AbstractTomcatContainerUtil {
         FileUtils.copyFile(srcFile, destFile);
 
         /*
-         * Copy applicaiton properties
+         * Copy application properties
          */
         srcFile = new File("src/test/resources/conf/adm.properties");
         destFile = new File(containerHome + "shared/classes/adm.properties");
+        FileUtils.copyFile(srcFile, destFile);
+
+        /*
+         * Copy application properties
+         */
+        srcFile = new File("src/test/resources/conf/adm-ws.properties");
+        destFile = new File(containerHome + "shared/classes/adm-ws.properties");
         FileUtils.copyFile(srcFile, destFile);
 
         /*
@@ -58,6 +65,13 @@ public class AdmContainerUtil extends AbstractTomcatContainerUtil {
          */
         srcFile = new File("src/test/resources/jdbc/postgresql-8.3-604.jdbc3.jar");
         destFile = new File(containerHome + "/lib/postgresql-8.3-604.jdbc3.jar");
+        FileUtils.copyFile(srcFile, destFile);
+
+        /*
+         * Copy dummy log file
+         */
+        srcFile = new File("src/test/resources/conf/adm-ws.properties");
+        destFile = new File(containerHome + "logs/output.log");
         FileUtils.copyFile(srcFile, destFile);
     }
 

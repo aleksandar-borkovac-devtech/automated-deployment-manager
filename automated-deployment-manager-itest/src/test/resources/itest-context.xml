@@ -19,6 +19,7 @@
 		<property name="containerPort" value="8890" />
 		<property name="remoteLocation" value="http://tooling.dizizid.com/" />
 		<property name="containerFile" value="apache-tomcat-7.0.28.zip" />
+		<property name="tomcatVersion" value="tomcat7x" />
 		<property name="jvmArguments">
 			<list>
 				<value>-XX:MaxPermSize=256m</value>

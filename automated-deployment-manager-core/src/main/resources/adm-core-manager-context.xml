@@ -95,25 +95,4 @@
 		<property name="environmentNotificationSettingDao" ref="environmentNotificationSettingDao" />
 	</bean>
 
-<!-- 	<bean id="remoteJettyPluginManager" -->
-<!-- 		class="nl.tranquilizedquality.adm.core.business.plugin.RemoteJettyPluginManager" init-method="installPlugins"> -->
-<!-- 		<property name="pluginDirectory" value="${adm-plugin-directory}" /> -->
-<!-- 	</bean> -->
-
-<!-- 	<bean id="pluginManager" class="nl.tranquilizedquality.adm.core.business.plugin.PluginManagerImpl"> -->
-<!-- 		<property name="pluginDirectory" value="${adm-plugin-directory}" /> -->
-
-<!-- 	</bean> -->
-
-<!-- 	<bean id="pluginLocation" class="java.lang.String"> -->
-<!-- 		<constructor-arg> -->
-<!-- 			<value>${adm-plugin-directory}</value> -->
-<!-- 		</constructor-arg> -->
-<!-- 	</bean> -->
-
-<!-- 	<bean id="postReleaseCheckManag" class="nl.tranquilizedquality.adm.core.business.plugin.postrelease.PostReleaseCheckManagerImpl"> -->
-<!-- 		<property name="pluginManager" ref="pluginManager" /> -->
-<!-- 		<property name="pluginWorkDirectory" value="${adm-plugin-work-directory}" /> -->
-<!-- 	</bean> -->
-
 </beans>

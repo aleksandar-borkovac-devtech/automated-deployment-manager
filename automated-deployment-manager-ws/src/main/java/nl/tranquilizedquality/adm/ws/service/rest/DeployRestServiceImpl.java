@@ -1,4 +1,4 @@
-package nl.tranquilzedquality.adm.ws.service.rest;
+package nl.tranquilizedquality.adm.ws.service.rest;
 
 import java.util.List;
 

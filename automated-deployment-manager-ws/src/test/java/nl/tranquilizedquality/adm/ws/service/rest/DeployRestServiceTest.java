@@ -1,4 +1,4 @@
-package nl.tranquilzedquality.adm.ws.service.rest;
+package nl.tranquilizedquality.adm.ws.service.rest;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
@@ -19,8 +19,8 @@ import nl.tranquilizedquality.adm.core.business.manager.ReleaseManager;
 import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateEnvironment;
 import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateMavenArtifact;
 import nl.tranquilizedquality.adm.core.persistence.db.hibernate.bean.HibernateRelease;
-import nl.tranquilzedquality.adm.ws.service.rest.DeployRestService;
-import nl.tranquilzedquality.adm.ws.service.rest.DeployRestServiceImpl;
+import nl.tranquilizedquality.adm.ws.service.rest.DeployRestService;
+import nl.tranquilizedquality.adm.ws.service.rest.DeployRestServiceImpl;
 
 import org.easymock.EasyMockSupport;
 import org.junit.Before;

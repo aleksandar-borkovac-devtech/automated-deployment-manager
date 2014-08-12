@@ -56,7 +56,7 @@
 		<cglib.version>2.2.2</cglib.version>
 		<asm.version>1.5.3</asm.version>
 		<aspectj-weaver.version>1.6.11</aspectj-weaver.version>
-		<cargo-itest.version>1.4.0</cargo-itest.version>
+		<cargo-itest.version>1.5.0-M2</cargo-itest.version>
 		<apache-commons-logging.version>1.1</apache-commons-logging.version>
 		<commons-httpclient.version>3.1</commons-httpclient.version>
 		<commons-httpclient-contrib.version>3.1</commons-httpclient-contrib.version>

@@ -440,7 +440,7 @@
 			<column name="email_address" />
 			<column name="last_login_date" />
 			<column name="name" value="Administrator" />
-			<column name="password" value="d033e22ae348aeb5660fc2140aec35850c4da997" />
+			<column name="password" value="e02a1a8809e830cf7b7c875e43c16e684ed02a818c7ac25aeadd515432f908ea041447720c194d6b0ec19a1c3dd97f7b378efaab4dd8efd46de568adf3f44c9a" />
 			<column name="password_sent" value="Y" />
 			<column name="username" value="admin" />
 		</insert>

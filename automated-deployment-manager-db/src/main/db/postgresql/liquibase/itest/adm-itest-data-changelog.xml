@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet author="s-petrus" id="default-environments">
+		<insert schemaName="ADM" tableName="environments">
+			<column name="id" valueNumeric="1" />
+			<column name="created" valueDate="2012-09-03T17:15:11.898" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" valueDate="2012-10-12T11:11:17.420" />
+			<column name="altered_by" value="admin" />
+			<column name="description" value="Development environment" />
+			<column name="name" value="DEV" />
+			<column name="production" value="N" />
+		</insert>
+		<insert schemaName="ADM" tableName="environments">
+			<column name="id" valueNumeric="2" />
+			<column name="created" valueDate="2012-09-03T17:15:52.855" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" valueDate="2012-10-12T11:11:30.38" />
+			<column name="altered_by" value="admin" />
+			<column name="description" value="Integration test environment" />
+			<column name="name" value="INT" />
+			<column name="production" value="N" />
+		</insert>
+		<insert schemaName="ADM" tableName="environments">
+			<column name="id" valueNumeric="3" />
+			<column name="created" valueDate="2012-09-03T17:18:26.775" />
+			<column name="created_by" value="s-petrus" />
+			<column name="altered" valueDate="2012-10-12T11:30:13.381" />
+			<column name="altered_by" value="s-petrus" />
+			<column name="description" value="User acceptance test environment" />
+			<column name="name" value="UAT" />
+			<column name="production" value="N" />
+		</insert>
+		<insert schemaName="ADM" tableName="environments">
+			<column name="id" valueNumeric="4" />
+			<column name="created" valueDate="2012-09-03T17:20:25.431" />
+			<column name="created_by" value="admin" />
+			<column name="altered" valueDate="2012-10-12T11:29:45.677" />
+			<column name="altered_by" value="s-petrus" />
+			<column name="description" value="Product environment" />
+			<column name="name" value="PRD" />
+			<column name="production" value="Y" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="s-petrus" id="itest-env-deployers"
+		context="itest">
+		<insert schemaName="ADM" tableName="environment_deployers">
+			<column name="environment_id" valueNumeric="1" />
+			<column name="user_id" valueNumeric="3" />
+		</insert>
+		<insert schemaName="ADM" tableName="environment_deployers">
+			<column name="environment_id" valueNumeric="2" />
+			<column name="user_id" valueNumeric="3" />
+		</insert>
+		<insert schemaName="ADM" tableName="environment_deployers">
+			<column name="environment_id" valueNumeric="3" />
+			<column name="user_id" valueNumeric="3" />
+		</insert>
+		<insert schemaName="ADM" tableName="environment_deployers">
+			<column name="environment_id" valueNumeric="4" />
+			<column name="user_id" valueNumeric="3" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

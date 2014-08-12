@@ -40,7 +40,7 @@ import org.springframework.validation.Validator;
 
 /**
  * Manager that manages {@link User} objects.
- * 
+ *
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 22 sep 2009
  */
@@ -78,6 +78,8 @@ public class UserManagerImpl implements UserManager {
 
     /** Manager used to retrieve the logged in user. */
     private SecurityContextManager securityContextManager;
+
+    private final ShaPasswordEncoder passwordEncoder = new ShaPasswordEncoder(512);
 
     @Override
     public List<UserRole> findUserRoles(final User user) {
@@ -131,17 +133,6 @@ public class UserManagerImpl implements UserManager {
                 LOGGER.debug("Generated password: " + plainPassword);
             }
         } else if (StringUtils.isNotBlank(password) && password.length() != 40) {
-            /*
-             * The maximum length of a password is 20 so if the user changed
-             * their password it will be smaller than or equal to 20. The hashed
-             * password will be 40 so this way we can detect if a user has
-             * changed his/hers password or not. Not that this is not water
-             * tight since if for some reason the user password was set with a
-             * value of length 40 which is not a hash it will go through.
-             * Something to think about to improve if there is any solution for
-             * this at all to actually detect a has correctly.
-             */
-            final ShaPasswordEncoder encoder = new ShaPasswordEncoder();
             plainPassword = password;
 
             if (LOGGER.isDebugEnabled()) {
@@ -154,7 +145,7 @@ public class UserManagerImpl implements UserManager {
             if (password.length() > 20) {
                 errors.rejectValue("password", "user.password-too-long", "The password specified is too long!");
             } else {
-                final String encodedPassword = encoder.encodePassword(plainPassword, null);
+                final String encodedPassword = passwordEncoder.encodePassword(plainPassword, user.getUserName());
 
                 user.setPassword(encodedPassword);
                 user.setPasswordSent(false);
@@ -174,7 +165,7 @@ public class UserManagerImpl implements UserManager {
                     if (StringUtils.isNotBlank(newPassword)) {
 
                         if (StringUtils.equals(newPassword, verificationPassword)) {
-                            final String newEncodedPassword = encoder.encodePassword(newPassword, null);
+                            final String newEncodedPassword = passwordEncoder.encodePassword(newPassword, user.getUserName());
                             user.setPassword(newEncodedPassword);
 
                             originalUser.copy(user);
@@ -426,7 +417,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * Generates a password and sets the encoded password on the user.
-     * 
+     *
      * @param user
      *            The user where the password will be generated for.
      * @return Returns the plain generated password.
@@ -442,8 +433,7 @@ public class UserManagerImpl implements UserManager {
             LOGGER.debug("Generated password..");
         }
 
-        final ShaPasswordEncoder encoder = new ShaPasswordEncoder();
-        final String encodedPassword = encoder.encodePassword(generatedPassword, null);
+        final String encodedPassword = passwordEncoder.encodePassword(generatedPassword, user.getUserName());
 
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("Password encoded..");
@@ -460,7 +450,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * Sends an email containing the login credentials to the specified user.
-     * 
+     *
      * @param user
      *            The {@link User} that will be email with his/hers credentials.
      * @param plainPassword
@@ -523,7 +513,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * Creates the password email to be sent to the specified user.
-     * 
+     *
      * @param user
      *            The user where the email will be sent to.
      * @param plainPassword
@@ -723,7 +713,7 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * Does lazy initialization of certain collections.
-     * 
+     *
      * @param user
      *            The user that will be initialized.
      */

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet author="s-petrus" id="adm_user_groups" context="itest" >
+        <insert schemaName="sec" tableName="adm_user_groups">
+            <column name="id" valueNumeric="1"/>
+            <column name="created" valueDate="2012-09-03T17:01:01.665"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="name" value="team1"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_groups">
+            <column name="id" valueNumeric="2"/>
+            <column name="created" valueDate="2012-09-14T10:37:54.101"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="name" value="team2"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_groups">
+            <column name="id" valueNumeric="3"/>
+            <column name="created" valueDate="2012-09-27T14:19:00.513"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="name" value="it-operations"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_groups">
+            <column name="id" valueNumeric="5"/>
+            <column name="created" valueDate="2012-12-05T16:24:17.501"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="name" value="team3"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_groups">
+            <column name="id" valueNumeric="4"/>
+            <column name="created" valueDate="2012-09-28T13:59:41.94"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="name" value="database-administrators"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_groups">
+            <column name="id" valueNumeric="6"/>
+            <column name="created" valueDate="2013-01-23T10:32:16.760"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="name" value="team4"/>
+        </insert>
+    </changeSet>
+    <changeSet author="s-petrus" id="itest-users" context="itest">
+        <insert schemaName="sec" tableName="adm_users">
+            <column name="id" valueNumeric="34"/>
+            <column name="created" valueDate="2012-11-05T10:09:50.469"/>
+            <column name="created_by" value="admin"/>
+            <column name="altered" valueDate="2012-11-05T10:49:05.752"/>
+            <column name="altered_by" value="admin"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-11-05T10:09:33.200"/>
+            <column name="active_until"/>
+            <column name="blocked" value="N"/>
+            <column name="comments"/>
+            <column name="email_address" value="admin@tr-quality.com"/>
+            <column name="mobile_phone_number" value="0678454748"/>
+            <column name="last_login_date"/>
+            <column name="name" value="Administrator"/>
+            <column name="password" value="6f48584ba5c13c73cd0164e86c5e5d0b5454d6d95e294accc85223846c3b45e6e27903886d8a428cdcc6a7b81cec0952d3ac2b1b846836bfd820ddc849602ec3"/>
+            <column name="password_sent" value="Y"/>
+            <column name="username" value="adm-itest"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_users">
+            <column name="id" valueNumeric="3"/>
+            <column name="created" valueDate="2012-09-03T17:04:24.223"/>
+            <column name="created_by" value="admin"/>
+            <column name="altered" valueDate="2012-10-03T14:29:38.880"/>
+            <column name="altered_by" value="m-meijer"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-09-03T17:02:28.223"/>
+            <column name="active_until"/>
+            <column name="blocked" value="N"/>
+            <column name="comments"/>
+            <column name="email_address" value="melle.meijer@email.com"/>
+            <column name="mobile_phone_number" value="0645785474"/>
+            <column name="last_login_date" valueDate="2013-02-28T14:45:01.964"/>
+            <column name="name" value="Melle Meijer"/>
+            <column name="password" value="5430f8d61ab7615f38d09ceb305aae7d08a6cb2b2f4f1621f6a09bed12e40ffca1c9c59477f7631f78e6832a2985451aee8afe27e99e0da790726b7804f86bd7"/>
+            <column name="password_sent" value="N"/>
+            <column name="username" value="m-meijer"/>
+        </insert>
+    </changeSet>
+    <changeSet author="s-petrus" id="itest-user-group-users">
+        <insert schemaName="sec" tableName="adm_user_group_users">
+            <column name="user_group_id" valueNumeric="5"/>
+            <column name="user_id" valueNumeric="34"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_group_users">
+            <column name="user_group_id" valueNumeric="1"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet author="s-petrus" id="itest-user-roles">
+        <insert schemaName="sec" tableName="adm_user_roles">
+            <column name="id" valueNumeric="4"/>
+            <column name="created" valueDate="2012-09-03T17:04:24.306"/>
+            <column name="created_by" value="admin"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-09-03T17:04:24.306"/>
+            <column name="active_until"/>
+            <column name="rol_id" valueNumeric="2"/>
+            <column name="usr_id" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_roles">
+            <column name="id" valueNumeric="5"/>
+            <column name="created" valueDate="2012-09-03T17:04:30.739"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-09-03T17:04:30.739"/>
+            <column name="active_until"/>
+            <column name="rol_id" valueNumeric="3"/>
+            <column name="usr_id" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_roles">
+            <column name="id" valueNumeric="44"/>
+            <column name="created" valueDate="2012-11-05T10:09:50.614"/>
+            <column name="created_by" value="admin"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-11-05T10:09:50.614"/>
+            <column name="active_until"/>
+            <column name="rol_id" valueNumeric="2"/>
+            <column name="usr_id" valueNumeric="34"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_roles">
+            <column name="id" valueNumeric="48"/>
+            <column name="created" valueDate="2012-11-05T10:48:37.66"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-11-05T10:48:37.66"/>
+            <column name="active_until"/>
+            <column name="rol_id" valueNumeric="3"/>
+            <column name="usr_id" valueNumeric="34"/>
+        </insert>
+        <insert schemaName="sec" tableName="adm_user_roles">
+            <column name="id" valueNumeric="49"/>
+            <column name="created" valueDate="2012-11-05T10:48:37.66"/>
+            <column name="created_by"/>
+            <column name="altered"/>
+            <column name="altered_by"/>
+            <column name="active" value="Y"/>
+            <column name="active_from" valueDate="2012-11-05T10:48:37.66"/>
+            <column name="active_until"/>
+            <column name="rol_id" valueNumeric="1"/>
+            <column name="usr_id" valueNumeric="34"/>
+        </insert>        
+    </changeSet>
+</databaseChangeLog>
