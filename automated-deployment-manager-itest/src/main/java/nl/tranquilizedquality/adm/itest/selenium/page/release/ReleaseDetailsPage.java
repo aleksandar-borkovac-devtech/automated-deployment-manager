@@ -1,6 +1,6 @@
 /*
  * @(#)ReleaseDetailsPage.java 15 feb. 2013
- * 
+ *
  * Copyright (c) 2009 Tranquilized Quality All rights reserved.
  * Tranquilized Quality PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  *
@@ -22,7 +22,7 @@ import com.thoughtworks.selenium.condition.ConditionRunner;
 
 /**
  * Page where the release details are displayed on.
- * 
+ *
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 15 feb. 2013
  */
@@ -83,7 +83,7 @@ public class ReleaseDetailsPage extends AbstractAdmSeleniumPage {
     /**
      * Constructor taking the selenium object so we can perform actions on the
      * page and the condition runner that drives the test case.
-     * 
+     *
      * @param selenium
      *            The selenium object used to perform action on the login page.
      * @param conditionRunner
@@ -96,7 +96,7 @@ public class ReleaseDetailsPage extends AbstractAdmSeleniumPage {
     /**
      * Fills in the details based on the passed in {@link ReleaseDto} and stores
      * the release.
-     * 
+     *
      * @param release
      *            The release that will be added.
      */

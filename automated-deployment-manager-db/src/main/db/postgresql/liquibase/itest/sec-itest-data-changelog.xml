@@ -62,7 +62,7 @@
             <column name="active_until"/>
             <column name="blocked" value="N"/>
             <column name="comments"/>
-            <column name="email_address" value="admin@tr-quality.com"/>
+            <column name="email_address" value="salomo.petrus@tr-quality.com"/>
             <column name="mobile_phone_number" value="0678454748"/>
             <column name="last_login_date"/>
             <column name="name" value="Administrator"/>
@@ -81,7 +81,7 @@
             <column name="active_until"/>
             <column name="blocked" value="N"/>
             <column name="comments"/>
-            <column name="email_address" value="melle.meijer@email.com"/>
+            <column name="email_address" value="adm@tr-quality.com"/>
             <column name="mobile_phone_number" value="0645785474"/>
             <column name="last_login_date" valueDate="2013-02-28T14:45:01.964"/>
             <column name="name" value="Melle Meijer"/>

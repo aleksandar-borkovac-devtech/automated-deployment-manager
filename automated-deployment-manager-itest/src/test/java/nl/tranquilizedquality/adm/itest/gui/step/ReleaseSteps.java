@@ -1,6 +1,6 @@
 /*
  * @(#)ReleaseSteps.java 12 feb. 2013
- * 
+ *
  * Copyright (c) 2009 Tranquilized Quality All rights reserved.
  * Tranquilized Quality PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  *
@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Required;
 
 /**
  * Steps for managing releases.
- * 
+ *
  * @author Salomo Petrus (salomo.petrus@tr-quality.com)
  * @since 12 feb. 2013
  */
@@ -75,6 +75,7 @@ public class ReleaseSteps extends LoginSteps {
     @Then("the deployment status of the release $releaseName should be $releaseStatus")
     public void validateReleaseStatus(@Named("releaseName") final String releaseName,
             @Named("releaseStatus") final String expectedReleaseStatus) {
+
         final ReleaseDto release = new ReleaseDto();
         release.setName(releaseName);
 
