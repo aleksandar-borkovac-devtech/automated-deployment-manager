@@ -12,6 +12,6 @@ When the user adds a dependency Shell Script Module DB to the Maven module calle
 Then there should be 1 dependency created for the Maven module called Shell Script Module
 When the user creates a release called S13.02
 And adds an artifact called Shell Script Module DB with version 1.0.0 to the release S13.02
-And adds an artifact called Shell Script Module with version 1.0.0 to the release S13.02
+!--And adds an artifact called Shell Script Module with version 1.0.0 to the release S13.02
 And the user deploys the release S13.02 to DEV
 Then the deployment status of the release S13.02 should be FAILED
